@@ -161,14 +161,14 @@ function LayoutShell() {
       </AnimatePresence>
 
       <MobileBottomNav />
-      <SalesNotification />
+      {!location.pathname.includes('/admin') && <SalesNotification />}
       <CartDrawer />
       <Omnisearch />
       <SelectorWizard />
       <RecentlyViewedSidebar />
       <ToastContainer />
       <CookieConsent />
-      <TawkToChat />
+      {!location.pathname.includes('/admin') && <TawkToChat />}
     </div>
   );
 }
