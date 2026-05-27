@@ -229,7 +229,11 @@ export default function Checkout() {
 
       // NOTE: We wrap non-schema columns (payment_method, crypto_discount) inside shipping_address JSON
       // to avoid Supabase errors until columns are officially added to the database.
+      // 1. Generate ID manually so we don't need .select() (which fails for guests due to RLS)
+      const generatedId = crypto.randomUUID();
+
       const orderData = {
+        id: generatedId,
         user_id: user?.id || null, // Allow null for Guest Checkout
         items: items,
         total_amount: finalTotalValue,
@@ -245,10 +249,10 @@ export default function Checkout() {
         }
       };
       
-      // 1. Insert order to Supabase
-      const { data: orderResponse, error } = await supabase.from('orders').insert([orderData]).select().single();
+      // 2. Insert order to Supabase
+      const { error } = await supabase.from('orders').insert([orderData]);
       if (error) throw error;
-      const orderId = orderResponse.id;
+      const orderId = generatedId;
       createdOrderId = orderId;
       setPlacedOrderId(orderId);
 
