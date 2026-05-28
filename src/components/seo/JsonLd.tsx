@@ -1,25 +1,15 @@
-import { useEffect } from 'react';
+import React from 'react';
+import { Helmet } from 'react-helmet-async';
 
-const SCRIPT_ATTR = 'data-rp-jsonld';
-
-export function JsonLd({ data }: { data: Record<string, unknown>[] }) {
-  const serialized = JSON.stringify(data);
-
-  useEffect(() => {
-    const blocks = JSON.parse(serialized) as Record<string, unknown>[];
-    const scripts: HTMLScriptElement[] = [];
-    for (const block of blocks) {
-      const el = document.createElement('script');
-      el.type = 'application/ld+json';
-      el.setAttribute(SCRIPT_ATTR, '1');
-      el.textContent = JSON.stringify(block);
-      document.head.appendChild(el);
-      scripts.push(el);
-    }
-    return () => {
-      scripts.forEach((el) => el.remove());
-    };
-  }, [serialized]);
-
-  return null;
+export function JsonLd({ data }: { data: Record<string, unknown>[] | Record<string, unknown> }) {
+  const blocks = Array.isArray(data) ? data : [data];
+  return (
+    <Helmet>
+      {blocks.map((block, index) => (
+        <script key={index} type="application/ld+json">
+          {JSON.stringify(block)}
+        </script>
+      ))}
+    </Helmet>
+  );
 }

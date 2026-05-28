@@ -16,5 +16,10 @@ Allow: /
 
 User-agent: CCBot
 Allow: /
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
 
 Sitemap: https://researchpeptide.eu/sitemap.xml

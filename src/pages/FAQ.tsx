@@ -6,6 +6,7 @@ import { LegalPageLayout } from '../components/legal/LegalPageLayout';
 import { LocaleLink } from '../i18n/LocaleLink';
 import { Button } from '../design-system';
 import { cn } from '../lib/utils';
+import { usePageSeo } from '../seo/SeoProvider';
 
 const GROUP_META = [
   { key: 'product', icon: FlaskConical },
@@ -18,6 +19,28 @@ type FaqItem = { q: string; a: string };
 export default function FAQ() {
   const { t } = useTranslation('legal');
   const [openIndex, setOpenIndex] = useState<string | null>('0-0');
+  
+  // Aggregate all FAQs for Schema
+  const allFaqItems = GROUP_META.flatMap(group => 
+    (t(`faq.groups.${group.key}.items`, { returnObjects: true }) as FaqItem[]) || []
+  );
+
+  usePageSeo({
+    jsonLd: [
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": allFaqItems.map(item => ({
+          "@type": "Question",
+          "name": item.q,
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": item.a
+          }
+        }))
+      }
+    ]
+  });
 
   const toggle = (idx: string) => {
     setOpenIndex(openIndex === idx ? null : idx);
@@ -30,6 +53,14 @@ export default function FAQ() {
       subtitle={t('faq.subtitle')}
       icon={<HelpCircle className="h-4 w-4" aria-hidden />}
     >
+      {/* Answer Capsule for GEO Optimization */}
+      <div className="bg-brand-50 border-l-4 border-brand-500 p-6 rounded-r-2xl mb-10 text-left shadow-sm">
+        <p className="text-navy-950 font-bold text-lg mb-2">Quick Answer: Shipping & Quality</p>
+        <p className="text-steel-700 font-medium leading-relaxed">
+          Research Peptides EU ships exclusively within Europe using temperature-controlled logistics to ensure peptide stability. All batches undergo rigorous third-party HPLC and MS testing, guaranteeing a minimum of 99% purity for your laboratory research.
+        </p>
+      </div>
+
       {GROUP_META.map((group, groupIdx) => {
         const items = t(`faq.groups.${group.key}.items`, {
           returnObjects: true,

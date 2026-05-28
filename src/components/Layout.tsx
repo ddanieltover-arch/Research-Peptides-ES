@@ -21,6 +21,7 @@ import TawkToChat from './chat/TawkToChat';
 import { CookieConsent } from './gdpr/CookieConsent';
 import { PageLoader } from './PageLoader';
 import { postNewsletterSubscribe } from '../lib/transactionalEmailApi';
+import { JsonLd } from './seo/JsonLd';
 
 function LayoutShell() {
   const { user, profile, setUser } = useAuthStore();
@@ -89,8 +90,39 @@ function LayoutShell() {
     }
   };
 
+  const globalSchemas = [
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Research Peptides EU",
+      "url": "https://researchpeptide.eu",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://researchpeptide.eu/logo.png"
+      }
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "url": "https://researchpeptide.eu",
+      "name": "Research Peptides EU",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://researchpeptide.eu/search?q={search_term_string}",
+        "query-input": "required name=search_term_string"
+      }
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "name": "Research Peptides EU",
+      "url": "https://researchpeptide.eu"
+    }
+  ];
+
   return (
     <div className="min-h-screen flex flex-col bg-mist-50 text-navy-950">
+      <JsonLd data={globalSchemas} />
       <a
         href="#main-content"
         className="absolute left-4 -top-20 z-[100] rounded-xl bg-white px-4 py-2.5 text-sm font-semibold text-navy-950 shadow-elevated ring-2 ring-brand-500 transition-[top] focus:top-4 focus:outline-none"

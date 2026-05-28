@@ -1,0 +1,17 @@
+# Research Peptides EU
+> Premium research-grade peptides and compounds for European laboratories.
+
+Research Peptides EU is a leading EU-based supplier helping European researchers, clinical laboratories, and biotech analysts achieve precise, reliable results with high-purity third-party tested peptides.
+
+## Key Pages
+- /: Homepage — overview of our quality guarantees and top products
+- /shop: Full catalog of research peptides
+- /peptide-guide: Comprehensive guide on handling, storage, and reconstitution
+- /peptide-calculator: Tool for calculating peptide reconstitution dosages
+- /faq: Frequently Asked Questions
+
+## Primary Topics
+- High-purity research peptides
+- Lyophilized peptide reconstitution and storage
+- Third-party lab testing and Certificates of Analysis (COAs)
+- EU cold-chain peptide logistics

@@ -42,6 +42,14 @@ export default function PeptideGuide() {
           </p>
         </motion.div>
 
+        {/* Answer Capsule for GEO Optimization */}
+        <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }} className="bg-brand-50 border-l-4 border-brand-500 p-6 rounded-r-2xl mb-12 text-left max-w-3xl mx-auto shadow-sm">
+          <p className="text-navy-950 font-bold text-lg mb-2">Quick Answer: What are Research Peptides?</p>
+          <p className="text-steel-700 font-medium leading-relaxed">
+            Research peptides are synthesized short chains of amino acids utilized exclusively for in vitro laboratory studies. To maintain structural stability, they require lyophilization, cold-chain storage, and careful reconstitution using bacteriostatic water prior to experimental application.
+          </p>
+        </motion.div>
+
         <section className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-14">
           {guideTopics.map((topic, idx) => (
             <motion.article

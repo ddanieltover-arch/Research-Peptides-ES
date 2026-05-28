@@ -52,7 +52,20 @@ export function LocaleHead() {
   const origin = siteOrigin();
 
   const globalJsonLd = useMemo(
-    () => [organizationJsonLd(), websiteJsonLd(locale)],
+    () => [
+      organizationJsonLd(), 
+      websiteJsonLd(locale),
+      {
+        "@context": "https://schema.org",
+        "@type": "LocalBusiness",
+        "name": "Research Peptides EU",
+        "url": siteOrigin(),
+        "address": {
+          "@type": "PostalAddress",
+          "addressCountry": "EU"
+        }
+      }
+    ],
     [locale],
   );
 

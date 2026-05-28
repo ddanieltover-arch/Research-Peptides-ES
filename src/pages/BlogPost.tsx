@@ -4,6 +4,8 @@ import { supabase } from '../supabase';
 import { BookOpen, ArrowLeft, Clock, Share2, Tag, Calendar } from 'lucide-react';
 import { motion } from 'motion/react';
 
+import { usePageSeo } from '../seo/SeoProvider';
+
 export default function BlogPost() {
   const { id } = useParams<{ id: string }>();
   const [post, setPost] = useState<any>(null);
@@ -22,6 +24,26 @@ export default function BlogPost() {
     };
     fetchPost();
   }, [id]);
+
+  usePageSeo(post ? {
+    title: `${post.title} | Research Peptides EU Blog`,
+    description: post.content.substring(0, 150) + '...',
+    canonicalPath: `/blog/${post.id}`,
+    ogType: 'article',
+    ogImage: post.image_url,
+    jsonLd: [{
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": post.title,
+      "image": post.image_url ? [post.image_url] : [],
+      "datePublished": post.created_at,
+      "dateModified": post.updated_at || post.created_at,
+      "author": {
+        "@type": "Organization",
+        "name": "Research Peptides EU Editorial Board"
+      }
+    }]
+  } : null);
 
   if (loading) {
     return (

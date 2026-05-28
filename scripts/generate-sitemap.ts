@@ -89,8 +89,19 @@ async function productPaths(): Promise<string[]> {
     .filter((p): p is string => Boolean(p));
 }
 
+async function blogPaths(): Promise<string[]> {
+  const url = process.env.SUPABASE_URL || process.env.VITE_SUPABASE_URL;
+  const key = process.env.SUPABASE_SERVICE_ROLE_KEY;
+  if (!url || !key) return [];
+  const supabase = createClient(url, key);
+  const { data, error } = await supabase.from('blog_posts').select('id').limit(500);
+  if (error) return [];
+  return (data ?? []).map((row) => `/blog/${row.id}`);
+}
+
 async function main() {
   const productRoutes = await productPaths();
+  const blogRoutes = await blogPaths();
   const entries: string[] = [];
 
   for (const p of STATIC_PATHS) {
@@ -101,6 +112,10 @@ async function main() {
 
   for (const p of productRoutes) {
     entries.push(urlEntry(p, '0.8', 'weekly'));
+  }
+
+  for (const p of blogRoutes) {
+    entries.push(urlEntry(p, '0.7', 'weekly'));
   }
 
   const xml = `<?xml version="1.0" encoding="UTF-8"?>

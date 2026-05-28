@@ -2,6 +2,8 @@ import { lazy, Suspense, type ReactNode } from 'react';
 import { HeroSection } from '../components/home/HeroSection';
 import { HomeSectionFallback } from '../components/home/HomeSectionFallback';
 import { LazyWhenVisible } from '../components/LazyWhenVisible';
+import { SEO } from '../components/seo/SEO';
+import { usePageSeo } from '../seo/SeoProvider';
 
 const FeaturedProductsSection = lazy(() =>
   import('../components/home/FeaturedProductsSection').then((m) => ({
@@ -51,6 +53,12 @@ function DeferredSection({
 }
 
 export default function Home() {
+  usePageSeo({
+    title: "Research Peptides EU | Premium Research Peptides for European Laboratories",
+    description: "Premium research-grade peptides and compounds for European laboratories. Third-party tested, EU distribution, next-day shipping available.",
+    canonicalPath: "/",
+  });
+
   return (
     <div className="overflow-hidden">
       <HeroSection />
