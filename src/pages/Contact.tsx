@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { Mail, Phone, MessageSquare, Clock, ArrowRight, ShieldCheck, MapPin } from 'lucide-react';
 import { motion } from 'motion/react';
 import { Container, Button, GlassPanel, GlowPanel, Reveal } from '../design-system';
-import { HQ_LOCATION, SUPPORT_EMAIL, SUPPORT_PHONE } from '../config/brand';
+import { HQ_LOCATION, SUPPORT_EMAIL } from '../config/brand';
 import { useToastStore } from '../store/useToastStore';
 import { postContactEmail } from '../lib/transactionalEmailApi';
 
@@ -73,15 +73,7 @@ export default function Contact() {
                 </a>
               </GlassPanel>
               </Reveal>
-              <Reveal delay={0.05}>
-              <GlassPanel variant="light" padding="sm" className="p-6 shadow-card h-full">
-                <Phone className="h-6 w-6 text-brand-600 mb-3" aria-hidden />
-                <h4 className="text-xs font-semibold uppercase tracking-wider text-silver-400 mb-2">
-                  {t('contact.phoneLabel')}
-                </h4>
-                <p className="font-semibold text-navy-950">{SUPPORT_PHONE}</p>
-              </GlassPanel>
-              </Reveal>
+
               <Reveal delay={0.08} className="sm:col-span-2">
               <GlassPanel variant="light" padding="sm" className="p-6 shadow-card">
                 <MapPin className="h-6 w-6 text-brand-600 mb-3" aria-hidden />

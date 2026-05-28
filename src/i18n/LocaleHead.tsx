@@ -50,6 +50,7 @@ export function LocaleHead() {
   const locale = i18n.language as LocaleCode;
   const path = stripLocaleFromPath(location.pathname);
   const origin = siteOrigin();
+  const siteUrl = siteOrigin();
 
   const globalJsonLd = useMemo(
     () => [
@@ -58,15 +59,26 @@ export function LocaleHead() {
       {
         "@context": "https://schema.org",
         "@type": "LocalBusiness",
+        "@id": `${siteUrl}/#localbusiness`,
         "name": "Research Peptides EU",
-        "url": siteOrigin(),
+        "url": siteUrl,
+        "logo": `${siteUrl}/brand_logo.png`,
+        "image": `${siteUrl}/brand_logo.png`,
+        "description": "Premium research-grade peptides and compounds for European laboratories. Third-party tested, EU distribution, next-day shipping available.",
         "address": {
           "@type": "PostalAddress",
-          "addressCountry": "EU"
+          "streetAddress": "Markt 34",
+          "postalCode": "5281 AV",
+          "addressLocality": "Boxtel",
+          "addressRegion": "North Brabant",
+          "addressCountry": "NL"
+        },
+        "contactPoint": {
+          "@type": "ContactPoint"
         }
       }
     ],
-    [locale],
+    [locale, siteUrl],
   );
 
   const pageJsonLd = override?.jsonLd ?? [];

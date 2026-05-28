@@ -2,7 +2,7 @@ import { useTranslation } from 'react-i18next';
 import { Building2, BadgeCheck, Microscope, Mail, Phone } from 'lucide-react';
 import { motion } from 'motion/react';
 import { Container, GlassPanel, GlowPanel, Reveal } from '../design-system';
-import { HQ_LOCATION, SUPPORT_EMAIL, SUPPORT_PHONE } from '../config/brand';
+import { HQ_LOCATION, SUPPORT_EMAIL } from '../config/brand';
 
 export default function AboutUs() {
   const { t } = useTranslation('legal');
@@ -58,10 +58,6 @@ export default function AboutUs() {
                 <a href={`mailto:${SUPPORT_EMAIL}`} className="hover:text-brand-600">
                   {SUPPORT_EMAIL}
                 </a>
-              </p>
-              <p className="flex items-center gap-2">
-                <Phone className="h-4 w-4 text-brand-600 shrink-0" aria-hidden />
-                {SUPPORT_PHONE}
               </p>
               <p className="text-silver-400">{HQ_LOCATION}</p>
             </div>

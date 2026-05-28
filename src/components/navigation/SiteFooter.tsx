@@ -40,9 +40,9 @@ export default function SiteFooter({
               {brandName} delivers research-grade peptide compounds to European laboratories with
               third-party verified purity and pharmaceutical-level handling standards.
             </p>
-            <p className="flex items-start gap-2 text-xs text-brand-300/90 mt-4 max-w-sm">
+            <p className="flex items-start gap-2 text-xs text-brand-300/90 mt-4 max-w-sm leading-relaxed">
               <MapPin className="h-4 w-4 shrink-0 mt-0.5" aria-hidden />
-              Headquartered in the Netherlands · EU-wide distribution
+              Markt 34, 5281 AV Boxtel, North Brabant, Netherlands
             </p>
             <div className="flex flex-wrap gap-3 mt-6">
               <span className="inline-flex items-center gap-1.5 rounded-full bg-white/5 border border-white/10 px-3 py-1 text-[10px] font-semibold uppercase tracking-wider text-brand-200">

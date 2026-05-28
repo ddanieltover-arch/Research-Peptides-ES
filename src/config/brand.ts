@@ -10,5 +10,4 @@ export const SITE_URL =
   import.meta.env.VITE_SITE_URL || 'https://researchpeptide.eu';
 
 export const LEGAL_ENTITY = 'Research Peptides EU B.V.';
-export const HQ_LOCATION = 'Netherlands · European Union';
-export const SUPPORT_PHONE = '+31 20 123 4567';
+export const HQ_LOCATION = 'Markt 34, 5281 AV Boxtel, North Brabant, Netherlands';
