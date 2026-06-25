@@ -8,7 +8,7 @@ import { renderContactSubmittedCustomerEmail } from './templates/contactSubmitte
 import type { ContactEmailPayload, OrderEmailPayload } from './types.js';
 
 function getAdminRecipient() {
-  return process.env.EMAIL_ADMIN_TO || process.env.EMAIL_SUPPORT_ADDRESS || 'info@researchpeptide.eu';
+  return process.env.EMAIL_ADMIN_TO || process.env.EMAIL_SUPPORT_ADDRESS || 'info@researchpeptides.es';
 }
 
 function buildOrderPayload(row: any): OrderEmailPayload | null {

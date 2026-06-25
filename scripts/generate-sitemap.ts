@@ -3,12 +3,15 @@
  *
  *   npm run sitemap:generate
  */
-import 'dotenv/config';
+import { config as loadEnv } from 'dotenv';
 import fs from 'fs';
 import path from 'path';
 import { createClient } from '@supabase/supabase-js';
 
-const SITE_ORIGIN = (process.env.VITE_SITE_URL || 'https://researchpeptide.es').replace(/\/+$/, '');
+loadEnv({ path: '.env.local' });
+loadEnv();
+
+const SITE_ORIGIN = (process.env.VITE_SITE_URL || 'https://researchpeptides.es').replace(/\/+$/, '');
 
 const DEFAULT_LOCALE = 'es';
 const LOCALES = ['es', 'en', 'nl', 'de', 'fr'] as const;

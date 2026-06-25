@@ -39,7 +39,7 @@ function siteOriginFromRequest(req: any): string {
   const host = req?.headers?.['x-forwarded-host'] || req?.headers?.host;
   const proto = req?.headers?.['x-forwarded-proto'] || 'https';
   if (host) return `${proto}://${host}`;
-  return process.env.VITE_SITE_URL || 'https://researchpeptide.es';
+  return process.env.VITE_SITE_URL || 'https://researchpeptides.es';
 }
 
 async function fetchProducts(): Promise<ProductRow[]> {

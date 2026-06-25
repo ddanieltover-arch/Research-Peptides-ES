@@ -12,7 +12,7 @@ export function formatCurrency(value: number, locale = 'en-IE', currency = 'EUR'
 
 export function renderBrandLayout(params: { title: string; preheader: string; bodyHtml: string }) {
   const brandName = process.env.EMAIL_BRAND_NAME || 'Research Peptides EU';
-  const supportAddress = process.env.EMAIL_SUPPORT_ADDRESS || 'info@researchpeptide.eu';
+  const supportAddress = process.env.EMAIL_SUPPORT_ADDRESS || 'info@researchpeptides.es';
 
   return `<!doctype html>
 <html lang="en">

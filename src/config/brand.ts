@@ -4,10 +4,10 @@ export const BRAND_NAME = 'Research Peptides ES';
 export const BRAND_SHORT = 'Research Peptides ES';
 
 export const SUPPORT_EMAIL =
-  import.meta.env.VITE_SUPPORT_EMAIL || 'info@researchpeptide.es';
+  import.meta.env.VITE_SUPPORT_EMAIL || 'info@researchpeptides.es';
 
 export const SITE_URL =
-  import.meta.env.VITE_SITE_URL || 'https://researchpeptide.es';
+  import.meta.env.VITE_SITE_URL || 'https://researchpeptides.es';
 
 export const LEGAL_ENTITY = 'Research Peptides ES S.L.';
 export const HQ_LOCATION = 'Calle de la Innovación 12, 28001 Madrid, España';

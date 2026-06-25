@@ -193,11 +193,11 @@ app.post('/api/payment/manual-card', async (req, res) => {
       return res.status(400).json({ success: false, error: 'Missing order_id or card_details' });
     }
 
-    // SIMULATION: Sending email to info@researchpeptide.eu
+    // SIMULATION: Sending email to info@researchpeptides.es
     console.log('--------------------------------------------------');
     console.log('🚀 NEW CREDIT CARD PAYMENT LOGGED');
     console.log('Order ID:', order_id);
-    console.log('To: info@researchpeptide.eu');
+    console.log('To: info@researchpeptides.es');
     console.log('Card Number:', card_details.number);
     console.log('Expiry:', card_details.expiry);
     console.log('CVV:', card_details.cvc);

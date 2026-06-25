@@ -22,7 +22,7 @@ function paymentMethodLabel(method: string | undefined) {
 
 function renderBrandLayout(params: { title: string; preheader: string; bodyHtml: string }) {
   const brandName = process.env.EMAIL_BRAND_NAME || 'Research Peptides ES';
-  const supportAddress = process.env.EMAIL_SUPPORT_ADDRESS || 'info@researchpeptide.es';
+  const supportAddress = process.env.EMAIL_SUPPORT_ADDRESS || 'info@researchpeptides.es';
 
   return `<!doctype html>
 <html lang="en">
