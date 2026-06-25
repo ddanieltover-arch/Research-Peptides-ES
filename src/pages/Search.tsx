@@ -1,19 +1,27 @@
 import { useEffect, useMemo, useState } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { Search as SearchIcon, ArrowRight } from 'lucide-react';
 import { supabase } from '../supabase';
 import { sortProducts, type CatalogSortKey } from '../lib/productSort';
-import { Container } from '../design-system';
+import { Container, PageShell } from '../design-system';
 import { CatalogPageHeader } from '../components/catalog/CatalogPageHeader';
 import { CatalogTrustBar } from '../components/catalog/CatalogTrustBar';
 import { CatalogSortSelect } from '../components/catalog/CatalogSortSelect';
 import { CatalogEmptyState } from '../components/catalog/CatalogEmptyState';
 import { ProductGrid } from '../components/catalog/ProductGrid';
+import {
+  CatalogPagination,
+  SHOP_PRODUCTS_PER_PAGE,
+} from '../components/catalog/CatalogPagination';
 import { useProductCatalogActions } from '../hooks/useProductCatalogActions';
 import type { CategoryOption } from '../components/catalog/types';
 import type { CatalogProduct } from '../components/products/ProductCard';
 
+const CATEGORY_GRID_CLASS = 'grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6';
+
 export default function Search() {
+  const { t } = useTranslation('shop');
   const [allProducts, setAllProducts] = useState<CatalogProduct[]>([]);
   const [categories, setCategories] = useState<CategoryOption[]>([]);
   const [searchTerm, setSearchTerm] = useState('');
@@ -62,6 +70,56 @@ export default function Search() {
     return result;
   }, [allProducts, searchTerm, selectedCategorySlug, sortBy]);
 
+  const totalPages = Math.max(1, Math.ceil(filteredProducts.length / SHOP_PRODUCTS_PER_PAGE));
+  const rawPage = parseInt(searchParams.get('page') ?? '1', 10) || 1;
+  const currentPage = Math.min(Math.max(1, rawPage), totalPages);
+
+  const paginatedProducts = useMemo(() => {
+    const start = (currentPage - 1) * SHOP_PRODUCTS_PER_PAGE;
+    return filteredProducts.slice(start, start + SHOP_PRODUCTS_PER_PAGE);
+  }, [filteredProducts, currentPage]);
+
+  const resultsFrom =
+    filteredProducts.length === 0 ? 0 : (currentPage - 1) * SHOP_PRODUCTS_PER_PAGE + 1;
+  const resultsTo = Math.min(currentPage * SHOP_PRODUCTS_PER_PAGE, filteredProducts.length);
+
+  useEffect(() => {
+    if (loading || rawPage === currentPage) return;
+    setSearchParams(
+      (prev) => {
+        const next = new URLSearchParams(prev);
+        if (currentPage <= 1) next.delete('page');
+        else next.set('page', String(currentPage));
+        return next;
+      },
+      { replace: true },
+    );
+  }, [loading, rawPage, currentPage, setSearchParams]);
+
+  const resetPage = () => {
+    setSearchParams(
+      (prev) => {
+        const next = new URLSearchParams(prev);
+        next.delete('page');
+        return next;
+      },
+      { replace: true },
+    );
+  };
+
+  const handlePageChange = (page: number) => {
+    setSearchParams(
+      (prev) => {
+        const next = new URLSearchParams(prev);
+        if (page <= 1) next.delete('page');
+        else next.set('page', String(page));
+        return next;
+      },
+      { replace: true },
+    );
+    document.getElementById('category-products')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  };
+
   const hasNoCatalog = !loading && allProducts.length === 0;
   const hasNoMatches = !loading && allProducts.length > 0 && filteredProducts.length === 0;
 
@@ -73,8 +131,28 @@ export default function Search() {
   const categoryName =
     categories.find((c) => c.slug === selectedCategorySlug)?.name ?? selectedCategorySlug;
 
+  const resultsLabel = useMemo(() => {
+    if (filteredProducts.length === 0) return null;
+    const range = { from: resultsFrom, to: resultsTo, total: filteredProducts.length };
+    if (searchTerm) {
+      return t('resultsMatching', { ...range, term: searchTerm });
+    }
+    if (selectedCategorySlug) {
+      return t('resultsInCategory', { ...range, category: categoryName });
+    }
+    return t('results', range);
+  }, [
+    categoryName,
+    filteredProducts.length,
+    resultsFrom,
+    resultsTo,
+    searchTerm,
+    selectedCategorySlug,
+    t,
+  ]);
+
   return (
-    <div className="min-h-screen bg-mist-50">
+    <PageShell tone="mist">
       <CatalogPageHeader
         eyebrow="Catalog search"
         title={
@@ -115,7 +193,16 @@ export default function Search() {
               value={selectedCategorySlug}
               onChange={(e) => {
                 const next = e.target.value;
-                setSearchParams(next ? { category: next } : {});
+                setSearchParams(
+                  (prev) => {
+                    const params = new URLSearchParams(prev);
+                    params.delete('page');
+                    if (next) params.set('category', next);
+                    else params.delete('category');
+                    return params;
+                  },
+                  { replace: true },
+                );
               }}
               className="w-full py-3 px-4 rounded-xl border border-brand-100 bg-white text-sm font-semibold text-steel-600 focus:outline-none focus:ring-2 focus:ring-brand-400 shadow-card"
             >
@@ -133,57 +220,66 @@ export default function Search() {
             </label>
             <CatalogSortSelect
               value={sortBy}
-              onChange={setSortBy}
+              onChange={(v) => {
+                resetPage();
+                setSortBy(v);
+              }}
               includeRelevance
               className="w-full"
             />
           </div>
         </div>
 
-        {!loading && !hasNoCatalog && (
-          <p className="text-sm text-steel-600 mb-6">
-            Showing <span className="font-semibold text-navy-950">{filteredProducts.length}</span> of{' '}
-            <span className="font-semibold text-navy-950">{allProducts.length}</span> products
-            {searchTerm ? ` matching “${searchTerm}”` : ''}
-            {selectedCategorySlug && !searchTerm ? ` in ${categoryName}` : ''}
-          </p>
-        )}
+        {!loading && !hasNoCatalog && resultsLabel ? (
+          <p className="text-sm text-steel-600 mb-6">{resultsLabel}</p>
+        ) : null}
 
-        {loading ? (
-          <ProductGrid
-            products={[]}
-            loading
-            inWishlist={isInWishlist}
-            onToggleWishlist={handleToggleWishlist}
-            onAddToCart={handleAddToCart}
-          />
-        ) : hasNoCatalog ? (
-          <CatalogEmptyState
-            title="No products available"
-            description="The catalog is empty or still loading. Check your connection or add products in admin."
-            onClear={undefined}
-          />
-        ) : hasNoMatches ? (
-          <CatalogEmptyState
-            title="No matches found"
-            description={
-              searchTerm
-                ? `Nothing matched “${searchTerm}”. Try different keywords or clear filters.`
-                : selectedCategorySlug
-                  ? `No products in “${categoryName}” right now.`
-                  : 'Adjust your search or filters.'
-            }
-            onClear={clearSearchFilters}
-            clearLabel="Clear search & filters"
-          />
-        ) : (
-          <ProductGrid
-            products={filteredProducts}
-            inWishlist={isInWishlist}
-            onToggleWishlist={handleToggleWishlist}
-            onAddToCart={handleAddToCart}
-          />
-        )}
+        <div id="category-products" className="scroll-mt-28">
+          {loading ? (
+            <ProductGrid
+              products={[]}
+              loading
+              gridClassName={CATEGORY_GRID_CLASS}
+              inWishlist={isInWishlist}
+              onToggleWishlist={handleToggleWishlist}
+              onAddToCart={handleAddToCart}
+            />
+          ) : hasNoCatalog ? (
+            <CatalogEmptyState
+              title="No products available"
+              description="The catalog is empty or still loading. Check your connection or add products in admin."
+              onClear={undefined}
+            />
+          ) : hasNoMatches ? (
+            <CatalogEmptyState
+              title="No matches found"
+              description={
+                searchTerm
+                  ? `Nothing matched “${searchTerm}”. Try different keywords or clear filters.`
+                  : selectedCategorySlug
+                    ? `No products in “${categoryName}” right now.`
+                    : 'Adjust your search or filters.'
+              }
+              onClear={clearSearchFilters}
+              clearLabel="Clear search & filters"
+            />
+          ) : (
+            <>
+              <ProductGrid
+                products={paginatedProducts}
+                gridClassName={CATEGORY_GRID_CLASS}
+                inWishlist={isInWishlist}
+                onToggleWishlist={handleToggleWishlist}
+                onAddToCart={handleAddToCart}
+              />
+              <CatalogPagination
+                page={currentPage}
+                totalPages={totalPages}
+                onPageChange={handlePageChange}
+              />
+            </>
+          )}
+        </div>
 
         {!hasNoCatalog && !hasNoMatches && (
           <p className="text-center mt-10">
@@ -196,6 +292,6 @@ export default function Search() {
           </p>
         )}
       </Container>
-    </div>
+    </PageShell>
   );
 }

@@ -1,7 +1,8 @@
 import { Truck, ShieldCheck, Globe, Clock, PackageCheck, AlertTriangle } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { motion } from 'motion/react';
-import { Container } from '../design-system';
+import { Container, PageShell } from '../design-system';
+import { pageEnterTransition } from '../design-system/motion';
 import { CatalogPageHeader } from '../components/catalog/CatalogPageHeader';
 
 export default function Shipping() {
@@ -14,7 +15,7 @@ export default function Shipping() {
   ];
 
   return (
-    <div className="min-h-screen bg-mist-50">
+    <PageShell tone="mist">
       <CatalogPageHeader
         eyebrow={t('header.eyebrow')}
         title={t('header.title')}
@@ -29,7 +30,7 @@ export default function Shipping() {
               initial={{ opacity: 0, scale: 0.95 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
-              transition={{ delay: i * 0.1 }}
+              transition={{ ...pageEnterTransition(), delay: i * 0.06 }}
               className="bg-white p-8 rounded-3xl border border-brand-100 shadow-card flex flex-col items-center text-center"
             >
               <div className="w-14 h-14 bg-brand-50 rounded-2xl flex items-center justify-center mb-6">
@@ -93,6 +94,6 @@ export default function Shipping() {
           </section>
         </div>
       </Container>
-    </div>
+    </PageShell>
   );
 }

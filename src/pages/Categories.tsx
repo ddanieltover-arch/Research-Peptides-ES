@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { ArrowRight, Beaker, Dna, Layers, Pill, TestTube2 } from 'lucide-react';
 import { motion } from 'motion/react';
 import { supabase } from '../supabase';
-import { Container, Section } from '../design-system';
+import { Container, Section, PageShell } from '../design-system';
 import { CatalogPageHeader } from '../components/catalog/CatalogPageHeader';
 import { CatalogTrustBar } from '../components/catalog/CatalogTrustBar';
 import { cn } from '../lib/utils';
@@ -35,7 +35,7 @@ export default function Categories() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-gradient-parchment">
+    <PageShell tone="parchment">
       <CatalogPageHeader
         eyebrow="Browse by application"
         title={
@@ -105,6 +105,6 @@ export default function Categories() {
           )}
         </Container>
       </Section>
-    </div>
+    </PageShell>
   );
 }

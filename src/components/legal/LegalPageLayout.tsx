@@ -1,6 +1,7 @@
 import type { ReactNode } from 'react';
 import { motion } from 'motion/react';
-import { Container, GlassPanel, Reveal } from '../../design-system';
+import { Container, GlassPanel, PageShell, Reveal } from '../../design-system';
+import { pageEnterTransition } from '../../design-system/motion';
 import { cn } from '../../lib/utils';
 
 type LegalPageLayoutProps = {
@@ -21,11 +22,12 @@ export function LegalPageLayout({
   className,
 }: LegalPageLayoutProps) {
   return (
-    <div className={cn('min-h-screen bg-mist-50 pt-12 pb-20', className)}>
+    <PageShell tone="mist" className={cn('pt-12 pb-20', className)}>
       <Container className="max-w-4xl py-12 md:py-16">
         <motion.header
-          initial={{ opacity: 0, y: 16 }}
+          initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
+          transition={pageEnterTransition()}
           className="text-center mb-12 md:mb-14"
         >
           <div className="inline-flex items-center gap-2 px-4 py-2 bg-brand-50 text-brand-600 rounded-full text-xs font-semibold uppercase tracking-wider mb-5">
@@ -39,7 +41,7 @@ export function LegalPageLayout({
         </motion.header>
         <div className="space-y-10 text-steel-600 leading-relaxed">{children}</div>
       </Container>
-    </div>
+    </PageShell>
   );
 }
 

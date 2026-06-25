@@ -5,6 +5,8 @@ import { useLocaleNavigate } from '../i18n/useLocaleNavigate';
 import { supabase } from '../supabase';
 import { LogIn, Mail, Lock, Loader2 } from 'lucide-react';
 import { Button, Container, GlassPanel } from '../design-system';
+import { motion } from 'motion/react';
+import { pageEnterTransition } from '../design-system/motion';
 import logo from '../assets/brandLogo';
 
 export default function Login() {
@@ -61,6 +63,11 @@ export default function Login() {
       <div className="absolute inset-0 bg-gradient-glow opacity-60 pointer-events-none" aria-hidden />
 
       <Container size="narrow" className="relative z-10 w-full max-w-md">
+        <motion.div
+          initial={{ opacity: 0, y: 16, scale: 0.98 }}
+          animate={{ opacity: 1, y: 0, scale: 1 }}
+          transition={pageEnterTransition()}
+        >
         <GlassPanel variant="dark" padding="lg" className="shadow-glow">
           <div className="text-center mb-8">
             <img src={logo} alt="" className="h-12 w-auto mx-auto mb-6 drop-shadow-[0_4px_20px_rgba(45,181,163,0.4)]" width={52} height={52} />
@@ -164,6 +171,7 @@ export default function Login() {
             {t('google')}
           </button>
         </GlassPanel>
+        </motion.div>
       </Container>
     </div>
   );

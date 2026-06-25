@@ -8,7 +8,7 @@ import { ProductImagePlaceholder } from './ProductImagePlaceholder';
 import { ProductCardPriceBlock } from './ProductCardPriceBlock';
 import { getPrimaryProductBadge } from '../../lib/productBadges';
 import { productPath } from '../../lib/productUrl';
-import { cardHoverState } from '../../design-system/motion';
+import { cardHoverState, fadeUpVariants } from '../../design-system/motion';
 import { cn } from '../../lib/utils';
 
 export type CatalogProduct = {
@@ -34,6 +34,7 @@ type ProductCardProps = {
   onAddToCart: () => void;
   showDescription?: boolean;
   animate?: boolean;
+  entrance?: 'stagger' | 'scroll' | 'none';
   className?: string;
 };
 
@@ -45,6 +46,7 @@ export function ProductCard({
   onAddToCart,
   showDescription = false,
   animate = true,
+  entrance = 'stagger',
   className,
 }: ProductCardProps) {
   const productHref = productPath(product);
@@ -147,15 +149,27 @@ export function ProductCard({
     </Card>
   );
 
-  if (!animate) return card;
+  if (!animate || entrance === 'none') return card;
+
+  if (entrance === 'scroll') {
+    return (
+      <motion.div
+        className="h-full"
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: '-24px' }}
+        variants={fadeUpVariants()}
+        whileHover={cardHoverState()}
+      >
+        {card}
+      </motion.div>
+    );
+  }
 
   return (
     <motion.div
       className="h-full"
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: '-24px' }}
-      transition={{ delay: index * 0.04, duration: 0.35 }}
+      variants={fadeUpVariants()}
       whileHover={cardHoverState()}
     >
       {card}

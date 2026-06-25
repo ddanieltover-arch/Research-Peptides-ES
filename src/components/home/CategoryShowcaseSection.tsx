@@ -66,7 +66,7 @@ export function CategoryShowcaseSection() {
                   className="snap-start shrink-0 w-56 md:w-64"
                 >
                   <LocaleLink
-                    to={`/shop?category=${cat.slug}`}
+                    to={`/search?category=${cat.slug}`}
                     className="group block h-full rounded-2xl border border-white/10 bg-white/5 p-6 hover:border-accent-500/40 hover:bg-white/10 transition-all duration-300"
                   >
                     <div className="w-10 h-10 rounded-xl bg-brand-500/30 flex items-center justify-center mb-4 group-hover:bg-accent-500/30 transition-colors">

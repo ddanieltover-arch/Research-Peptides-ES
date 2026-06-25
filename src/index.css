@@ -199,6 +199,55 @@
   .bento-card:hover {
     @apply border-accent-500/40 shadow-elevated -translate-y-0.5;
   }
+
+  .skeleton-shimmer {
+    @apply bg-brand-100/50 relative overflow-hidden;
+  }
+
+  .skeleton-shimmer::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      rgba(255, 255, 255, 0.55) 50%,
+      transparent 100%
+    );
+    animation: skeleton-shimmer 1.4s ease-in-out infinite;
+  }
+
+  .link-interactive {
+    @apply transition-colors duration-200 ease-out;
+  }
+
+  .surface-interactive {
+    @apply transition-[transform,box-shadow,border-color] duration-200 ease-out;
+  }
+
+  .surface-interactive:hover {
+    @apply -translate-y-0.5 shadow-elevated;
+  }
+}
+
+@keyframes skeleton-shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .skeleton-shimmer::after {
+    animation: none;
+  }
+
+  .bento-card:hover,
+  .surface-interactive:hover {
+    transform: none;
+  }
 }
 
 @layer utilities {

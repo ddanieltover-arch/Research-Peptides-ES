@@ -6,13 +6,13 @@ interface SkeletonProps {
 
 export function Skeleton({ className = "" }: SkeletonProps) {
   return (
-    <div className={`animate-pulse bg-gray-200 rounded-md ${className}`}></div>
+    <div className={`skeleton-shimmer rounded-md ${className}`}></div>
   );
 }
 
 export function ProductSkeleton() {
   return (
-    <div className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
+    <div className="bg-white rounded-[1.75rem] shadow-card border border-brand-100/80 overflow-hidden">
       <Skeleton className="h-64 w-full rounded-none" />
       <div className="p-6 space-y-4">
         <div className="flex justify-between">

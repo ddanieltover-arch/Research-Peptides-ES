@@ -34,7 +34,7 @@ export function ProductRecommendations({
               {t('recommendations.viewCatalog')} →
             </Link>
           </div>
-          <div className="grid grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
             {recommended.map((product, index) => (
               <ProductCard
                 key={product.id}
@@ -43,6 +43,7 @@ export function ProductRecommendations({
                 inWishlist={inWishlist(product.id)}
                 onToggleWishlist={(e) => onToggleWishlist(product.id, e)}
                 onAddToCart={() => onAddToCart(product)}
+                entrance="scroll"
               />
             ))}
           </div>

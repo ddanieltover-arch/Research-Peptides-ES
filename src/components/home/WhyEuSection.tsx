@@ -27,17 +27,9 @@ export function WhyEuSection() {
           className="mb-14"
         />
 
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-5 auto-rows-fr">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-5">
           {pillars.map((item, index) => {
             const Icon = pillarIcons[index] ?? FlaskConical;
-            const span =
-              index === 0
-                ? 'md:col-span-7 md:row-span-2'
-                : index === 1
-                  ? 'md:col-span-5'
-                  : index === 2
-                    ? 'md:col-span-5'
-                    : 'md:col-span-7';
 
             return (
               <motion.article
@@ -46,15 +38,15 @@ export function WhyEuSection() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: '-40px' }}
                 transition={{ delay: index * 0.07 }}
-                className={`bento-card flex flex-col ${span} ${index === 0 ? 'md:min-h-[280px]' : ''}`}
+                className="bento-card flex flex-col h-full min-h-[220px]"
               >
-                <div className="w-12 h-12 rounded-2xl bg-brand-500 flex items-center justify-center mb-5 shadow-elevated">
+                <div className="w-12 h-12 rounded-2xl bg-brand-500 flex items-center justify-center mb-5 shadow-elevated shrink-0">
                   <Icon className="h-6 w-6 text-accent-400" aria-hidden />
                 </div>
-                <h3 className="font-display text-xl md:text-2xl font-semibold text-navy-950 mb-3">
+                <h3 className="font-display text-lg md:text-xl font-semibold text-navy-950 mb-3">
                   {item.title}
                 </h3>
-                <p className="text-sm text-steel-600 leading-relaxed font-sans mt-auto">{item.desc}</p>
+                <p className="text-sm text-steel-600 leading-relaxed font-sans">{item.desc}</p>
               </motion.article>
             );
           })}

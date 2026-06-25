@@ -24,6 +24,8 @@ import { postNewsletterSubscribe } from '../lib/transactionalEmailApi';
 import { JsonLd } from './seo/JsonLd';
 import { BRAND_NAME, SITE_URL } from '../config/brand';
 import { DevConfigBanner } from './DevConfigBanner';
+import { prefetchCriticalRoutes } from '../lib/routePrefetch';
+import { pageRouteTransition } from '../design-system/motion';
 
 function LayoutShell() {
   const { user, profile, setUser } = useAuthStore();
@@ -48,6 +50,16 @@ function LayoutShell() {
       console.error('Logout failed', error);
     }
   };
+
+  useEffect(() => {
+    const run = () => prefetchCriticalRoutes();
+    if (typeof window !== 'undefined' && 'requestIdleCallback' in window) {
+      const id = window.requestIdleCallback(run);
+      return () => window.cancelIdleCallback(id);
+    }
+    const timer = window.setTimeout(run, 1500);
+    return () => window.clearTimeout(timer);
+  }, []);
 
   useEffect(() => {
     setMobileNavOpen(false);
@@ -159,10 +171,10 @@ function LayoutShell() {
           <AnimatePresence mode="wait">
             <motion.div
               key={location.pathname}
-              initial={{ opacity: 0, y: 10 }}
+              initial={{ opacity: 0, y: 6 }}
               animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -10 }}
-              transition={{ duration: 0.3, ease: 'easeInOut' }}
+              exit={{ opacity: 0, y: -4 }}
+              transition={pageRouteTransition()}
             >
               <Outlet />
             </motion.div>

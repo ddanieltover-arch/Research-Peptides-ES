@@ -1,8 +1,9 @@
 import type { ReactNode } from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import { LocaleLink } from '../../i18n/LocaleLink';
 import { ChevronRight, Heart, Package, Settings, User } from 'lucide-react';
 import { useAuthStore } from '../../store/useAuthStore';
-import { Container } from '../../design-system';
+import { Container, PageShell } from '../../design-system';
 import { CatalogPageHeader } from '../catalog/CatalogPageHeader';
 import { cn } from '../../lib/utils';
 
@@ -25,7 +26,7 @@ export function AccountShell({ title, subtitle, children }: AccountShellProps) {
 
   if (!user || !profile) {
     return (
-      <div className="min-h-[60vh] flex items-center justify-center bg-mist-50 p-8">
+      <PageShell tone="mist" className="min-h-[60vh] flex items-center justify-center p-8">
         <div className="text-center max-w-md">
           <User className="h-14 w-14 text-brand-200 mx-auto mb-4" aria-hidden />
           <p className="font-display font-bold text-xl text-navy-950 mb-2">Sign in required</p>
@@ -37,12 +38,12 @@ export function AccountShell({ title, subtitle, children }: AccountShellProps) {
             Sign in
           </Link>
         </div>
-      </div>
+      </PageShell>
     );
   }
 
   return (
-    <div className="min-h-screen bg-mist-50">
+    <PageShell tone="mist">
       <CatalogPageHeader
         eyebrow="Researcher account"
         title={title}
@@ -77,7 +78,7 @@ export function AccountShell({ title, subtitle, children }: AccountShellProps) {
               {NAV.map((item) => {
                 const active = location.pathname === item.path;
                 return (
-                  <Link
+                  <LocaleLink
                     key={item.path + item.label}
                     to={item.path}
                     className={cn(
@@ -98,7 +99,7 @@ export function AccountShell({ title, subtitle, children }: AccountShellProps) {
                       )}
                       aria-hidden
                     />
-                  </Link>
+                  </LocaleLink>
                 );
               })}
             </nav>
@@ -107,6 +108,6 @@ export function AccountShell({ title, subtitle, children }: AccountShellProps) {
           <main className="flex-1 min-w-0">{children}</main>
         </div>
       </Container>
-    </div>
+    </PageShell>
   );
 }

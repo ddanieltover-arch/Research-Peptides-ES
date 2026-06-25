@@ -5,7 +5,7 @@ import { useLocaleNavigate } from '../i18n/useLocaleNavigate';
 import { ShoppingBag } from 'lucide-react';
 import { useCartStore } from '../store/useCartStore';
 import { CartPageSkeleton } from '../components/Skeleton';
-import { Container, Button, Reveal } from '../design-system';
+import { Container, Button, Reveal, PageShell } from '../design-system';
 import { CatalogPageHeader } from '../components/catalog/CatalogPageHeader';
 import { CartLineItem } from '../components/cart/CartLineItem';
 import { OrderSummaryPanel } from '../components/cart/OrderSummaryPanel';
@@ -42,17 +42,17 @@ export default function Cart() {
 
   if (!hasHydrated) {
     return (
-      <div className="bg-mist-50 min-h-screen">
+      <PageShell tone="mist">
         <Container className="py-12">
           <CartPageSkeleton />
         </Container>
-      </div>
+      </PageShell>
     );
   }
 
   if (items.length === 0) {
     return (
-      <div className="min-h-screen bg-gradient-parchment">
+      <PageShell tone="parchment">
         <CatalogPageHeader
           eyebrow={t('cart.title')}
           title={t('cart.title')}
@@ -68,12 +68,12 @@ export default function Cart() {
             </LocaleLink>
           </Reveal>
         </Container>
-      </div>
+      </PageShell>
     );
   }
 
   return (
-    <div className="min-h-screen bg-gradient-parchment">
+    <PageShell tone="parchment">
       <CatalogPageHeader
         eyebrow={t('cartPage.eyebrow')}
         title={
@@ -115,6 +115,6 @@ export default function Cart() {
           />
         </div>
       </Container>
-    </div>
+    </PageShell>
   );
 }

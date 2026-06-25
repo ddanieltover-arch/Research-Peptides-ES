@@ -12,7 +12,7 @@ import { useToastStore } from '../store/useToastStore';
 import { DetailedProductSkeleton } from '../components/Skeleton';
 import { productPath } from '../lib/productUrl';
 import { BRAND_NAME } from '../config/brand';
-import { Container, Reveal } from '../design-system';
+import { Container, Reveal, PageShell } from '../design-system';
 import { ProductGallery } from '../components/product-detail/ProductGallery';
 import { ProductPurchasePanel } from '../components/product-detail/ProductPurchasePanel';
 import { ProductRecommendations } from '../components/product-detail/ProductRecommendations';
@@ -139,10 +139,10 @@ export default function ProductDetails() {
         const { data: rData } = await supabase.from('reviews').select('*').eq('product_id', productId);
         if (rData) setReviews(rData);
 
-        const { data: recData } = await supabase.from('products').select('*').limit(4);
+        const { data: recData } = await supabase.from('products').select('*').limit(5);
         if (recData) {
           setRecommended(
-            recData.filter((p) => String(p.id) !== String(productId)).slice(0, 3) as CatalogProduct[],
+            recData.filter((p) => String(p.id) !== String(productId)).slice(0, 4) as CatalogProduct[],
           );
         }
       } catch (error) {
@@ -219,7 +219,7 @@ export default function ProductDetails() {
   const images: string[] = product.images?.length ? product.images : [];
 
   return (
-    <div className="bg-gradient-parchment min-h-screen">
+    <PageShell tone="parchment">
       <Container className="py-10 md:py-12">
         <nav className="mb-8 text-sm" aria-label="Breadcrumb">
           <ol className="flex flex-wrap items-center gap-2 text-steel-600">
@@ -314,6 +314,6 @@ export default function ProductDetails() {
         onToggleWishlist={handleToggleWishlist}
         onAddToCart={addRelatedToCart}
       />
-    </div>
+    </PageShell>
   );
 }

@@ -2,7 +2,8 @@ import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { Mail, Phone, MessageSquare, Clock, ArrowRight, ShieldCheck, MapPin } from 'lucide-react';
 import { motion } from 'motion/react';
-import { Container, Button, GlassPanel, GlowPanel, Reveal } from '../design-system';
+import { Container, Button, GlassPanel, GlowPanel, PageShell, Reveal } from '../design-system';
+import { pageEnterTransition } from '../design-system/motion';
 import { HQ_LOCATION, SUPPORT_EMAIL } from '../config/brand';
 import { useToastStore } from '../store/useToastStore';
 import { postContactEmail } from '../lib/transactionalEmailApi';
@@ -42,15 +43,16 @@ export default function Contact() {
   };
 
   return (
-    <div className="bg-mist-50 min-h-screen pt-12">
+    <PageShell tone="mist" className="pt-12">
       <Container className="py-12 md:py-16">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
           
           {/* Left: Contact Info */}
           <div>
             <motion.div 
-              initial={{ opacity: 0, x: -20 }}
+              initial={{ opacity: 0, x: -12 }}
               animate={{ opacity: 1, x: 0 }}
+              transition={pageEnterTransition()}
               className="mb-12"
             >
               <div className="inline-flex items-center gap-2 px-4 py-2 bg-brand-50 text-brand-600 rounded-full text-xs font-semibold uppercase tracking-wider mb-6">
@@ -197,6 +199,6 @@ export default function Contact() {
 
         </div>
       </Container>
-    </div>
+    </PageShell>
   );
 }

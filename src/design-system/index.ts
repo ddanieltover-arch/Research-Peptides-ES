@@ -10,3 +10,5 @@ export { GlassPanel, type GlassPanelProps } from './components/GlassPanel';
 export { GlowPanel, type GlowPanelProps } from './components/GlowPanel';
 export { ScientificBackdrop, type ScientificBackdropProps } from './components/ScientificBackdrop';
 export { Reveal, type RevealProps } from './components/Reveal';
+export { AnimateIn } from './components/AnimateIn';
+export { PageShell, type PageShellProps } from './components/PageShell';

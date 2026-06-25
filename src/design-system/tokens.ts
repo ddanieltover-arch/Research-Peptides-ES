@@ -72,9 +72,9 @@ export const shadows = {
 } as const;
 
 export const motionDuration = {
-  fast: 0.15,
-  base: 0.3,
-  slow: 0.5,
+  fast: 0.12,
+  base: 0.24,
+  slow: 0.4,
 } as const;
 
 export const motionSpring = {

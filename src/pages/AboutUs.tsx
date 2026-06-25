@@ -1,18 +1,20 @@
 import { useTranslation } from 'react-i18next';
 import { Building2, BadgeCheck, Microscope, Mail, Phone } from 'lucide-react';
 import { motion } from 'motion/react';
-import { Container, GlassPanel, GlowPanel, Reveal } from '../design-system';
+import { Container, GlassPanel, GlowPanel, PageShell, Reveal } from '../design-system';
+import { pageEnterTransition } from '../design-system/motion';
 import { HQ_LOCATION, SUPPORT_EMAIL } from '../config/brand';
 
 export default function AboutUs() {
   const { t } = useTranslation('legal');
 
   return (
-    <div className="min-h-screen bg-mist-50 pt-12 pb-20">
+    <PageShell tone="mist" className="pt-12 pb-20">
       <Container className="max-w-5xl py-12 md:py-16">
         <motion.header
-          initial={{ opacity: 0, y: 16 }}
+          initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
+          transition={pageEnterTransition()}
           className="text-center mb-12"
         >
           <div className="inline-flex items-center gap-2 px-4 py-2 bg-brand-50 text-brand-600 rounded-full text-xs font-semibold uppercase tracking-wider mb-5">
@@ -65,6 +67,6 @@ export default function AboutUs() {
           </Reveal>
         </div>
       </Container>
-    </div>
+    </PageShell>
   );
 }

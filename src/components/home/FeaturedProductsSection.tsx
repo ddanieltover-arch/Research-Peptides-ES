@@ -25,7 +25,7 @@ export function FeaturedProductsSection() {
         .from('products')
         .select('*')
         .order('rating', { ascending: false })
-        .limit(4);
+        .limit(8);
       if (data) setProducts(data as CatalogProduct[]);
       setLoading(false);
     })();
@@ -56,7 +56,8 @@ export function FeaturedProductsSection() {
         <ProductGrid
           products={products}
           loading={loading}
-          skeletonCount={4}
+          skeletonCount={8}
+          gridClassName="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6"
           inWishlist={isInWishlist}
           onToggleWishlist={handleToggleWishlist}
           onAddToCart={handleAddToCart}

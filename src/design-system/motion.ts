@@ -15,6 +15,22 @@ export const transitions = {
   spring: { type: 'spring', ...motionSpring } satisfies Transition,
 } as const;
 
+/** Snappy route change — used in Layout outlet wrapper */
+export function pageRouteTransition(): Transition {
+  return {
+    duration: prefersReducedMotion() ? 0.01 : 0.16,
+    ease: [0.22, 1, 0.36, 1],
+  };
+}
+
+/** In-page content enter */
+export function pageEnterTransition(): Transition {
+  return {
+    duration: prefersReducedMotion() ? 0.01 : 0.28,
+    ease: [0.22, 1, 0.36, 1],
+  };
+}
+
 /** Fade + slide up — page/section enter */
 export function fadeUpVariants(): Variants {
   const reduced = prefersReducedMotion();

@@ -10,7 +10,7 @@ import { europeanLocations } from '../data/europeanCountries';
 import { postOrderCreatedEmail, postPsilioCreateInvoice } from '../lib/transactionalEmailApi';
 import { CheckoutSkeleton } from '../components/Skeleton';
 import { PRIMARY_PROMO_CODE, PROMO_DISCOUNT_PERCENT, isValidPromoCode } from '../lib/promoCodes';
-import { Container, Button } from '../design-system';
+import { Container, Button, PageShell } from '../design-system';
 import { CatalogPageHeader } from '../components/catalog/CatalogPageHeader';
 import { CheckoutProgress } from '../components/checkout/CheckoutProgress';
 import { usePageSeo } from '../seo/SeoProvider';
@@ -310,7 +310,7 @@ export default function Checkout() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-parchment">
+    <PageShell tone="parchment">
       <CatalogPageHeader
         eyebrow={t('header.eyebrow')}
         title={t('header.title')}
@@ -618,6 +618,6 @@ export default function Checkout() {
         </div>
       </div>
       </Container>
-    </div>
+    </PageShell>
   );
 }
