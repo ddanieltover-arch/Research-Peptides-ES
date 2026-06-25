@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 import { supabase } from '../supabase';
-import { Link } from 'react-router-dom';
+import { LocaleLink } from '../i18n/LocaleLink';
 import { BookOpen, Sparkles, ArrowRight, Clock, User } from 'lucide-react';
 import { motion } from 'motion/react';
 
 export default function Blog() {
+  const { t } = useTranslation('blog');
   const [posts, setPosts] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
 
@@ -14,7 +16,7 @@ export default function Blog() {
         const { data } = await supabase.from('blog_posts').select('*').order('created_at', { ascending: false });
         if (data) setPosts(data);
       } catch (error) {
-        console.error("Error fetching blog posts:", error);
+        console.error('Error fetching blog posts:', error);
       } finally {
         setLoading(false);
       }
@@ -24,7 +26,6 @@ export default function Blog() {
 
   return (
     <div className="bg-white min-h-screen">
-      {/* Blog Hero */}
       <section className="bg-gray-50 border-b border-gray-100 pt-24 pb-20 relative overflow-hidden">
          <div className="absolute top-0 right-0 w-[40%] h-full bg-brand-500/5 -skew-x-12 translate-x-1/2" />
          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -35,20 +36,18 @@ export default function Blog() {
                  className="flex items-center gap-2 mb-6"
                >
                   <Sparkles className="h-4 w-4 text-brand-600" />
-                  <span className="text-xs font-black uppercase tracking-[0.3em] text-brand-600">Research Peptides EU Journals</span>
+                  <span className="text-xs font-black uppercase tracking-[0.3em] text-brand-600">{t('eyebrow')}</span>
                </motion.div>
                <h1 className="mb-8">
-                  Scientific <br /><span className="text-brand-600">Insights</span> & Research.
+                  {t('title')} <br /><span className="text-brand-600">{t('titleHighlight')}</span>
                </h1>
                <p className="text-xl text-gray-500 font-medium leading-relaxed max-w-xl">
-                  Deep dives into peptide synthesis, biological activity, and global research trends. 
-                  Curated for the modern scientific community.
+                  {t('subtitle')}
                </p>
             </div>
          </div>
       </section>
 
-      {/* Blog Grid */}
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
          {loading ? (
            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
@@ -63,8 +62,8 @@ export default function Blog() {
          ) : posts.length === 0 ? (
            <div className="text-center py-32 bg-gray-50 rounded-[3rem] border border-gray-100 shadow-sm">
               <BookOpen className="mx-auto h-16 w-16 text-gray-200 mb-6" />
-              <h3 className="text-2xl font-black text-gray-900 mb-2">No Publication Records</h3>
-              <p className="text-gray-400 font-medium">Archived journals will appear here once peer-review is complete.</p>
+              <h3 className="text-2xl font-black text-gray-900 mb-2">{t('emptyTitle')}</h3>
+              <p className="text-gray-400 font-medium">{t('emptyBody')}</p>
            </div>
          ) : (
            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
@@ -76,7 +75,7 @@ export default function Blog() {
                  transition={{ delay: idx * 0.1 }}
                  className="group flex flex-col"
                >
-                 <Link to={`/blog/${post.id}`} className="block relative aspect-[16/10] rounded-[2.5rem] overflow-hidden bg-gray-100 mb-8 shadow-xl shadow-gray-200/20">
+                 <LocaleLink to={`/blog/${post.id}`} className="block relative aspect-[16/10] rounded-[2.5rem] overflow-hidden bg-gray-100 mb-8 shadow-xl shadow-gray-200/20">
                    {post.image_url ? (
                      <img src={post.image_url} alt={post.title} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000" />
                    ) : (
@@ -85,14 +84,14 @@ export default function Blog() {
                      </div>
                    )}
                    <div className="absolute top-6 left-6 flex gap-2">
-                      <span className="px-4 py-1.5 bg-white/90 backdrop-blur-md rounded-full text-[10px] font-black uppercase tracking-widest text-gray-900 shadow-sm">Research</span>
+                      <span className="px-4 py-1.5 bg-white/90 backdrop-blur-md rounded-full text-[10px] font-black uppercase tracking-widest text-gray-900 shadow-sm">{t('tagResearch')}</span>
                    </div>
-                 </Link>
+                 </LocaleLink>
 
                  <div className="px-2 flex-grow flex flex-col">
                    <div className="flex items-center gap-6 text-[10px] font-black uppercase tracking-widest text-gray-400 mb-5">
-                     <span className="flex items-center gap-2"><Clock className="h-3 w-3" /> 4 Min Read</span>
-                     <span className="flex items-center gap-2"><User className="h-3 w-3" /> Editorial Team</span>
+                     <span className="flex items-center gap-2"><Clock className="h-3 w-3" /> {t('readTime')}</span>
+                     <span className="flex items-center gap-2"><User className="h-3 w-3" /> {t('author')}</span>
                    </div>
                    
                    <h2 className="text-2xl font-black text-gray-900 mb-4 line-clamp-2 leading-tight group-hover:text-brand-600 transition-colors">
@@ -104,12 +103,12 @@ export default function Blog() {
                    </p>
                    
                    <div className="mt-auto">
-                     <Link 
+                     <LocaleLink 
                        to={`/blog/${post.id}`} 
                        className="inline-flex items-center gap-2 text-[10px] font-black uppercase tracking-widest text-brand-600 group-hover:gap-4 transition-all"
                      >
-                       Explore Article <ArrowRight className="h-3 w-3" />
-                     </Link>
+                       {t('exploreArticle')} <ArrowRight className="h-3 w-3" />
+                     </LocaleLink>
                    </div>
                  </div>
                </motion.article>

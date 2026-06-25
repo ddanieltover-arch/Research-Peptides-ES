@@ -1,13 +1,9 @@
 import React, { createContext, useCallback, useContext, useEffect, useMemo, useState } from 'react';
 import { setActiveLocale } from '../lib/currency';
-import {
-  detectBrowserLocale,
-  getLocaleDefinition,
-  isLocaleCode,
-  type LocaleCode,
-} from './locales';
-
-const STORAGE_KEY = 'rp-eu-locale';
+import { getLocaleDefinition, isLocaleCode, type LocaleCode } from './locales';
+import { DEFAULT_LOCALE } from './routing';
+const STORAGE_KEY = 'rp-es-locale';
+const LEGACY_STORAGE_KEY = 'rp-eu-locale';
 
 type LocaleContextValue = {
   locale: LocaleCode;
@@ -19,7 +15,7 @@ const LocaleContext = createContext<LocaleContextValue | null>(null);
 
 function readStoredLocale(): LocaleCode | null {
   try {
-    const stored = localStorage.getItem(STORAGE_KEY);
+    const stored = localStorage.getItem(STORAGE_KEY) ?? localStorage.getItem(LEGACY_STORAGE_KEY);
     if (stored && isLocaleCode(stored)) return stored;
   } catch {
     /* private browsing */
@@ -28,7 +24,7 @@ function readStoredLocale(): LocaleCode | null {
 }
 
 export function LocaleProvider({ children }: { children: React.ReactNode }) {
-  const [locale, setLocaleState] = useState<LocaleCode>(() => readStoredLocale() ?? detectBrowserLocale());
+  const [locale, setLocaleState] = useState<LocaleCode>(() => readStoredLocale() ?? DEFAULT_LOCALE);
 
   const setLocale = useCallback((code: LocaleCode) => {
     setLocaleState(code);

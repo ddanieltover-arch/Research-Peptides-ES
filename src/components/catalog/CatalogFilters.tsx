@@ -42,7 +42,7 @@ function FiltersPanel({
   return (
     <div className="space-y-8">
       <div>
-        <h3 className="text-caption text-brand-600 mb-4">{t('filters.categories')}</h3>
+        <h3 className="text-eyebrow-accent text-accent-600 before:bg-accent-500 mb-4">{t('filters.categories')}</h3>
         <ul className="space-y-2 max-h-64 overflow-y-auto pr-1">
           {categories.map((cat) => (
             <li key={cat.slug}>
@@ -72,7 +72,7 @@ function FiltersPanel({
 
       <div>
         <div className="flex justify-between items-center mb-4">
-          <h3 className="text-caption text-brand-600">{t('filters.maxPrice')}</h3>
+          <h3 className="text-eyebrow-accent text-accent-600 before:bg-accent-500">{t('filters.maxPrice')}</h3>
           <span className="text-sm font-semibold text-brand-600 tabular-nums">
             {formatCurrency(priceRange)}
           </span>
@@ -113,7 +113,7 @@ export function CatalogFilters(props: CatalogFiltersProps) {
       <button
         type="button"
         onClick={onOpenMobile}
-        className="lg:hidden inline-flex items-center gap-2 px-4 py-2.5 rounded-xl border border-brand-100 bg-white text-sm font-semibold text-steel-600 shadow-card"
+        className="lg:hidden inline-flex items-center gap-2 px-4 py-2.5 rounded-full border border-brand-100 bg-white text-sm font-semibold text-steel-600 shadow-card hover:border-accent-500/40 transition-colors"
         aria-expanded={showMobile}
         aria-controls="catalog-mobile-filters"
       >
@@ -128,8 +128,8 @@ export function CatalogFilters(props: CatalogFiltersProps) {
       <aside
         className={cn('hidden lg:block sticky top-24 self-start', className)}
       >
-        <GlassPanel variant="light" padding="md" className="space-y-6 shadow-glow">
-          <h2 className="font-display font-bold text-navy-950">{t('filters.refine')}</h2>
+        <GlassPanel variant="parchment" padding="md" className="space-y-6 border-t-4 border-t-accent-500/50">
+          <h2 className="font-display font-semibold text-navy-950">{t('filters.refine')}</h2>
           <FiltersPanel {...props} idPrefix="desktop-" />
         </GlassPanel>
       </aside>

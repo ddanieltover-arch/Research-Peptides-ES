@@ -11,6 +11,7 @@ import { useSearchStore } from '../../store/useSearchStore';
 import { primaryNav, type MegaMenuId } from '../../navigation/config';
 import { Button } from '../../design-system';
 import { cn } from '../../lib/utils';
+import { BRAND_NAME } from '../../config/brand';
 import LanguageSwitcher from './LanguageSwitcher';
 import MegaMenu from './MegaMenu';
 import AccountMenu from './AccountMenu';
@@ -58,15 +59,15 @@ export default function Header({
   }, [location.pathname]);
 
   const iconBtnClass =
-    'relative flex h-10 w-10 items-center justify-center rounded-xl text-steel-600 hover:text-brand-600 hover:bg-brand-50/80 transition-colors';
+    'relative flex h-10 w-10 items-center justify-center rounded-full text-steel-600 hover:text-brand-600 hover:bg-brand-50 transition-colors';
 
   return (
     <header
       className={cn(
         'relative w-full transition-all duration-300',
         scrolled
-          ? 'bg-white/90 backdrop-blur-xl border-b border-brand-100/80 shadow-card'
-          : 'bg-white/70 backdrop-blur-md border-b border-transparent',
+          ? 'bg-mist-50/95 backdrop-blur-xl border-b border-brand-200/60 shadow-card'
+          : 'bg-mist-50/80 backdrop-blur-md border-b border-accent-500/15',
       )}
       onMouseLeave={() => setActiveMega(null)}
     >
@@ -75,7 +76,7 @@ export default function Header({
           <LocaleLink
             to="/"
             className="shrink-0 flex items-center rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-2"
-            aria-label="Research Peptides EU home"
+            aria-label={`${BRAND_NAME} home`}
           >
             <img
               src={logo}

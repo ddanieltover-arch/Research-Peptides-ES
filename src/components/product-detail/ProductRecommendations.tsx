@@ -29,7 +29,7 @@ export function ProductRecommendations({
       {recommended.length > 0 && (
         <section>
           <div className="flex items-center justify-between mb-8">
-            <h2 className="text-h2 font-display font-bold text-navy-950">{t('recommendations.relatedTitle')}</h2>
+            <h2 className="text-h2 font-display font-semibold text-navy-950">{t('recommendations.relatedTitle')}</h2>
             <Link to="/shop" className="text-sm font-semibold text-brand-600 hover:text-brand-700">
               {t('recommendations.viewCatalog')} →
             </Link>
@@ -50,8 +50,8 @@ export function ProductRecommendations({
       )}
 
       {recentlyViewed.length > 0 && (
-        <section className="pt-12 border-t border-brand-100">
-          <h2 className="text-caption text-brand-600 mb-6">{t('recommendations.recentTitle')}</h2>
+        <section className="pt-12 border-t border-brand-100/80">
+          <h2 className="text-eyebrow-accent text-accent-600 before:bg-accent-500 mb-6">{t('recommendations.recentTitle')}</h2>
           <div className="flex gap-4 overflow-x-auto pb-2">
             {recentlyViewed.map((rv) => (
               <Link

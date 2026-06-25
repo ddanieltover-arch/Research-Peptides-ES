@@ -8,9 +8,10 @@ import fs from 'fs';
 import path from 'path';
 import { createClient } from '@supabase/supabase-js';
 
-const SITE_ORIGIN = (process.env.VITE_SITE_URL || 'https://researchpeptide.eu').replace(/\/+$/, '');
+const SITE_ORIGIN = (process.env.VITE_SITE_URL || 'https://researchpeptide.es').replace(/\/+$/, '');
 
-const LOCALES = ['en', 'nl', 'de', 'fr'] as const;
+const DEFAULT_LOCALE = 'es';
+const LOCALES = ['es', 'en', 'nl', 'de', 'fr'] as const;
 
 const STATIC_PATHS = [
   '/',
@@ -51,7 +52,7 @@ function hreflangLinks(path: string): string {
       `    <xhtml:link rel="alternate" hreflang="${locale}" href="${escapeXml(loc(locale, path))}" />`,
   );
   lines.push(
-    `    <xhtml:link rel="alternate" hreflang="x-default" href="${escapeXml(loc('en', path))}" />`,
+    `    <xhtml:link rel="alternate" hreflang="x-default" href="${escapeXml(loc(DEFAULT_LOCALE, path))}" />`,
   );
   return lines.join('\n');
 }
@@ -59,7 +60,7 @@ function hreflangLinks(path: string): string {
 function urlEntry(path: string, priority: string, changefreq: string) {
   const lastmod = new Date().toISOString().slice(0, 10);
   return `  <url>
-    <loc>${escapeXml(loc('en', path))}</loc>
+    <loc>${escapeXml(loc(DEFAULT_LOCALE, path))}</loc>
     <lastmod>${lastmod}</lastmod>
     <changefreq>${changefreq}</changefreq>
     <priority>${priority}</priority>

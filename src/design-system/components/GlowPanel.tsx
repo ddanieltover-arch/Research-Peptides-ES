@@ -4,7 +4,6 @@ import { ScientificBackdrop } from './ScientificBackdrop';
 
 export type GlowPanelProps = HTMLAttributes<HTMLDivElement> & {
   glow?: 'brand' | 'subtle' | 'none';
-  /** Grid + molecule micro-pattern (pharma luxury) */
   scientific?: boolean;
 };
 
@@ -24,7 +23,7 @@ export function GlowPanel({
   return (
     <div
       className={cn(
-        'relative overflow-hidden rounded-3xl bg-navy-950 text-white',
+        'relative overflow-hidden rounded-[1.75rem] bg-navy-950 text-white border border-accent-500/15',
         glow !== 'none' &&
           'before:pointer-events-none before:absolute before:inset-0 before:z-[1] before:opacity-100',
         glowClasses[glow],

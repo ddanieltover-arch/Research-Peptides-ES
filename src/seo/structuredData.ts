@@ -15,7 +15,7 @@ export function organizationJsonLd() {
     name: BRAND_NAME,
     url: siteOrigin(),
     email: SUPPORT_EMAIL,
-    areaServed: 'European Union',
+    areaServed: ['Spain', 'European Union'],
   };
 }
 

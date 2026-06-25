@@ -2,7 +2,7 @@
   "header": {
     "eyebrow": "Secure checkout",
     "title": "Complete your order",
-    "description": "EU shipping · VAT-ready invoicing · Netherlands fulfillment"
+    "description": "EU shipping · VAT-ready invoicing · Spain fulfillment"
   },
   "steps": {
     "shipping": "Shipping",
@@ -21,6 +21,14 @@
     "shippingAtCheckout": "At checkout",
     "total": "Total",
     "proceed": "Proceed to checkout",
-    "vatNote": "Prices in EUR. VAT (BTW) applied where required at checkout based on your EU shipping country."
+    "vatNote": "Prices in EUR. VAT applied where required at checkout based on your EU shipping country.",
+    "invalidPromo": "Invalid promotion code"
+  },
+  "cartPage": {
+    "eyebrow": "Your cart",
+    "title_one": "{{count}} item ready for",
+    "title_other": "{{count}} items ready for",
+    "titleHighlight": "checkout",
+    "description": "EU fulfillment from Spain · VAT details at checkout"
   }
 }

@@ -35,6 +35,9 @@
   "mega": {
     "browseCatalog": "Browse catalog",
     "allCategories": "All categories",
-    "featured": "Featured compounds"
+    "featured": "Featured compounds",
+    "shopEyebrow": "European catalog",
+    "shopTitle": "Research-grade inventory",
+    "shopDescription": "Third-party tested compounds shipped across the EU from our Spain operations."
   }
 }

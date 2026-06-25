@@ -1,48 +1,51 @@
 @import "tailwindcss";
 
 @theme {
-  /* Typography */
-  --font-display: "Sora", system-ui, sans-serif;
-  --font-sans: "DM Sans", system-ui, sans-serif;
-  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+  /* Typography — Iberian editorial + geometric UI */
+  --font-display: "Cormorant Garamond", Georgia, "Times New Roman", serif;
+  --font-sans: "Manrope", system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, monospace;
 
-  /* Brand — logo teal → navy gradient */
-  --color-brand-50: #ecfbf8;
-  --color-brand-100: #c8f2eb;
-  --color-brand-200: #8fe3d5;
-  --color-brand-300: #52d4c3;
-  --color-brand-400: #2db5a3;
-  --color-brand-500: #249688;
-  --color-brand-600: #1d7a73;
-  --color-brand-700: #176861;
-  --color-brand-800: #145650;
-  --color-brand-900: #1a365d;
+  /* Brand — garnet / Spanish crimson */
+  --color-brand-50: #fdf2f4;
+  --color-brand-100: #f9dde3;
+  --color-brand-200: #f0b3c0;
+  --color-brand-300: #e07a92;
+  --color-brand-400: #c93d5e;
+  --color-brand-500: #a91d3a;
+  --color-brand-600: #8b1830;
+  --color-brand-700: #6e1226;
+  --color-brand-800: #520d1c;
+  --color-brand-900: #3a0914;
 
-  /* Clinical neutrals */
-  --color-navy-950: #0f2744;
-  --color-navy-900: #1a365d;
-  --color-slate-850: #152238;
-  --color-mist-50: #f4faf9;
-  --color-silver-400: #8fa8b8;
-  --color-steel-600: #4a6170;
+  /* Accent — antique gold */
+  --color-accent-400: #e8d5a3;
+  --color-accent-500: #c9a961;
+  --color-accent-600: #a68b4b;
+
+  /* Neutrals — warm ink & parchment */
+  --color-navy-950: #0f080a;
+  --color-navy-900: #1a1014;
+  --color-slate-850: #24181c;
+  --color-mist-50: #fbf6f1;
+  --color-silver-400: #a39088;
+  --color-steel-600: #6b5c56;
 
   /* Semantic */
-  --color-success: #10b981;
-  --color-warning: #f59e0b;
-  --color-error: #ef4444;
-  --color-purity: #2db5a3;
+  --color-success: #2f7d62;
+  --color-warning: #d97706;
+  --color-error: #dc2626;
+  --color-purity: #3d7a6e;
 
-  /* Legacy aliases (deprecated — migrate to brand-*) */
-  --color-brand-blue: #2db5a3;
-  --color-brand-dark: #1a365d;
-  --color-brand-accent: #52d4c3;
-  --color-brand-emerald: #10b981;
-  --color-brand-amber: #f59e0b;
+  --color-brand-blue: #a91d3a;
+  --color-brand-dark: #1a1014;
+  --color-brand-accent: #c9a961;
+  --color-brand-emerald: #2f7d62;
+  --color-brand-amber: #d97706;
 
-  /* Shadows */
-  --shadow-card: 0 4px 24px rgba(15, 39, 68, 0.08);
-  --shadow-elevated: 0 12px 48px rgba(45, 181, 163, 0.18);
-  --shadow-glow: 0 0 40px rgba(45, 181, 163, 0.28);
+  --shadow-card: 0 4px 24px rgba(15, 8, 10, 0.08);
+  --shadow-elevated: 0 16px 48px rgba(169, 29, 58, 0.14);
+  --shadow-glow: 0 0 48px rgba(201, 169, 97, 0.22);
 }
 
 @layer base {
@@ -69,12 +72,12 @@
   }
 
   h1 {
-    font-size: clamp(2rem, 4vw, 3rem);
-    @apply font-bold leading-[1.1];
+    font-size: clamp(2.25rem, 5vw, 3.75rem);
+    @apply font-semibold leading-[1.05];
   }
 
   h2 {
-    font-size: clamp(1.5rem, 3vw, 2.25rem);
+    font-size: clamp(1.75rem, 3.5vw, 2.5rem);
     @apply font-semibold;
   }
 
@@ -83,32 +86,44 @@
   }
 
   :focus-visible {
-    @apply outline-none ring-2 ring-brand-400 ring-offset-2 ring-offset-mist-50;
+    @apply outline-none ring-2 ring-accent-500 ring-offset-2 ring-offset-mist-50;
   }
 }
 
 @layer components {
   .text-display {
-    font-size: clamp(2.5rem, 5vw, 4.5rem);
-    @apply font-display font-bold leading-[1.05] tracking-tight;
+    font-size: clamp(2.75rem, 6vw, 4.75rem);
+    font-family: var(--font-display);
+    @apply font-semibold leading-[1.02] tracking-tight;
   }
 
   .text-h1 {
     font-size: clamp(2rem, 4vw, 3rem);
-    @apply font-display font-bold leading-[1.1];
+    font-family: var(--font-display);
+    @apply font-semibold leading-[1.08];
   }
 
   .text-h2 {
     font-size: clamp(1.5rem, 3vw, 2.25rem);
-    @apply font-display font-semibold;
+    font-family: var(--font-display);
+    @apply font-semibold;
   }
 
   .text-body-lg {
-    @apply text-lg leading-relaxed text-steel-600;
+    @apply text-lg leading-relaxed text-steel-600 font-medium;
   }
 
   .text-caption {
-    @apply text-xs font-semibold uppercase tracking-[0.12em] text-silver-400;
+    @apply text-[0.7rem] font-bold uppercase tracking-[0.2em] text-silver-400 font-sans;
+  }
+
+  .text-eyebrow-accent {
+    @apply text-[0.7rem] font-bold uppercase tracking-[0.2em] text-accent-500 flex items-center gap-3 font-sans;
+  }
+
+  .text-eyebrow-accent::before {
+    content: "";
+    @apply block h-px w-8 bg-accent-500;
   }
 
   .section-sm {
@@ -123,21 +138,24 @@
     @apply py-32;
   }
 
-  /* Logo-aligned gradients */
   .bg-gradient-hero {
-    background: linear-gradient(135deg, #0f2744 0%, #1a365d 45%, #1d7a73 100%);
+    background: linear-gradient(148deg, #0f080a 0%, #3a0914 42%, #1a1014 72%, #0f080a 100%);
   }
 
   .bg-gradient-cta {
-    background: linear-gradient(90deg, #2db5a3 0%, #1a365d 100%);
+    background: linear-gradient(135deg, #a91d3a 0%, #8b1830 55%, #a68b4b 100%);
   }
 
   .bg-gradient-brand {
-    background: linear-gradient(90deg, #2db5a3 0%, #3dc9b6 50%, #1a365d 100%);
+    background: linear-gradient(120deg, #c93d5e 0%, #a91d3a 45%, #c9a961 100%);
   }
 
   .bg-gradient-glow {
-    background: radial-gradient(ellipse at 50% 0%, rgba(45, 181, 163, 0.32), transparent 70%);
+    background: radial-gradient(ellipse at 30% 0%, rgba(201, 169, 97, 0.28), transparent 65%);
+  }
+
+  .bg-gradient-parchment {
+    background: linear-gradient(180deg, #fbf6f1 0%, #f3ebe3 100%);
   }
 
   .shadow-card {
@@ -153,22 +171,33 @@
   }
 
   .hero-heading {
-    font-size: clamp(2.5rem, 5vw, 4.5rem);
+    font-size: clamp(2.75rem, 6vw, 4.75rem);
     font-family: var(--font-display);
-    @apply font-bold leading-[1.05] tracking-tight;
+    @apply font-semibold leading-[1.02] tracking-tight;
   }
 
   .bg-scientific-grid {
     background-image:
-      linear-gradient(rgba(45, 181, 163, 0.07) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(45, 181, 163, 0.07) 1px, transparent 1px);
-    background-size: 48px 48px;
+      linear-gradient(rgba(201, 169, 97, 0.06) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(201, 169, 97, 0.06) 1px, transparent 1px);
+    background-size: 56px 56px;
   }
 
-  /* Hex-node molecule motif — pairs with .bg-scientific-grid */
   .bg-scientific-molecule {
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120' viewBox='0 0 120 120'%3E%3Cg fill='none' stroke='%232DB5A3' stroke-width='1' stroke-opacity='0.35'%3E%3Ccircle cx='30' cy='30' r='3' fill='%232DB5A3' fill-opacity='0.2'/%3E%3Ccircle cx='90' cy='30' r='3' fill='%232DB5A3' fill-opacity='0.2'/%3E%3Ccircle cx='60' cy='60' r='3' fill='%232DB5A3' fill-opacity='0.25'/%3E%3Ccircle cx='30' cy='90' r='3' fill='%232DB5A3' fill-opacity='0.2'/%3E%3Ccircle cx='90' cy='90' r='3' fill='%232DB5A3' fill-opacity='0.2'/%3E%3Cline x1='30' y1='30' x2='60' y2='60'/%3E%3Cline x1='90' y1='30' x2='60' y2='60'/%3E%3Cline x1='30' y1='90' x2='60' y2='60'/%3E%3Cline x1='90' y1='90' x2='60' y2='60'/%3E%3Cline x1='30' y1='30' x2='90' y2='30'/%3E%3Cline x1='30' y1='90' x2='90' y2='90'/%3E%3C/g%3E%3C/svg%3E");
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120' viewBox='0 0 120 120'%3E%3Cg fill='none' stroke='%23C9A961' stroke-width='1' stroke-opacity='0.28'%3E%3Ccircle cx='30' cy='30' r='3' fill='%23C9A961' fill-opacity='0.15'/%3E%3Ccircle cx='90' cy='30' r='3' fill='%23C9A961' fill-opacity='0.15'/%3E%3Ccircle cx='60' cy='60' r='3' fill='%23C9A961' fill-opacity='0.2'/%3E%3Ccircle cx='30' cy='90' r='3' fill='%23C9A961' fill-opacity='0.15'/%3E%3Ccircle cx='90' cy='90' r='3' fill='%23C9A961' fill-opacity='0.15'/%3E%3Cline x1='30' y1='30' x2='60' y2='60'/%3E%3Cline x1='90' y1='30' x2='60' y2='60'/%3E%3Cline x1='30' y1='90' x2='60' y2='60'/%3E%3Cline x1='90' y1='90' x2='60' y2='60'/%3E%3C/g%3E%3C/svg%3E");
     background-size: 120px 120px;
+  }
+
+  .diagonal-gold-rule {
+    background: linear-gradient(135deg, transparent 49.5%, rgba(201, 169, 97, 0.35) 50%, transparent 50.5%);
+  }
+
+  .bento-card {
+    @apply rounded-[1.75rem] border border-brand-100/80 bg-white p-6 md:p-8 shadow-card transition-all duration-300;
+  }
+
+  .bento-card:hover {
+    @apply border-accent-500/40 shadow-elevated -translate-y-0.5;
   }
 }
 
@@ -182,7 +211,14 @@
   }
 
   .text-gradient-brand {
-    background: linear-gradient(90deg, #52d4c3 0%, #2db5a3 40%, #1a365d 100%);
+    background: linear-gradient(120deg, #f0b3c0 0%, #e8d5a3 55%, #c9a961 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .text-gradient-gold {
+    background: linear-gradient(90deg, #e8d5a3, #c9a961);
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;

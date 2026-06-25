@@ -60,7 +60,7 @@ function localizedCountryName(countryEn: string, locale: LocaleCode): string {
 export default function SalesNotification() {
   const { t, i18n } = useTranslation('common', { keyPrefix: 'salesNotification' });
   const navigate = useLocaleNavigate();
-  const locale = (isLocaleCode(i18n.language) ? i18n.language : 'en') as LocaleCode;
+  const locale = (isLocaleCode(i18n.language) ? i18n.language : 'es') as LocaleCode;
   const [currentEvent, setCurrentEvent] = useState<PurchaseEvent | null>(null);
 
   const locationLabel = useMemo(() => {

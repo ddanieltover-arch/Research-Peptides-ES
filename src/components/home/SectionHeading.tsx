@@ -27,15 +27,16 @@ export function SectionHeading({
     >
       <p
         className={cn(
-          'text-caption mb-3',
-          light ? 'text-brand-300' : 'text-brand-600',
+          'text-eyebrow-accent mb-4',
+          align === 'center' && 'justify-center',
+          light ? 'text-accent-400 before:bg-accent-400' : 'text-brand-600 before:bg-brand-500',
         )}
       >
         {eyebrow}
       </p>
       <h2
         className={cn(
-          'text-h2 font-display font-bold mb-4',
+          'text-h2 font-display font-semibold mb-4',
           light ? 'text-white' : 'text-navy-950',
         )}
       >
@@ -44,7 +45,7 @@ export function SectionHeading({
       {description ? (
         <p
           className={cn(
-            'text-body-lg max-w-2xl',
+            'text-body-lg max-w-2xl font-sans',
             align === 'center' && 'mx-auto',
             light ? 'text-silver-400' : 'text-steel-600',
           )}

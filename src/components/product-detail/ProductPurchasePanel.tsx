@@ -107,9 +107,10 @@ export function ProductPurchasePanel({
   );
 
   return (
-    <div className="lg:sticky lg:top-24 space-y-6">
+    <div className="lg:sticky lg:top-24">
+      <div className="bento-card border-t-4 border-t-accent-500 space-y-6">
       <div className="flex justify-between items-start gap-4">
-        <h1 className="text-h2 font-display font-bold text-navy-950">{title}</h1>
+        <h1 className="text-h2 font-display font-semibold text-navy-950 leading-tight">{title}</h1>
         <div className="flex gap-2 shrink-0 relative">
           <button
             type="button"
@@ -320,6 +321,7 @@ export function ProductPurchasePanel({
         {' · '}
         {t('purchase.laboratoryOnly')}
       </p>
+      </div>
     </div>
   );
 }

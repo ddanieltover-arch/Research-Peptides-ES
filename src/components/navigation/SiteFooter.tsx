@@ -4,8 +4,7 @@ import { MapPin, ShieldCheck, Truck } from 'lucide-react';
 import logo from '../../assets/brandLogo';
 import { Container, ScientificBackdrop } from '../../design-system';
 import { footerInventory, footerLegal, footerSupport } from '../../navigation/config';
-import { brandName } from '../../design-system/tokens';
-import { SUPPORT_EMAIL } from '../../config/brand';
+import { BRAND_NAME, HQ_LOCATION, SUPPORT_EMAIL } from '../../config/brand';
 
 type SiteFooterProps = {
   newsletterEmail: string;
@@ -25,33 +24,33 @@ export default function SiteFooter({
   onNewsletterSubmit,
 }: SiteFooterProps) {
   const { t: tNav } = useTranslation('nav');
+  const { t: tCommon } = useTranslation('common');
 
   return (
-    <footer className="bg-navy-950 text-white relative overflow-hidden">
+    <footer className="bg-navy-950 text-white relative overflow-hidden border-t-4 border-accent-500">
       <ScientificBackdrop variant="dark" glow />
 
       <Container className="relative z-10 section-md">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-8">
           <div className="md:col-span-4">
             <LocaleLink to="/" className="inline-flex items-center gap-3 mb-6 rounded-lg">
-              <img src={logo} alt="" className="h-11 w-auto drop-shadow-[0_2px_12px_rgba(45,181,163,0.35)]" width={48} height={48} />
+              <img src={logo} alt="" className="h-11 w-auto drop-shadow-[0_2px_12px_rgba(201,169,97,0.35)]" width={48} height={48} />
             </LocaleLink>
             <p className="text-sm text-silver-400 leading-relaxed max-w-sm">
-              {brandName} delivers research-grade peptide compounds to European laboratories with
-              third-party verified purity and pharmaceutical-level handling standards.
+              {tCommon('footer.tagline')}
             </p>
             <p className="flex items-start gap-2 text-xs text-brand-300/90 mt-4 max-w-sm leading-relaxed">
               <MapPin className="h-4 w-4 shrink-0 mt-0.5" aria-hidden />
-              Markt 34, 5281 AV Boxtel, North Brabant, Netherlands
+              {HQ_LOCATION}
             </p>
             <div className="flex flex-wrap gap-3 mt-6">
               <span className="inline-flex items-center gap-1.5 rounded-full bg-white/5 border border-white/10 px-3 py-1 text-[10px] font-semibold uppercase tracking-wider text-brand-200">
                 <Truck className="h-3 w-3" aria-hidden />
-                EU Shipping
+                {tCommon('footer.euShipping')}
               </span>
               <span className="inline-flex items-center gap-1.5 rounded-full bg-white/5 border border-white/10 px-3 py-1 text-[10px] font-semibold uppercase tracking-wider text-brand-200">
                 <ShieldCheck className="h-3 w-3" aria-hidden />
-                GDPR Compliant
+                {tCommon('footer.gdpr')}
               </span>
             </div>
             <address className="not-italic text-silver-400 text-sm leading-relaxed mt-8 max-w-sm">
@@ -62,7 +61,7 @@ export default function SiteFooter({
           </div>
 
           <div className="md:col-span-2">
-            <h4 className="text-caption text-brand-400 mb-5">Catalog</h4>
+            <h4 className="text-caption text-accent-500 mb-5 font-sans">{tNav('footer.inventory')}</h4>
             <ul className="space-y-3 text-sm text-silver-400">
               {footerInventory.map((item) => (
                 <li key={item.href}>
@@ -135,7 +134,7 @@ export default function SiteFooter({
       <Container className="relative z-10 pb-10">
         <div className="pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-4 text-[10px] font-semibold uppercase tracking-[0.15em] text-silver-400">
           <span>
-            © {new Date().getFullYear()} {brandName}. European research operations.
+            © {new Date().getFullYear()} {BRAND_NAME}. Operaciones de investigación europeas.
           </span>
           <div className="flex flex-wrap justify-center gap-4 md:gap-6">
             {footerLegal.map((item) => (

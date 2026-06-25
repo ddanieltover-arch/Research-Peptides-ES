@@ -3,7 +3,7 @@ import { cn } from '../../lib/utils';
 
 export type SectionProps = HTMLAttributes<HTMLElement> & {
   size?: 'sm' | 'md' | 'lg';
-  tone?: 'light' | 'dark' | 'mist';
+  tone?: 'light' | 'dark' | 'mist' | 'parchment';
 };
 
 const sizeClasses = {
@@ -15,7 +15,8 @@ const sizeClasses = {
 const toneClasses = {
   light: 'bg-mist-50 text-navy-950',
   dark: 'bg-navy-950 text-white',
-  mist: 'bg-white text-navy-950',
+  mist: 'bg-white text-navy-950 border-y border-brand-100/50',
+  parchment: 'bg-gradient-parchment text-navy-950',
 };
 
 export function Section({

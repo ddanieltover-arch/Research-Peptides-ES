@@ -1,9 +1,9 @@
 {
   "hero": {
-    "eyebrow": "Netherlands · European research standards",
+    "eyebrow": "Spain · European research standards",
     "title": "Precision peptides for",
     "titleHighlight": "European laboratories.",
-    "subtitle": "Research Peptides EU supplies institutional-grade compounds with third-party analytical verification, pharmaceutical handling, and trusted EU distribution.",
+    "subtitle": "Research Peptides ES supplies institutional-grade compounds with third-party analytical verification, pharmaceutical handling, and trusted distribution from Spain across the EU.",
     "ctaShop": "Browse catalog",
     "ctaWizard": "Compound selector",
     "trustPurity": "99.8%+ verified purity",
@@ -16,8 +16,28 @@
     "subtitle": "Batch-verified peptides and research chemicals ready for EU laboratory dispatch."
   },
   "whyEu": {
-    "eyebrow": "Why EU researchers choose us",
-    "title": "Built for European laboratory standards"
+    "eyebrow": "Why researchers choose us",
+    "title": "Built for institutional",
+    "titleHighlight": "scientific trust",
+    "description": "Headquartered in Spain, we combine European regulatory discipline with pharmaceutical-grade logistics for research teams across the EU.",
+    "pillars": [
+      {
+        "title": "Research quality",
+        "desc": "Every batch is synthesized and validated against strict analytical benchmarks before release to catalog."
+      },
+      {
+        "title": "Product purity",
+        "desc": "HPLC and mass spectrometry workflows target 99.8%+ consistency for reproducible laboratory outcomes."
+      },
+      {
+        "title": "Manufacturing standards",
+        "desc": "Temperature-controlled handling, lyophilized stability protocols, and documented chain of custody."
+      },
+      {
+        "title": "Scientific innovation",
+        "desc": "Continuous expansion of GLP-1, GH-axis, and mitochondrial peptide lines aligned with EU research demand."
+      }
+    ]
   },
   "categories": {
     "eyebrow": "Browse by application",
@@ -32,11 +52,33 @@
   "experience": {
     "eyebrow": "Researcher experience",
     "title": "Support at every stage",
-    "faqCta": "Read researcher FAQ"
+    "description": "Institutions choose Research Peptides ES for analytical transparency, logistics reliability, and research-only compliance.",
+    "faqCta": "Read researcher FAQ",
+    "communityBlurb": "Join 15,000+ researchers sourcing EU-verified compounds with institutional-grade support.",
+    "satisfaction": "4.9 average satisfaction",
+    "testimonials": [
+      {
+        "quote": "Batch consistency and COA transparency are exceptional. Our EU metabolic research program relies on documented purity for every acquisition.",
+        "author": "Dr. Elena V.",
+        "role": "Metabolic Research · Munich"
+      },
+      {
+        "quote": "Dispatch from Spain is fast and temperature-aware. Support provided detailed handling documentation for lyophilized compounds.",
+        "author": "Prof. James M.",
+        "role": "Institutional Lab · Madrid"
+      },
+      {
+        "quote": "The catalog depth for GLP-1 and GH-axis peptides is among the best we have sourced for European in-vitro studies.",
+        "author": "Dr. Sofia R.",
+        "role": "Pharma Research · Barcelona"
+      }
+    ]
   },
   "cta": {
-    "title": "Ready to equip your laboratory?",
-    "subtitle": "Browse the EU catalog or use the compound selector to narrow your research line.",
-    "button": "Shop research catalog"
+    "eyebrow": "Start your research protocol",
+    "title": "Access Europe's premium research peptide catalog today",
+    "subtitle": "Verified purity, COA-backed batches, and Spain-based EU fulfillment — built for laboratories that demand clinical precision.",
+    "button": "Shop research catalog",
+    "buttonWizard": "Find your compound"
   }
 }

@@ -3,132 +3,137 @@ import { usePreloadImage } from '../../hooks/usePreloadImage';
 import { ArrowRight, FlaskConical, ShieldCheck, Sparkles, Truck } from 'lucide-react';
 import { motion } from 'motion/react';
 import { LocaleLink } from '../../i18n/LocaleLink';
-import { Button, Container, GlassPanel, ScientificBackdrop } from '../../design-system';
+import { Button, Container } from '../../design-system';
 import { useWizardStore } from '../../store/useWizardStore';
-import heroBg from '../../assets/hero_bg.png';
 import vialsHero from '../../assets/vials_hero.png';
+
+const stats = [
+  { value: '99.8%', labelKey: 'hero.trustPurity' },
+  { value: 'EU', labelKey: 'hero.trustShipping' },
+  { value: 'COA', labelKey: 'hero.trustCoa' },
+] as const;
 
 export function HeroSection() {
   const { t } = useTranslation('home');
   const openWizard = useWizardStore((s) => s.openWizard);
   usePreloadImage(vialsHero);
 
-  const trustPills = [
-    { icon: ShieldCheck, label: t('hero.trustPurity') },
-    { icon: Truck, label: t('hero.trustShipping') },
-    { icon: FlaskConical, label: t('hero.trustCoa') },
-  ];
-
   return (
-    <section className="relative overflow-hidden bg-navy-950">
-      <div className="absolute inset-0" aria-hidden>
-        <img
-          src={heroBg}
-          alt=""
-          className="hidden md:block h-full w-full object-cover opacity-35"
-          loading="lazy"
-          decoding="async"
-          fetchPriority="low"
-        />
-        <div className="absolute inset-0 bg-gradient-to-r from-navy-950/95 via-navy-950/70 to-navy-950/50" />
-        <ScientificBackdrop variant="dark" className="opacity-90" />
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-gradient-glow pointer-events-none" aria-hidden />
-      </div>
+    <section className="relative overflow-hidden bg-navy-950 min-h-[min(92vh,920px)] flex flex-col">
+      <div className="absolute inset-0 bg-gradient-hero" aria-hidden />
+      <div className="absolute inset-0 bg-scientific-grid opacity-40" aria-hidden />
+      <div className="absolute inset-0 diagonal-gold-rule opacity-60" aria-hidden />
+      <div className="absolute top-0 right-0 w-[55%] h-full bg-gradient-glow pointer-events-none" aria-hidden />
 
-      <Container className="relative z-10 py-16 md:py-24 lg:py-28">
-        <GlassPanel variant="dark" padding="none" className="overflow-hidden shadow-glow">
-          <div className="grid grid-cols-1 lg:grid-cols-2 items-center">
-            <div className="p-8 md:p-12 lg:p-14">
-              <motion.p
-                initial={{ opacity: 0, y: 12 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5 }}
-                className="text-caption text-brand-300 mb-4"
-              >
-                {t('hero.eyebrow')}
-              </motion.p>
+      <Container className="relative z-10 flex-1 flex flex-col justify-center py-16 md:py-20 lg:py-24">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-6 items-center">
+          <div className="lg:col-span-7 xl:col-span-6">
+            <motion.p
+              initial={{ opacity: 0, x: -12 }}
+              animate={{ opacity: 1, x: 0 }}
+              className="text-eyebrow-accent text-accent-400 before:bg-accent-500 mb-6"
+            >
+              {t('hero.eyebrow')}
+            </motion.p>
 
-              <motion.h1
-                initial={{ opacity: 0, y: 16 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.55, delay: 0.05 }}
-                className="text-display text-white mb-6"
-              >
-                {t('hero.title')}{' '}
-                <span className="text-gradient-brand">
-                  {t('hero.titleHighlight')}
-                </span>
-              </motion.h1>
+            <motion.h1
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.05 }}
+              className="hero-heading text-white mb-6 max-w-2xl"
+            >
+              {t('hero.title')}{' '}
+              <span className="text-gradient-gold italic font-medium">
+                {t('hero.titleHighlight')}
+              </span>
+            </motion.h1>
 
-              <motion.p
-                initial={{ opacity: 0, y: 12 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.12 }}
-                className="text-silver-400 text-sm md:text-base leading-relaxed mb-8 max-w-lg"
-              >
-                {t('hero.subtitle')}
-              </motion.p>
+            <motion.p
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.12 }}
+              className="text-silver-400 text-base md:text-lg leading-relaxed mb-10 max-w-xl font-sans font-medium"
+            >
+              {t('hero.subtitle')}
+            </motion.p>
 
-              <motion.div
-                initial={{ opacity: 0, y: 12 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.18 }}
-                className="flex flex-col sm:flex-row gap-3 mb-10"
-              >
-                <LocaleLink to="/shop">
-                  <Button size="lg" className="w-full sm:w-auto gap-2">
-                    {t('hero.ctaShop')}
-                    <ArrowRight className="h-4 w-4" />
-                  </Button>
-                </LocaleLink>
-                <Button variant="ghost" size="lg" onClick={openWizard} className="gap-2 border border-white/15">
-                  <Sparkles className="h-4 w-4 text-brand-300" />
-                  {t('hero.ctaWizard')}
+            <motion.div
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.18 }}
+              className="flex flex-col sm:flex-row gap-3"
+            >
+              <LocaleLink to="/shop">
+                <Button size="lg" className="w-full sm:w-auto gap-2">
+                  {t('hero.ctaShop')}
+                  <ArrowRight className="h-4 w-4" />
                 </Button>
-              </motion.div>
-
-              <motion.ul
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 0.3 }}
-                className="flex flex-wrap gap-2"
+              </LocaleLink>
+              <Button
+                variant="gold"
+                size="lg"
+                onClick={openWizard}
+                className="gap-2 w-full sm:w-auto"
               >
-                {trustPills.map(({ icon: Icon, label }) => (
-                  <li
-                    key={label}
-                    className="inline-flex items-center gap-2 rounded-full bg-white/5 border border-white/10 px-3 py-1.5 text-xs font-medium text-brand-100"
-                  >
-                    <Icon className="h-3.5 w-3.5 text-brand-400 shrink-0" aria-hidden />
-                    {label}
-                  </li>
-                ))}
-              </motion.ul>
-            </div>
+                <Sparkles className="h-4 w-4" />
+                {t('hero.ctaWizard')}
+              </Button>
+            </motion.div>
+          </div>
 
-            <div className="relative flex items-center justify-center p-8 lg:p-12 min-h-[280px] lg:min-h-0">
-              <motion.div
-                className="absolute w-64 h-64 rounded-full bg-brand-400/25 blur-3xl"
-                animate={{ scale: [1, 1.15, 1], opacity: [0.4, 0.6, 0.4] }}
-                transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
-                aria-hidden
-              />
-              <motion.img
+          <div className="lg:col-span-5 xl:col-span-6 relative flex justify-center lg:justify-end">
+            <motion.div
+              className="absolute -inset-8 rounded-full bg-brand-500/20 blur-3xl"
+              animate={{ opacity: [0.35, 0.55, 0.35], scale: [1, 1.05, 1] }}
+              transition={{ duration: 7, repeat: Infinity }}
+              aria-hidden
+            />
+            <motion.div
+              initial={{ opacity: 0, scale: 0.92, rotate: -2 }}
+              animate={{ opacity: 1, scale: 1, rotate: 0 }}
+              transition={{ duration: 0.9, delay: 0.2 }}
+              className="relative border border-accent-500/25 rounded-[2rem] p-6 md:p-8 bg-white/5 backdrop-blur-sm shadow-glow"
+            >
+              <img
                 src={vialsHero}
-                alt="Premium research peptide vials"
-                width={512}
-                height={512}
-                initial={{ opacity: 0, x: 32 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.8, delay: 0.25 }}
-                className="relative z-10 w-full max-w-md aspect-square object-contain drop-shadow-[0_24px_48px_rgba(67,87,214,0.35)]"
+                alt=""
+                width={480}
+                height={480}
+                className="w-full max-w-[min(100%,22rem)] md:max-w-md aspect-square object-contain drop-shadow-[0_32px_64px_rgba(169,29,58,0.35)]"
                 loading="eager"
                 decoding="async"
                 fetchPriority="high"
               />
-            </div>
+              <div className="absolute -bottom-3 -left-3 rounded-2xl bg-accent-500 text-navy-950 px-4 py-2 text-xs font-bold uppercase tracking-widest shadow-elevated font-sans">
+                EUR · ES
+              </div>
+            </motion.div>
           </div>
-        </GlassPanel>
+        </div>
       </Container>
+
+      <div className="relative z-10 border-t border-accent-500/20 bg-mist-50/95 backdrop-blur-md">
+        <Container className="py-6 md:py-8">
+          <ul className="grid grid-cols-1 sm:grid-cols-3 gap-6 md:gap-8">
+            {stats.map(({ value, labelKey }, i) => (
+              <motion.li
+                key={labelKey}
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.35 + i * 0.08 }}
+                className="flex items-center gap-4"
+              >
+                <span className="font-display text-3xl md:text-4xl font-semibold text-brand-600 tabular-nums">
+                  {value}
+                </span>
+                <span className="text-sm font-semibold text-steel-600 leading-snug font-sans">
+                  {t(labelKey)}
+                </span>
+              </motion.li>
+            ))}
+          </ul>
+        </Container>
+      </div>
     </section>
   );
 }

@@ -70,10 +70,10 @@ export default function MegaMenu({ activeMenu, onClose }: MegaMenuProps) {
                     <div className="absolute inset-0 bg-scientific-grid opacity-30" aria-hidden />
                     <div className="relative z-10">
                       <FlaskConical className="h-8 w-8 text-brand-300 mb-4" aria-hidden />
-                      <p className="text-caption text-brand-200 mb-2">European catalog</p>
-                      <h3 className="font-display text-xl font-bold mb-2">Research-grade inventory</h3>
+                      <p className="text-caption text-brand-200 mb-2">{t('mega.shopEyebrow')}</p>
+                      <h3 className="font-display text-xl font-bold mb-2">{t('mega.shopTitle')}</h3>
                       <p className="text-sm text-brand-100/90 leading-relaxed mb-4">
-                        Third-party tested compounds shipped across the EU from our Netherlands operations.
+                        {t('mega.shopDescription')}
                       </p>
                       <LocaleLink
                         to="/shop"

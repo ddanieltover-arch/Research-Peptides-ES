@@ -22,6 +22,8 @@ import { CookieConsent } from './gdpr/CookieConsent';
 import { PageLoader } from './PageLoader';
 import { postNewsletterSubscribe } from '../lib/transactionalEmailApi';
 import { JsonLd } from './seo/JsonLd';
+import { BRAND_NAME, SITE_URL } from '../config/brand';
+import { DevConfigBanner } from './DevConfigBanner';
 
 function LayoutShell() {
   const { user, profile, setUser } = useAuthStore();
@@ -90,33 +92,34 @@ function LayoutShell() {
     }
   };
 
+  const siteUrl = SITE_URL.replace(/\/+$/, '');
   const globalSchemas = [
     {
       "@context": "https://schema.org",
       "@type": "Organization",
-      "name": "Research Peptides EU",
-      "url": "https://researchpeptide.eu",
+      "name": BRAND_NAME,
+      "url": siteUrl,
       "logo": {
         "@type": "ImageObject",
-        "url": "https://researchpeptide.eu/logo.png"
+        "url": `${siteUrl}/logo.png`
       }
     },
     {
       "@context": "https://schema.org",
       "@type": "WebSite",
-      "url": "https://researchpeptide.eu",
-      "name": "Research Peptides EU",
+      "url": siteUrl,
+      "name": BRAND_NAME,
       "potentialAction": {
         "@type": "SearchAction",
-        "target": "https://researchpeptide.eu/search?q={search_term_string}",
+        "target": `${siteUrl}/search?q={search_term_string}`,
         "query-input": "required name=search_term_string"
       }
     },
     {
       "@context": "https://schema.org",
       "@type": "LocalBusiness",
-      "name": "Research Peptides EU",
-      "url": "https://researchpeptide.eu"
+      "name": BRAND_NAME,
+      "url": siteUrl
     }
   ];
 
@@ -131,6 +134,7 @@ function LayoutShell() {
       </a>
 
       <div className="sticky top-0 z-50 isolate">
+        <DevConfigBanner />
         <LiveTicker />
         <Header
           onLogin={handleLogin}

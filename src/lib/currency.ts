@@ -32,12 +32,12 @@ const LOCALE_TO_INTL: Record<LocaleCode, string> = {
 };
 
 export function localeToIntl(locale: LocaleCode): string {
-  return LOCALE_TO_INTL[locale] ?? 'en-IE';
+  return LOCALE_TO_INTL[locale] ?? 'es-ES';
 }
 
 export function formatMoney(
   amount: number,
-  locale: string = 'en-IE',
+  locale: string = 'es-ES',
   currency: string = DEFAULT_CURRENCY,
 ): string {
   const value = Number.isFinite(amount) ? amount : 0;
@@ -58,7 +58,7 @@ export function convertEurToGbp(amount: number, rate = GBP_TO_EUR_RATE): number 
   return Math.round((amount / rate) * 100) / 100;
 }
 
-let activeLocale: LocaleCode = 'en';
+let activeLocale: LocaleCode = 'es';
 
 export function setActiveLocale(locale: LocaleCode): void {
   activeLocale = locale;

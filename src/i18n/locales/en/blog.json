@@ -1,0 +1,21 @@
+{
+  "eyebrow": "Research Peptides ES Journals",
+  "title": "Scientific",
+  "titleHighlight": "Insights & Research.",
+  "subtitle": "Deep dives into peptide synthesis, biological activity, and global research trends. Curated for the modern scientific community.",
+  "emptyTitle": "No Publication Records",
+  "emptyBody": "Archived journals will appear here once peer-review is complete.",
+  "readTime": "4 Min Read",
+  "author": "Editorial Team",
+  "tagResearch": "Research",
+  "exploreArticle": "Explore Article",
+  "backToArchives": "Scientific Journals",
+  "insightTag": "Research Insight",
+  "minRead": "{{count}} Min Read",
+  "authoredBy": "Authored by",
+  "editorialBoard": "Research Peptides ES Editorial Board",
+  "notFoundTitle": "Research Entry Forbidden",
+  "notFoundBody": "The requested publication could not be identified.",
+  "returnToArchives": "Return to Archives",
+  "titleSuffix": "Blog"
+}

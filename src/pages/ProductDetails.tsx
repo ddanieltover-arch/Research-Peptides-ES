@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useState } from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
+import { LocaleLink } from '../i18n/LocaleLink';
 import { useLocaleNavigate } from '../i18n/useLocaleNavigate';
 import { useTranslation } from 'react-i18next';
 import { Star } from 'lucide-react';
@@ -10,6 +11,7 @@ import { useWishlistStore } from '../store/useWishlistStore';
 import { useToastStore } from '../store/useToastStore';
 import { DetailedProductSkeleton } from '../components/Skeleton';
 import { productPath } from '../lib/productUrl';
+import { BRAND_NAME } from '../config/brand';
 import { Container, Reveal } from '../design-system';
 import { ProductGallery } from '../components/product-detail/ProductGallery';
 import { ProductPurchasePanel } from '../components/product-detail/ProductPurchasePanel';
@@ -73,7 +75,7 @@ export default function ProductDetails() {
       .trim()
       .slice(0, 160);
     return {
-      title: `${title} | Research Peptides EU`,
+      title: `${title} | ${BRAND_NAME}`,
       description: plainDescription || `Research-grade ${title} — EUR pricing, EU dispatch.`,
       canonicalPath,
       ogType: 'product' as const,
@@ -194,9 +196,9 @@ export default function ProductDetails() {
     return (
       <Container className="py-20 text-center">
         <h2 className="font-display font-bold text-2xl text-navy-950 mb-4">{t('notFound.title')}</h2>
-        <Link to="/shop" className="text-brand-600 font-semibold hover:underline">
+        <LocaleLink to="/shop" className="text-brand-600 font-semibold hover:underline">
           {t('notFound.cta')}
-        </Link>
+        </LocaleLink>
       </Container>
     );
   }
@@ -217,8 +219,26 @@ export default function ProductDetails() {
   const images: string[] = product.images?.length ? product.images : [];
 
   return (
-    <div className="bg-mist-50 min-h-screen">
+    <div className="bg-gradient-parchment min-h-screen">
       <Container className="py-10 md:py-12">
+        <nav className="mb-8 text-sm" aria-label="Breadcrumb">
+          <ol className="flex flex-wrap items-center gap-2 text-steel-600">
+            <li>
+              <LocaleLink to="/" className="hover:text-brand-600 transition-colors">
+                {t('breadcrumb.home', { defaultValue: 'Home' })}
+              </LocaleLink>
+            </li>
+            <li className="text-silver-400" aria-hidden>/</li>
+            <li>
+              <LocaleLink to="/shop" className="hover:text-brand-600 transition-colors">
+                {t('breadcrumb.shop', { defaultValue: 'Shop' })}
+              </LocaleLink>
+            </li>
+            <li className="text-silver-400" aria-hidden>/</li>
+            <li className="text-navy-950 font-medium truncate max-w-[12rem] sm:max-w-none">{displayTitle}</li>
+          </ol>
+        </nav>
+
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-14 mb-16">
           <ProductGallery
             productId={String(product.id)}
@@ -251,13 +271,13 @@ export default function ProductDetails() {
           />
         </div>
 
-        <Reveal as="section" className="rounded-3xl bg-white/90 backdrop-blur-sm border border-brand-100 p-8 md:p-12 shadow-card mb-16">
+        <Reveal as="section" className="bento-card border-t-4 border-t-accent-500 mb-16">
           <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-10">
             <div>
-              <p className="text-caption text-brand-600 mb-2">{t('reviews.eyebrow')}</p>
-              <h2 className="text-h2 font-display font-bold text-navy-950">{t('reviews.title')}</h2>
+              <p className="text-eyebrow-accent text-accent-600 before:bg-accent-500 mb-3">{t('reviews.eyebrow')}</p>
+              <h2 className="text-h2 font-display font-semibold text-navy-950">{t('reviews.title')}</h2>
             </div>
-            <div className="flex items-center gap-3 p-4 rounded-2xl bg-mist-50 border border-brand-50">
+            <div className="flex items-center gap-3 p-4 rounded-xl bg-mist-50 border border-brand-100/80">
               <span className="text-sm font-bold text-navy-950">{t('reviews.ratingLabel')}</span>
               <div className="flex text-warning">
                 {[...Array(5)].map((_, i) => (
@@ -271,7 +291,7 @@ export default function ProductDetails() {
             {STATIC_REVIEWS.map((review) => (
               <blockquote
                 key={review.name}
-                className="p-6 rounded-2xl bg-mist-50 border border-brand-50 text-steel-600 text-sm leading-relaxed"
+                className="bento-card border-t-2 border-t-accent-500/25 text-steel-600 text-sm leading-relaxed"
               >
                 <p className="italic mb-4">&ldquo;{review.content}&rdquo;</p>
                 <footer className="flex justify-between items-center not-italic pt-4 border-t border-brand-100">

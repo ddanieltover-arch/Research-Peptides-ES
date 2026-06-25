@@ -21,8 +21,10 @@ export function CheckoutProgress({ step }: CheckoutProgressProps) {
           <div className="flex flex-col items-center">
             <div
               className={cn(
-                'w-10 h-10 rounded-full flex items-center justify-center font-bold text-sm transition-all',
-                step >= s.id ? 'bg-brand-500 text-white shadow-glow' : 'bg-brand-50 text-silver-400',
+                'w-10 h-10 rounded-full flex items-center justify-center font-bold text-sm transition-all border-2',
+                step >= s.id
+                  ? 'bg-brand-600 border-brand-600 text-white shadow-glow'
+                  : 'bg-white border-brand-100 text-silver-400',
               )}
             >
               {step > s.id ? <CheckCircle className="w-5 h-5" aria-hidden /> : s.id}
@@ -37,10 +39,10 @@ export function CheckoutProgress({ step }: CheckoutProgressProps) {
             </span>
           </div>
           {idx < STEPS.length - 1 && (
-            <div className="flex-1 h-0.5 mx-3 bg-brand-100 self-center -mt-6 min-w-[2rem]">
+            <div className="flex-1 h-0.5 mx-3 bg-brand-100 self-center -mt-6 min-w-[2rem] overflow-hidden rounded-full">
               <div
                 className={cn(
-                  'h-full bg-brand-500 transition-all duration-500',
+                  'h-full bg-gradient-to-r from-brand-600 to-accent-500 transition-all duration-500',
                   step > s.id ? 'w-full' : 'w-0',
                 )}
               />

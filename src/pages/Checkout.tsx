@@ -10,12 +10,12 @@ import { europeanLocations } from '../data/europeanCountries';
 import { postOrderCreatedEmail, postPsilioCreateInvoice } from '../lib/transactionalEmailApi';
 import { CheckoutSkeleton } from '../components/Skeleton';
 import { PRIMARY_PROMO_CODE, PROMO_DISCOUNT_PERCENT, isValidPromoCode } from '../lib/promoCodes';
-import { Container } from '../design-system';
+import { Container, Button } from '../design-system';
 import { CatalogPageHeader } from '../components/catalog/CatalogPageHeader';
 import { CheckoutProgress } from '../components/checkout/CheckoutProgress';
 import { usePageSeo } from '../seo/SeoProvider';
 
-/** Shipping rates in EUR (Netherlands fulfilment · May 2026). */
+/** Shipping rates in EUR (Spain fulfilment · placeholder). */
 const SHIPPING_METHODS = {
   EUROPE: [
     { id: 'intl_eu', name: 'EU Standard (PostNL / DPD)', subtext: '3–7 business days', price: 18.14 },
@@ -46,7 +46,7 @@ export default function Checkout() {
     phone: '',
     address: '',
     city: '',
-    country: 'Netherlands',
+    country: 'Spain',
     postalCode: ''
   });
   const [selectedShippingId, setSelectedShippingId] = useState('intl_eu');
@@ -310,7 +310,7 @@ export default function Checkout() {
   };
 
   return (
-    <div className="min-h-screen bg-mist-50">
+    <div className="min-h-screen bg-gradient-parchment">
       <CatalogPageHeader
         eyebrow={t('header.eyebrow')}
         title={t('header.title')}
@@ -323,48 +323,48 @@ export default function Checkout() {
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
         {/* Main Content */}
         <div className="lg:col-span-2 space-y-8">
-          <div className="bg-white p-6 sm:p-10 rounded-3xl shadow-card border border-brand-100 min-h-[500px]">
+          <div className="bento-card border-t-4 border-t-accent-500 min-h-[500px]">
             {step === 1 && (
               <div className="space-y-8">
-                <h2 className="text-2xl font-black text-navy-950">Shipping Details</h2>
+                <h2 className="text-2xl font-display font-semibold text-navy-950">{t('steps.shipping')}</h2>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div className="md:col-span-2">
-                    <label htmlFor="checkout-email" className="block text-xs font-black uppercase tracking-widest text-steel-600 mb-2">Email Address</label>
-                    <input id="checkout-email" required type="email" value={shipping.email} onChange={e => setShipping({...shipping, email: e.target.value})} className="w-full p-4 bg-mist-50 border-none rounded-2xl focus:ring-2 focus:ring-brand-400 outline-none transition-all font-bold text-navy-950" placeholder="researcher@university.edu" disabled={!!user} autoComplete="email" />
+                    <label htmlFor="checkout-email" className="text-eyebrow-accent text-accent-600 before:bg-accent-500 block mb-2">Email Address</label>
+                    <input id="checkout-email" required type="email" value={shipping.email} onChange={e => setShipping({...shipping, email: e.target.value})} className="w-full p-4 bg-white border border-brand-100 rounded-xl focus:ring-2 focus:ring-brand-400/50 focus:border-brand-300 outline-none transition-all font-medium text-navy-950" placeholder="investigador@universidad.es" disabled={!!user} autoComplete="email" />
                     {user && <p className="text-[10px] font-bold text-silver-400 mt-1 uppercase tracking-widest">Locked to account email</p>}
                     {shippingErrors.email && <p className="mt-1 text-xs font-semibold text-red-600">{shippingErrors.email}</p>}
                   </div>
                   <div className="md:col-span-2">
-                    <label htmlFor="checkout-full-name" className="block text-xs font-black uppercase tracking-widest text-steel-600 mb-2">Full Name</label>
-                    <input id="checkout-full-name" required type="text" value={shipping.fullName} onChange={e => setShipping({...shipping, fullName: e.target.value})} className="w-full p-4 bg-mist-50 border-none rounded-2xl focus:ring-2 focus:ring-brand-400 outline-none transition-all font-bold text-navy-950" placeholder="John Doe" autoComplete="name" />
+                    <label htmlFor="checkout-full-name" className="text-eyebrow-accent text-accent-600 before:bg-accent-500 block mb-2">Full Name</label>
+                    <input id="checkout-full-name" required type="text" value={shipping.fullName} onChange={e => setShipping({...shipping, fullName: e.target.value})} className="w-full p-4 bg-white border border-brand-100 rounded-xl focus:ring-2 focus:ring-brand-400/50 focus:border-brand-300 outline-none transition-all font-medium text-navy-950" placeholder="María García" autoComplete="name" />
                     {shippingErrors.fullName && <p className="mt-1 text-xs font-semibold text-red-600">{shippingErrors.fullName}</p>}
                   </div>
                   <div className="md:col-span-2">
-                    <label htmlFor="checkout-phone" className="block text-xs font-black uppercase tracking-widest text-steel-600 mb-2">Phone Number</label>
-                    <input id="checkout-phone" required type="tel" value={shipping.phone} onChange={e => setShipping({...shipping, phone: e.target.value})} className="w-full p-4 bg-mist-50 border-none rounded-2xl focus:ring-2 focus:ring-brand-400 outline-none transition-all font-bold text-navy-950" placeholder="+31 6 12345678" autoComplete="tel" />
+                    <label htmlFor="checkout-phone" className="text-eyebrow-accent text-accent-600 before:bg-accent-500 block mb-2">Phone Number</label>
+                    <input id="checkout-phone" required type="tel" value={shipping.phone} onChange={e => setShipping({...shipping, phone: e.target.value})} className="w-full p-4 bg-white border border-brand-100 rounded-xl focus:ring-2 focus:ring-brand-400/50 focus:border-brand-300 outline-none transition-all font-medium text-navy-950" placeholder="+34 600 000 000" autoComplete="tel" />
                     {shippingErrors.phone && <p className="mt-1 text-xs font-semibold text-red-600">{shippingErrors.phone}</p>}
                   </div>
                   <div className="md:col-span-2">
-                    <label htmlFor="checkout-address-line" className="block text-xs font-black uppercase tracking-widest text-steel-600 mb-2">Street Address</label>
-                    <input id="checkout-address-line" required type="text" value={shipping.address} onChange={e => setShipping({...shipping, address: e.target.value})} className="w-full p-4 bg-mist-50 border-none rounded-2xl focus:ring-2 focus:ring-brand-400 outline-none transition-all font-bold text-navy-950" placeholder="123 Research Way" autoComplete="street-address" />
+                    <label htmlFor="checkout-address-line" className="text-eyebrow-accent text-accent-600 before:bg-accent-500 block mb-2">Street Address</label>
+                    <input id="checkout-address-line" required type="text" value={shipping.address} onChange={e => setShipping({...shipping, address: e.target.value})} className="w-full p-4 bg-white border border-brand-100 rounded-xl focus:ring-2 focus:ring-brand-400/50 focus:border-brand-300 outline-none transition-all font-medium text-navy-950" placeholder="Calle de la Innovación 12" autoComplete="street-address" />
                     {shippingErrors.address && <p className="mt-1 text-xs font-semibold text-red-600">{shippingErrors.address}</p>}
                   </div>
                   <div>
-                    <label htmlFor="checkout-city" className="block text-xs font-black uppercase tracking-widest text-steel-600 mb-2">City</label>
-                    <input id="checkout-city" required type="text" value={shipping.city} onChange={e => setShipping({...shipping, city: e.target.value})} className="w-full p-4 bg-mist-50 border-none rounded-2xl focus:ring-2 focus:ring-brand-400 outline-none transition-all font-bold text-navy-950" placeholder="Amsterdam" autoComplete="address-level2" />
+                    <label htmlFor="checkout-city" className="text-eyebrow-accent text-accent-600 before:bg-accent-500 block mb-2">City</label>
+                    <input id="checkout-city" required type="text" value={shipping.city} onChange={e => setShipping({...shipping, city: e.target.value})} className="w-full p-4 bg-white border border-brand-100 rounded-xl focus:ring-2 focus:ring-brand-400/50 focus:border-brand-300 outline-none transition-all font-medium text-navy-950" placeholder="Madrid" autoComplete="address-level2" />
                     {shippingErrors.city && <p className="mt-1 text-xs font-semibold text-red-600">{shippingErrors.city}</p>}
                   </div>
                   <div>
-                    <label htmlFor="checkout-postal" className="block text-xs font-black uppercase tracking-widest text-steel-600 mb-2">Postal Code</label>
-                    <input id="checkout-postal" required type="text" value={shipping.postalCode} onChange={e => setShipping({...shipping, postalCode: e.target.value})} className="w-full p-4 bg-mist-50 border-none rounded-2xl focus:ring-2 focus:ring-brand-400 outline-none transition-all font-bold text-navy-950" placeholder="1012 AB" autoComplete="postal-code" />
+                    <label htmlFor="checkout-postal" className="text-eyebrow-accent text-accent-600 before:bg-accent-500 block mb-2">Postal Code</label>
+                    <input id="checkout-postal" required type="text" value={shipping.postalCode} onChange={e => setShipping({...shipping, postalCode: e.target.value})} className="w-full p-4 bg-white border border-brand-100 rounded-xl focus:ring-2 focus:ring-brand-400/50 focus:border-brand-300 outline-none transition-all font-medium text-navy-950" placeholder="28001" autoComplete="postal-code" />
                     {shippingErrors.postalCode && <p className="mt-1 text-xs font-semibold text-red-600">{shippingErrors.postalCode}</p>}
                   </div>
                   <div className="md:col-span-2">
-                    <label htmlFor="checkout-country" className="block text-xs font-black uppercase tracking-widest text-steel-600 mb-2">Country</label>
-                    <select id="checkout-country" value={shipping.country} onChange={e => setShipping({...shipping, country: e.target.value})} className="w-full p-4 bg-mist-50 border border-brand-100 rounded-2xl focus:ring-2 focus:ring-brand-400 outline-none transition-all font-semibold text-navy-950 appearance-none cursor-pointer" autoComplete="country-name">
+                    <label htmlFor="checkout-country" className="text-eyebrow-accent text-accent-600 before:bg-accent-500 block mb-2">Country</label>
+                    <select id="checkout-country" value={shipping.country} onChange={e => setShipping({...shipping, country: e.target.value})} className="w-full p-4 bg-white border border-brand-100 rounded-xl focus:ring-2 focus:ring-brand-400/50 focus:border-brand-300 outline-none transition-all font-medium text-navy-950 appearance-none cursor-pointer" autoComplete="country-name">
                       <optgroup label="European Union">
-                        <option value="Netherlands">Netherlands</option>
-                        {EUROPEAN_COUNTRIES.filter(c => c !== 'Netherlands' && c !== 'United Kingdom').sort().map(c => <option key={c} value={c}>{c}</option>)}
+                        <option value="Spain">Spain</option>
+                        {EUROPEAN_COUNTRIES.filter(c => c !== 'Spain' && c !== 'United Kingdom').sort().map(c => <option key={c} value={c}>{c}</option>)}
                       </optgroup>
                       <option value="United Kingdom">United Kingdom</option>
                       <optgroup label="Rest of World">
@@ -378,12 +378,12 @@ export default function Checkout() {
                 </div>
 
                 <fieldset className="space-y-4 pt-4 border-0 border-t border-brand-100 min-w-0">
-                  <legend id="checkout-shipping-method-legend" className="text-xs font-black uppercase tracking-widest text-silver-400 px-0">
+                  <legend id="checkout-shipping-method-legend" className="text-eyebrow-accent text-accent-600 before:bg-accent-500 px-0 mb-4">
                     Select Shipping Service
                   </legend>
                   <div className="grid grid-cols-1 gap-3" role="radiogroup" aria-labelledby="checkout-shipping-method-legend">
                     {availableMethods.map((m) => (
-                      <button key={m.id} type="button" role="radio" aria-checked={selectedShippingId === m.id} onClick={() => setSelectedShippingId(m.id)} className={`flex items-center justify-between p-4 rounded-2xl border-2 transition-all ${selectedShippingId === m.id ? 'border-brand-500 bg-brand-50/50' : 'border-gray-50 bg-mist-50/50 hover:border-gray-200'}`}>
+                      <button key={m.id} type="button" role="radio" aria-checked={selectedShippingId === m.id} onClick={() => setSelectedShippingId(m.id)} className={`flex items-center justify-between p-4 rounded-xl border-2 transition-all ${selectedShippingId === m.id ? 'border-brand-500 bg-brand-50/60 shadow-card' : 'border-brand-100 bg-white hover:border-accent-500/30'}`}>
                         <div className="flex items-center gap-4 text-left">
                           <div className={`w-5 h-5 rounded-full border-2 flex items-center justify-center ${selectedShippingId === m.id ? 'border-brand-500 bg-brand-500' : 'border-gray-300'}`}>
                             {selectedShippingId === m.id && <div className="w-2 h-2 rounded-full bg-white" />}
@@ -400,16 +400,16 @@ export default function Checkout() {
                   {shippingErrors.shippingMethod && <p className="text-xs font-semibold text-red-600">{shippingErrors.shippingMethod}</p>}
                 </fieldset>
 
-                <button type="button" onClick={handleContinueToPayment} className="w-full bg-gray-900 text-white py-5 rounded-2xl font-black text-lg hover:bg-black transition-all shadow-xl shadow-gray-200">
+                <Button type="button" size="lg" fullWidth onClick={handleContinueToPayment}>
                   Continue to Payment
-                </button>
+                </Button>
               </div>
             )}
 
             {step === 2 && (
               <div className="space-y-8">
                 <div className="flex items-center justify-between">
-                  <h2 id="checkout-payment-heading" className="text-2xl font-black text-navy-950">Payment Method</h2>
+                  <h2 id="checkout-payment-heading" className="text-2xl font-display font-semibold text-navy-950">Payment Method</h2>
                   <button type="button" onClick={() => setStep(1)} className="text-xs font-black text-brand-600 uppercase tracking-widest hover:underline">Edit Shipping</button>
                 </div>
 
@@ -419,8 +419,8 @@ export default function Checkout() {
                     { id: 'card', name: 'Credit / Debit Card', icon: CreditCard, subtext: 'Secure Manual Processing' },
                     { id: 'bank', name: 'Bank Transfer', icon: Landmark, subtext: 'Direct Structural Payment' },
                   ].map((method) => (
-                    <button key={method.id} type="button" role="radio" aria-checked={paymentMethod === method.id} onClick={() => setPaymentMethod(method.id as 'card' | 'bank' | 'crypto')} className={`relative flex items-center gap-5 p-6 rounded-[2rem] border-2 transition-all ${paymentMethod === method.id ? 'border-brand-500 bg-brand-50/30' : 'border-gray-50 bg-mist-50/30 hover:border-gray-200'}`}>
-                      <div className={`w-14 h-14 rounded-2xl flex items-center justify-center ${paymentMethod === method.id ? 'bg-brand-500 text-white' : 'bg-white text-silver-400 border border-brand-100'}`}>
+                    <button key={method.id} type="button" role="radio" aria-checked={paymentMethod === method.id} onClick={() => setPaymentMethod(method.id as 'card' | 'bank' | 'crypto')} className={`relative flex items-center gap-5 p-6 rounded-[1.25rem] border-2 transition-all ${paymentMethod === method.id ? 'border-brand-500 bg-brand-50/40 shadow-card' : 'border-brand-100 bg-white hover:border-accent-500/30'}`}>
+                      <div className={`w-14 h-14 rounded-xl flex items-center justify-center ${paymentMethod === method.id ? 'bg-brand-600 text-white' : 'bg-mist-50 text-silver-400 border border-brand-100'}`}>
                         <method.icon className="w-8 h-8" aria-hidden />
                       </div>
                       <div className="text-left flex-1">
@@ -438,16 +438,16 @@ export default function Checkout() {
                 </div>
                 {paymentErrors.paymentMethod && <p className="text-xs font-semibold text-red-600">{paymentErrors.paymentMethod}</p>}
 
-                <button type="button" onClick={handleConfirmPaymentChoice} className="w-full bg-gray-900 text-white py-5 rounded-2xl font-black text-lg hover:bg-black transition-all shadow-xl shadow-gray-200">
+                <Button type="button" size="lg" fullWidth onClick={handleConfirmPaymentChoice}>
                   Confirm Payment Choice
-                </button>
+                </Button>
               </div>
             )}
 
             {step === 3 && (
               <div className="space-y-8">
                 <div className="flex items-center justify-between">
-                  <h2 className="text-2xl font-black text-navy-950">Final Confirmation</h2>
+                  <h2 className="text-2xl font-display font-semibold text-navy-950">Final Confirmation</h2>
                   <button type="button" onClick={() => setStep(2)} className="text-xs font-black text-brand-600 uppercase tracking-widest hover:underline">Change Method</button>
                 </div>
 
@@ -510,9 +510,9 @@ export default function Checkout() {
                   </div>
                 )}
 
-                <button type="button" onClick={handleOrderSubmit} disabled={isSubmitting} className="w-full bg-brand-500 text-white py-6 rounded-2xl font-black text-xl hover:bg-brand-600 transition-all shadow-xl shadow-glow flex items-center justify-center gap-3">
+                <Button type="button" size="lg" fullWidth onClick={handleOrderSubmit} disabled={isSubmitting} className="gap-3 text-lg py-6">
                   {isSubmitting ? <Loader2 className="w-6 h-6 animate-spin" aria-hidden /> : 'Complete Secure Purchase'}
-                </button>
+                </Button>
               </div>
             )}
 
@@ -521,7 +521,7 @@ export default function Checkout() {
                 <div className="w-24 h-24 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center mx-auto mb-8 shadow-inner">
                   <CheckCircle className="w-12 h-12" />
                 </div>
-                <h2 className="text-3xl font-black text-navy-950">Research Order Secured</h2>
+                <h2 className="text-3xl font-display font-semibold text-navy-950">Research Order Secured</h2>
                 <div className="mt-4 p-4 bg-mist-50 rounded-2xl border border-brand-100 max-w-xs mx-auto">
                    <p className="text-[10px] font-black uppercase text-silver-400 mb-1">Order Identification</p>
                    <p className="text-lg font-black text-brand-600 select-all tracking-wider">{placedOrderId || 'Processing...'}</p>
@@ -538,17 +538,17 @@ export default function Checkout() {
                 )}
                 <div className="mt-12 flex flex-col sm:flex-row gap-4 justify-center">
                   {user ? (
-                    <button type="button" onClick={() => navigate('/orders')} className="bg-gray-900 text-white px-10 py-4 rounded-2xl font-black hover:bg-black transition-all">
+                    <Button type="button" size="lg" onClick={() => navigate('/orders')}>
                       View My History
-                    </button>
+                    </Button>
                   ) : (
                     <div className="p-4 bg-brand-50 rounded-2xl text-navy-900 text-[10px] font-bold max-w-xs mx-auto border border-brand-100">
                       Please save your Order ID above. Since you checked out as a guest, this is your primary reference for correspondence.
                     </div>
                   )}
-                  <button type="button" onClick={() => navigate('/')} className="bg-white text-navy-950 border-2 border-brand-100 px-10 py-4 rounded-2xl font-black hover:bg-mist-50 transition-all">
+                  <Button type="button" variant="outline" size="lg" onClick={() => navigate('/')}>
                     Continue Research
-                  </button>
+                  </Button>
                 </div>
               </div>
             )}
@@ -557,8 +557,8 @@ export default function Checkout() {
 
         {/* Sidebar / Summary */}
         <div className="lg:col-span-1 space-y-6">
-          <div className="bg-white p-8 rounded-[2rem] shadow-sm border border-brand-100 sticky top-24">
-            <h2 className="text-xs font-black uppercase tracking-widest text-silver-400 mb-6">Price Synthesis</h2>
+          <div className="bento-card border-t-4 border-t-accent-500 sticky top-24">
+            <h2 className="text-eyebrow-accent text-accent-600 before:bg-accent-500 mb-6">Price Synthesis</h2>
             <div className="space-y-3">
               <div className="flex justify-between text-sm font-bold text-steel-600">
                 <span>Subtotal</span>
@@ -595,7 +595,7 @@ export default function Checkout() {
                     <div className="flex gap-2">
                       <label htmlFor="checkout-promo-code" className="sr-only">Promotion code</label>
                       <input id="checkout-promo-code" type="text" placeholder={PRIMARY_PROMO_CODE} value={promoCode} onChange={e => setPromoCode(e.target.value)} className="flex-1 p-3 bg-mist-50 border-none rounded-xl outline-none text-xs font-black" />
-                      <button type="button" onClick={applyPromo} className="bg-gray-900 text-white px-4 py-2 rounded-xl text-[10px] font-black uppercase tracking-widest">Apply</button>
+                      <button type="button" onClick={applyPromo} className="bg-brand-600 text-white px-4 py-2 rounded-xl text-[10px] font-bold uppercase tracking-widest hover:bg-brand-700 transition-colors">Apply</button>
                     </div>
                     {promoError && <p className="text-[10px] text-red-500 font-bold">{promoError}</p>}
                     {appliedDiscount > 0 && <p className="text-[10px] text-emerald-500 font-bold">✓ Reference Code Accepted</p>}

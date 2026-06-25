@@ -27,11 +27,11 @@ export type LocaleDefinition = {
 };
 
 export const supportedLocales: LocaleDefinition[] = [
+  { code: 'es', label: 'Spanish', nativeName: 'Español', flag: '🇪🇸' },
   { code: 'en', label: 'English', nativeName: 'English', flag: '🇬🇧' },
   { code: 'nl', label: 'Dutch', nativeName: 'Nederlands', flag: '🇳🇱' },
   { code: 'fr', label: 'French', nativeName: 'Français', flag: '🇫🇷' },
   { code: 'de', label: 'German', nativeName: 'Deutsch', flag: '🇩🇪' },
-  { code: 'es', label: 'Spanish', nativeName: 'Español', flag: '🇪🇸' },
   { code: 'it', label: 'Italian', nativeName: 'Italiano', flag: '🇮🇹' },
   { code: 'pt', label: 'Portuguese', nativeName: 'Português', flag: '🇵🇹' },
   { code: 'hr', label: 'Croatian', nativeName: 'Hrvatski', flag: '🇭🇷' },
@@ -55,9 +55,9 @@ export function isLocaleCode(value: string): value is LocaleCode {
 }
 
 export function detectBrowserLocale(): LocaleCode {
-  if (typeof navigator === 'undefined') return 'en';
+  if (typeof navigator === 'undefined') return 'es';
   const lang = navigator.language.split('-')[0].toLowerCase();
-  return isLocaleCode(lang) ? lang : 'en';
+  return isLocaleCode(lang) ? lang : 'es';
 }
 
 export function getLocaleDefinition(code: LocaleCode): LocaleDefinition {

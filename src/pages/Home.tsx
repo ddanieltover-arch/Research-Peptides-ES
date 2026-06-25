@@ -4,6 +4,7 @@ import { HomeSectionFallback } from '../components/home/HomeSectionFallback';
 import { LazyWhenVisible } from '../components/LazyWhenVisible';
 import { SEO } from '../components/seo/SEO';
 import { usePageSeo } from '../seo/SeoProvider';
+import { DEFAULT_DESCRIPTION } from '../seo/pageTitles';
 
 const FeaturedProductsSection = lazy(() =>
   import('../components/home/FeaturedProductsSection').then((m) => ({
@@ -54,30 +55,30 @@ function DeferredSection({
 
 export default function Home() {
   usePageSeo({
-    title: "Research Peptides EU | Premium Research Peptides for European Laboratories",
-    description: "Premium research-grade peptides and compounds for European laboratories. Third-party tested, EU distribution, next-day shipping available.",
-    canonicalPath: "/",
+    title: 'Research Peptides ES | Péptidos de investigación premium para laboratorios europeos',
+    description: DEFAULT_DESCRIPTION,
+    canonicalPath: '/',
   });
 
   return (
-    <div className="overflow-hidden">
+    <div className="overflow-hidden bg-mist-50">
       <HeroSection />
       <DeferredSection minHeight="min-h-[420px]">
         <FeaturedProductsSection />
       </DeferredSection>
-      <DeferredSection minHeight="min-h-[320px]">
+      <DeferredSection minHeight="min-h-[360px]">
         <WhyEuSection />
       </DeferredSection>
-      <DeferredSection minHeight="min-h-[360px]" className="bg-navy-950/5">
+      <DeferredSection minHeight="min-h-[320px]">
         <CategoryShowcaseSection />
       </DeferredSection>
       <DeferredSection minHeight="min-h-[300px]">
         <TrustQualitySection />
       </DeferredSection>
-      <DeferredSection minHeight="min-h-[280px]">
+      <DeferredSection minHeight="min-h-[280px]" className="bg-white">
         <CustomerExperienceSection />
       </DeferredSection>
-      <DeferredSection minHeight="min-h-[200px]">
+      <DeferredSection minHeight="min-h-[180px]">
         <CtaSection />
       </DeferredSection>
     </div>

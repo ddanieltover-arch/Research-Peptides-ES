@@ -1,6 +1,8 @@
 import React from 'react';
 import { motion } from 'motion/react';
+import { useTranslation } from 'react-i18next';
 import { FileCheck2, Search, ShieldCheck } from 'lucide-react';
+import { SUPPORT_EMAIL } from '../config/brand';
 
 type COARow = {
   product: string;
@@ -11,22 +13,26 @@ type COARow = {
 };
 
 const coaRows: COARow[] = [
-  { product: 'BPC-157', batch: 'RP-2504-BPC', purity: '99.1%', testDate: '2026-04-22', lab: 'Independent UK Lab' },
-  { product: 'TB-500', batch: 'RP-2504-TB5', purity: '98.9%', testDate: '2026-04-19', lab: 'Independent UK Lab' },
-  { product: 'CJC-1295 (No DAC)', batch: 'RP-2504-CJC', purity: '99.3%', testDate: '2026-04-16', lab: 'Independent UK Lab' },
-  { product: 'Ipamorelin', batch: 'RP-2504-IPA', purity: '99.0%', testDate: '2026-04-14', lab: 'Independent UK Lab' },
-  { product: 'GHK-CU', batch: 'RP-2504-GHK', purity: '98.8%', testDate: '2026-04-12', lab: 'Independent UK Lab' },
+  { product: 'BPC-157', batch: 'RP-2504-BPC', purity: '99.1%', testDate: '2026-04-22', lab: 'lab' },
+  { product: 'TB-500', batch: 'RP-2504-TB5', purity: '98.9%', testDate: '2026-04-19', lab: 'lab' },
+  { product: 'CJC-1295 (No DAC)', batch: 'RP-2504-CJC', purity: '99.3%', testDate: '2026-04-16', lab: 'lab' },
+  { product: 'Ipamorelin', batch: 'RP-2504-IPA', purity: '99.0%', testDate: '2026-04-14', lab: 'lab' },
+  { product: 'GHK-CU', batch: 'RP-2504-GHK', purity: '98.8%', testDate: '2026-04-12', lab: 'lab' },
 ];
 
 export default function COALibrary() {
+  const { t } = useTranslation('coa');
   const [query, setQuery] = React.useState('');
+  const labLabel = t('labPlaceholder');
+
   const filteredRows = coaRows.filter((row) => {
     const q = query.trim().toLowerCase();
     if (!q) return true;
+    const lab = labLabel.toLowerCase();
     return (
       row.product.toLowerCase().includes(q) ||
       row.batch.toLowerCase().includes(q) ||
-      row.lab.toLowerCase().includes(q)
+      lab.includes(q)
     );
   });
 
@@ -36,11 +42,11 @@ export default function COALibrary() {
         <motion.div initial={{ opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }} className="text-center mb-12">
           <div className="inline-flex items-center gap-2 px-4 py-2 bg-brand-50 text-brand-600 rounded-full text-xs font-black uppercase tracking-widest mb-6">
             <FileCheck2 className="h-4 w-4" />
-            Verification Portal
+            {t('eyebrow')}
           </div>
-          <h1>COA Library</h1>
+          <h1>{t('title')}</h1>
           <p className="text-gray-500 mt-4 font-medium italic max-w-3xl mx-auto">
-            Search batch-level Certificate of Analysis references for Research Peptides EU catalog lines.
+            {t('subtitle')}
           </p>
         </motion.div>
 
@@ -51,7 +57,7 @@ export default function COALibrary() {
               type="text"
               value={query}
               onChange={(e) => setQuery(e.target.value)}
-              placeholder="Search by product, batch, or lab..."
+              placeholder={t('searchPlaceholder')}
               className="w-full pl-12 pr-4 py-4 rounded-2xl border border-gray-200 bg-gray-50 font-medium outline-none focus:bg-white focus:ring-2 focus:ring-brand-400/30"
             />
           </div>
@@ -62,11 +68,11 @@ export default function COALibrary() {
             <table className="w-full min-w-[760px]">
               <thead className="bg-gray-50">
                 <tr className="text-left">
-                  <th className="px-6 py-4 text-[11px] font-black uppercase tracking-widest text-gray-500">Product</th>
-                  <th className="px-6 py-4 text-[11px] font-black uppercase tracking-widest text-gray-500">Batch</th>
-                  <th className="px-6 py-4 text-[11px] font-black uppercase tracking-widest text-gray-500">Purity</th>
-                  <th className="px-6 py-4 text-[11px] font-black uppercase tracking-widest text-gray-500">Test Date</th>
-                  <th className="px-6 py-4 text-[11px] font-black uppercase tracking-widest text-gray-500">Lab</th>
+                  <th className="px-6 py-4 text-[11px] font-black uppercase tracking-widest text-gray-500">{t('columns.product')}</th>
+                  <th className="px-6 py-4 text-[11px] font-black uppercase tracking-widest text-gray-500">{t('columns.batch')}</th>
+                  <th className="px-6 py-4 text-[11px] font-black uppercase tracking-widest text-gray-500">{t('columns.purity')}</th>
+                  <th className="px-6 py-4 text-[11px] font-black uppercase tracking-widest text-gray-500">{t('columns.testDate')}</th>
+                  <th className="px-6 py-4 text-[11px] font-black uppercase tracking-widest text-gray-500">{t('columns.lab')}</th>
                 </tr>
               </thead>
               <tbody>
@@ -76,22 +82,22 @@ export default function COALibrary() {
                     <td className="px-6 py-4 text-sm text-gray-700">{row.batch}</td>
                     <td className="px-6 py-4 text-sm font-bold text-emerald-600">{row.purity}</td>
                     <td className="px-6 py-4 text-sm text-gray-700">{row.testDate}</td>
-                    <td className="px-6 py-4 text-sm text-gray-700">{row.lab}</td>
+                    <td className="px-6 py-4 text-sm text-gray-700">{labLabel}</td>
                   </tr>
                 ))}
               </tbody>
             </table>
           </div>
           {filteredRows.length === 0 && (
-            <p className="px-6 py-8 text-sm text-gray-500 text-center">No matching COA references found for your search.</p>
+            <p className="px-6 py-8 text-sm text-gray-500 text-center">{t('noResults')}</p>
           )}
         </section>
 
         <section className="mt-8 bg-slate-950 text-white rounded-3xl p-6 md:p-8 flex items-start gap-3">
-          <ShieldCheck className="h-5 w-5 text-brand-400 mt-0.5" />
+          <ShieldCheck className="h-5 w-5 text-brand-400 mt-0.5 shrink-0" />
           <p className="text-sm text-gray-300 leading-relaxed">
-            This library is provided for research documentation visibility. If you need a full report pack for a specific batch,
-            request it via <span className="font-bold text-brand-300">info@researchpeptide.eu</span>.
+            {t('footerNote')}{' '}
+            <span className="font-bold text-brand-300">{SUPPORT_EMAIL}</span>.
           </p>
         </section>
       </div>

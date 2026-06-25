@@ -1,0 +1,117 @@
+{
+  "guide": {
+    "eyebrow": "Research Resource",
+    "title": "Peptide Guide",
+    "subtitle": "A practical reference for researchers working with peptides in controlled laboratory environments. All materials are intended for research use workflows only.",
+    "quickTitle": "Quick Answer: What are Research Peptides?",
+    "quickBody": "Research peptides are synthesized short chains of amino acids utilized exclusively for in vitro laboratory studies. To maintain structural stability, they require lyophilization, cold-chain storage, and careful reconstitution using bacteriostatic water prior to experimental application.",
+    "topics": [
+      {
+        "title": "Peptide Fundamentals",
+        "summary": "A practical introduction to amino-acid chains, sequence notation, and why peptides are central to controlled laboratory workflows."
+      },
+      {
+        "title": "Synthesis & Purification",
+        "summary": "An overview of SPPS, purification strategies, and analytical checkpoints used to ensure consistent research batches."
+      },
+      {
+        "title": "Storage & Reconstitution",
+        "summary": "Recommended handling protocols for lyophilized compounds and reconstituted solutions, including contamination controls."
+      },
+      {
+        "title": "Quality Verification",
+        "summary": "How to read HPLC/LC-MS documentation, assess batch suitability, and maintain repeatability across experiments."
+      }
+    ],
+    "ctaCalculator": "Use peptide calculator",
+    "ctaCoa": "Explore COA library",
+    "cards": {
+      "scopeTitle": "Application Scope",
+      "scopeBody": "In vitro and analytical laboratory workflows only.",
+      "complianceTitle": "Compliance First",
+      "complianceBody": "Researchers are responsible for local regulatory compliance and approved handling.",
+      "calcTitle": "Need Calculation Help?",
+      "calcLink": "Open Peptide Calculator"
+    }
+  },
+  "information": {
+    "eyebrow": "Educational Resources",
+    "title": "Peptide Information",
+    "subtitle": "Structured learning resources for peptide chemistry, synthesis, purification, and analytical interpretation in research settings.",
+    "articles": [
+      {
+        "title": "Intro to Peptides",
+        "readTime": "8 min",
+        "summary": "Core terminology, structure basics, and key lab concepts for handling peptide compounds."
+      },
+      {
+        "title": "Peptide Synthesis Overview",
+        "readTime": "10 min",
+        "summary": "High-level explanation of solid-phase workflows, cleavage steps, and practical synthesis checkpoints."
+      },
+      {
+        "title": "Peptide Solubility",
+        "readTime": "7 min",
+        "summary": "Factors affecting dissolution and practical solvent selection guidance for research use cases."
+      },
+      {
+        "title": "Purification Pathways",
+        "readTime": "12 min",
+        "summary": "How chromatographic techniques are used to improve purity and consistency between batches."
+      }
+    ],
+    "cards": {
+      "scopeTitle": "Research Use Scope",
+      "scopeBody": "Content is intended for laboratory training and research operations only.",
+      "methodTitle": "Method Alignment",
+      "methodBody": "Always align calculations and handling steps to your internal SOP and compliance requirements.",
+      "supportTitle": "Need Support?",
+      "supportBody": "Contact:"
+    }
+  },
+  "calculator": {
+    "eyebrow": "Lab Utility",
+    "title": "Peptide Calculator",
+    "subtitle": "Quick reconstitution and dose-volume estimates for research planning. Validate all values against your SOP and batch documentation.",
+    "massLabel": "Peptide Mass (mg)",
+    "diluentLabel": "Diluent Volume (ml)",
+    "doseLabel": "Target Dose (mcg)",
+    "concentration": "Concentration",
+    "volume": "Required Volume",
+    "resultsTitle": "Results",
+    "volumePerDose": "Volume per target dose",
+    "disclaimer": "For research planning only. Does not replace validated laboratory protocols."
+  },
+  "hub": {
+    "eyebrow": "Research Hub",
+    "title": "Peptide Research",
+    "subtitle": "Application notes, reference frameworks, and research-oriented summaries for European laboratory teams.",
+    "disclaimer": "For laboratory research only. Not for human or veterinary consumption.",
+    "cards": [
+      {
+        "category": "Weight & Metabolic",
+        "readTime": "7 min",
+        "title": "GLP-1 Pathway Peptides in Metabolic Research",
+        "summary": "A review-oriented overview of receptor pathways, satiety signaling, and protocol design considerations."
+      },
+      {
+        "category": "Regenerative",
+        "readTime": "6 min",
+        "title": "BPC-157 and TB-500 Mechanistic Notes",
+        "summary": "Summary of preclinical pathway discussions related to tissue signaling and experimental model design."
+      },
+      {
+        "category": "Mitochondrial",
+        "readTime": "8 min",
+        "title": "Mitochondria-Targeted Peptides",
+        "summary": "Research framing for mitochondrial peptide investigations and common endpoint measurements."
+      },
+      {
+        "category": "Anabolic Signaling",
+        "readTime": "5 min",
+        "title": "IGF Axis in Experimental Context",
+        "summary": "Practical interpretation notes for dose framework, assay controls, and reproducibility considerations."
+      }
+    ]
+  }
+}

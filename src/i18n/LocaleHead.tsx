@@ -1,7 +1,7 @@
 import { useEffect, useMemo } from 'react';
 import { useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { BRAND_NAME } from '../config/brand';
+import { BRAND_NAME, HQ_ADDRESS, SITE_URL, SUPPORT_EMAIL } from '../config/brand';
 import { supportedLocales } from './locales';
 import { pathWithLocale, stripLocaleFromPath } from './routing';
 import { useSeoOverride } from '../seo/SeoProvider';
@@ -60,21 +60,23 @@ export function LocaleHead() {
         "@context": "https://schema.org",
         "@type": "LocalBusiness",
         "@id": `${siteUrl}/#localbusiness`,
-        "name": "Research Peptides EU",
+        "name": BRAND_NAME,
         "url": siteUrl,
         "logo": `${siteUrl}/brand_logo.png`,
         "image": `${siteUrl}/brand_logo.png`,
-        "description": "Premium research-grade peptides and compounds for European laboratories. Third-party tested, EU distribution, next-day shipping available.",
+        "description": "Péptidos y compuestos de investigación premium para laboratorios europeos. Verificación de terceros, distribución en la UE.",
         "address": {
           "@type": "PostalAddress",
-          "streetAddress": "Markt 34",
-          "postalCode": "5281 AV",
-          "addressLocality": "Boxtel",
-          "addressRegion": "North Brabant",
-          "addressCountry": "NL"
+          "streetAddress": HQ_ADDRESS.streetAddress,
+          "postalCode": HQ_ADDRESS.postalCode,
+          "addressLocality": HQ_ADDRESS.addressLocality,
+          "addressRegion": HQ_ADDRESS.addressRegion,
+          "addressCountry": HQ_ADDRESS.addressCountry
         },
         "contactPoint": {
-          "@type": "ContactPoint"
+          "@type": "ContactPoint",
+          "email": SUPPORT_EMAIL,
+          "contactType": "customer support"
         }
       }
     ],
@@ -130,7 +132,7 @@ export function LocaleHead() {
     const xDefault = document.createElement('link');
     xDefault.rel = 'alternate';
     xDefault.hreflang = 'x-default';
-    xDefault.href = `${origin}${pathWithLocale('en', hrefPath || '/')}`;
+    xDefault.href = `${origin}${pathWithLocale('es', hrefPath || '/')}`;
     xDefault.setAttribute('data-rp-hreflang', '1');
     document.head.appendChild(xDefault);
   }, [locale, path, location.search, override, origin]);

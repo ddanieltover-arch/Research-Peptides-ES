@@ -1,47 +1,53 @@
 /**
- * Research Peptides EU — design tokens (teal → navy logo gradient)
+ * Research Peptides ES — Iberian Lab design tokens (garnet + gold)
  */
 
 export const brandColors = {
-  50: '#ECFBF8',
-  100: '#C8F2EB',
-  200: '#8FE3D5',
-  300: '#52D4C3',
-  400: '#2DB5A3',
-  500: '#249688',
-  600: '#1D7A73',
-  700: '#176861',
-  800: '#145650',
-  900: '#1A365D',
+  50: '#FDF2F4',
+  100: '#F9DDE3',
+  200: '#F0B3C0',
+  300: '#E07A92',
+  400: '#C93D5E',
+  500: '#A91D3A',
+  600: '#8B1830',
+  700: '#6E1226',
+  800: '#520D1C',
+  900: '#3A0914',
+} as const;
+
+export const accentColors = {
+  400: '#E8D5A3',
+  500: '#C9A961',
+  600: '#A68B4B',
 } as const;
 
 export const neutralColors = {
-  navy950: '#0F2744',
-  navy900: '#1A365D',
-  slate850: '#152238',
-  mist50: '#F4FAF9',
-  silver400: '#8FA8B8',
-  steel600: '#4A6170',
+  navy950: '#0F080A',
+  navy900: '#1A1014',
+  slate850: '#24181C',
+  mist50: '#FBF6F1',
+  silver400: '#A39088',
+  steel600: '#6B5C56',
 } as const;
 
 export const semanticColors = {
-  success: '#10B981',
-  warning: '#F59E0B',
-  error: '#EF4444',
-  purity: '#2DB5A3',
+  success: '#2F7D62',
+  warning: '#D97706',
+  error: '#DC2626',
+  purity: '#3D7A6E',
 } as const;
 
 export const gradients = {
-  hero: 'linear-gradient(135deg, #0F2744 0%, #1A365D 45%, #1D7A73 100%)',
-  cta: 'linear-gradient(90deg, #2DB5A3, #1A365D)',
-  brand: 'linear-gradient(90deg, #2DB5A3, #3DC9B6, #1A365D)',
-  glow: 'radial-gradient(ellipse at 50% 0%, rgba(45, 181, 163, 0.32), transparent 70%)',
+  hero: 'linear-gradient(148deg, #0F080A 0%, #3A0914 42%, #1A1014 72%, #0F080A 100%)',
+  cta: 'linear-gradient(135deg, #A91D3A 0%, #8B1830 55%, #A68B4B 100%)',
+  brand: 'linear-gradient(120deg, #C93D5E 0%, #A91D3A 45%, #C9A961 100%)',
+  glow: 'radial-gradient(ellipse at 30% 0%, rgba(201, 169, 97, 0.28), transparent 65%)',
 } as const;
 
 export const fonts = {
-  display: '"Sora", system-ui, sans-serif',
-  sans: '"DM Sans", system-ui, sans-serif',
-  mono: '"JetBrains Mono", ui-monospace, monospace',
+  display: '"Cormorant Garamond", Georgia, serif',
+  sans: '"Manrope", system-ui, sans-serif',
+  mono: '"IBM Plex Mono", ui-monospace, monospace',
 } as const;
 
 export const spacing = {
@@ -55,14 +61,14 @@ export const radii = {
   md: '0.75rem',
   lg: '1rem',
   xl: '1.5rem',
-  '2xl': '1rem',
-  '3xl': '1.5rem',
+  '2xl': '1.75rem',
+  '3xl': '2rem',
 } as const;
 
 export const shadows = {
-  card: '0 4px 24px rgba(15, 39, 68, 0.08)',
-  elevated: '0 12px 48px rgba(45, 181, 163, 0.18)',
-  glow: '0 0 40px rgba(45, 181, 163, 0.28)',
+  card: '0 4px 24px rgba(15, 8, 10, 0.08)',
+  elevated: '0 16px 48px rgba(169, 29, 58, 0.14)',
+  glow: '0 0 48px rgba(201, 169, 97, 0.22)',
 } as const;
 
 export const motionDuration = {
@@ -76,7 +82,7 @@ export const motionSpring = {
   damping: 30,
 } as const;
 
-export const brandName = 'Research Peptides EU' as const;
+export const brandName = 'Research Peptides ES' as const;
 
-export const defaultLocale = 'en' as const;
+export const defaultLocale = 'es' as const;
 export const defaultCurrency = 'EUR' as const;

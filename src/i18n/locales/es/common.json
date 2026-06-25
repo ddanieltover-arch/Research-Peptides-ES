@@ -1,5 +1,5 @@
 {
-  "brand": "Research Peptides EU",
+  "brand": "Research Peptides ES",
   "loading": "Cargando…",
   "search": "Buscar",
   "cart": "Carrito",
@@ -15,11 +15,28 @@
   "viewAll": "Ver todo",
   "learnMore": "Más información",
   "researchUseOnly": "Solo para investigación en laboratorio — no para uso humano ni veterinario.",
+  "footer": {
+    "tagline": "Research Peptides ES suministra compuestos de péptidos de grado investigación a laboratorios europeos con pureza verificada por terceros y estándares de manipulación farmacéutica.",
+    "euShipping": "Envío en la UE",
+    "gdpr": "Cumple el RGPD"
+  },
+  "catalogTrust": {
+    "dispatch": "Envío en toda la UE · cumplimiento desde España",
+    "researchOnly": "Solo investigación ·",
+    "faqLink": "FAQ y cumplimiento"
+  },
+  "ticker": [
+    "STOCK BAJO: BPC-157 5mg — disponibilidad limitada en la UE",
+    "ENVÍO UE: unidades de investigación Semaglutide enviadas a Madrid, ES",
+    "PUREZA VERIFICADA: pruebas de terceros 99,8 %+ en todo el catálogo",
+    "TENDENCIA: demanda de investigación GLP-1 en instituciones europeas",
+    "REPOSICIÓN: TB-500 10mg liofilizado — almacén España"
+  ],
   "salesNotification": {
-    "purchased": "Someone in {{location}} purchased",
-    "justNow": "Just now",
-    "minutesAgo_one": "{{count}} minute ago",
-    "minutesAgo_other": "{{count}} minutes ago",
-    "dismiss": "Dismiss notification"
+    "purchased": "Alguien en {{location}} ha comprado",
+    "justNow": "Ahora mismo",
+    "minutesAgo_one": "Hace {{count}} minuto",
+    "minutesAgo_other": "Hace {{count}} minutos",
+    "dismiss": "Cerrar notificación"
   }
 }

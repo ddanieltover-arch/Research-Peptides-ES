@@ -21,8 +21,8 @@ function paymentMethodLabel(method: string | undefined) {
 }
 
 function renderBrandLayout(params: { title: string; preheader: string; bodyHtml: string }) {
-  const brandName = process.env.EMAIL_BRAND_NAME || 'Research Peptides EU';
-  const supportAddress = process.env.EMAIL_SUPPORT_ADDRESS || 'info@researchpeptide.eu';
+  const brandName = process.env.EMAIL_BRAND_NAME || 'Research Peptides ES';
+  const supportAddress = process.env.EMAIL_SUPPORT_ADDRESS || 'info@researchpeptide.es';
 
   return `<!doctype html>
 <html lang="en">
@@ -333,7 +333,7 @@ export function renderContactSubmittedAdminEmail(payload: ContactEmailPayload): 
 }
 
 export function renderContactSubmittedCustomerEmail(payload: ContactEmailPayload): EmailRenderResult {
-  const brandName = process.env.EMAIL_BRAND_NAME || 'Research Peptides EU';
+  const brandName = process.env.EMAIL_BRAND_NAME || 'Research Peptides ES';
 
   const bodyHtml = `
     <p style="margin:0 0 12px;font-size:14px;color:#334155;">Hi ${safeHtml(payload.fullName)},</p>
@@ -388,7 +388,7 @@ export function renderNewsletterSubscribeAdminEmail(
 export function renderNewsletterSubscribeCustomerEmail(
   payload: NewsletterSubscribePayload
 ): EmailRenderResult {
-  const brandName = process.env.EMAIL_BRAND_NAME || 'Research Peptides EU';
+  const brandName = process.env.EMAIL_BRAND_NAME || 'Research Peptides ES';
   const bodyHtml = `
     <p style="margin:0 0 12px;font-size:14px;color:#334155;">Hi Researcher,</p>
     <p style="margin:0 0 16px;font-size:14px;color:#334155;line-height:1.7;">

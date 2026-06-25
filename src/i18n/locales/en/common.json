@@ -1,5 +1,5 @@
 {
-  "brand": "Research Peptides EU",
+  "brand": "Research Peptides ES",
   "loading": "Loading…",
   "search": "Search",
   "cart": "Cart",
@@ -15,6 +15,23 @@
   "viewAll": "View all",
   "learnMore": "Learn more",
   "researchUseOnly": "For laboratory research only — not for human or veterinary use.",
+  "footer": {
+    "tagline": "Research Peptides ES delivers research-grade peptide compounds to European laboratories with third-party verified purity and pharmaceutical-level handling standards.",
+    "euShipping": "EU Shipping",
+    "gdpr": "GDPR Compliant"
+  },
+  "catalogTrust": {
+    "dispatch": "EU-wide dispatch · Spain fulfillment",
+    "researchOnly": "Research-only ·",
+    "faqLink": "FAQ & compliance"
+  },
+  "ticker": [
+    "LOW STOCK: BPC-157 5mg — limited EU batch availability",
+    "EU DISPATCH: Semaglutide research units shipped to Madrid, ES",
+    "PURITY VERIFIED: 99.8%+ third-party testing on all catalog lines",
+    "TRENDING: GLP-1 research demand across European institutions",
+    "RESTOCK: TB-500 10mg lyophilized — Spain warehouse"
+  ],
   "salesNotification": {
     "purchased": "Someone in {{location}} purchased",
     "justNow": "Just now",

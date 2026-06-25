@@ -123,13 +123,13 @@ export default function Shop() {
   };
 
   return (
-    <div className="min-h-screen bg-mist-50">
+    <div className="min-h-screen bg-gradient-parchment">
       <CatalogPageHeader
         eyebrow={t('header.eyebrow')}
         title={
           <>
             {t('header.title')}{' '}
-            <span className="text-brand-400">{t('header.titleHighlight')}</span>
+            <span className="text-accent-600 italic">{t('header.titleHighlight')}</span>
           </>
         }
         description={t('header.description')}
@@ -137,7 +137,7 @@ export default function Shop() {
       <CatalogTrustBar />
 
       <Container className="py-10 md:py-12">
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8 p-4 rounded-[1.25rem] bg-white/60 border border-brand-100/60">
           <p className="text-sm text-steel-600">
             {t('results', { count: filteredProducts.length, total: allProducts.length })}
           </p>

@@ -5,7 +5,7 @@ import {
 import { sendTransactionalEmail } from '../lib/resendSend.js';
 
 function getAdminRecipient() {
-  return process.env.EMAIL_ADMIN_TO || process.env.EMAIL_SUPPORT_ADDRESS || 'info@researchpeptide.eu';
+  return process.env.EMAIL_ADMIN_TO || process.env.EMAIL_SUPPORT_ADDRESS || 'info@researchpeptide.es';
 }
 
 export default async function handler(req: any, res: any) {

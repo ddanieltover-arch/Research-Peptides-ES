@@ -9,7 +9,7 @@ import { SeoProvider } from '../seo/SeoProvider';
 
 /**
  * Validates :locale from the URL, syncs i18n + context, or redirects legacy paths
- * (e.g. /shop → /en/shop when "shop" is not a locale code).
+ * (e.g. /shop → /es/shop when "shop" is not a locale code).
  */
 export function LocaleLayout() {
   return (
@@ -38,7 +38,7 @@ function LocaleLayoutInner() {
   if (!localeCode) {
     let target = DEFAULT_LOCALE;
     try {
-      const ls = localStorage.getItem('rp-eu-locale');
+      const ls = localStorage.getItem('rp-es-locale') ?? localStorage.getItem('rp-eu-locale');
       if (ls && isLocaleCode(ls)) target = ls;
     } catch {
       /* ignore */

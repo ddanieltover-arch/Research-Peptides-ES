@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'motion/react';
+import { useTranslation } from 'react-i18next';
 import { Calculator, Sigma } from 'lucide-react';
 
 function round(value: number) {
@@ -7,6 +8,7 @@ function round(value: number) {
 }
 
 export default function PeptideCalculator() {
+  const { t } = useTranslation('research');
   const [massMg, setMassMg] = React.useState(10);
   const [diluentMl, setDiluentMl] = React.useState(2);
   const [targetDoseMcg, setTargetDoseMcg] = React.useState(250);
@@ -20,11 +22,11 @@ export default function PeptideCalculator() {
         <motion.div initial={{ opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }} className="text-center mb-14">
           <div className="inline-flex items-center gap-2 px-4 py-2 bg-brand-50 text-brand-600 rounded-full text-xs font-black uppercase tracking-widest mb-6">
             <Calculator className="h-4 w-4" />
-            Lab Utility
+            {t('calculator.eyebrow')}
           </div>
-          <h1>Peptide Calculator</h1>
+          <h1>{t('calculator.title')}</h1>
           <p className="text-gray-500 mt-4 font-medium italic max-w-3xl mx-auto">
-            Quick reconstitution and dose-volume estimates for research planning. Validate all values against your SOP and batch documentation.
+            {t('calculator.subtitle')}
           </p>
         </motion.div>
 
@@ -32,7 +34,7 @@ export default function PeptideCalculator() {
           <section className="bg-gray-50 border border-gray-100 rounded-3xl p-8 space-y-6">
             <div>
               <label htmlFor="calc-mass" className="block text-[11px] font-black uppercase tracking-widest text-gray-500 mb-2">
-                Peptide Mass (mg)
+                {t('calculator.massLabel')}
               </label>
               <input
                 id="calc-mass"
@@ -46,7 +48,7 @@ export default function PeptideCalculator() {
             </div>
             <div>
               <label htmlFor="calc-diluent" className="block text-[11px] font-black uppercase tracking-widest text-gray-500 mb-2">
-                Diluent Volume (mL)
+                {t('calculator.diluentLabel')}
               </label>
               <input
                 id="calc-diluent"
@@ -60,7 +62,7 @@ export default function PeptideCalculator() {
             </div>
             <div>
               <label htmlFor="calc-dose" className="block text-[11px] font-black uppercase tracking-widest text-gray-500 mb-2">
-                Target Dose (mcg)
+                {t('calculator.doseLabel')}
               </label>
               <input
                 id="calc-dose"
@@ -77,19 +79,19 @@ export default function PeptideCalculator() {
           <section className="bg-slate-950 text-white rounded-3xl p-8">
             <h2 className="text-xl font-black mb-6 flex items-center gap-2">
               <Sigma className="h-5 w-5 text-brand-400" />
-              Results
+              {t('calculator.resultsTitle')}
             </h2>
             <div className="space-y-4 text-sm">
               <div className="bg-white/5 rounded-2xl p-4 border border-white/10">
-                <p className="text-gray-300 text-xs uppercase tracking-widest font-black mb-1">Concentration</p>
+                <p className="text-gray-300 text-xs uppercase tracking-widest font-black mb-1">{t('calculator.concentration')}</p>
                 <p className="text-2xl font-black text-brand-300">{round(concentrationMcgPerMl)} mcg/mL</p>
               </div>
               <div className="bg-white/5 rounded-2xl p-4 border border-white/10">
-                <p className="text-gray-300 text-xs uppercase tracking-widest font-black mb-1">Volume per target dose</p>
+                <p className="text-gray-300 text-xs uppercase tracking-widest font-black mb-1">{t('calculator.volumePerDose')}</p>
                 <p className="text-2xl font-black text-brand-300">{round(requiredVolumeMl)} mL</p>
               </div>
               <p className="text-gray-400 leading-relaxed">
-                For laboratory planning only. Confirm final concentration and dose volumes against method-specific requirements before experimental use.
+                {t('calculator.disclaimer')}
               </p>
             </div>
           </section>

@@ -1,0 +1,16 @@
+{
+  "eyebrow": "Verification Portal",
+  "title": "COA Library",
+  "subtitle": "Search batch-level Certificate of Analysis references for Research Peptides ES catalog lines.",
+  "searchPlaceholder": "Search by product, batch, or lab...",
+  "columns": {
+    "product": "Product",
+    "batch": "Batch",
+    "purity": "Purity",
+    "testDate": "Test Date",
+    "lab": "Lab"
+  },
+  "noResults": "No matching COA references found for your search.",
+  "footerNote": "This library is provided for research documentation visibility. If you need a full report pack for a specific batch, request it via",
+  "labPlaceholder": "Independent EU Lab"
+}

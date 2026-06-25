@@ -13,9 +13,10 @@ import {
 import { useToastStore } from '../store/useToastStore';
 import { postOrderStatusEmail } from '../lib/transactionalEmailApi';
 import { usePageSeo } from '../seo/SeoProvider';
+import { BRAND_NAME } from '../config/brand';
 
 export default function AdminDashboard() {
-  usePageSeo({ title: 'Admin | Research Peptides EU', noindex: true });
+  usePageSeo({ title: `Admin | ${BRAND_NAME}`, noindex: true });
   const { profile, user } = useAuthStore();
   const [products, setProducts] = useState<any[]>([]);
   const [orders, setOrders] = useState<any[]>([]);

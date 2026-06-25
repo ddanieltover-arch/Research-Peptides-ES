@@ -36,7 +36,7 @@ export default function Cart() {
       setPromoInput('');
       setPromoError('');
     } else {
-      setPromoError('Invalid promotion code');
+      setPromoError(t('cart.invalidPromo'));
     }
   };
 
@@ -52,7 +52,7 @@ export default function Cart() {
 
   if (items.length === 0) {
     return (
-      <div className="min-h-screen bg-mist-50">
+      <div className="min-h-screen bg-gradient-parchment">
         <CatalogPageHeader
           eyebrow={t('cart.title')}
           title={t('cart.title')}
@@ -73,16 +73,16 @@ export default function Cart() {
   }
 
   return (
-    <div className="min-h-screen bg-mist-50">
+    <div className="min-h-screen bg-gradient-parchment">
       <CatalogPageHeader
-        eyebrow="Your cart"
+        eyebrow={t('cartPage.eyebrow')}
         title={
           <>
-            {items.length} {items.length === 1 ? 'item' : 'items'} ready for{' '}
-            <span className="text-brand-400">checkout</span>
+            {t('cartPage.title', { count: items.length })}{' '}
+            <span className="text-accent-600 italic">{t('cartPage.titleHighlight')}</span>
           </>
         }
-        description="EU fulfillment from the Netherlands · VAT details at checkout"
+        description={t('cartPage.description')}
       />
 
       <Container className="py-10 md:py-12">

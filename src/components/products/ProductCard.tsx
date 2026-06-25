@@ -56,7 +56,10 @@ export function ProductCard({
     <Card
       variant="product"
       interactive
-      className={cn('relative h-full flex flex-col p-0 overflow-hidden group', className)}
+      className={cn(
+        'relative h-full flex flex-col p-0 overflow-hidden group border-t-2 border-t-transparent hover:border-t-accent-500/50',
+        className,
+      )}
     >
       <div className="absolute top-3 left-3 z-20 flex flex-col gap-1">
         {primaryBadge ? <ProductBadge type={primaryBadge} size="sm" /> : null}
@@ -84,7 +87,7 @@ export function ProductCard({
             className="h-full min-h-full rounded-2xl"
           />
         )}
-        <div className="absolute inset-0 bg-gradient-to-t from-navy-950/25 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+        <div className="absolute inset-0 bg-gradient-to-t from-brand-900/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
         <button
           type="button"
           onClick={onToggleWishlist}
@@ -106,7 +109,7 @@ export function ProductCard({
 
       <div className="flex flex-col flex-1 p-4 md:p-5">
         {categoryLabel ? (
-          <span className="text-[10px] font-semibold uppercase tracking-wider text-brand-600 mb-1.5">
+          <span className="text-[10px] font-semibold uppercase tracking-wider text-accent-600 mb-1.5">
             {categoryLabel}
           </span>
         ) : null}
@@ -129,12 +132,12 @@ export function ProductCard({
         ) : (
           <div className="flex-1 min-h-[0.5rem]" />
         )}
-        <div className="flex items-end justify-between gap-2 pt-3 mt-auto border-t border-brand-50">
+        <div className="flex items-end justify-between gap-2 pt-3 mt-auto border-t border-brand-100/60">
           <ProductCardPriceBlock product={product} />
           <button
             type="button"
             onClick={onAddToCart}
-            className="shrink-0 p-3 rounded-xl bg-navy-950 text-white hover:bg-brand-500 shadow-card transition-colors active:scale-95"
+            className="shrink-0 p-3 rounded-full bg-brand-600 text-white hover:bg-brand-700 shadow-card transition-all active:scale-95"
             aria-label={`Add ${product.title} to cart`}
           >
             <ShoppingCart className="h-4 w-4 md:h-5 md:w-5" />

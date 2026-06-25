@@ -1,11 +1,11 @@
 import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
+import { LocaleLink } from '../../i18n/LocaleLink';
 import { ArrowRight, Beaker, Dna, Layers, Pill, TestTube2 } from 'lucide-react';
 import { motion } from 'motion/react';
-import { supabase } from '../../supabase';
+import { supabase, isSupabaseConfigured } from '../../supabase';
 import { Container, Section } from '../../design-system';
 import { SectionHeading } from './SectionHeading';
-import { cn } from '../../lib/utils';
 
 type Category = {
   id: string;
@@ -17,10 +17,15 @@ type Category = {
 const iconPool = [Dna, Beaker, TestTube2, Layers, Pill];
 
 export function CategoryShowcaseSection() {
+  const { t } = useTranslation('home');
   const [categories, setCategories] = useState<Category[]>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    if (!isSupabaseConfigured) {
+      setLoading(false);
+      return;
+    }
     void (async () => {
       const { data } = await supabase.from('categories').select('id, name, slug, description').limit(8);
       if (data) setCategories(data);
@@ -30,57 +35,51 @@ export function CategoryShowcaseSection() {
 
   return (
     <Section size="lg" tone="dark" className="relative overflow-hidden">
-      <div className="absolute inset-0 bg-scientific-grid opacity-15 pointer-events-none" aria-hidden />
+      <div className="absolute inset-0 bg-scientific-grid opacity-20 pointer-events-none" aria-hidden />
+      <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-accent-500/50 to-transparent" aria-hidden />
       <Container className="relative z-10">
         <SectionHeading
-          eyebrow="Research categories"
-          title="Explore by application"
-          description="Navigate specialized compound families — from metabolic peptides to laboratory reagents."
+          eyebrow={t('categories.eyebrow')}
+          title={t('categories.title')}
+          description={t('featured.subtitle')}
           light
           className="mb-12"
         />
 
         {loading ? (
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            {[...Array(8)].map((_, i) => (
-              <div key={i} className="h-36 rounded-2xl bg-white/5 animate-pulse" />
+          <div className="flex gap-4 overflow-hidden">
+            {[...Array(4)].map((_, i) => (
+              <div key={i} className="h-44 w-56 shrink-0 rounded-2xl bg-white/5 animate-pulse" />
             ))}
           </div>
         ) : (
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+          <div className="flex gap-4 overflow-x-auto pb-4 snap-x snap-mandatory scrollbar-thin">
             {categories.map((cat, i) => {
               const Icon = iconPool[i % iconPool.length];
               return (
                 <motion.div
                   key={cat.id}
-                  initial={{ opacity: 0, scale: 0.96 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
+                  initial={{ opacity: 0, x: 24 }}
+                  whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: i * 0.05 }}
-                  whileHover={{ y: -6 }}
-                  className="h-full"
+                  className="snap-start shrink-0 w-56 md:w-64"
                 >
-                  <Link
-                    to={`/search?category=${cat.slug}`}
-                    className={cn(
-                      'group flex flex-col h-full min-h-[9rem] p-5 rounded-2xl',
-                      'bg-white/5 border border-white/10 backdrop-blur-sm',
-                      'hover:bg-brand-500/20 hover:border-brand-400/40 transition-all duration-300',
-                    )}
+                  <LocaleLink
+                    to={`/shop?category=${cat.slug}`}
+                    className="group block h-full rounded-2xl border border-white/10 bg-white/5 p-6 hover:border-accent-500/40 hover:bg-white/10 transition-all duration-300"
                   >
-                    <div className="w-10 h-10 rounded-xl bg-brand-500/30 flex items-center justify-center mb-4 group-hover:bg-brand-500 transition-colors">
-                      <Icon className="h-5 w-5 text-brand-200 group-hover:text-white" aria-hidden />
+                    <div className="w-10 h-10 rounded-xl bg-brand-500/30 flex items-center justify-center mb-4 group-hover:bg-accent-500/30 transition-colors">
+                      <Icon className="h-5 w-5 text-accent-400" aria-hidden />
                     </div>
-                    <h3 className="font-display font-semibold text-white text-sm md:text-base mb-1 group-hover:text-brand-200 transition-colors">
+                    <h3 className="font-display text-lg font-semibold text-white mb-2 group-hover:text-accent-400 transition-colors">
                       {cat.name}
                     </h3>
                     {cat.description ? (
-                      <p className="text-xs text-silver-400 line-clamp-2 flex-1">{cat.description}</p>
+                      <p className="text-xs text-silver-400 line-clamp-2 font-sans">{cat.description}</p>
                     ) : null}
-                    <span className="mt-3 inline-flex items-center gap-1 text-xs font-semibold text-brand-300 opacity-0 group-hover:opacity-100 transition-opacity">
-                      Browse <ArrowRight className="h-3 w-3" />
-                    </span>
-                  </Link>
+                    <ArrowRight className="h-4 w-4 text-accent-500 mt-4 opacity-0 group-hover:opacity-100 transition-opacity" />
+                  </LocaleLink>
                 </motion.div>
               );
             })}
@@ -88,13 +87,13 @@ export function CategoryShowcaseSection() {
         )}
 
         <div className="mt-10 text-center">
-          <Link
+          <LocaleLink
             to="/categories"
-            className="inline-flex items-center gap-2 text-sm font-semibold text-brand-300 hover:text-white transition-colors"
+            className="inline-flex items-center gap-2 text-sm font-bold uppercase tracking-widest text-accent-400 hover:text-accent-300 transition-colors font-sans"
           >
-            View all categories
+            {t('categories.viewAll')}
             <ArrowRight className="h-4 w-4" />
-          </Link>
+          </LocaleLink>
         </div>
       </Container>
     </Section>

@@ -1,18 +1,21 @@
 import { useState } from 'react';
-import { useNavigate, Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
+import { useLocaleNavigate } from '../i18n/useLocaleNavigate';
 import { supabase } from '../supabase';
 import { LogIn, Mail, Lock, Loader2 } from 'lucide-react';
 import { Button, Container, GlassPanel } from '../design-system';
 import logo from '../assets/brandLogo';
 
 export default function Login() {
+  const { t } = useTranslation('auth');
   const [isSignUp, setIsSignUp] = useState(false);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [success, setSuccess] = useState<string | null>(null);
-  const navigate = useNavigate();
+  const navigate = useLocaleNavigate();
 
   const handleAuth = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -25,7 +28,7 @@ export default function Login() {
         const { data, error: signUpError } = await supabase.auth.signUp({ email, password });
         if (signUpError) throw signUpError;
         if (data.user) {
-          setSuccess('Account created. Check your email to confirm your address.');
+          setSuccess(t('accountCreated'));
         }
       } else {
         const { data, error: loginError } = await supabase.auth.signInWithPassword({ email, password });
@@ -33,7 +36,8 @@ export default function Login() {
         if (data.user) navigate('/profile');
       }
     } catch (err: unknown) {
-      const message = err instanceof Error ? err.message : isSignUp ? 'Sign up failed' : 'Sign in failed';
+      const message =
+        err instanceof Error ? err.message : isSignUp ? t('signUpFailed') : t('signInFailed');
       setError(message);
     } finally {
       setLoading(false);
@@ -47,7 +51,7 @@ export default function Login() {
         options: { redirectTo: `${window.location.origin}/profile` },
       });
     } catch (err: unknown) {
-      setError(err instanceof Error ? err.message : 'Google sign-in failed');
+      setError(err instanceof Error ? err.message : t('googleFailed'));
     }
   };
 
@@ -61,12 +65,10 @@ export default function Login() {
           <div className="text-center mb-8">
             <img src={logo} alt="" className="h-12 w-auto mx-auto mb-6 drop-shadow-[0_4px_20px_rgba(45,181,163,0.4)]" width={52} height={52} />
             <h1 className="font-display font-bold text-2xl text-white mb-2">
-              {isSignUp ? 'Create researcher account' : 'Welcome back'}
+              {isSignUp ? t('signUpTitle') : t('signInTitle')}
             </h1>
             <p className="text-silver-400 text-sm">
-              {isSignUp
-                ? 'Join Research Peptides EU for order tracking and wishlists.'
-                : 'Sign in to manage orders and laboratory supplies.'}
+              {isSignUp ? t('signUpSubtitle') : t('signInSubtitle')}
             </p>
           </div>
 
@@ -84,7 +86,7 @@ export default function Login() {
           <form className="space-y-4" onSubmit={handleAuth}>
             <div>
               <label htmlFor="login-email" className="text-caption text-brand-300 block mb-2">
-                Email
+                {t('email')}
               </label>
               <div className="relative">
                 <Mail className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-silver-400" aria-hidden />
@@ -96,13 +98,13 @@ export default function Login() {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   className="w-full pl-10 pr-4 py-3 rounded-xl bg-white/10 border border-white/15 text-white placeholder:text-silver-400 focus:outline-none focus:ring-2 focus:ring-brand-400"
-                  placeholder="name@lab.eu"
+                  placeholder={t('emailPlaceholder')}
                 />
               </div>
             </div>
             <div>
               <label htmlFor="login-password" className="text-caption text-brand-300 block mb-2">
-                Password
+                {t('password')}
               </label>
               <div className="relative">
                 <Lock className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-silver-400" aria-hidden />
@@ -124,7 +126,7 @@ export default function Login() {
               ) : (
                 <>
                   <LogIn className="h-5 w-5" aria-hidden />
-                  {isSignUp ? 'Create account' : 'Sign in'}
+                  {isSignUp ? t('signUp') : t('signIn')}
                 </>
               )}
             </Button>
@@ -136,7 +138,7 @@ export default function Login() {
               onClick={() => setIsSignUp(!isSignUp)}
               className="text-sm font-semibold text-brand-300 hover:text-white transition-colors"
             >
-              {isSignUp ? 'Already have an account? Sign in' : "Don't have an account? Sign up"}
+              {isSignUp ? t('toggleToSignIn') : t('toggleToSignUp')}
             </button>
           </p>
 
@@ -145,7 +147,7 @@ export default function Login() {
               <div className="w-full border-t border-white/10" />
             </div>
             <div className="relative flex justify-center text-xs">
-              <span className="px-2 bg-transparent text-silver-400">Or continue with</span>
+              <span className="px-2 bg-transparent text-silver-400">{t('orContinue')}</span>
             </div>
           </div>
 
@@ -159,7 +161,7 @@ export default function Login() {
               src="https://www.svgrepo.com/show/355037/google.svg"
               alt=""
             />
-            Google
+            {t('google')}
           </button>
         </GlassPanel>
       </Container>

@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import { Minus, Plus, Trash2 } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 import { ProductImagePlaceholder } from '../products/ProductImagePlaceholder';
 import { formatCurrency } from '../../lib/utils';
 import { productPath } from '../../lib/productUrl';
@@ -22,16 +23,18 @@ type CartLineItemProps = {
 };
 
 export function CartLineItem({ item, compact = false, onUpdateQuantity, onRemove }: CartLineItemProps) {
+  const { t } = useTranslation('checkout');
+
   return (
     <div
       className={cn(
-        'flex gap-4 bg-white/90 backdrop-blur-sm border border-brand-100/80 rounded-2xl transition-shadow hover:shadow-elevated',
+        'flex gap-4 bento-card border-t-2 border-t-accent-500/30 transition-shadow hover:shadow-elevated',
         compact ? 'p-3' : 'p-4 md:p-5',
       )}
     >
       <div
         className={cn(
-          'shrink-0 rounded-xl overflow-hidden bg-mist-50 border border-brand-50',
+          'shrink-0 rounded-xl overflow-hidden bg-mist-50 border border-brand-100/80',
           compact ? 'w-16 h-16' : 'w-20 h-20 md:w-24 md:h-24',
         )}
       >
@@ -51,21 +54,21 @@ export function CartLineItem({ item, compact = false, onUpdateQuantity, onRemove
         <Link
           to={productPath({ title: item.title })}
           className={cn(
-            'font-display font-bold text-navy-950 hover:text-brand-600 transition-colors line-clamp-2',
+            'font-display font-semibold text-navy-950 hover:text-brand-600 transition-colors line-clamp-2',
             compact ? 'text-sm' : 'text-base',
           )}
         >
           {item.title}
         </Link>
         {item.specification ? (
-          <span className="inline-block mt-1 text-[10px] font-semibold uppercase tracking-wide text-steel-600 bg-mist-50 px-2 py-0.5 rounded-md w-fit">
+          <span className="inline-block mt-1 text-[10px] font-semibold uppercase tracking-wide text-steel-600 bg-mist-50 px-2 py-0.5 rounded-md w-fit border border-brand-50">
             {item.specification}
           </span>
         ) : null}
         <p className="text-brand-600 font-semibold text-sm mt-1 tabular-nums">{formatCurrency(item.price)}</p>
 
         <div className="flex items-center justify-between mt-auto pt-3 gap-2">
-          <div className="flex items-center border border-brand-100 rounded-xl overflow-hidden bg-mist-50">
+          <div className="flex items-center border border-brand-100 rounded-full overflow-hidden bg-white">
             <button
               type="button"
               onClick={() => onUpdateQuantity(Math.max(1, item.quantity - 1))}
@@ -93,13 +96,13 @@ export function CartLineItem({ item, compact = false, onUpdateQuantity, onRemove
             aria-label={`Remove ${item.title}`}
           >
             <Trash2 className="h-3.5 w-3.5" />
-            {!compact && 'Remove'}
+            {!compact && t('cart.remove', { defaultValue: 'Remove' })}
           </button>
         </div>
       </div>
 
       {!compact && (
-        <div className="hidden sm:block text-lg font-display font-bold text-navy-950 tabular-nums shrink-0">
+        <div className="hidden sm:block text-lg font-display font-semibold text-navy-950 tabular-nums shrink-0">
           {formatCurrency(item.price * item.quantity)}
         </div>
       )}

@@ -1,7 +1,7 @@
 import { isLocaleCode, type LocaleCode } from './locales';
 
-export const DEFAULT_LOCALE: LocaleCode = 'en';
-const LOCALE_COOKIE = 'rp-eu-locale';
+export const DEFAULT_LOCALE: LocaleCode = 'es';
+const LOCALE_COOKIE = 'rp-es-locale';
 
 export function getLocaleFromPath(pathname: string): LocaleCode | null {
   const segment = pathname.split('/').filter(Boolean)[0];

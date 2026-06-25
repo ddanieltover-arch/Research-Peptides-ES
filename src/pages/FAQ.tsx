@@ -55,9 +55,9 @@ export default function FAQ() {
     >
       {/* Answer Capsule for GEO Optimization */}
       <div className="bg-brand-50 border-l-4 border-brand-500 p-6 rounded-r-2xl mb-10 text-left shadow-sm">
-        <p className="text-navy-950 font-bold text-lg mb-2">Quick Answer: Shipping & Quality</p>
+        <p className="text-navy-950 font-bold text-lg mb-2">{t('faq.quickAnswerTitle')}</p>
         <p className="text-steel-700 font-medium leading-relaxed">
-          Research Peptides EU ships exclusively within Europe using temperature-controlled logistics to ensure peptide stability. All batches undergo rigorous third-party HPLC and MS testing, guaranteeing a minimum of 99% purity for your laboratory research.
+          {t('faq.quickAnswerBody')}
         </p>
       </div>
 

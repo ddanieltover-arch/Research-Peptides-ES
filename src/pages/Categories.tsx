@@ -35,7 +35,7 @@ export default function Categories() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-mist-50">
+    <div className="min-h-screen bg-gradient-parchment">
       <CatalogPageHeader
         eyebrow="Browse by application"
         title={
