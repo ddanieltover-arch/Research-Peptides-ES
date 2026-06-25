@@ -1,8 +1,8 @@
 import {
   renderContactSubmittedAdminEmail,
   renderContactSubmittedCustomerEmail
-} from '../lib/emailTemplates.js';
-import { sendTransactionalEmail } from '../lib/resendSend.js';
+} from '../../serverless/lib/emailTemplates.js';
+import { sendTransactionalEmail } from '../../serverless/lib/resendSend.js';
 
 function getAdminRecipient() {
   return process.env.EMAIL_ADMIN_TO || process.env.EMAIL_SUPPORT_ADDRESS || 'info@researchpeptides.es';

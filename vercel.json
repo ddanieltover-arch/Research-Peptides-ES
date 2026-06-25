@@ -1,7 +1,13 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "functions": {
-    "api/**/*.ts": {
+    "api/email/*.ts": {
+      "maxDuration": 30
+    },
+    "api/product-feed.ts": {
+      "maxDuration": 30
+    },
+    "api/payments/psilio/*.ts": {
       "maxDuration": 30
     }
   },
