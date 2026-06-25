@@ -4,6 +4,8 @@ import { supabase } from '../supabase';
 import { LocaleLink } from '../i18n/LocaleLink';
 import { BookOpen, Sparkles, ArrowRight, Clock, User } from 'lucide-react';
 import { motion } from 'motion/react';
+import { BlogPostCover } from '../components/blog/BlogPostCover';
+import { blogExcerpt } from '../lib/blogContent';
 
 export default function Blog() {
   const { t } = useTranslation('blog');
@@ -73,44 +75,41 @@ export default function Blog() {
                  initial={{ opacity: 0, y: 30 }}
                  animate={{ opacity: 1, y: 0 }}
                  transition={{ delay: idx * 0.1 }}
-                 className="group flex flex-col"
                >
-                 <LocaleLink to={`/blog/${post.id}`} className="block relative aspect-[16/10] rounded-[2.5rem] overflow-hidden bg-gray-100 mb-8 shadow-xl shadow-gray-200/20">
-                   {post.image_url ? (
-                     <img src={post.image_url} alt={post.title} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000" />
-                   ) : (
-                     <div className="w-full h-full flex items-center justify-center bg-brand-50 text-brand-200">
-                        <BookOpen className="h-12 w-12" />
+                 <LocaleLink
+                   to={`/blog/${post.id}`}
+                   className="group flex flex-col h-full rounded-[2.5rem] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-2"
+                 >
+                   <div className="relative aspect-[16/10] rounded-[2.5rem] overflow-hidden bg-gray-100 mb-8 shadow-xl shadow-gray-200/20">
+                     <BlogPostCover
+                       imageUrl={post.image_url}
+                       title={post.title}
+                       imgClassName="group-hover:scale-110 transition-transform duration-1000"
+                     />
+                     <div className="absolute top-6 left-6 flex gap-2 pointer-events-none">
+                        <span className="px-4 py-1.5 bg-white/90 backdrop-blur-md rounded-full text-[10px] font-black uppercase tracking-widest text-gray-900 shadow-sm">{t('tagResearch')}</span>
                      </div>
-                   )}
-                   <div className="absolute top-6 left-6 flex gap-2">
-                      <span className="px-4 py-1.5 bg-white/90 backdrop-blur-md rounded-full text-[10px] font-black uppercase tracking-widest text-gray-900 shadow-sm">{t('tagResearch')}</span>
+                   </div>
+
+                   <div className="px-2 flex-grow flex flex-col">
+                     <div className="flex items-center gap-6 text-[10px] font-black uppercase tracking-widest text-gray-400 mb-5">
+                       <span className="flex items-center gap-2"><Clock className="h-3 w-3" /> {t('readTime')}</span>
+                       <span className="flex items-center gap-2"><User className="h-3 w-3" /> {t('author')}</span>
+                     </div>
+                     
+                     <h2 className="text-2xl font-black text-gray-900 mb-4 line-clamp-2 leading-tight group-hover:text-brand-600 transition-colors">
+                       {post.title}
+                     </h2>
+                     
+                     <p className="text-gray-500 font-medium leading-relaxed mb-8 line-clamp-3 flex-grow">
+                       {blogExcerpt(post.content)}
+                     </p>
+                     
+                     <span className="mt-auto inline-flex items-center gap-2 text-[10px] font-black uppercase tracking-widest text-brand-600 group-hover:gap-4 transition-all">
+                       {t('exploreArticle')} <ArrowRight className="h-3 w-3" />
+                     </span>
                    </div>
                  </LocaleLink>
-
-                 <div className="px-2 flex-grow flex flex-col">
-                   <div className="flex items-center gap-6 text-[10px] font-black uppercase tracking-widest text-gray-400 mb-5">
-                     <span className="flex items-center gap-2"><Clock className="h-3 w-3" /> {t('readTime')}</span>
-                     <span className="flex items-center gap-2"><User className="h-3 w-3" /> {t('author')}</span>
-                   </div>
-                   
-                   <h2 className="text-2xl font-black text-gray-900 mb-4 line-clamp-2 leading-tight group-hover:text-brand-600 transition-colors">
-                     {post.title}
-                   </h2>
-                   
-                   <p className="text-gray-500 font-medium leading-relaxed mb-8 line-clamp-3">
-                     {post.content.substring(0, 150)}...
-                   </p>
-                   
-                   <div className="mt-auto">
-                     <LocaleLink 
-                       to={`/blog/${post.id}`} 
-                       className="inline-flex items-center gap-2 text-[10px] font-black uppercase tracking-widest text-brand-600 group-hover:gap-4 transition-all"
-                     >
-                       {t('exploreArticle')} <ArrowRight className="h-3 w-3" />
-                     </LocaleLink>
-                   </div>
-                 </div>
                </motion.article>
              ))}
            </div>

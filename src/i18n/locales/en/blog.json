@@ -17,5 +17,15 @@
   "notFoundTitle": "Research Entry Forbidden",
   "notFoundBody": "The requested publication could not be identified.",
   "returnToArchives": "Return to Archives",
-  "titleSuffix": "Blog"
+  "titleSuffix": "Blog",
+  "shareArticle": "Share article",
+  "linkCopied": "Link copied",
+  "sidebarNote": "Content reviewed by the Research Peptides ES editorial team. For scientific research purposes only.",
+  "resourcesEyebrow": "Lab resources",
+  "resourceShop": "Browse catalog",
+  "resourceCoa": "COA library",
+  "resourceCalculator": "Peptide calculator",
+  "disclaimer": "Compounds mentioned are for research only. Not for human consumption.",
+  "relatedPosts": "Related articles",
+  "viewAllPosts": "View all articles"
 }

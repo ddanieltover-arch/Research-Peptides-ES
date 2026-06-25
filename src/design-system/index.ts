@@ -1,6 +1,6 @@
 export * from './tokens';
 export * from './motion';
-export { Button, type ButtonProps, type ButtonVariant, type ButtonSize } from './components/Button';
+export { Button, buttonClassName, type ButtonProps, type ButtonVariant, type ButtonSize, type ButtonStyleOptions } from './components/Button';
 export { Badge, type BadgeProps, type BadgeVariant } from './components/Badge';
 export { Card, type CardProps, type CardVariant } from './components/Card';
 export { Input, type InputProps } from './components/Input';

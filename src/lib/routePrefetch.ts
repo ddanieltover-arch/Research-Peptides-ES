@@ -39,6 +39,13 @@ export function normalizeRoutePath(path: string): string {
 }
 
 export function prefetchRoute(path: string): void {
+  const withSlash = path.startsWith('/') ? path : `/${path}`;
+  const stripped = stripLocaleFromPath(withSlash.split('?')[0] ?? withSlash);
+
+  if (stripped.startsWith('/blog/') && stripped !== '/blog') {
+    void import('../pages/BlogPost');
+  }
+
   const key = normalizeRoutePath(path);
   if (prefetched.has(key)) return;
   const loader = routeLoaders[key];

@@ -17,5 +17,15 @@
   "notFoundTitle": "Entrada no disponible",
   "notFoundBody": "No se pudo identificar la publicación solicitada.",
   "returnToArchives": "Volver al archivo",
-  "titleSuffix": "Blog"
+  "titleSuffix": "Blog",
+  "shareArticle": "Compartir artículo",
+  "linkCopied": "Enlace copiado",
+  "sidebarNote": "Contenido revisado por el equipo editorial de Research Peptides ES. Solo para fines de investigación científica.",
+  "resourcesEyebrow": "Recursos del laboratorio",
+  "resourceShop": "Explorar catálogo",
+  "resourceCoa": "Biblioteca COA",
+  "resourceCalculator": "Calculadora de péptidos",
+  "disclaimer": "Los compuestos mencionados son exclusivamente para investigación. No aptos para consumo humano.",
+  "relatedPosts": "Artículos relacionados",
+  "viewAllPosts": "Ver todos los artículos"
 }

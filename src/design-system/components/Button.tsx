@@ -30,6 +30,32 @@ const sizeClasses: Record<ButtonSize, string> = {
   lg: 'h-12 px-8 text-base font-bold rounded-full tracking-wide',
 };
 
+const baseButtonClasses =
+  'inline-flex items-center justify-center gap-2 transition-all duration-200 font-sans focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-500 focus-visible:ring-offset-2 motion-safe:active:scale-[0.98]';
+
+export type ButtonStyleOptions = {
+  variant?: ButtonVariant;
+  size?: ButtonSize;
+  fullWidth?: boolean;
+  className?: string;
+};
+
+/** Shared button styles — use on `<Link>` / `<LocaleLink>` (never nest `<button>` inside `<a>`). */
+export function buttonClassName({
+  variant = 'primary',
+  size = 'md',
+  fullWidth,
+  className,
+}: ButtonStyleOptions = {}) {
+  return cn(
+    baseButtonClasses,
+    variantClasses[variant],
+    sizeClasses[size],
+    fullWidth && 'w-full',
+    className,
+  );
+}
+
 export const Button = forwardRef<HTMLButtonElement, ButtonProps>(function Button(
   { variant = 'primary', size = 'md', fullWidth, className, disabled, type = 'button', children, ...props },
   ref,
@@ -40,14 +66,8 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(function Button
       type={type}
       disabled={disabled}
       className={cn(
-        'inline-flex items-center justify-center gap-2 transition-all duration-200 font-sans',
-        'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-500 focus-visible:ring-offset-2',
+        buttonClassName({ variant, size, fullWidth, className }),
         'disabled:pointer-events-none disabled:opacity-50',
-        'motion-safe:active:scale-[0.98]',
-        variantClasses[variant],
-        sizeClasses[size],
-        fullWidth && 'w-full',
-        className,
       )}
       {...props}
     >
