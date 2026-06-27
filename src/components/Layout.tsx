@@ -169,7 +169,7 @@ function LayoutShell() {
 
       <main id="main-content" className="flex-grow pb-20 md:pb-0 relative" tabIndex={-1}>
         <Suspense fallback={<PageLoader />}>
-          <Outlet />
+          <Outlet key={location.pathname} />
         </Suspense>
       </main>
 

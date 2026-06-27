@@ -10,7 +10,7 @@ import {
   readStoredLocale,
   stripLocaleFromPath,
 } from './routing';
-import { toLocalizedPath } from './routeSlugs';
+import { toCanonicalPath, toLocalizedPath } from './routeSlugs';
 import { isLocaleCode, type LocaleCode } from './locales';
 import { LocaleHead } from './LocaleHead';
 import { SeoProvider } from '../seo/SeoProvider';
@@ -50,10 +50,8 @@ function LocaleLayoutInner() {
     }
   } else if (isLocaleCode(paramLocale)) {
     localeCode = paramLocale;
-  } else {
-    const suffix = location.pathname.slice((paramLocale?.length ?? 0) + 1) || '/';
-    const normalized = suffix.startsWith('/') ? suffix : `/${suffix}`;
-    redirectTo = `${pathWithLocale(DEFAULT_LOCALE, normalized)}${location.search}${location.hash}`;
+  } else if (paramLocale) {
+    redirectTo = `${pathWithLocale(DEFAULT_LOCALE, toCanonicalPath(location.pathname))}${location.search}${location.hash}`;
   }
 
   if (localeCode && !redirectTo) {

@@ -1,8 +1,14 @@
-import { isLocaleCode, type LocaleCode } from './locales';
+import { isLocaleCode, supportedLocales, type LocaleCode } from './locales';
 import { toCanonicalPath, toLocalizedPath } from './routeSlugs';
 
 export const DEFAULT_LOCALE: LocaleCode = 'es';
 const LOCALE_COOKIE = 'rp-es-locale';
+
+/** React Router param for non-default locale prefixes only (excludes Spanish root paths). */
+export const NON_DEFAULT_LOCALE_ROUTE_PARAM = supportedLocales
+  .filter((l) => l.code !== DEFAULT_LOCALE)
+  .map((l) => l.code)
+  .join('|');
 
 export function getLocaleFromPath(pathname: string): LocaleCode | null {
   const segment = pathname.split('/').filter(Boolean)[0];

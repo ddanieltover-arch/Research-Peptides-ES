@@ -9,11 +9,15 @@ import { fileURLToPath } from 'url';
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const root = path.join(__dirname, '..');
 const srcPng = path.join(root, 'src/assets/logo.png');
+const footerSrcPng = path.join(root, 'src/assets/footer-logo.png');
+const faviconSrc = path.join(root, 'src/assets/favicon-source.png');
 const outWebp = path.join(root, 'src/assets/logo.webp');
+const footerWebp = path.join(root, 'src/assets/footer-logo.webp');
 const brandLogoPng = path.join(root, 'public/brand_logo.png');
 const brandLogoWebp = path.join(root, 'public/brand_logo.webp');
 const faviconPng = path.join(root, 'public/favicon.png');
 const faviconWebp = path.join(root, 'public/favicon.webp');
+const appleTouchIcon = path.join(root, 'public/apple-touch-icon.png');
 
 /** Make near-black JPEG background transparent for light/dark headers. */
 async function withTransparentBlack(image, sharpFactory, threshold = 42) {
@@ -64,15 +68,30 @@ async function main() {
     .toFile(brandLogoWebp);
   console.log(`Wrote ${brandLogoWebp}`);
 
-  await base
-    .clone()
-    .extract({ left: 0, top: 0, width: 298, height: 298 })
-    .resize(192, 192, { fit: 'cover', position: 'left' })
-    .png()
-    .toFile(faviconPng);
+  if (!fs.existsSync(footerSrcPng)) {
+    console.error('Missing src/assets/footer-logo.png');
+    process.exit(1);
+  }
 
-  await sharp(faviconPng).resize(192, 192).webp({ quality: 90 }).toFile(faviconWebp);
-  console.log(`Wrote ${faviconPng} and ${faviconWebp}`);
+  const footerBase = await withTransparentBlack(sharp(footerSrcPng), sharp);
+  await footerBase
+    .clone()
+    .resize(520, 152, { fit: 'inside', withoutEnlargement: true })
+    .webp({ quality: 90, effort: 6, alphaQuality: 100 })
+    .toFile(footerWebp);
+  console.log(`Wrote ${footerWebp} (${(fs.statSync(footerWebp).size / 1024).toFixed(1)} KB)`);
+
+  if (!fs.existsSync(faviconSrc)) {
+    console.error('Missing src/assets/favicon-source.png');
+    process.exit(1);
+  }
+
+  const faviconBase = sharp(faviconSrc).resize(512, 512, { fit: 'cover' });
+
+  await faviconBase.clone().resize(32, 32).png().toFile(faviconPng);
+  await sharp(faviconPng).resize(32, 32).webp({ quality: 92 }).toFile(faviconWebp);
+  await faviconBase.clone().resize(180, 180).png().toFile(appleTouchIcon);
+  console.log(`Wrote ${faviconPng}, ${faviconWebp}, and ${appleTouchIcon}`);
 }
 
 main().catch((err) => {

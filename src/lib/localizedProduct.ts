@@ -13,6 +13,27 @@ const GENERIC_DESCRIPTION_PATTERNS = [
   /^scraped from local dump/i,
 ];
 
+/** Obvious English catalog phrases — fallback on `es` locale only. */
+const ENGLISH_CATALOG_PHRASES = [
+  /\bresearch use only\b/i,
+  /\bsupplied as\b/i,
+  /\bsuitable for\b/i,
+  /\bdesigned for\b/i,
+  /\bbuilt for\b/i,
+  /\bfor laboratory\b/i,
+  /\bresearch peptide\b/i,
+  /\bresearch analog\b/i,
+  /\bresearch ligand\b/i,
+  /\breference standard\b/i,
+  /\bpremium research peptide\b/i,
+];
+
+function looksLikeEnglishCatalogCopy(text: string): boolean {
+  const trimmed = text.trim();
+  if (!trimmed || /[áéíóúñ¿¡]/i.test(trimmed)) return false;
+  return ENGLISH_CATALOG_PHRASES.some((pattern) => pattern.test(trimmed));
+}
+
 export function isGenericCatalogDescription(text: string): boolean {
   const trimmed = text.trim();
   if (!trimmed) return true;
@@ -36,6 +57,10 @@ export function localizedProductDescription(product: ProductRow, locale: LocaleC
 
   const raw = String(product.description ?? '').trim();
   if (!raw || isGenericCatalogDescription(raw)) {
+    return defaultDescriptionForLocale(locale);
+  }
+
+  if (locale === 'es' && looksLikeEnglishCatalogCopy(raw)) {
     return defaultDescriptionForLocale(locale);
   }
 

@@ -1,7 +1,7 @@
 import { useTranslation } from 'react-i18next';
 import { LocaleLink } from '../../i18n/LocaleLink';
 import { MapPin, ShieldCheck, Truck } from 'lucide-react';
-import logo from '../../assets/brandLogo';
+import footerLogo from '../../assets/footerLogo';
 import { Container, ScientificBackdrop } from '../../design-system';
 import { footerInventory, footerLegal, footerSupport } from '../../navigation/config';
 import { BRAND_NAME, HQ_LOCATION, SUPPORT_EMAIL } from '../../config/brand';
@@ -35,10 +35,10 @@ export default function SiteFooter({
           <div className="md:col-span-4">
             <LocaleLink to="/" className="inline-flex items-center gap-3 mb-6 rounded-lg">
               <img
-                src={logo}
+                src={footerLogo}
                 alt={BRAND_NAME}
-                className="h-11 sm:h-12 w-auto max-w-[220px]"
-                width={164}
+                className="h-11 sm:h-12 w-auto max-w-[240px]"
+                width={180}
                 height={48}
               />
             </LocaleLink>
