@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { LocaleLayout } from './i18n/LocaleLayout';
-import { AppPageRoutes } from './routes/appPageRoutes';
+import { createAppPageRoutes } from './routes/appPageRoutes';
 import ScrollToTop from './components/ScrollToTop';
 import { useAuthStore } from './store/useAuthStore';
 import { useWishlistStore } from './store/useWishlistStore';
@@ -63,10 +63,10 @@ function AppRoutes() {
   return (
     <Routes>
       <Route path="/" element={<LocaleLayout />}>
-        <AppPageRoutes />
+        {createAppPageRoutes()}
       </Route>
       <Route path="/:locale" element={<LocaleLayout />}>
-        <AppPageRoutes />
+        {createAppPageRoutes()}
       </Route>
     </Routes>
   );

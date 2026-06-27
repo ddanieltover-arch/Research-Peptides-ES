@@ -30,7 +30,7 @@ const PeptideInformation = lazy(() => import('../pages/PeptideInformation'));
 const PeptideResearch = lazy(() => import('../pages/PeptideResearch'));
 
 /** Shared page routes for unprefixed Spanish (/) and prefixed locales (/:locale). */
-export function AppPageRoutes() {
+export function createAppPageRoutes() {
   return (
     <Route element={<Layout />}>
       <Route index element={<Home />} />
