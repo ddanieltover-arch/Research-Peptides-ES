@@ -1,0 +1,117 @@
+{
+  "guide": {
+    "eyebrow": "Recurso de investigación",
+    "title": "Vodnik po peptidih",
+    "subtitle": "Referencia práctica para investigadores que trabajan con péptidos en entornos de laboratorio controlados. Todos los materiales son solo para flujos de investigación.",
+    "quickTitle": "Respuesta rápida: ¿Qué son los péptidos de investigación?",
+    "quickBody": "Los péptidos de investigación son cadenas cortas de aminoácidos sintetizadas utilizadas exclusivamente para estudios in vitro en laboratorio. Para mantener la estabilidad estructural requieren liofilización, almacenamiento en cadena de frío y reconstitución cuidadosa con agua bacteriostática antes de la aplicación experimental.",
+    "topics": [
+      {
+        "title": "Fundamentos de péptidos",
+        "summary": "Introducción práctica a cadenas de aminoácidos, notación de secuencias y por qué los péptidos son centrales en flujos de laboratorio controlados."
+      },
+      {
+        "title": "Síntesis y purificación",
+        "summary": "Visión general de SPPS, estrategias de purificación y puntos de control analítico para lotes de investigación consistentes."
+      },
+      {
+        "title": "Almacenamiento y reconstitución",
+        "summary": "Protocolos recomendados para compuestos liofilizados y soluciones reconstituidas, incluidos controles de contaminación."
+      },
+      {
+        "title": "Verificación de calidad",
+        "summary": "Cómo leer documentación HPLC/LC-MS, evaluar la idoneidad del lote y mantener la repetibilidad entre experimentos."
+      }
+    ],
+    "ctaCalculator": "Usar calculadora de péptidos",
+    "ctaCoa": "Raziščite knjižnico COA",
+    "cards": {
+      "scopeTitle": "Ámbito de aplicación",
+      "scopeBody": "Solo flujos de laboratorio in vitro y analíticos.",
+      "complianceTitle": "Cumplimiento primero",
+      "complianceBody": "Los investigadores son responsables del cumplimiento regulatorio local y la manipulación aprobada.",
+      "calcTitle": "¿Necesita ayuda con cálculos?",
+      "calcLink": "Abrir calculadora de péptidos"
+    }
+  },
+  "information": {
+    "eyebrow": "Recursos educativos",
+    "title": "Informacije o peptidih",
+    "subtitle": "Recursos de aprendizaje estructurados sobre química de péptidos, síntesis, purificación e interpretación analítica en entornos de investigación.",
+    "articles": [
+      {
+        "title": "Introducción a los péptidos",
+        "readTime": "8 min",
+        "summary": "Terminología básica, fundamentos estructurales y conceptos clave de laboratorio para manipular compuestos peptídicos."
+      },
+      {
+        "title": "Visión general de la síntesis",
+        "readTime": "10 min",
+        "summary": "Explicación de flujos en fase sólida, pasos de cleavage y puntos de control prácticos de síntesis."
+      },
+      {
+        "title": "Solubilidad de péptidos",
+        "readTime": "7 min",
+        "summary": "Factores que afectan la disolución y orientación práctica sobre selección de disolventes para investigación."
+      },
+      {
+        "title": "Vías de purificación",
+        "readTime": "12 min",
+        "summary": "Cómo las técnicas cromatográficas mejoran la pureza y la consistencia entre lotes."
+      }
+    ],
+    "cards": {
+      "scopeTitle": "Ámbito de uso en investigación",
+      "scopeBody": "El contenido está destinado únicamente a formación de laboratorio y operaciones de investigación.",
+      "methodTitle": "Alineación metodológica",
+      "methodBody": "Alinee siempre cálculos y pasos de manipulación con su SOP interno y requisitos de cumplimiento.",
+      "supportTitle": "¿Necesita soporte?",
+      "supportBody": "Contacto:"
+    }
+  },
+  "calculator": {
+    "eyebrow": "Utilidad de laboratorio",
+    "title": "Kalkulator peptidov",
+    "subtitle": "Estimaciones rápidas de reconstitución y volumen de dosis para planificación de investigación. Valide todos los valores con su SOP y documentación del lote.",
+    "massLabel": "Masa del péptido (mg)",
+    "diluentLabel": "Volumen de diluyente (ml)",
+    "doseLabel": "Dosis objetivo (mcg)",
+    "concentration": "Concentración",
+    "volume": "Volumen requerido",
+    "resultsTitle": "Resultados",
+    "volumePerDose": "Volumen por dosis objetivo",
+    "disclaimer": "Solo para planificación de investigación. No sustituye protocolos validados de laboratorio."
+  },
+  "hub": {
+    "eyebrow": "Centro de investigación",
+    "title": "Raziskovanje peptidov",
+    "subtitle": "Notas de aplicación, marcos de referencia y resúmenes orientados a la investigación para equipos de laboratorio europeos.",
+    "disclaimer": "Solo para investigación en laboratorio. No apto para consumo humano ni veterinario.",
+    "cards": [
+      {
+        "category": "Peso y metabolismo",
+        "readTime": "7 min",
+        "title": "Péptidos vía GLP-1 en investigación metabólica",
+        "summary": "Visión orientada a revisión de vías receptoras, señalización de saciedad y diseño de protocolos."
+      },
+      {
+        "category": "Regenerativo",
+        "readTime": "6 min",
+        "title": "Notas mecanísticas BPC-157 y TB-500",
+        "summary": "Resumen de discusiones preclínicas sobre señalización tisular y diseño de modelos experimentales."
+      },
+      {
+        "category": "Mitocondrial",
+        "readTime": "8 min",
+        "title": "Péptidos dirigidos a mitocondrias",
+        "summary": "Marco de investigación para estudios de péptidos mitocondriales y mediciones de endpoints habituales."
+      },
+      {
+        "category": "Señalización anabólica",
+        "readTime": "5 min",
+        "title": "Eje IGF en contexto experimental",
+        "summary": "Notas de interpretación sobre marco de dosis, controles de ensayo y reproducibilidad."
+      }
+    ]
+  }
+}

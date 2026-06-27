@@ -18,7 +18,18 @@
   "footer": {
     "tagline": "Research Peptides ES suministra compuestos de péptidos de grado investigación a laboratorios europeos con pureza verificada por terceros y estándares de manipulación farmacéutica.",
     "euShipping": "Envío en la UE",
-    "gdpr": "Cumple el RGPD"
+    "gdpr": "Cumple el RGPD",
+    "newsletterTitle": "Boletín de investigación",
+    "newsletterDescription": "Actualizaciones prioritarias sobre disponibilidad en la UE, COA por lote y nuevos compuestos del catálogo.",
+    "newsletterEmailLabel": "Correo para el boletín de investigación",
+    "newsletterPlaceholder": "Correo del laboratorio",
+    "newsletterSubscribe": "Suscribirse",
+    "newsletterSubscribing": "Suscribiendo…",
+    "newsletterEmptyError": "Introduzca un correo electrónico para suscribirse.",
+    "newsletterSuccess": "Suscripción confirmada. Revise su bandeja de entrada.",
+    "newsletterFail": "No se pudo suscribir ahora. Inténtelo de nuevo.",
+    "copyright": "Operaciones de investigación europeas.",
+    "disclaimer": "Todos los productos son solo para investigación en laboratorio. No para uso humano ni veterinario. Facturación con IVA disponible para instituciones cualificadas de la UE."
   },
   "catalogTrust": {
     "dispatch": "Envío en toda la UE · cumplimiento desde España",

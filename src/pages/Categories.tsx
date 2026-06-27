@@ -1,11 +1,12 @@
 import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { ArrowRight, Beaker, Dna, Layers, Pill, TestTube2 } from 'lucide-react';
 import { motion } from 'motion/react';
 import { supabase } from '../supabase';
 import { Container, Section, PageShell } from '../design-system';
 import { CatalogPageHeader } from '../components/catalog/CatalogPageHeader';
 import { CatalogTrustBar } from '../components/catalog/CatalogTrustBar';
+import { LocaleLink } from '../i18n/LocaleLink';
 import { cn } from '../lib/utils';
 
 type Category = {
@@ -18,6 +19,7 @@ type Category = {
 const icons = [Dna, Beaker, TestTube2, Layers, Pill];
 
 export default function Categories() {
+  const { t } = useTranslation('categories');
   const [categories, setCategories] = useState<Category[]>([]);
   const [loading, setLoading] = useState(true);
 
@@ -37,13 +39,14 @@ export default function Categories() {
   return (
     <PageShell tone="parchment">
       <CatalogPageHeader
-        eyebrow="Browse by application"
+        eyebrow={t('header.eyebrow')}
         title={
           <>
-            Product <span className="text-brand-400">categories</span>
+            {t('header.title')}{' '}
+            <span className="text-brand-400">{t('header.titleHighlight')}</span>
           </>
         }
-        description="Explore specialized research lines — each category links to filtered catalog results."
+        description={t('header.description')}
       />
       <CatalogTrustBar />
 
@@ -57,10 +60,10 @@ export default function Categories() {
             </div>
           ) : categories.length === 0 ? (
             <div className="text-center py-16 rounded-3xl bg-white border border-brand-100 shadow-card">
-              <p className="text-steel-600">No categories found.</p>
-              <Link to="/shop" className="inline-block mt-4 text-brand-600 font-semibold text-sm">
-                Browse full shop →
-              </Link>
+              <p className="text-steel-600">{t('empty')}</p>
+              <LocaleLink to="/shop" className="inline-block mt-4 text-brand-600 font-semibold text-sm">
+                {t('browseShop')} →
+              </LocaleLink>
             </div>
           ) : (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -74,7 +77,7 @@ export default function Categories() {
                     viewport={{ once: true }}
                     transition={{ delay: i * 0.05 }}
                   >
-                    <Link
+                    <LocaleLink
                       to={`/search?category=${category.slug}`}
                       className={cn(
                         'group flex flex-col h-full p-8 rounded-3xl bg-white border border-brand-100',
@@ -91,13 +94,13 @@ export default function Categories() {
                       {category.description ? (
                         <p className="text-sm text-steel-600 leading-relaxed flex-1">{category.description}</p>
                       ) : (
-                        <p className="text-sm text-silver-400 flex-1">View compounds in this research line.</p>
+                        <p className="text-sm text-silver-400 flex-1">{t('fallbackDescription')}</p>
                       )}
                       <span className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-brand-600">
-                        View products
+                        {t('viewProducts')}
                         <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
                       </span>
-                    </Link>
+                    </LocaleLink>
                   </motion.div>
                 );
               })}

@@ -1,5 +1,5 @@
 {
-  "brand": "Research Peptides EU",
+  "brand": "Research Peptides ES",
   "loading": "Nalaganje…",
   "search": "Iskanje",
   "cart": "Košarica",
@@ -15,11 +15,39 @@
   "viewAll": "Prikaži vse",
   "learnMore": "Več informacij",
   "researchUseOnly": "Samo za laboratorijsko raziskovanje — ne za človeško ali veterinarsko uporabo.",
+  "footer": {
+    "tagline": "Research Peptides ES suministra compuestos de péptidos de grado investigación a laboratorios europeos con pureza verificada por terceros y estándares de manipulación farmacéutica.",
+    "euShipping": "Dostava EU",
+    "gdpr": "Cumple el RGPD",
+    "newsletterTitle": "Boletín de investigación",
+    "newsletterDescription": "Actualizaciones prioritarias sobre disponibilidad en la UE, COA por lote y nuevos compuestos del catálogo.",
+    "newsletterEmailLabel": "Correo para el boletín de investigación",
+    "newsletterPlaceholder": "Correo del laboratorio",
+    "newsletterSubscribe": "Suscribirse",
+    "newsletterSubscribing": "Suscribiendo…",
+    "newsletterEmptyError": "Introduzca un correo electrónico para suscribirse.",
+    "newsletterSuccess": "Suscripción confirmada. Revise su bandeja de entrada.",
+    "newsletterFail": "No se pudo suscribir ahora. Inténtelo de nuevo.",
+    "copyright": "Operaciones de investigación europeas.",
+    "disclaimer": "Todos los productos son solo para investigación en laboratorio. No para uso humano ni veterinario. Facturación con IVA disponible para instituciones cualificadas de la UE."
+  },
+  "catalogTrust": {
+    "dispatch": "Envío en toda la UE · cumplimiento desde España",
+    "researchOnly": "Solo investigación ·",
+    "faqLink": "FAQ y cumplimiento"
+  },
+  "ticker": [
+    "STOCK BAJO: BPC-157 5mg — disponibilidad limitada en la UE",
+    "ENVÍO UE: unidades de investigación Semaglutide enviadas a Madrid, ES",
+    "PUREZA VERIFICADA: pruebas de terceros 99,8 %+ en todo el catálogo",
+    "TENDENCIA: demanda de investigación GLP-1 en instituciones europeas",
+    "REPOSICIÓN: TB-500 10mg liofilizado — almacén España"
+  ],
   "salesNotification": {
-    "purchased": "Someone in {{location}} purchased",
-    "justNow": "Just now",
-    "minutesAgo_one": "{{count}} minute ago",
-    "minutesAgo_other": "{{count}} minutes ago",
-    "dismiss": "Dismiss notification"
+    "purchased": "Alguien en {{location}} ha comprado",
+    "justNow": "Ahora mismo",
+    "minutesAgo_one": "Hace {{count}} minuto",
+    "minutesAgo_other": "Hace {{count}} minutos",
+    "dismiss": "Cerrar notificación"
   }
 }

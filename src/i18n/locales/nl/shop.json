@@ -1,29 +1,39 @@
 {
   "header": {
-    "eyebrow": "Onderzoekscatalogus",
-    "title": "Shop",
-    "titleHighlight": "peptiden",
-    "description": "Blader door geverifieerde onderzoeksverbindingen met EU-levering, batchdocumentatie en transparante specificaties."
+    "eyebrow": "Catálogo de investigación",
+    "title": "Tienda",
+    "titleHighlight": "péptidos",
+    "description": "Explore compuestos de investigación verificados con cumplimiento en la UE, documentación por lote y especificaciones transparentes."
   },
-  "results": "{{count}} van {{total}} producten",
+  "results": "Mostrando {{from}}–{{to}} de {{total}} productos",
+  "resultsInCategory": "Mostrando {{from}}–{{to}} de {{total}} productos en {{category}}",
+  "resultsMatching": "Mostrando {{from}}–{{to}} de {{total}} productos que coinciden con «{{term}}»",
+  "pagination": {
+    "label": "Paginación del catálogo",
+    "previous": "Anterior",
+    "next": "Siguiente"
+  },
   "filters": {
-    "categories": "Categorieën",
-    "maxPrice": "Max. prijs",
-    "clearAll": "Alle filters wissen",
-    "filters": "Filters",
-    "close": "Filters sluiten"
+    "categories": "Categorías",
+    "maxPrice": "Precio máximo",
+    "clearAll": "Borrar todos los filtros",
+    "clearShort": "Borrar filtros",
+    "filters": "Filtros",
+    "close": "Cerrar filtros",
+    "refine": "Refinar resultados",
+    "showResults": "Mostrar resultados"
   },
   "sort": {
-    "label": "Producten sorteren",
-    "relevance": "Relevantie",
-    "featured": "Uitgelicht",
-    "ratingDesc": "Best beoordeeld",
-    "newest": "Nieuwste",
-    "priceAsc": "Prijs: laag naar hoog",
-    "priceDesc": "Prijs: hoog naar laag"
+    "label": "Ordenar productos",
+    "relevance": "Relevancia",
+    "featured": "Destacados",
+    "ratingDesc": "Mejor valorados",
+    "newest": "Más recientes",
+    "priceAsc": "Precio: de menor a mayor",
+    "priceDesc": "Precio: de mayor a menor"
   },
   "empty": {
-    "title": "Geen producten voldoen aan uw filters",
-    "description": "Verbreed het prijsbereik of wis categorieën."
+    "title": "Ningún producto coincide con sus filtros",
+    "description": "Pruebe a ampliar el rango de precios o borrar las categorías seleccionadas."
   }
 }

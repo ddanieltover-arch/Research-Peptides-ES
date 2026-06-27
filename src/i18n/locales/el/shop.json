@@ -5,7 +5,14 @@
     "titleHighlight": "πεπτίδια",
     "description": "Περιηγηθείτε σε επαληθευμένες ενώσεις έρευνας με εκπλήρωση στην ΕΕ, τεκμηρίωση παρτίδας και διαφανείς προδιαγραφές."
   },
-  "results": "Εμφάνιση {{count}} από {{total}} προϊόντα",
+  "results": "Mostrando {{from}}–{{to}} de {{total}} productos",
+  "resultsInCategory": "Mostrando {{from}}–{{to}} de {{total}} productos en {{category}}",
+  "resultsMatching": "Mostrando {{from}}–{{to}} de {{total}} productos que coinciden con «{{term}}»",
+  "pagination": {
+    "label": "Paginación del catálogo",
+    "previous": "Anterior",
+    "next": "Siguiente"
+  },
   "filters": {
     "categories": "Κατηγορίες",
     "maxPrice": "Μέγ. τιμή",

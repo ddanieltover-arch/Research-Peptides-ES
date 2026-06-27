@@ -1,26 +1,34 @@
 {
   "header": {
-    "eyebrow": "Veilig afrekenen",
-    "title": "Bestelling afronden",
-    "description": "EU-verzending · BTW-klaar · afhandeling vanuit Nederland"
+    "eyebrow": "Pago seguro",
+    "title": "Complete su pedido",
+    "description": "Envío UE · facturación con IVA · cumplimiento desde España"
   },
   "steps": {
-    "shipping": "Verzending",
-    "payment": "Betaling",
-    "confirm": "Bevestigen"
+    "shipping": "Envío",
+    "payment": "Pago",
+    "confirm": "Confirmar"
   },
   "cart": {
-    "title": "Uw winkelwagen",
-    "empty": "Uw winkelwagen is leeg",
-    "emptyCta": "Catalogus bekijken",
-    "summary": "Besteloverzicht",
-    "promo": "Promotiecode",
-    "subtotal": "Subtotaal",
-    "discount": "Korting",
-    "shipping": "Verzending",
-    "shippingAtCheckout": "Bij afrekenen",
-    "total": "Totaal",
-    "proceed": "Naar afrekenen",
-    "vatNote": "Prijzen in EUR. BTW wordt waar van toepassing berekend op basis van uw EU-verzendland."
+    "title": "Su carrito",
+    "empty": "Su carrito está vacío",
+    "emptyCta": "Explorar catálogo",
+    "summary": "Resumen del pedido",
+    "promo": "Código promocional",
+    "subtotal": "Subtotal",
+    "discount": "Descuento",
+    "shipping": "Envío",
+    "shippingAtCheckout": "En el pago",
+    "total": "Total",
+    "proceed": "Ir al pago",
+    "vatNote": "Precios en EUR. IVA aplicado cuando corresponda en el pago según su país de envío en la UE.",
+    "invalidPromo": "Código promocional no válido"
+  },
+  "cartPage": {
+    "eyebrow": "Su carrito",
+    "title_one": "{{count}} artículo listo para el",
+    "title_other": "{{count}} artículos listos para el",
+    "titleHighlight": "pago",
+    "description": "Cumplimiento en la UE desde España · detalles de IVA en el pago"
   }
 }

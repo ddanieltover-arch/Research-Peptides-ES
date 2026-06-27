@@ -5,7 +5,14 @@
     "titleHighlight": "пептиди",
     "description": "Разгледайте проверени изследователски съединения с изпълнение в ЕС, документация по партида и прозрачни спецификации."
   },
-  "results": "Показване на {{count}} от {{total}} продукта",
+  "results": "Mostrando {{from}}–{{to}} de {{total}} productos",
+  "resultsInCategory": "Mostrando {{from}}–{{to}} de {{total}} productos en {{category}}",
+  "resultsMatching": "Mostrando {{from}}–{{to}} de {{total}} productos que coinciden con «{{term}}»",
+  "pagination": {
+    "label": "Paginación del catálogo",
+    "previous": "Anterior",
+    "next": "Siguiente"
+  },
   "filters": {
     "categories": "Категории",
     "maxPrice": "Макс. цена",

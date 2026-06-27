@@ -4,7 +4,7 @@ import { prefetchRoute } from '../lib/routePrefetch';
 
 type LocaleLinkProps = Omit<LinkProps, 'to'> & { to: string };
 
-export function LocaleLink({ to, onMouseEnter, onFocus, ...props }: LocaleLinkProps) {
+export function LocaleLink({ to, onMouseEnter, onFocus, onPointerDown, ...props }: LocaleLinkProps) {
   const localized = useLocalizedPath(to);
 
   return (
@@ -18,6 +18,10 @@ export function LocaleLink({ to, onMouseEnter, onFocus, ...props }: LocaleLinkPr
         prefetchRoute(to);
         onFocus?.(e);
       }}
+      onPointerDown={(e) => {
+        if (e.button === 0) prefetchRoute(to);
+        onPointerDown?.(e);
+      }}
       {...props}
     />
   );
@@ -25,7 +29,7 @@ export function LocaleLink({ to, onMouseEnter, onFocus, ...props }: LocaleLinkPr
 
 type LocaleNavLinkProps = Omit<NavLinkProps, 'to'> & { to: string };
 
-export function LocaleNavLink({ to, onMouseEnter, onFocus, ...props }: LocaleNavLinkProps) {
+export function LocaleNavLink({ to, onMouseEnter, onFocus, onPointerDown, ...props }: LocaleNavLinkProps) {
   const localized = useLocalizedPath(to);
 
   return (
@@ -38,6 +42,10 @@ export function LocaleNavLink({ to, onMouseEnter, onFocus, ...props }: LocaleNav
       onFocus={(e) => {
         prefetchRoute(to);
         onFocus?.(e);
+      }}
+      onPointerDown={(e) => {
+        if (e.button === 0) prefetchRoute(to);
+        onPointerDown?.(e);
       }}
       {...props}
     />

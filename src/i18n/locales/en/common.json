@@ -18,7 +18,18 @@
   "footer": {
     "tagline": "Research Peptides ES delivers research-grade peptide compounds to European laboratories with third-party verified purity and pharmaceutical-level handling standards.",
     "euShipping": "EU Shipping",
-    "gdpr": "GDPR Compliant"
+    "gdpr": "GDPR Compliant",
+    "newsletterTitle": "Research newsletter",
+    "newsletterDescription": "Priority updates on EU supply availability, batch COAs, and newly listed compounds.",
+    "newsletterEmailLabel": "Email for research newsletter",
+    "newsletterPlaceholder": "Laboratory email",
+    "newsletterSubscribe": "Subscribe",
+    "newsletterSubscribing": "Subscribing…",
+    "newsletterEmptyError": "Enter an email address to subscribe.",
+    "newsletterSuccess": "Subscription confirmed. Check your inbox for confirmation.",
+    "newsletterFail": "Could not subscribe right now. Please try again.",
+    "copyright": "European research operations.",
+    "disclaimer": "All products are for laboratory research only. Not for human or veterinary use. VAT-ready invoicing available for qualified EU institutions."
   },
   "catalogTrust": {
     "dispatch": "EU-wide dispatch · Spain fulfillment",

@@ -36,4 +36,11 @@ export const i18nNamespaces = [
   'shipping',
   'legal',
   'product',
+  'auth',
+  'blog',
+  'coa',
+  'research',
+  'search',
+  'categories',
+  'account',
 ] as const;

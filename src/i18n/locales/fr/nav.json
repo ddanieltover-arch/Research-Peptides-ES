@@ -1,40 +1,43 @@
 {
   "primary": {
-    "shop": "Boutique",
-    "research": "Recherche",
+    "shop": "Tienda",
+    "research": "Investigación",
     "blog": "Blog",
-    "contact": "Contact"
+    "contact": "Contacto"
   },
   "research": {
-    "peptideGuide": "Guide des peptides",
-    "peptideGuideDesc": "Protocoles, manipulation et bonnes pratiques de laboratoire.",
-    "calculator": "Calculateur de peptides",
-    "calculatorDesc": "Calculs de reconstitution et de dosage pour la recherche.",
-    "coaLibrary": "Bibliothèque COA",
-    "coaLibraryDesc": "Certificats d'analyse et documentation de pureté.",
-    "information": "Informations peptides",
-    "informationDesc": "Profils de composés et références de recherche.",
-    "researchHub": "Recherche peptides",
-    "researchHubDesc": "Dernières découvertes et notes d'application."
+    "peptideGuide": "Guía de péptidos",
+    "peptideGuideDesc": "Protocolos, manipulación y buenas prácticas de laboratorio.",
+    "calculator": "Calculadora de péptidos",
+    "calculatorDesc": "Cálculos de reconstitución y dosificación para investigación.",
+    "coaLibrary": "Biblioteca COA",
+    "coaLibraryDesc": "Certificados de análisis por lote y documentación de pureza.",
+    "information": "Información sobre péptidos",
+    "informationDesc": "Perfiles de compuestos y referencias de investigación.",
+    "researchHub": "Investigación con péptidos",
+    "researchHubDesc": "Últimos hallazgos y notas de aplicación."
   },
   "footer": {
-    "inventory": "Catalogue",
-    "support": "Assistance",
-    "legal": "Mentions légales",
-    "fullCatalog": "Catalogue complet",
-    "categories": "Catégories",
-    "advancedSearch": "Recherche avancée",
-    "wishlist": "Liste de souhaits",
-    "faq": "FAQ chercheurs",
-    "euShipping": "Livraison UE",
-    "about": "À propos",
-    "terms": "Conditions",
-    "privacy": "Confidentialité & RGPD",
-    "returns": "Retours"
+    "inventory": "Inventario",
+    "support": "Soporte",
+    "legal": "Legal",
+    "fullCatalog": "Catálogo completo",
+    "categories": "Categorías",
+    "advancedSearch": "Búsqueda avanzada",
+    "wishlist": "Lista de deseos",
+    "faq": "FAQ para investigadores",
+    "euShipping": "Envío en la UE",
+    "about": "Sobre nosotros",
+    "terms": "Términos",
+    "privacy": "Privacidad y RGPD",
+    "returns": "Devoluciones"
   },
   "mega": {
-    "browseCatalog": "Parcourir le catalogue",
-    "allCategories": "Toutes les catégories",
-    "featured": "Composés en vedette"
+    "browseCatalog": "Explorar catálogo",
+    "allCategories": "Todas las categorías",
+    "featured": "Compuestos destacados",
+    "shopEyebrow": "Catálogo europeo",
+    "shopTitle": "Inventario de grado investigación",
+    "shopDescription": "Compuestos verificados por terceros enviados en toda la UE desde nuestras operaciones en España."
   }
 }

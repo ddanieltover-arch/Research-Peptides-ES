@@ -2,7 +2,7 @@
   "header": {
     "eyebrow": "Finalizare securizată",
     "title": "Finalizează comanda",
-    "description": "Livrare UE · facturare TVA · procesare din Olanda"
+    "description": "Envío UE · facturación con IVA · cumplimiento desde España"
   },
   "steps": {
     "shipping": "Livrare",
@@ -21,6 +21,14 @@
     "shippingAtCheckout": "La finalizare",
     "total": "Total",
     "proceed": "Mergi la finalizare",
-    "vatNote": "Prețuri în EUR. TVA aplicat unde este necesar la finalizare în funcție de țara de livrare UE."
+    "vatNote": "Precios en EUR. IVA aplicado cuando corresponda en el pago según su país de envío en la UE.",
+    "invalidPromo": "Código promocional no válido"
+  },
+  "cartPage": {
+    "eyebrow": "Coșul tău",
+    "title_one": "{{count}} artículo listo para el",
+    "title_other": "{{count}} artículos listos para el",
+    "titleHighlight": "pago",
+    "description": "Cumplimiento en la UE desde España · detalles de IVA en el pago"
   }
 }

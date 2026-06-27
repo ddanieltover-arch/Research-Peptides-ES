@@ -1,29 +1,29 @@
 {
   "header": {
-    "eyebrow": "Logistik",
-    "title": "Versand & Lieferung",
-    "description": "EU-orientierte Abwicklung aus den Niederlanden mit Sendungsverfolgung in Mitgliedstaaten und weltweit."
+    "eyebrow": "Logística",
+    "title": "Envío y entrega",
+    "description": "Cumplimiento prioritario desde España con entrega rastreada en la UE y opciones internacionales."
   },
   "features": {
-    "cutoffTitle": "12:00 MEZ Annahmeschluss",
-    "cutoffDesc": "Bestellungen vor 12:00 MEZ an Werktagen werden am selben Tag versendet.",
-    "trackedTitle": "Sendungsverfolgung",
-    "trackedDesc": "Jede Sendung ist vom Labor bis zur Einrichtung nachverfolgbar.",
-    "packagingTitle": "Diskrete Verpackung",
-    "packagingDesc": "Vakuumversiegelt und neutral verpackt für Forschungseinrichtungen."
+    "cutoffTitle": "Corte a las 12:00 CET",
+    "cutoffDesc": "Los pedidos realizados antes del mediodía (hora de Europa Central), de lunes a viernes, se envían el mismo día laborable.",
+    "trackedTitle": "Seguridad con seguimiento",
+    "trackedDesc": "Cada envío está totalmente rastreado desde nuestro laboratorio hasta su instalación.",
+    "packagingTitle": "Embalaje discreto",
+    "packagingDesc": "Los artículos se sellan al vacío y se envían en embalaje liso y sin marcas, apto para instalaciones de investigación."
   },
   "regions": {
-    "title": "EU & international",
-    "euTitle": "Lieferung in der EU",
-    "euDesc": "Standard EU: 3–7 Werktage. Kostenloser Versand ab €500 (Zwischensumme).",
-    "worldTitle": "Weltweite Logistik",
-    "worldDesc": "Außerhalb der EU: 5–14 Werktage je nach Zoll und Spediteur.",
-    "ukTitle": "Vereinigtes Königreich",
-    "ukDesc": "UK-Optionen an der Kasse, wenn das Vereinigte Königreich gewählt ist."
+    "title": "Alcance en la UE e internacional",
+    "euTitle": "Entrega en la Unión Europea",
+    "euDesc": "Envío estándar en la UE: 3–7 días laborables. Envío gratuito en pedidos elegibles superiores a 500 € (subtotal).",
+    "worldTitle": "Logística mundial",
+    "worldDesc": "Destinos fuera de la UE: 5–14 días laborables según aduanas y transportistas regionales.",
+    "ukTitle": "Reino Unido",
+    "ukDesc": "Las opciones con seguimiento al Reino Unido siguen disponibles en el pago cuando se selecciona Reino Unido como destino."
   },
   "responsibility": {
-    "eyebrow": "Verantwortung des Forschers",
-    "body": "Käufer sind für die Einhaltung lokaler Importvorschriften verantwortlich. Zoll, MwSt. und Steuern können anfallen.",
-    "disclaimer": "Nur für Forschungszwecke. Nicht für den menschlichen oder tierärztlichen Gebrauch."
+    "eyebrow": "Responsabilidad del investigador",
+    "body": "Los compradores son responsables de garantizar que los productos cumplan las leyes de importación locales. Pueden aplicarse aranceles, IVA e impuestos regionales; son responsabilidad del comprador cuando no se cobren en el pago.",
+    "disclaimer": "Solo para investigación. No apto para consumo humano ni veterinario."
   }
 }

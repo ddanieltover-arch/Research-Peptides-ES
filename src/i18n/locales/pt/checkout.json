@@ -2,7 +2,7 @@
   "header": {
     "eyebrow": "Checkout seguro",
     "title": "Conclua o seu pedido",
-    "description": "Envio UE · faturação com IVA · cumprimento nos Países Baixos"
+    "description": "Envío UE · facturación con IVA · cumplimiento desde España"
   },
   "steps": {
     "shipping": "Envio",
@@ -21,6 +21,14 @@
     "shippingAtCheckout": "No checkout",
     "total": "Total",
     "proceed": "Ir para o checkout",
-    "vatNote": "Preços em EUR. IVA aplicado quando exigido no checkout consoante o país de envio na UE."
+    "vatNote": "Precios en EUR. IVA aplicado cuando corresponda en el pago según su país de envío en la UE.",
+    "invalidPromo": "Código promocional no válido"
+  },
+  "cartPage": {
+    "eyebrow": "O seu carrinho",
+    "title_one": "{{count}} artículo listo para el",
+    "title_other": "{{count}} artículos listos para el",
+    "titleHighlight": "pago",
+    "description": "Cumplimiento en la UE desde España · detalles de IVA en el pago"
   }
 }

@@ -2,7 +2,7 @@
   "header": {
     "eyebrow": "Сигурно плащане",
     "title": "Завършете поръчката си",
-    "description": "Доставка ЕС · фактуриране с ДДС · изпълнение от Netherlands"
+    "description": "Envío UE · facturación con IVA · cumplimiento desde España"
   },
   "steps": {
     "shipping": "Доставка",
@@ -21,6 +21,14 @@
     "shippingAtCheckout": "При плащане",
     "total": "Общо",
     "proceed": "Към плащане",
-    "vatNote": "Цени в EUR. ДДС се прилага, когато е необходимо при плащане според държавата ви за доставка в ЕС."
+    "vatNote": "Precios en EUR. IVA aplicado cuando corresponda en el pago según su país de envío en la UE.",
+    "invalidPromo": "Código promocional no válido"
+  },
+  "cartPage": {
+    "eyebrow": "Вашата количка",
+    "title_one": "{{count}} artículo listo para el",
+    "title_other": "{{count}} artículos listos para el",
+    "titleHighlight": "pago",
+    "description": "Cumplimiento en la UE desde España · detalles de IVA en el pago"
   }
 }

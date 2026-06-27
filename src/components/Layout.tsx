@@ -1,5 +1,6 @@
 import React, { Suspense, useEffect, useState } from 'react';
 import { Outlet, useLocation } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { useLocaleNavigate } from '../i18n/useLocaleNavigate';
 import { ArrowUp } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
@@ -25,9 +26,9 @@ import { JsonLd } from './seo/JsonLd';
 import { BRAND_NAME, SITE_URL } from '../config/brand';
 import { DevConfigBanner } from './DevConfigBanner';
 import { prefetchCriticalRoutes } from '../lib/routePrefetch';
-import { pageRouteTransition } from '../design-system/motion';
 
 function LayoutShell() {
+  const { t } = useTranslation('common');
   const { user, profile, setUser } = useAuthStore();
   const { openSearch } = useSearchStore();
   const navigate = useLocaleNavigate();
@@ -57,7 +58,7 @@ function LayoutShell() {
       const id = window.requestIdleCallback(run);
       return () => window.cancelIdleCallback(id);
     }
-    const timer = window.setTimeout(run, 1500);
+    const timer = window.setTimeout(run, 300);
     return () => window.clearTimeout(timer);
   }, []);
 
@@ -82,7 +83,7 @@ function LayoutShell() {
 
     const email = newsletterEmail.trim();
     if (!email) {
-      setNewsletterError('Enter an email address to subscribe.');
+      setNewsletterError(t('footer.newsletterEmptyError'));
       setNewsletterMessage(null);
       return;
     }
@@ -93,11 +94,11 @@ function LayoutShell() {
 
     try {
       await postNewsletterSubscribe({ email });
-      setNewsletterMessage('Subscription confirmed. Check your inbox for confirmation.');
+      setNewsletterMessage(t('footer.newsletterSuccess'));
       setNewsletterEmail('');
     } catch (error) {
       const message =
-        error instanceof Error ? error.message : 'Could not subscribe right now. Please try again.';
+        error instanceof Error ? error.message : t('footer.newsletterFail');
       setNewsletterError(message);
     } finally {
       setNewsletterSubmitting(false);
@@ -168,17 +169,7 @@ function LayoutShell() {
 
       <main id="main-content" className="flex-grow pb-20 md:pb-0 relative" tabIndex={-1}>
         <Suspense fallback={<PageLoader />}>
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={location.pathname}
-              initial={{ opacity: 0, y: 6 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -4 }}
-              transition={pageRouteTransition()}
-            >
-              <Outlet />
-            </motion.div>
-          </AnimatePresence>
+          <Outlet />
         </Suspense>
       </main>
 

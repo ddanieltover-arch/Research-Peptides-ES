@@ -1,0 +1,16 @@
+{
+  "eyebrow": "Portal de verificación",
+  "title": "Βιβλιοθήκη COA",
+  "subtitle": "Busque referencias de certificados de análisis por lote para las líneas del catálogo Research Peptides ES.",
+  "searchPlaceholder": "Buscar por producto, lote o laboratorio…",
+  "columns": {
+    "product": "Producto",
+    "batch": "Lote",
+    "purity": "Pureza",
+    "testDate": "Fecha de prueba",
+    "lab": "Laboratorio"
+  },
+  "noResults": "No se encontraron referencias COA para su búsqueda.",
+  "footerNote": "Esta biblioteca se ofrece para visibilidad de documentación de investigación. Si necesita un paquete de informes completo para un lote específico, solicítelo en",
+  "labPlaceholder": "Laboratorio independiente UE"
+}

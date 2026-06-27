@@ -2,7 +2,7 @@
   "header": {
     "eyebrow": "Turvallinen kassa",
     "title": "Viimeistele tilaus",
-    "description": "EU-toimitus · ALV-laskutus · täyttö Netherlandsista"
+    "description": "Envío UE · facturación con IVA · cumplimiento desde España"
   },
   "steps": {
     "shipping": "Toimitus",
@@ -21,6 +21,14 @@
     "shippingAtCheckout": "Kassalla",
     "total": "Yhteensä",
     "proceed": "Siirry kassalle",
-    "vatNote": "Hinnat EUR. ALV sovelletaan tarvittaessa kassalla EU-toimitusmaasi mukaan."
+    "vatNote": "Precios en EUR. IVA aplicado cuando corresponda en el pago según su país de envío en la UE.",
+    "invalidPromo": "Código promocional no válido"
+  },
+  "cartPage": {
+    "eyebrow": "Ostoskorisi",
+    "title_one": "{{count}} artículo listo para el",
+    "title_other": "{{count}} artículos listos para el",
+    "titleHighlight": "pago",
+    "description": "Cumplimiento en la UE desde España · detalles de IVA en el pago"
   }
 }

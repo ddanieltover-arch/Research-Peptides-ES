@@ -2,7 +2,7 @@
   "header": {
     "eyebrow": "Biztonságos pénztár",
     "title": "Fejezze be rendelését",
-    "description": "EU szállítás · ÁFA-kész számlázás · teljesítés Netherlandsből"
+    "description": "Envío UE · facturación con IVA · cumplimiento desde España"
   },
   "steps": {
     "shipping": "Szállítás",
@@ -21,6 +21,14 @@
     "shippingAtCheckout": "A pénztárnál",
     "total": "Összesen",
     "proceed": "Tovább a pénztárhoz",
-    "vatNote": "Árak EUR-ban. ÁFA alkalmazása, ahol szükséges a pénztárnál az EU szállítási ország szerint."
+    "vatNote": "Precios en EUR. IVA aplicado cuando corresponda en el pago según su país de envío en la UE.",
+    "invalidPromo": "Código promocional no válido"
+  },
+  "cartPage": {
+    "eyebrow": "Kosara",
+    "title_one": "{{count}} artículo listo para el",
+    "title_other": "{{count}} artículos listos para el",
+    "titleHighlight": "pago",
+    "description": "Cumplimiento en la UE desde España · detalles de IVA en el pago"
   }
 }

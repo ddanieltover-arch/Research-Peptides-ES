@@ -9,6 +9,11 @@ export function getLocaleFromPath(pathname: string): LocaleCode | null {
   return null;
 }
 
+/** Locale implied by the URL (unprefixed paths use Spanish). */
+export function resolveLocaleFromPath(pathname: string): LocaleCode {
+  return getLocaleFromPath(pathname) ?? DEFAULT_LOCALE;
+}
+
 /** Path without leading locale segment, always starts with `/` (or `/` for home). */
 export function stripLocaleFromPath(pathname: string): string {
   const locale = getLocaleFromPath(pathname);
@@ -18,10 +23,16 @@ export function stripLocaleFromPath(pathname: string): string {
   return rest.startsWith('/') ? rest : `/${rest}`;
 }
 
+/** Build a locale-aware path. Spanish (default) has no URL prefix. */
 export function pathWithLocale(locale: LocaleCode, path = '/'): string {
   const normalized = path.startsWith('/') ? path : `/${path}`;
-  if (normalized === '/') return `/${locale}`;
-  return `/${locale}${normalized}`;
+  const bare = normalized === '/' ? '' : normalized;
+
+  if (locale === DEFAULT_LOCALE) {
+    return bare || '/';
+  }
+
+  return bare ? `/${locale}${bare}` : `/${locale}`;
 }
 
 export function persistLocaleCookie(locale: LocaleCode): void {
@@ -37,4 +48,16 @@ export function readLocaleCookie(): LocaleCode | null {
   const match = document.cookie.match(new RegExp(`(?:^|; )${LOCALE_COOKIE}=([^;]*)`));
   const value = match?.[1];
   return value && isLocaleCode(value) ? value : null;
+}
+
+export function readStoredLocale(): LocaleCode | null {
+  try {
+    const stored =
+      localStorage.getItem('rp-es-locale') ?? localStorage.getItem('rp-eu-locale');
+    if (stored && isLocaleCode(stored)) return stored;
+  } catch {
+    /* private browsing */
+  }
+  const cookie = readLocaleCookie();
+  return cookie ?? null;
 }

@@ -1,0 +1,190 @@
+{
+  "cookie": {
+    "title": "Cookies y privacidad",
+    "description": "Utilizamos cookies esenciales para el funcionamiento de la tienda y analítica opcional para mejorar la experiencia del investigador. Puede cambiar su elección en cualquier momento en nuestra política de privacidad.",
+    "acceptAll": "Aceptar todas",
+    "essentialOnly": "Solo esenciales",
+    "privacyLink": "Política de privacidad"
+  },
+  "faq": {
+    "eyebrow": "Podpora",
+    "title": "FAQ pre výskumníkov",
+    "subtitle": "Protocolos estándar y consultas habituales para equipos de laboratorio europeos.",
+    "ctaTitle": "¿Aún tiene preguntas técnicas?",
+    "ctaBody": "Nuestro equipo de soporte está disponible para consultas sobre pedidos y documentación.",
+    "ctaButton": "Contactar soporte",
+    "quickAnswerTitle": "Respuesta rápida: envío y calidad",
+    "quickAnswerBody": "Research Peptides ES envía en toda Europa con logística de temperatura controlada para garantizar la estabilidad de los péptidos. Todos los lotes pasan pruebas rigurosas HPLC y EM de terceros, con un mínimo del 99 % de pureza para su investigación en laboratorio.",
+    "groups": {
+      "product": {
+        "title": "Producto y seguridad",
+        "items": [
+          {
+            "q": "¿Son seguros estos productos para consumo humano o animal?",
+            "a": "No. Todos los productos vendidos por Research Peptides ES son estrictamente para investigación en laboratorio y aplicación científica. No están destinados al uso humano ni veterinario."
+          },
+          {
+            "q": "¿Cómo verifican la pureza de sus péptidos?",
+            "a": "Sometemos cada lote a HPLC y espectrometría de masas. Los niveles de pureza se verifican al 99,8 % o superior antes de la distribución en la UE."
+          },
+          {
+            "q": "¿Cómo debo almacenar los compuestos a la llegada?",
+            "a": "Los péptidos liofilizados son estables durante envíos cortos a temperatura ambiente. Para estabilidad a largo plazo, almacene a −20 °C o −80 °C."
+          }
+        ]
+      },
+      "logistics": {
+        "title": "Logística y envío",
+        "items": [
+          {
+            "q": "¿Cuánto tarda el envío en la UE?",
+            "a": "La entrega estándar en la UE suele ser de 3–7 días laborables. Cumplimiento desde España con transportistas con seguimiento."
+          },
+          {
+            "q": "¿El embalaje es discreto?",
+            "a": "Sí. Los pedidos se envían en embalaje liso y sin marcas, adecuado para instalaciones de investigación."
+          },
+          {
+            "q": "¿Envían fuera de la UE?",
+            "a": "Sí. La entrega fuera de la UE suele tardar 5–14 días laborables según aduanas."
+          }
+        ]
+      },
+      "payments": {
+        "title": "Pagos y política",
+        "items": [
+          {
+            "q": "¿Qué métodos de pago aceptan?",
+            "a": "Aceptamos criptomonedas (BTC, ETH, USDT) con un 5 % de descuento, transferencia bancaria y pedidos con tarjeta revisados manualmente."
+          },
+          {
+            "q": "¿Cuál es su política de devoluciones?",
+            "a": "Para mantener la integridad de la cadena de frío y los estándares de investigación, no aceptamos devoluciones. Todas las ventas son finales salvo obligación legal aplicable en la UE."
+          }
+        ]
+      }
+    }
+  },
+  "privacy": {
+    "eyebrow": "Súkromie a GDPR",
+    "title": "Política de privacidad",
+    "subtitle": "Conforme al RGPD de la UE y la normativa española de protección de datos.",
+    "sections": [
+      {
+        "heading": "Resumen de datos",
+        "body": "Research Peptides ES se compromete a proteger la privacidad de investigadores y compradores institucionales. Esta política explica cómo recopilamos, usamos y protegemos los datos personales cuando utiliza nuestra tienda."
+      },
+      {
+        "heading": "Información que recopilamos",
+        "body": "Podemos procesar datos de identidad, datos de contacto, referencias de pedidos y pagos, y datos técnicos como dirección IP y tipo de navegador."
+      },
+      {
+        "heading": "Cómo usamos sus datos",
+        "body": "Los datos se utilizan para cumplir pedidos, ofrecer soporte, prevenir fraude, cumplir obligaciones legales y mejorar nuestros servicios. No vendemos datos personales."
+      },
+      {
+        "heading": "Base legal (RGPD)",
+        "body": "El tratamiento se basa en la ejecución del contrato, intereses legítimos, obligación legal y consentimiento cuando sea necesario (p. ej. cookies de marketing)."
+      },
+      {
+        "heading": "Conservación",
+        "body": "Los registros de pedidos y fiscales se conservan según exige la ley de la UE y española (normalmente hasta 7 años). Los datos de marketing se conservan hasta que retire el consentimiento."
+      },
+      {
+        "heading": "Sus derechos",
+        "body": "Puede solicitar acceso, rectificación, supresión, limitación, portabilidad u oponerse al tratamiento. Contáctenos en la dirección indicada abajo."
+      }
+    ],
+    "ref": "RGPD-REF: RPES-PRV-2026"
+  },
+  "terms": {
+    "eyebrow": "Právne informácie",
+    "title": "Términos y condiciones",
+    "subtitle": "Condiciones de suministro de investigación en la UE para compradores institucionales y de laboratorio.",
+    "sections": [
+      {
+        "heading": "Iba na výskum",
+        "body": "Todos los productos son estrictamente para investigación en laboratorio, uso científico e industrial. No para consumo humano ni veterinario."
+      },
+      {
+        "heading": "Elegibilidad",
+        "body": "Debe tener al menos 18 años y estar autorizado para comprar en nombre de su institución o laboratorio."
+      },
+      {
+        "heading": "Pedidos y precios",
+        "body": "Los precios se muestran en EUR. Nos reservamos el derecho de corregir errores. Los pedidos se confirman cuando se acepta el pago o comienza el procesamiento."
+      },
+      {
+        "heading": "Vrátenia tovaru",
+        "body": "Debido a productos sensibles a la temperatura, mantenemos una política estricta de no devolución salvo obligación legal aplicable en la UE."
+      },
+      {
+        "heading": "Limitación de responsabilidad",
+        "body": "Research Peptides ES no es responsable de daños indirectos o consecuentes derivados del uso de productos en contextos de investigación."
+      }
+    ],
+    "footer": "Research Peptides ES Operations"
+  },
+  "about": {
+    "eyebrow": "Sobre nosotros",
+    "title": "Sobre Research Peptides ES",
+    "subtitle": "Compuestos de investigación europeos con documentación verificada y cumplimiento desde España.",
+    "missionTitle": "Nuestra misión",
+    "missionBody": "Nos centramos en la consistencia, la documentación por lote y la confianza del investigador en los flujos de laboratorio de la UE.",
+    "qualityTitle": "Enfoque en calidad",
+    "qualityBody": "La verificación por lote y las referencias COA son centrales en nuestro catálogo.",
+    "researchTitle": "Posicionamiento solo investigación",
+    "researchBody": "Todos los compuestos se ofrecen exclusivamente para investigación en laboratorio y científica — no para uso humano ni veterinario."
+  },
+  "contact": {
+    "eyebrow": "Kontakt",
+    "title": "Contacte con nuestro equipo",
+    "subtitle": "Pedidos, documentación y consultas institucionales.",
+    "emailLabel": "Correo electrónico",
+    "phoneLabel": "Teléfono",
+    "locationLabel": "Sede",
+    "locationValue": "España · Unión Europea",
+    "supportHoursLabel": "Horario de soporte (CET)",
+    "supportDays": "Lunes — viernes",
+    "supportTime": "09:00 – 18:00",
+    "privacyTitle": "Privacidad garantizada",
+    "privacyBody": "Todas las consultas se tratan con estricta confidencialidad para investigadores. No compartimos datos institucionales con terceros.",
+    "formTitle": "Enviar consulta",
+    "fullNameLabel": "Nombre completo",
+    "fullNamePlaceholder": "Nombre del investigador",
+    "emailAddressLabel": "Correo electrónico",
+    "emailPlaceholder": "oficial@institucion.eu",
+    "subjectLabel": "Asunto",
+    "messageLabel": "Su mensaje",
+    "messagePlaceholder": "¿Cómo puede nuestro equipo técnico ayudar a su investigación?",
+    "subjects": {
+      "general": "Consulta general de investigación",
+      "bulk": "Compras institucionales / a granel",
+      "coa": "Datos de estabilidad del producto (COA)",
+      "shipping": "Envíos y logística"
+    },
+    "submit": "Enviar consulta",
+    "successMessage": "Consulta enviada correctamente. Responderemos en breve.",
+    "failMessage": "Error al enviar la consulta.",
+    "failFallback": "Error al enviar. Inténtelo de nuevo en un momento.",
+    "toastSuccess": "Consulta enviada correctamente. Responderemos en breve.",
+    "toastFail": "Error al enviar la consulta."
+  },
+  "refund": {
+    "eyebrow": "Vrátenia tovaru",
+    "title": "Reembolsos y devoluciones",
+    "subtitle": "Política de la UE para compuestos de investigación sensibles a la temperatura.",
+    "body": "Contacte con el soporte de Research Peptides ES con su número de pedido. Debido a los requisitos de cadena de frío, generalmente no se aceptan devoluciones salvo obligación legal.",
+    "warning": "Los compuestos de investigación sensibles a la temperatura no pueden revenderse tras el envío. Las reclamaciones se limitan a errores de cumplimiento verificados en un plazo de 7 días desde la entrega.",
+    "eligibleHeading": "Casos elegibles",
+    "eligible1": "Artículo incorrecto respecto a la confirmación del pedido",
+    "eligible2": "Daño en tránsito en la integridad del vial o del sello",
+    "eligible3": "Línea de pedido faltante en un envío rastreado",
+    "nonEligibleHeading": "No elegibles",
+    "nonEligible1": "Cambio de opinión tras el envío",
+    "nonEligible2": "Productos abiertos, usados o almacenados incorrectamente",
+    "nonEligible3": "Reclamaciones fuera del plazo de revisión",
+    "supportTitle": "Soporte de devoluciones",
+    "trackedReview": "Revisión de envío rastreado"
+  }
+}

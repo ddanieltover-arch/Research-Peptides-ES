@@ -1,9 +1,9 @@
 {
   "hero": {
-    "eyebrow": "Nizozemska · europski istraživački standardi",
+    "eyebrow": "España · estándares europeos de investigación",
     "title": "Precizni peptidi za",
     "titleHighlight": "Europski laboratoriji.",
-    "subtitle": "Research Peptides EU opskrbljuje spojeve institucionalne razine s analitičkom provjerom treće strane, farmaceutskim rukovanjem i pouzdanom EU distribucijom.",
+    "subtitle": "Research Peptides ES suministra compuestos de grado institucional con verificación analítica de terceros, manipulación farmacéutica y distribución fiable desde España a toda la UE.",
     "ctaShop": "Pregledaj katalog",
     "ctaWizard": "Birač spojeva",
     "trustPurity": "Provjerena čistoća 99,8 %+",
@@ -16,8 +16,28 @@
     "subtitle": "Peptidi i kemikalije za istraživanje provjereni po seriji, spremni za otpremu u EU laboratorije."
   },
   "whyEu": {
-    "eyebrow": "Zašto nas biraju EU istraživači",
-    "title": "Izgrađeno za europske laboratorijske standarde"
+    "eyebrow": "Por qué nos eligen los investigadores",
+    "title": "Diseñado para la",
+    "titleHighlight": "confianza científica institucional",
+    "description": "Con sede en España, combinamos disciplina regulatoria europea con logística de grado farmacéutico para equipos de investigación en toda la UE.",
+    "pillars": [
+      {
+        "title": "Calidad de investigación",
+        "desc": "Cada lote se sintetiza y valida según estrictos criterios analíticos antes de incorporarse al catálogo."
+      },
+      {
+        "title": "Pureza del producto",
+        "desc": "Los flujos HPLC y espectrometría de masas apuntan a una consistencia del 99,8 %+ para resultados reproducibles en laboratorio."
+      },
+      {
+        "title": "Estándares de fabricación",
+        "desc": "Manipulación con control de temperatura, protocolos de estabilidad liofilizada y cadena de custodia documentada."
+      },
+      {
+        "title": "Innovación científica",
+        "desc": "Expansión continua de líneas de péptidos GLP-1, eje GH y mitocondriales alineadas con la demanda de investigación europea."
+      }
+    ]
   },
   "categories": {
     "eyebrow": "Pregledaj po primjeni",
@@ -32,11 +52,33 @@
   "experience": {
     "eyebrow": "Iskustvo istraživača",
     "title": "Podrška u svakoj fazi",
-    "faqCta": "Pročitajte FAQ za istraživače"
+    "description": "Las instituciones eligen Research Peptides ES por transparencia analítica, fiabilidad logística y cumplimiento exclusivo de investigación.",
+    "faqCta": "Pročitajte FAQ za istraživače",
+    "communityBlurb": "Únase a más de 15.000 investigadores que obtienen compuestos verificados en la UE con soporte de grado institucional.",
+    "satisfaction": "4,9 de satisfacción media",
+    "testimonials": [
+      {
+        "quote": "La consistencia por lote y la transparencia del COA son excepcionales. Nuestro programa de investigación metabólica en la UE depende de pureza documentada en cada adquisición.",
+        "author": "Dra. Elena V.",
+        "role": "Investigación metabólica · Múnich"
+      },
+      {
+        "quote": "El envío desde España es rápido y con control de temperatura. El soporte proporcionó documentación detallada de manipulación para compuestos liofilizados.",
+        "author": "Prof. James M.",
+        "role": "Laboratorio institucional · Madrid"
+      },
+      {
+        "quote": "La profundidad del catálogo en péptidos GLP-1 y eje GH es de las mejores que hemos obtenido para estudios in vitro europeos.",
+        "author": "Dra. Sofia R.",
+        "role": "Investigación farmacéutica · Barcelona"
+      }
+    ]
   },
   "cta": {
-    "title": "Spremni opremiti laboratorij?",
-    "subtitle": "Pregledajte EU katalog ili upotrijebite birač spojeva za sužavanje istraživačke linije.",
-    "button": "Istraživački katalog trgovine"
+    "eyebrow": "Inicie su protocolo de investigación",
+    "title": "Acceda hoy al catálogo premium de péptidos de investigación",
+    "subtitle": "Pureza verificada, lotes respaldados por COA y cumplimiento desde España — diseñado para laboratorios que exigen precisión clínica.",
+    "button": "Istraživački katalog trgovine",
+    "buttonWizard": "Encuentre su compuesto"
   }
 }

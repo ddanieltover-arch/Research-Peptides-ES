@@ -1,42 +1,84 @@
 {
   "hero": {
-    "eyebrow": "Pays-Bas · Normes de recherche européennes",
-    "title": "Peptides de précision pour",
-    "titleHighlight": "les laboratoires européens.",
-    "subtitle": "Research Peptides EU fournit des composés de qualité institutionnelle avec vérification analytique tierce, manipulation pharmaceutique et distribution UE fiable.",
-    "ctaShop": "Voir le catalogue",
-    "ctaWizard": "Sélecteur de composés",
-    "trustPurity": "Pureté vérifiée 99,8 %+",
-    "trustShipping": "Expédition chaîne du froid UE",
-    "trustCoa": "COA pour chaque lot"
+    "eyebrow": "España · estándares europeos de investigación",
+    "title": "Péptidos de precisión para",
+    "titleHighlight": "laboratorios europeos.",
+    "subtitle": "Research Peptides ES suministra compuestos de grado institucional con verificación analítica de terceros, manipulación farmacéutica y distribución fiable desde España a toda la UE.",
+    "ctaShop": "Explorar catálogo",
+    "ctaWizard": "Selector de compuestos",
+    "trustPurity": "Pureza verificada del 99,8 %+",
+    "trustShipping": "Envío en cadena de frío en toda la UE",
+    "trustCoa": "COA en cada lote"
   },
   "featured": {
-    "eyebrow": "Points forts du catalogue",
-    "title": "Composés de recherche en vedette",
-    "subtitle": "Peptides et produits chimiques vérifiés par lot, prêts pour l'expédition laboratoire UE."
+    "eyebrow": "Destacados del catálogo",
+    "title": "Compuestos de investigación destacados",
+    "subtitle": "Péptidos y productos químicos de investigación verificados por lote, listos para envío a laboratorios de la UE."
   },
   "whyEu": {
-    "eyebrow": "Pourquoi les chercheurs UE nous choisissent",
-    "title": "Conçu pour les normes des laboratoires européens"
+    "eyebrow": "Por qué nos eligen los investigadores",
+    "title": "Diseñado para la",
+    "titleHighlight": "confianza científica institucional",
+    "description": "Con sede en España, combinamos disciplina regulatoria europea con logística de grado farmacéutico para equipos de investigación en toda la UE.",
+    "pillars": [
+      {
+        "title": "Calidad de investigación",
+        "desc": "Cada lote se sintetiza y valida según estrictos criterios analíticos antes de incorporarse al catálogo."
+      },
+      {
+        "title": "Pureza del producto",
+        "desc": "Los flujos HPLC y espectrometría de masas apuntan a una consistencia del 99,8 %+ para resultados reproducibles en laboratorio."
+      },
+      {
+        "title": "Estándares de fabricación",
+        "desc": "Manipulación con control de temperatura, protocolos de estabilidad liofilizada y cadena de custodia documentada."
+      },
+      {
+        "title": "Innovación científica",
+        "desc": "Expansión continua de líneas de péptidos GLP-1, eje GH y mitocondriales alineadas con la demanda de investigación europea."
+      }
+    ]
   },
   "categories": {
-    "eyebrow": "Parcourir par application",
-    "title": "Catégories de recherche",
-    "viewAll": "Toutes les catégories"
+    "eyebrow": "Explorar por aplicación",
+    "title": "Categorías de investigación",
+    "viewAll": "Ver todas las categorías"
   },
   "trust": {
-    "eyebrow": "Assurance qualité",
-    "title": "Une vérification documentable",
-    "coaCta": "Explorer la bibliothèque COA"
+    "eyebrow": "Garantía de calidad",
+    "title": "Verificación que puede documentar",
+    "coaCta": "Explorar biblioteca COA"
   },
   "experience": {
-    "eyebrow": "Expérience chercheur",
-    "title": "Accompagnement à chaque étape",
-    "faqCta": "Lire la FAQ chercheurs"
+    "eyebrow": "Experiencia del investigador",
+    "title": "Soporte en cada etapa",
+    "description": "Las instituciones eligen Research Peptides ES por transparencia analítica, fiabilidad logística y cumplimiento exclusivo de investigación.",
+    "faqCta": "Leer FAQ para investigadores",
+    "communityBlurb": "Únase a más de 15.000 investigadores que obtienen compuestos verificados en la UE con soporte de grado institucional.",
+    "satisfaction": "4,9 de satisfacción media",
+    "testimonials": [
+      {
+        "quote": "La consistencia por lote y la transparencia del COA son excepcionales. Nuestro programa de investigación metabólica en la UE depende de pureza documentada en cada adquisición.",
+        "author": "Dra. Elena V.",
+        "role": "Investigación metabólica · Múnich"
+      },
+      {
+        "quote": "El envío desde España es rápido y con control de temperatura. El soporte proporcionó documentación detallada de manipulación para compuestos liofilizados.",
+        "author": "Prof. James M.",
+        "role": "Laboratorio institucional · Madrid"
+      },
+      {
+        "quote": "La profundidad del catálogo en péptidos GLP-1 y eje GH es de las mejores que hemos obtenido para estudios in vitro europeos.",
+        "author": "Dra. Sofia R.",
+        "role": "Investigación farmacéutica · Barcelona"
+      }
+    ]
   },
   "cta": {
-    "title": "Prêt à équiper votre laboratoire ?",
-    "subtitle": "Parcourez le catalogue UE ou utilisez le sélecteur pour affiner votre ligne de recherche.",
-    "button": "Acheter le catalogue recherche"
+    "eyebrow": "Inicie su protocolo de investigación",
+    "title": "Acceda hoy al catálogo premium de péptidos de investigación",
+    "subtitle": "Pureza verificada, lotes respaldados por COA y cumplimiento desde España — diseñado para laboratorios que exigen precisión clínica.",
+    "button": "Tienda de catálogo de investigación",
+    "buttonWizard": "Encuentre su compuesto"
   }
 }

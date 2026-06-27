@@ -5,7 +5,14 @@
     "titleHighlight": "peptidi",
     "description": "Sfoglia composti da ricerca verificati con evasione UE, documentazione per lotto e specifiche trasparenti."
   },
-  "results": "Visualizzazione di {{count}} su {{total}} prodotti",
+  "results": "Mostrando {{from}}–{{to}} de {{total}} productos",
+  "resultsInCategory": "Mostrando {{from}}–{{to}} de {{total}} productos en {{category}}",
+  "resultsMatching": "Mostrando {{from}}–{{to}} de {{total}} productos que coinciden con «{{term}}»",
+  "pagination": {
+    "label": "Paginación del catálogo",
+    "previous": "Anterior",
+    "next": "Siguiente"
+  },
   "filters": {
     "categories": "Categorie",
     "maxPrice": "Prezzo massimo",

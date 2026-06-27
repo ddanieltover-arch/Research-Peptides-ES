@@ -37,6 +37,9 @@ const STATIC_PATHS = [
 ];
 
 function loc(locale: string, p: string) {
+  if (locale === DEFAULT_LOCALE) {
+    return p === '/' ? SITE_ORIGIN : `${SITE_ORIGIN}${p}`;
+  }
   const base = p === '/' ? `/${locale}` : `/${locale}${p}`;
   return `${SITE_ORIGIN}${base}`;
 }

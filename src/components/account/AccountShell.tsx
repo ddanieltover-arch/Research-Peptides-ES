@@ -1,18 +1,20 @@
 import type { ReactNode } from 'react';
-import { Link, useLocation } from 'react-router-dom';
-import { LocaleLink } from '../../i18n/LocaleLink';
+import { useLocation } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { ChevronRight, Heart, Package, Settings, User } from 'lucide-react';
 import { useAuthStore } from '../../store/useAuthStore';
 import { Container, PageShell } from '../../design-system';
 import { CatalogPageHeader } from '../catalog/CatalogPageHeader';
+import { LocaleButton } from '../../i18n/LocaleButton';
+import { LocaleLink } from '../../i18n/LocaleLink';
 import { cn } from '../../lib/utils';
 
 const NAV = [
-  { label: 'Overview', icon: User, path: '/profile' },
-  { label: 'Orders', icon: Package, path: '/orders' },
-  { label: 'Wishlist', icon: Heart, path: '/wishlist' },
-  { label: 'Settings', icon: Settings, path: '/profile' },
-];
+  { labelKey: 'nav.overview', icon: User, path: '/profile' },
+  { labelKey: 'nav.orders', icon: Package, path: '/orders' },
+  { labelKey: 'nav.wishlist', icon: Heart, path: '/wishlist' },
+  { labelKey: 'nav.settings', icon: Settings, path: '/profile' },
+] as const;
 
 type AccountShellProps = {
   title: string;
@@ -21,6 +23,7 @@ type AccountShellProps = {
 };
 
 export function AccountShell({ title, subtitle, children }: AccountShellProps) {
+  const { t } = useTranslation('account');
   const { user, profile } = useAuthStore();
   const location = useLocation();
 
@@ -29,14 +32,11 @@ export function AccountShell({ title, subtitle, children }: AccountShellProps) {
       <PageShell tone="mist" className="min-h-[60vh] flex items-center justify-center p-8">
         <div className="text-center max-w-md">
           <User className="h-14 w-14 text-brand-200 mx-auto mb-4" aria-hidden />
-          <p className="font-display font-bold text-xl text-navy-950 mb-2">Sign in required</p>
-          <p className="text-steel-600 text-sm mb-6">Access your researcher account to view this area.</p>
-          <Link
-            to="/login"
-            className="inline-flex items-center justify-center px-6 py-3 rounded-xl bg-brand-500 text-white font-semibold hover:bg-brand-600 transition-colors"
-          >
-            Sign in
-          </Link>
+          <p className="font-display font-bold text-xl text-navy-950 mb-2">{t('signInRequired')}</p>
+          <p className="text-steel-600 text-sm mb-6">{t('signInPrompt')}</p>
+          <LocaleButton to="/login" size="md">
+            {t('signIn')}
+          </LocaleButton>
         </div>
       </PageShell>
     );
@@ -45,9 +45,9 @@ export function AccountShell({ title, subtitle, children }: AccountShellProps) {
   return (
     <PageShell tone="mist">
       <CatalogPageHeader
-        eyebrow="Researcher account"
+        eyebrow={t('eyebrow')}
         title={title}
-        description={subtitle ?? `Signed in as ${profile.email}`}
+        description={subtitle ?? t('signedInAs', { email: profile.email })}
       />
 
       <Container className="py-10 md:py-12">
@@ -69,17 +69,17 @@ export function AccountShell({ title, subtitle, children }: AccountShellProps) {
                 </div>
               </div>
               <h2 className="font-display font-bold text-navy-950">
-                {profile.display_name || 'Researcher'}
+                {profile.display_name || t('defaultName')}
               </h2>
               <p className="text-caption text-brand-600 mt-1">{profile.role}</p>
             </div>
 
             <nav className="bg-white rounded-3xl border border-brand-100 p-3 shadow-card space-y-1">
               {NAV.map((item) => {
-                const active = location.pathname === item.path;
+                const active = location.pathname.endsWith(item.path);
                 return (
                   <LocaleLink
-                    key={item.path + item.label}
+                    key={item.path + item.labelKey}
                     to={item.path}
                     className={cn(
                       'flex items-center justify-between p-3.5 rounded-2xl transition-all group',
@@ -90,7 +90,7 @@ export function AccountShell({ title, subtitle, children }: AccountShellProps) {
                   >
                     <span className="flex items-center gap-3 font-semibold text-sm">
                       <item.icon className="h-4 w-4" aria-hidden />
-                      {item.label}
+                      {t(item.labelKey)}
                     </span>
                     <ChevronRight
                       className={cn(

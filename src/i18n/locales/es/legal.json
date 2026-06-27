@@ -143,12 +143,48 @@
     "emailLabel": "Correo electrónico",
     "phoneLabel": "Teléfono",
     "locationLabel": "Sede",
-    "locationValue": "España · Unión Europea"
+    "locationValue": "España · Unión Europea",
+    "supportHoursLabel": "Horario de soporte (CET)",
+    "supportDays": "Lunes — viernes",
+    "supportTime": "09:00 – 18:00",
+    "privacyTitle": "Privacidad garantizada",
+    "privacyBody": "Todas las consultas se tratan con estricta confidencialidad para investigadores. No compartimos datos institucionales con terceros.",
+    "formTitle": "Enviar consulta",
+    "fullNameLabel": "Nombre completo",
+    "fullNamePlaceholder": "Nombre del investigador",
+    "emailAddressLabel": "Correo electrónico",
+    "emailPlaceholder": "oficial@institucion.eu",
+    "subjectLabel": "Asunto",
+    "messageLabel": "Su mensaje",
+    "messagePlaceholder": "¿Cómo puede nuestro equipo técnico ayudar a su investigación?",
+    "subjects": {
+      "general": "Consulta general de investigación",
+      "bulk": "Compras institucionales / a granel",
+      "coa": "Datos de estabilidad del producto (COA)",
+      "shipping": "Envíos y logística"
+    },
+    "submit": "Enviar consulta",
+    "successMessage": "Consulta enviada correctamente. Responderemos en breve.",
+    "failMessage": "Error al enviar la consulta.",
+    "failFallback": "Error al enviar. Inténtelo de nuevo en un momento.",
+    "toastSuccess": "Consulta enviada correctamente. Responderemos en breve.",
+    "toastFail": "Error al enviar la consulta."
   },
   "refund": {
     "eyebrow": "Devoluciones",
     "title": "Reembolsos y devoluciones",
     "subtitle": "Política de la UE para compuestos de investigación sensibles a la temperatura.",
-    "body": "Contacte con el soporte de Research Peptides ES con su número de pedido. Debido a los requisitos de cadena de frío, generalmente no se aceptan devoluciones salvo obligación legal."
+    "body": "Contacte con el soporte de Research Peptides ES con su número de pedido. Debido a los requisitos de cadena de frío, generalmente no se aceptan devoluciones salvo obligación legal.",
+    "warning": "Los compuestos de investigación sensibles a la temperatura no pueden revenderse tras el envío. Las reclamaciones se limitan a errores de cumplimiento verificados en un plazo de 7 días desde la entrega.",
+    "eligibleHeading": "Casos elegibles",
+    "eligible1": "Artículo incorrecto respecto a la confirmación del pedido",
+    "eligible2": "Daño en tránsito en la integridad del vial o del sello",
+    "eligible3": "Línea de pedido faltante en un envío rastreado",
+    "nonEligibleHeading": "No elegibles",
+    "nonEligible1": "Cambio de opinión tras el envío",
+    "nonEligible2": "Productos abiertos, usados o almacenados incorrectamente",
+    "nonEligible3": "Reclamaciones fuera del plazo de revisión",
+    "supportTitle": "Soporte de devoluciones",
+    "trackedReview": "Revisión de envío rastreado"
   }
 }

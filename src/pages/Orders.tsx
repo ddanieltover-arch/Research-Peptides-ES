@@ -16,10 +16,12 @@ import { useAuthStore } from '../store/useAuthStore';
 import { formatCurrency } from '../lib/utils';
 import { productPath } from '../lib/productUrl';
 import { AccountShell } from '../components/account/AccountShell';
-import { Button } from '../design-system';
+import { LocaleButton } from '../i18n/LocaleButton';
+
+const STATUS_STEPS = ['pending', 'paid', 'shipped', 'delivered'] as const;
 
 export default function Orders() {
-  const { i18n } = useTranslation();
+  const { t, i18n } = useTranslation('account');
   const { user } = useAuthStore();
   const [orders, setOrders] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
@@ -58,12 +60,17 @@ export default function Orders() {
     }
   };
 
+  const stepIcons = {
+    pending: Clock,
+    paid: CreditCard,
+    shipped: Truck,
+    delivered: CheckCircle2,
+  };
+
   return (
-    <AccountShell title="Order history" subtitle="Track EU shipments and payment status">
+    <AccountShell title={t('orders.title')} subtitle={t('orders.subtitle')}>
       <div className="flex justify-between items-center mb-6">
-        <p className="text-sm text-steel-600">
-          <span className="font-semibold text-navy-950">{orders.length}</span> orders
-        </p>
+        <p className="text-sm text-steel-600">{t('orders.orderCount', { count: orders.length })}</p>
       </div>
 
       {loading ? (
@@ -75,11 +82,9 @@ export default function Orders() {
       ) : orders.length === 0 ? (
         <div className="text-center py-16 bg-white rounded-3xl border border-brand-100 shadow-card">
           <Package className="h-12 w-12 text-brand-200 mx-auto mb-4" aria-hidden />
-          <p className="font-display font-bold text-xl text-navy-950 mb-2">No orders yet</p>
-          <p className="text-steel-600 text-sm mb-6">Your research compound orders will appear here.</p>
-          <Link to="/shop">
-            <Button>Explore catalog</Button>
-          </Link>
+          <p className="font-display font-bold text-xl text-navy-950 mb-2">{t('orders.emptyTitle')}</p>
+          <p className="text-steel-600 text-sm mb-6">{t('orders.emptyBody')}</p>
+          <LocaleButton to="/shop">{t('orders.exploreCatalog')}</LocaleButton>
         </div>
       ) : (
         <div className="space-y-6">
@@ -94,7 +99,7 @@ export default function Orders() {
               <div className="px-6 py-4 border-b border-brand-50 bg-mist-50/50 flex flex-wrap justify-between gap-4">
                 <div className="flex gap-8">
                   <div>
-                    <p className="text-caption text-brand-600">Placed</p>
+                    <p className="text-caption text-brand-600">{t('orders.placed')}</p>
                     <p className="text-sm font-semibold text-navy-950">
                       {formatLocaleDate(order.created_at, i18n.language, {
                         day: 'numeric',
@@ -104,14 +109,14 @@ export default function Orders() {
                     </p>
                   </div>
                   <div>
-                    <p className="text-caption text-brand-600">Total</p>
+                    <p className="text-caption text-brand-600">{t('orders.total')}</p>
                     <p className="text-sm font-bold text-brand-600 tabular-nums">
                       {formatCurrency(order.total_amount)}
                     </p>
                   </div>
                 </div>
                 <div className="text-right">
-                  <p className="text-caption text-brand-600">Order ID</p>
+                  <p className="text-caption text-brand-600">{t('orders.orderId')}</p>
                   <p className="text-xs font-mono font-semibold text-steel-600">
                     {order.id.substring(0, 8).toUpperCase()}
                   </p>
@@ -125,29 +130,25 @@ export default function Orders() {
                     className="absolute top-1/2 left-0 h-0.5 bg-brand-500 -translate-y-1/2 transition-all duration-700"
                     style={{ width: `${((getStatusStep(order.status) - 1) / 3) * 100}%` }}
                   />
-                  {[
-                    { label: 'Pending', icon: Clock },
-                    { label: 'Paid', icon: CreditCard },
-                    { label: 'Shipped', icon: Truck },
-                    { label: 'Delivered', icon: CheckCircle2 },
-                  ].map((step, i) => {
+                  {STATUS_STEPS.map((statusKey, i) => {
                     const stepNum = i + 1;
                     const isActive = stepNum <= getStatusStep(order.status);
+                    const Icon = stepIcons[statusKey];
                     return (
-                      <div key={step.label} className="relative z-10 flex flex-col items-center">
+                      <div key={statusKey} className="relative z-10 flex flex-col items-center">
                         <div
                           className={`w-9 h-9 rounded-full flex items-center justify-center border-2 border-white shadow-card ${
                             isActive ? 'bg-brand-500 text-white' : 'bg-brand-50 text-silver-400'
                           }`}
                         >
-                          <step.icon className="h-4 w-4" aria-hidden />
+                          <Icon className="h-4 w-4" aria-hidden />
                         </div>
                         <span
                           className={`text-[10px] font-semibold uppercase mt-2 ${
                             isActive ? 'text-navy-950' : 'text-silver-400'
                           }`}
                         >
-                          {step.label}
+                          {t(`orders.status.${statusKey}`)}
                         </span>
                       </div>
                     );
@@ -176,7 +177,10 @@ export default function Orders() {
                           {item.title}
                         </Link>
                         <p className="text-xs text-steel-600">
-                          Qty {item.quantity} · {formatCurrency(item.price)}
+                          {t('orders.qty', {
+                            quantity: item.quantity,
+                            price: formatCurrency(item.price),
+                          })}
                         </p>
                       </div>
                     </div>
@@ -188,7 +192,7 @@ export default function Orders() {
                 {order.crypto_tx_hash && (
                   <div className="pt-4 flex items-center justify-between text-xs">
                     <span className="text-steel-600 font-semibold uppercase tracking-wide">
-                      Crypto verified
+                      {t('orders.cryptoVerified')}
                     </span>
                     <a
                       href={`https://mempool.space/tx/${order.crypto_tx_hash}`}

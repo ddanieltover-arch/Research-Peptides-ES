@@ -91,6 +91,22 @@
 }
 
 @layer components {
+  /* Base typography sets text-navy-950 on h1–h4; keep headings readable on dark panels */
+  .text-white h1,
+  .text-white h2,
+  .text-white h3,
+  .text-white h4,
+  .bg-navy-950 h1,
+  .bg-navy-950 h2,
+  .bg-navy-950 h3,
+  .bg-navy-950 h4,
+  .bg-slate-950 h1,
+  .bg-slate-950 h2,
+  .bg-slate-950 h3,
+  .bg-slate-950 h4 {
+    @apply text-white;
+  }
+
   .text-display {
     font-size: clamp(2.75rem, 6vw, 4.75rem);
     font-family: var(--font-display);

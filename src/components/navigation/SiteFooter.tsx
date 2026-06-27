@@ -74,7 +74,7 @@ export default function SiteFooter({
           </div>
 
           <div className="md:col-span-2">
-            <h4 className="text-caption text-brand-400 mb-5">Support</h4>
+            <h4 className="text-caption text-brand-400 mb-5">{tNav('footer.support')}</h4>
             <ul className="space-y-3 text-sm text-silver-400">
               {footerSupport.map((item) => (
                 <li key={item.href}>
@@ -87,21 +87,21 @@ export default function SiteFooter({
           </div>
 
           <div className="md:col-span-4">
-            <h4 className="text-caption text-brand-400 mb-5">Research newsletter</h4>
+            <h4 className="text-caption text-brand-400 mb-5">{tCommon('footer.newsletterTitle')}</h4>
             <p className="text-silver-400 text-sm mb-5 leading-relaxed">
-              Priority updates on EU supply availability, batch COAs, and newly listed compounds.
+              {tCommon('footer.newsletterDescription')}
             </p>
             <form
               className="flex flex-wrap gap-2 rounded-2xl p-1.5 bg-white/5 backdrop-blur-md border border-white/10 focus-within:ring-2 focus-within:ring-brand-400/40 transition-all"
               onSubmit={onNewsletterSubmit}
             >
               <label htmlFor="footer-newsletter-email" className="sr-only">
-                Email for research newsletter
+                {tCommon('footer.newsletterEmailLabel')}
               </label>
               <input
                 id="footer-newsletter-email"
                 type="email"
-                placeholder="Laboratory email"
+                placeholder={tCommon('footer.newsletterPlaceholder')}
                 autoComplete="email"
                 value={newsletterEmail}
                 onChange={(e) => onNewsletterEmailChange(e.target.value)}
@@ -114,7 +114,7 @@ export default function SiteFooter({
                 disabled={newsletterSubmitting}
                 className="bg-gradient-cta px-6 py-3 rounded-xl hover:brightness-110 disabled:opacity-70 font-semibold text-sm whitespace-nowrap transition-all"
               >
-                {newsletterSubmitting ? 'Subscribing…' : 'Subscribe'}
+                {newsletterSubmitting ? tCommon('footer.newsletterSubscribing') : tCommon('footer.newsletterSubscribe')}
               </button>
             </form>
             {newsletterMessage ? (
@@ -134,7 +134,7 @@ export default function SiteFooter({
       <Container className="relative z-10 pb-10">
         <div className="pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-4 text-[10px] font-semibold uppercase tracking-[0.15em] text-silver-400">
           <span>
-            © {new Date().getFullYear()} {BRAND_NAME}. Operaciones de investigación europeas.
+            © {new Date().getFullYear()} {BRAND_NAME}. {tCommon('footer.copyright')}
           </span>
           <div className="flex flex-wrap justify-center gap-4 md:gap-6">
             {footerLegal.map((item) => (
@@ -145,8 +145,7 @@ export default function SiteFooter({
           </div>
         </div>
         <p className="text-center md:text-left text-[10px] text-silver-400/80 mt-4 max-w-3xl leading-relaxed normal-case tracking-normal font-normal">
-          All products are for laboratory research only. Not for human or veterinary use. VAT-ready
-          invoicing available for qualified EU institutions.
+          {tCommon('footer.disclaimer')}
         </p>
       </Container>
     </footer>

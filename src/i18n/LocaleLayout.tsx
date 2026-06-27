@@ -2,14 +2,22 @@ import { useEffect } from 'react';
 import { Navigate, Outlet, useLocation, useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { LocaleProvider, useLocale } from './LocaleProvider';
-import { DEFAULT_LOCALE, pathWithLocale, persistLocaleCookie } from './routing';
+import {
+  DEFAULT_LOCALE,
+  pathWithLocale,
+  persistLocaleCookie,
+  readStoredLocale,
+  stripLocaleFromPath,
+} from './routing';
 import { isLocaleCode, type LocaleCode } from './locales';
 import { LocaleHead } from './LocaleHead';
 import { SeoProvider } from '../seo/SeoProvider';
 
 /**
- * Validates :locale from the URL, syncs i18n + context, or redirects legacy paths
- * (e.g. /shop → /es/shop when "shop" is not a locale code).
+ * Validates locale from the URL, syncs i18n + context.
+ * Spanish (default) uses unprefixed paths: /shop, /contact, etc.
+ * Other locales use /en/shop, /de/contact, etc.
+ * Legacy /es/* URLs redirect to unprefixed paths.
  */
 export function LocaleLayout() {
   return (
@@ -20,30 +28,50 @@ export function LocaleLayout() {
 }
 
 function LocaleLayoutInner() {
-  const { locale: paramLocale } = useParams<{ locale: string }>();
+  const { locale: paramLocale } = useParams<{ locale?: string }>();
   const location = useLocation();
   const { setLocale } = useLocale();
   const { i18n } = useTranslation();
 
-  const localeCode: LocaleCode | null =
-    paramLocale && isLocaleCode(paramLocale) ? paramLocale : null;
+  const barePath = stripLocaleFromPath(location.pathname);
+  const preferred = barePath === '/' && !paramLocale ? readStoredLocale() : null;
+
+  let localeCode: LocaleCode | null = null;
+  let redirectTo: string | null = null;
+
+  if (paramLocale === DEFAULT_LOCALE) {
+    redirectTo = `${pathWithLocale(DEFAULT_LOCALE, barePath)}${location.search}${location.hash}`;
+  } else if (!paramLocale) {
+    localeCode = DEFAULT_LOCALE;
+    if (preferred && preferred !== DEFAULT_LOCALE) {
+      redirectTo = `${pathWithLocale(preferred, '/')}${location.search}${location.hash}`;
+    }
+  } else if (isLocaleCode(paramLocale)) {
+    localeCode = paramLocale;
+  } else {
+    const suffix = location.pathname.slice(paramLocale.length + 1) || '/';
+    const normalized = suffix.startsWith('/') ? suffix : `/${suffix}`;
+    redirectTo = `${pathWithLocale(DEFAULT_LOCALE, normalized)}${location.search}${location.hash}`;
+  }
 
   useEffect(() => {
-    if (!localeCode) return;
+    if (!localeCode || redirectTo) return;
     setLocale(localeCode);
     void i18n.changeLanguage(localeCode);
     persistLocaleCookie(localeCode);
-  }, [localeCode, setLocale, i18n]);
+  }, [localeCode, redirectTo, setLocale, i18n]);
+
+  if (redirectTo) {
+    return <Navigate to={redirectTo} replace />;
+  }
 
   if (!localeCode) {
-    let target = DEFAULT_LOCALE;
-    try {
-      const ls = localStorage.getItem('rp-es-locale') ?? localStorage.getItem('rp-eu-locale');
-      if (ls && isLocaleCode(ls)) target = ls;
-    } catch {
-      /* ignore */
-    }
-    return <Navigate to={pathWithLocale(target, location.pathname)} replace />;
+    return (
+      <Navigate
+        to={`${pathWithLocale(DEFAULT_LOCALE, barePath)}${location.search}${location.hash}`}
+        replace
+      />
+    );
   }
 
   return (

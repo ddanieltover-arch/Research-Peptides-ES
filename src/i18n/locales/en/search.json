@@ -1,0 +1,23 @@
+{
+  "header": {
+    "eyebrow": "Catalog search",
+    "title": "Find",
+    "titleHighlight": "compounds",
+    "description": "Search by name, description, or filter by research category."
+  },
+  "searchLabel": "Search products",
+  "searchPlaceholder": "Search research compounds…",
+  "categoryLabel": "Category",
+  "sortLabel": "Sort",
+  "allCategories": "All categories",
+  "resultsInCategory": "Showing {{from}}–{{to}} of {{total}} products in {{category}}",
+  "resultsMatching": "Showing {{from}}–{{to}} of {{total}} products matching “{{term}}”",
+  "emptyCatalogTitle": "No products available",
+  "emptyCatalogDescription": "The catalog is empty or still loading. Check your connection or add products in admin.",
+  "emptyMatchesTitle": "No matches found",
+  "emptyMatchesSearch": "Nothing matched “{{term}}”. Try different keywords or clear filters.",
+  "emptyMatchesCategory": "No products in “{{category}}” right now.",
+  "emptyMatchesDefault": "Adjust your search or filters.",
+  "clearFilters": "Clear search & filters",
+  "browseShop": "Browse full shop"
+}

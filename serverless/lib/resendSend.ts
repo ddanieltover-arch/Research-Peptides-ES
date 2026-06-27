@@ -1,7 +1,15 @@
 /** Send via Resend HTTP API — avoids relying on the resend npm package inside Vercel's serverless bundle. */
 
+function readEnv(...keys: string[]): string {
+  for (const key of keys) {
+    const value = process.env[key]?.trim();
+    if (value) return value;
+  }
+  return '';
+}
+
 function getFrom() {
-  return process.env.RESEND_FROM || process.env.EMAIL_FROM || '';
+  return readEnv('RESEND_FROM', 'Resend_FROM', 'EMAIL_FROM');
 }
 
 const RESEND_BASE = () => process.env.RESEND_BASE_URL || 'https://api.resend.com';
@@ -29,7 +37,7 @@ export async function sendTransactionalEmail(params: {
   replyTo?: string;
 }): Promise<TransactionalSendResult> {
   const dryRun = String(process.env.EMAIL_DRY_RUN || 'false').toLowerCase() === 'true';
-  const apiKey = process.env.RESEND_API_KEY;
+  const apiKey = readEnv('RESEND_API_KEY', 'Resend_API_KEY');
   const from = getFrom();
 
   if (dryRun) {

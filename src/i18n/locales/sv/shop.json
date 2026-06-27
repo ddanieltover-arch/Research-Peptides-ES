@@ -5,7 +5,14 @@
     "titleHighlight": "peptider",
     "description": "Bläddra bland verifierade forskningsföreningar med EU-uppfyllelse, batchdokumentation och transparenta specifikationer."
   },
-  "results": "Visar {{count}} av {{total}} produkter",
+  "results": "Mostrando {{from}}–{{to}} de {{total}} productos",
+  "resultsInCategory": "Mostrando {{from}}–{{to}} de {{total}} productos en {{category}}",
+  "resultsMatching": "Mostrando {{from}}–{{to}} de {{total}} productos que coinciden con «{{term}}»",
+  "pagination": {
+    "label": "Paginación del catálogo",
+    "previous": "Anterior",
+    "next": "Siguiente"
+  },
   "filters": {
     "categories": "Kategorier",
     "maxPrice": "Maxpris",

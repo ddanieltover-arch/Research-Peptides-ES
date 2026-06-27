@@ -1,0 +1,12 @@
+{
+  "header": {
+    "eyebrow": "Browse by application",
+    "title": "Product",
+    "titleHighlight": "categories",
+    "description": "Explore specialised research lines — each category links to filtered catalog results."
+  },
+  "empty": "No categories found.",
+  "browseShop": "Browse full shop",
+  "viewProducts": "View products",
+  "fallbackDescription": "Browse compounds in this research line."
+}

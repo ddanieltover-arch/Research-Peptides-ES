@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from 'react';
-import { Link, useSearchParams } from 'react-router-dom';
+import { useSearchParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { Search as SearchIcon, ArrowRight } from 'lucide-react';
 import { supabase } from '../supabase';
@@ -15,13 +15,14 @@ import {
   SHOP_PRODUCTS_PER_PAGE,
 } from '../components/catalog/CatalogPagination';
 import { useProductCatalogActions } from '../hooks/useProductCatalogActions';
+import { LocaleLink } from '../i18n/LocaleLink';
 import type { CategoryOption } from '../components/catalog/types';
 import type { CatalogProduct } from '../components/products/ProductCard';
 
 const CATEGORY_GRID_CLASS = 'grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6';
 
 export default function Search() {
-  const { t } = useTranslation('shop');
+  const { t } = useTranslation(['search', 'shop']);
   const [allProducts, setAllProducts] = useState<CatalogProduct[]>([]);
   const [categories, setCategories] = useState<CategoryOption[]>([]);
   const [searchTerm, setSearchTerm] = useState('');
@@ -135,12 +136,12 @@ export default function Search() {
     if (filteredProducts.length === 0) return null;
     const range = { from: resultsFrom, to: resultsTo, total: filteredProducts.length };
     if (searchTerm) {
-      return t('resultsMatching', { ...range, term: searchTerm });
+      return t('search:resultsMatching', { ...range, term: searchTerm });
     }
     if (selectedCategorySlug) {
-      return t('resultsInCategory', { ...range, category: categoryName });
+      return t('search:resultsInCategory', { ...range, category: categoryName });
     }
-    return t('results', range);
+    return t('shop:results', range);
   }, [
     categoryName,
     filteredProducts.length,
@@ -151,16 +152,23 @@ export default function Search() {
     t,
   ]);
 
+  const emptyDescription = searchTerm
+    ? t('search:emptyMatchesSearch', { term: searchTerm })
+    : selectedCategorySlug
+      ? t('search:emptyMatchesCategory', { category: categoryName })
+      : t('search:emptyMatchesDefault');
+
   return (
     <PageShell tone="mist">
       <CatalogPageHeader
-        eyebrow="Catalog search"
+        eyebrow={t('search:header.eyebrow')}
         title={
           <>
-            Find <span className="text-brand-400">compounds</span>
+            {t('search:header.title')}{' '}
+            <span className="text-brand-400">{t('search:header.titleHighlight')}</span>
           </>
         }
-        description="Search by name, description, or filter by research category."
+        description={t('search:header.description')}
       />
       <CatalogTrustBar />
 
@@ -171,14 +179,17 @@ export default function Search() {
             aria-hidden
           />
           <label htmlFor="global-product-search" className="sr-only">
-            Search products
+            {t('search:searchLabel')}
           </label>
           <input
             id="global-product-search"
             type="search"
             value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
-            placeholder="Search research compounds…"
+            onChange={(e) => {
+              resetPage();
+              setSearchTerm(e.target.value);
+            }}
+            placeholder={t('search:searchPlaceholder')}
             className="w-full pl-14 pr-4 py-4 rounded-2xl border border-brand-100 bg-white text-navy-950 placeholder:text-silver-400 shadow-card focus:outline-none focus:ring-2 focus:ring-brand-400 text-base font-medium"
           />
         </div>
@@ -186,7 +197,7 @@ export default function Search() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
           <div>
             <label htmlFor="search-category" className="text-caption text-brand-600 block mb-2">
-              Category
+              {t('search:categoryLabel')}
             </label>
             <select
               id="search-category"
@@ -206,7 +217,7 @@ export default function Search() {
               }}
               className="w-full py-3 px-4 rounded-xl border border-brand-100 bg-white text-sm font-semibold text-steel-600 focus:outline-none focus:ring-2 focus:ring-brand-400 shadow-card"
             >
-              <option value="">All categories</option>
+              <option value="">{t('search:allCategories')}</option>
               {categories.map((cat) => (
                 <option key={cat.slug} value={cat.slug}>
                   {cat.name}
@@ -216,7 +227,7 @@ export default function Search() {
           </div>
           <div>
             <label htmlFor="search-sort" className="text-caption text-brand-600 block mb-2">
-              Sort
+              {t('search:sortLabel')}
             </label>
             <CatalogSortSelect
               value={sortBy}
@@ -246,22 +257,16 @@ export default function Search() {
             />
           ) : hasNoCatalog ? (
             <CatalogEmptyState
-              title="No products available"
-              description="The catalog is empty or still loading. Check your connection or add products in admin."
+              title={t('search:emptyCatalogTitle')}
+              description={t('search:emptyCatalogDescription')}
               onClear={undefined}
             />
           ) : hasNoMatches ? (
             <CatalogEmptyState
-              title="No matches found"
-              description={
-                searchTerm
-                  ? `Nothing matched “${searchTerm}”. Try different keywords or clear filters.`
-                  : selectedCategorySlug
-                    ? `No products in “${categoryName}” right now.`
-                    : 'Adjust your search or filters.'
-              }
+              title={t('search:emptyMatchesTitle')}
+              description={emptyDescription}
               onClear={clearSearchFilters}
-              clearLabel="Clear search & filters"
+              clearLabel={t('search:clearFilters')}
             />
           ) : (
             <>
@@ -283,12 +288,12 @@ export default function Search() {
 
         {!hasNoCatalog && !hasNoMatches && (
           <p className="text-center mt-10">
-            <Link
+            <LocaleLink
               to="/shop"
               className="inline-flex items-center gap-2 text-sm font-semibold text-brand-600 hover:text-brand-700"
             >
-              Browse full shop <ArrowRight className="h-4 w-4" />
-            </Link>
+              {t('search:browseShop')} <ArrowRight className="h-4 w-4" />
+            </LocaleLink>
           </p>
         )}
       </Container>

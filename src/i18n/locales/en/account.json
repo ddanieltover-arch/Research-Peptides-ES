@@ -1,0 +1,56 @@
+{
+  "eyebrow": "Researcher account",
+  "signInRequired": "Sign in required",
+  "signInPrompt": "Access your researcher account to view this area.",
+  "signIn": "Sign in",
+  "defaultName": "Researcher",
+  "signedInAs": "Signed in as {{email}}",
+  "nav": {
+    "overview": "Overview",
+    "orders": "Orders",
+    "wishlist": "Wishlist",
+    "settings": "Settings"
+  },
+  "wishlist": {
+    "title": "Wishlist",
+    "subtitle": "Saved compounds for quick reordering",
+    "savedCount": "{{count}} saved items",
+    "emptyTitle": "Your wishlist is empty",
+    "emptyBody": "Save products from the catalog to reorder quickly.",
+    "browseShop": "Browse catalog"
+  },
+  "orders": {
+    "title": "Order history",
+    "subtitle": "Track EU shipments and payment status",
+    "orderCount": "{{count}} orders",
+    "emptyTitle": "No orders yet",
+    "emptyBody": "Your research compound orders will appear here.",
+    "exploreCatalog": "Explore catalog",
+    "placed": "Placed",
+    "total": "Total",
+    "orderId": "Order ID",
+    "qty": "Qty {{quantity}} · {{price}}",
+    "cryptoVerified": "Crypto verified",
+    "status": {
+      "pending": "Pending",
+      "paid": "Paid",
+      "shipped": "Shipped",
+      "delivered": "Delivered"
+    }
+  },
+  "profile": {
+    "title": "Account overview",
+    "subtitle": "Manage your researcher profile and preferences",
+    "securityTitle": "Account security",
+    "emailLabel": "Email",
+    "memberSince": "Member since",
+    "shippingTitle": "EU shipping address",
+    "primaryAddress": "Primary laboratory address",
+    "noAddress": "No default address saved yet.",
+    "setAddressAtCheckout": "Set address at checkout",
+    "activityTitle": "Activity overview",
+    "verifiedAccount": "Verified account",
+    "totalSpent": "Total spent",
+    "openOrders": "Open orders"
+  }
+}

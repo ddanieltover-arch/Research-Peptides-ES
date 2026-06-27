@@ -5,7 +5,14 @@
     "titleHighlight": "peptídeos",
     "description": "Explore compostos de investigação verificados com cumprimento na UE, documentação por lote e especificações transparentes."
   },
-  "results": "A mostrar {{count}} de {{total}} produtos",
+  "results": "Mostrando {{from}}–{{to}} de {{total}} productos",
+  "resultsInCategory": "Mostrando {{from}}–{{to}} de {{total}} productos en {{category}}",
+  "resultsMatching": "Mostrando {{from}}–{{to}} de {{total}} productos que coinciden con «{{term}}»",
+  "pagination": {
+    "label": "Paginación del catálogo",
+    "previous": "Anterior",
+    "next": "Siguiente"
+  },
   "filters": {
     "categories": "Categorias",
     "maxPrice": "Preço máximo",

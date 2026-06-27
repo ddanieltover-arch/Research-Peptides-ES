@@ -1,29 +1,39 @@
 {
   "header": {
-    "eyebrow": "Forschungskatalog",
-    "title": "Shop",
-    "titleHighlight": "Peptide",
-    "description": "Verifizierte Forschungsverbindungen mit EU-Versand, Chargendokumentation und transparenten Spezifikationen."
+    "eyebrow": "Catálogo de investigación",
+    "title": "Tienda",
+    "titleHighlight": "péptidos",
+    "description": "Explore compuestos de investigación verificados con cumplimiento en la UE, documentación por lote y especificaciones transparentes."
   },
-  "results": "{{count}} von {{total}} Produkten",
+  "results": "Mostrando {{from}}–{{to}} de {{total}} productos",
+  "resultsInCategory": "Mostrando {{from}}–{{to}} de {{total}} productos en {{category}}",
+  "resultsMatching": "Mostrando {{from}}–{{to}} de {{total}} productos que coinciden con «{{term}}»",
+  "pagination": {
+    "label": "Paginación del catálogo",
+    "previous": "Anterior",
+    "next": "Siguiente"
+  },
   "filters": {
-    "categories": "Kategorien",
-    "maxPrice": "Max. Preis",
-    "clearAll": "Alle Filter löschen",
-    "filters": "Filter",
-    "close": "Filter schließen"
+    "categories": "Categorías",
+    "maxPrice": "Precio máximo",
+    "clearAll": "Borrar todos los filtros",
+    "clearShort": "Borrar filtros",
+    "filters": "Filtros",
+    "close": "Cerrar filtros",
+    "refine": "Refinar resultados",
+    "showResults": "Mostrar resultados"
   },
   "sort": {
-    "label": "Produkte sortieren",
-    "relevance": "Relevanz",
-    "featured": "Empfohlen",
-    "ratingDesc": "Bestbewertet",
-    "newest": "Neueste",
-    "priceAsc": "Preis: aufsteigend",
-    "priceDesc": "Preis: absteigend"
+    "label": "Ordenar productos",
+    "relevance": "Relevancia",
+    "featured": "Destacados",
+    "ratingDesc": "Mejor valorados",
+    "newest": "Más recientes",
+    "priceAsc": "Precio: de menor a mayor",
+    "priceDesc": "Precio: de mayor a menor"
   },
   "empty": {
-    "title": "Keine Produkte entsprechen den Filtern",
-    "description": "Erweitern Sie die Preisspanne oder löschen Sie Kategorien."
+    "title": "Ningún producto coincide con sus filtros",
+    "description": "Pruebe a ampliar el rango de precios o borrar las categorías seleccionadas."
   }
 }

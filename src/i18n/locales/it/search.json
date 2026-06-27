@@ -1,0 +1,23 @@
+{
+  "header": {
+    "eyebrow": "Búsqueda en catálogo",
+    "title": "Encuentre",
+    "titleHighlight": "compuestos",
+    "description": "Busque por nombre, descripción o filtre por categoría de investigación."
+  },
+  "searchLabel": "Buscar productos",
+  "searchPlaceholder": "Buscar compuestos de investigación…",
+  "categoryLabel": "Categoría",
+  "sortLabel": "Ordenar",
+  "allCategories": "Tutte le categorie",
+  "resultsInCategory": "Mostrando {{from}}–{{to}} de {{total}} productos en {{category}}",
+  "resultsMatching": "Mostrando {{from}}–{{to}} de {{total}} productos que coinciden con «{{term}}»",
+  "emptyCatalogTitle": "No hay productos disponibles",
+  "emptyCatalogDescription": "El catálogo está vacío o aún se está cargando. Compruebe su conexión o añada productos en administración.",
+  "emptyMatchesTitle": "Sin coincidencias",
+  "emptyMatchesSearch": "Nada coincide con «{{term}}». Pruebe otras palabras clave o borre los filtros.",
+  "emptyMatchesCategory": "No hay productos en «{{category}}» en este momento.",
+  "emptyMatchesDefault": "Ajuste su búsqueda o filtros.",
+  "clearFilters": "Borrar búsqueda y filtros",
+  "browseShop": "Ver tienda completa"
+}

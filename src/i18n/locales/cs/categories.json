@@ -1,0 +1,12 @@
+{
+  "header": {
+    "eyebrow": "Procházet podle použití",
+    "title": "Categorías de",
+    "titleHighlight": "producto",
+    "description": "Explore líneas de investigación especializadas — cada categoría enlaza con resultados filtrados del catálogo."
+  },
+  "empty": "No se encontraron categorías.",
+  "browseShop": "Ver tienda completa",
+  "viewProducts": "Ver productos",
+  "fallbackDescription": "Ver compuestos de esta línea de investigación."
+}

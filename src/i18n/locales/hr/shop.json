@@ -5,7 +5,14 @@
     "titleHighlight": "peptidi",
     "description": "Pregledajte provjerene istraživačke spojeve s EU ispunjenjem, dokumentacijom po seriji i transparentnim specifikacijama."
   },
-  "results": "Prikazano {{count}} od {{total}} proizvoda",
+  "results": "Mostrando {{from}}–{{to}} de {{total}} productos",
+  "resultsInCategory": "Mostrando {{from}}–{{to}} de {{total}} productos en {{category}}",
+  "resultsMatching": "Mostrando {{from}}–{{to}} de {{total}} productos que coinciden con «{{term}}»",
+  "pagination": {
+    "label": "Paginación del catálogo",
+    "previous": "Anterior",
+    "next": "Siguiente"
+  },
   "filters": {
     "categories": "Kategorije",
     "maxPrice": "Maks. cijena",

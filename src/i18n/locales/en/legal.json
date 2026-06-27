@@ -138,17 +138,53 @@
   },
   "contact": {
     "eyebrow": "Contact",
-    "title": "Contact our EU team",
+    "title": "Contact our team",
     "subtitle": "Orders, documentation, and institutional inquiries.",
     "emailLabel": "Email",
     "phoneLabel": "Phone",
     "locationLabel": "Headquarters",
-    "locationValue": "Netherlands · European Union"
+    "locationValue": "Spain · European Union",
+    "supportHoursLabel": "Support hours (CET)",
+    "supportDays": "Monday — Friday",
+    "supportTime": "09:00 – 18:00",
+    "privacyTitle": "Privacy guaranteed",
+    "privacyBody": "All inquiries are handled with strict researcher confidentiality. We do not share institution data with third parties.",
+    "formTitle": "Send a dispatch",
+    "fullNameLabel": "Full name",
+    "fullNamePlaceholder": "Researcher name",
+    "emailAddressLabel": "Email address",
+    "emailPlaceholder": "official@institution.eu",
+    "subjectLabel": "Subject",
+    "messageLabel": "Your message",
+    "messagePlaceholder": "How can our technical team assist your research?",
+    "subjects": {
+      "general": "General research inquiry",
+      "bulk": "Bulk / institutional procurement",
+      "coa": "Product stability data (COA)",
+      "shipping": "Shipping & logistics liaison"
+    },
+    "submit": "Transmit dispatch",
+    "successMessage": "Dispatch sent successfully. We will reply shortly.",
+    "failMessage": "Dispatch failed.",
+    "failFallback": "Dispatch failed. Please try again in a moment.",
+    "toastSuccess": "Dispatch sent successfully. We will reply shortly.",
+    "toastFail": "Dispatch failed."
   },
   "refund": {
     "eyebrow": "Returns",
     "title": "Refund & returns",
     "subtitle": "EU policy for temperature-sensitive research compounds.",
-    "body": "Contact the Research Peptides EU support desk with your order ID. Due to cold-chain requirements, returns are generally not accepted unless required by law."
+    "body": "Contact Research Peptides ES support with your order ID. Due to cold-chain requirements, returns are generally not accepted unless required by law.",
+    "warning": "Temperature-sensitive research compounds cannot be resold after dispatch. Claims are limited to verified fulfillment errors within 7 days of delivery.",
+    "eligibleHeading": "Eligible cases",
+    "eligible1": "Incorrect item vs. order confirmation",
+    "eligible2": "Transit damage to vial integrity or seal",
+    "eligible3": "Missing line item on a tracked shipment",
+    "nonEligibleHeading": "Non-eligible",
+    "nonEligible1": "Change of mind after dispatch",
+    "nonEligible2": "Opened, used, or improperly stored products",
+    "nonEligible3": "Claims after the review window",
+    "supportTitle": "Returns support",
+    "trackedReview": "Tracked dispatch review"
   }
 }

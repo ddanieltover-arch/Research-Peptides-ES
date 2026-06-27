@@ -1,0 +1,56 @@
+{
+  "eyebrow": "Cuenta de investigador",
+  "signInRequired": "Inicio de sesión requerido",
+  "signInPrompt": "Acceda a su cuenta de investigador para ver esta área.",
+  "signIn": "Kirjaudu sisään",
+  "defaultName": "Investigador",
+  "signedInAs": "Sesión iniciada como {{email}}",
+  "nav": {
+    "overview": "Resumen",
+    "orders": "Pedidos",
+    "wishlist": "Toivelista",
+    "settings": "Ajustes"
+  },
+  "wishlist": {
+    "title": "Toivelista",
+    "subtitle": "Compuestos guardados para reordenar rápidamente",
+    "savedCount": "{{count}} artículos guardados",
+    "emptyTitle": "Su lista de deseos está vacía",
+    "emptyBody": "Guarde productos del catálogo para reordenar con rapidez.",
+    "browseShop": "Selaa luetteloa"
+  },
+  "orders": {
+    "title": "Historial de pedidos",
+    "subtitle": "Seguimiento de envíos en la UE y estado de pago",
+    "orderCount": "{{count}} pedidos",
+    "emptyTitle": "Aún no hay pedidos",
+    "emptyBody": "Sus pedidos de compuestos de investigación aparecerán aquí.",
+    "exploreCatalog": "Explorar catálogo",
+    "placed": "Realizado",
+    "total": "Yhteensä",
+    "orderId": "ID de pedido",
+    "qty": "Cant. {{quantity}} · {{price}}",
+    "cryptoVerified": "Cripto verificado",
+    "status": {
+      "pending": "Pendiente",
+      "paid": "Pagado",
+      "shipped": "Enviado",
+      "delivered": "Entregado"
+    }
+  },
+  "profile": {
+    "title": "Resumen de cuenta",
+    "subtitle": "Gestione su perfil de investigador y preferencias",
+    "securityTitle": "Seguridad de la cuenta",
+    "emailLabel": "Correo electrónico",
+    "memberSince": "Miembro desde",
+    "shippingTitle": "Dirección de envío en la UE",
+    "primaryAddress": "Dirección principal del laboratorio",
+    "noAddress": "Aún no hay dirección predeterminada guardada.",
+    "setAddressAtCheckout": "Establecer dirección en el checkout",
+    "activityTitle": "Resumen de actividad",
+    "verifiedAccount": "Cuenta verificada",
+    "totalSpent": "Total gastado",
+    "openOrders": "Pedidos abiertos"
+  }
+}
