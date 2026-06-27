@@ -4,11 +4,13 @@ import { useTranslation } from 'react-i18next';
 import { LocaleProvider, useLocale } from './LocaleProvider';
 import {
   DEFAULT_LOCALE,
+  getLocaleFromPath,
   pathWithLocale,
   persistLocaleCookie,
   readStoredLocale,
   stripLocaleFromPath,
 } from './routing';
+import { toLocalizedPath } from './routeSlugs';
 import { isLocaleCode, type LocaleCode } from './locales';
 import { LocaleHead } from './LocaleHead';
 import { SeoProvider } from '../seo/SeoProvider';
@@ -44,14 +46,26 @@ function LocaleLayoutInner() {
   } else if (!paramLocale) {
     localeCode = DEFAULT_LOCALE;
     if (preferred && preferred !== DEFAULT_LOCALE) {
-      redirectTo = `${pathWithLocale(preferred, '/')}${location.search}${location.hash}`;
+      redirectTo = `${pathWithLocale(preferred, barePath)}${location.search}${location.hash}`;
     }
   } else if (isLocaleCode(paramLocale)) {
     localeCode = paramLocale;
   } else {
-    const suffix = location.pathname.slice(paramLocale.length + 1) || '/';
+    const suffix = location.pathname.slice((paramLocale?.length ?? 0) + 1) || '/';
     const normalized = suffix.startsWith('/') ? suffix : `/${suffix}`;
     redirectTo = `${pathWithLocale(DEFAULT_LOCALE, normalized)}${location.search}${location.hash}`;
+  }
+
+  if (localeCode && !redirectTo) {
+    const localizedPath = toLocalizedPath(barePath, localeCode);
+    const currentBare =
+      getLocaleFromPath(location.pathname) === null
+        ? location.pathname || '/'
+        : location.pathname.slice((paramLocale?.length ?? 0) + 1) || '/';
+    const normalizedCurrent = currentBare.startsWith('/') ? currentBare : `/${currentBare}`;
+    if (normalizedCurrent !== localizedPath) {
+      redirectTo = `${pathWithLocale(localeCode, barePath)}${location.search}${location.hash}`;
+    }
   }
 
   useEffect(() => {

@@ -1,7 +1,7 @@
 import { useEffect, useMemo } from 'react';
 import { useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { BRAND_NAME, HQ_ADDRESS, SITE_URL, SUPPORT_EMAIL } from '../config/brand';
+import { BRAND_NAME, HQ_ADDRESS, SITE_URL, SUPPORT_EMAIL, DEFAULT_OG_IMAGE_PATH } from '../config/brand';
 import { supportedLocales } from './locales';
 import { pathWithLocale, stripLocaleFromPath } from './routing';
 import { useSeoOverride } from '../seo/SeoProvider';
@@ -104,13 +104,15 @@ export function LocaleHead() {
     upsertMeta('og:url', canonical, true);
     upsertMeta('og:type', override?.ogType ?? 'website', true);
     upsertMeta('og:site_name', BRAND_NAME, true);
-    if (override?.ogImage) {
-      upsertMeta('og:image', override.ogImage, true);
-    }
+    const ogImage = override?.ogImage ?? `${origin}${DEFAULT_OG_IMAGE_PATH}`;
+    upsertMeta('og:image', ogImage, true);
+    upsertMeta('og:image:width', '1200', true);
+    upsertMeta('og:image:height', '630', true);
 
     upsertMeta('twitter:card', 'summary_large_image');
     upsertMeta('twitter:title', title);
     upsertMeta('twitter:description', description);
+    upsertMeta('twitter:image', ogImage);
 
     const existing = document.querySelectorAll('link[data-rp-hreflang]');
     existing.forEach((el) => el.remove());

@@ -34,7 +34,13 @@ export default function SiteFooter({
         <div className="grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-8">
           <div className="md:col-span-4">
             <LocaleLink to="/" className="inline-flex items-center gap-3 mb-6 rounded-lg">
-              <img src={logo} alt="" className="h-11 w-auto drop-shadow-[0_2px_12px_rgba(201,169,97,0.35)]" width={48} height={48} />
+              <img
+                src={logo}
+                alt={BRAND_NAME}
+                className="h-11 sm:h-12 w-auto max-w-[220px]"
+                width={164}
+                height={48}
+              />
             </LocaleLink>
             <p className="text-sm text-silver-400 leading-relaxed max-w-sm">
               {tCommon('footer.tagline')}

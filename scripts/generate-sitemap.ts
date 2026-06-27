@@ -7,41 +7,22 @@ import { config as loadEnv } from 'dotenv';
 import fs from 'fs';
 import path from 'path';
 import { createClient } from '@supabase/supabase-js';
+import { pathWithLocale } from '../src/i18n/routing';
+import { PUBLIC_STATIC_CANONICAL_PATHS } from '../src/i18n/routeSlugs';
+import type { LocaleCode } from '../src/i18n/locales';
 
 loadEnv({ path: '.env.local' });
 loadEnv();
 
 const SITE_ORIGIN = (process.env.VITE_SITE_URL || 'https://researchpeptides.es').replace(/\/+$/, '');
 
-const DEFAULT_LOCALE = 'es';
-const LOCALES = ['es', 'en', 'nl', 'de', 'fr'] as const;
+const DEFAULT_LOCALE: LocaleCode = 'es';
+const LOCALES: LocaleCode[] = ['es', 'en', 'nl', 'de', 'fr'];
 
-const STATIC_PATHS = [
-  '/',
-  '/shop',
-  '/categories',
-  '/search',
-  '/faq',
-  '/shipping',
-  '/contact',
-  '/about-us',
-  '/peptide-guide',
-  '/peptide-calculator',
-  '/coas',
-  '/peptide-information',
-  '/peptide-research',
-  '/terms',
-  '/privacy',
-  '/refund-returns',
-  '/blog',
-];
+const STATIC_PATHS = ['/', ...PUBLIC_STATIC_CANONICAL_PATHS];
 
-function loc(locale: string, p: string) {
-  if (locale === DEFAULT_LOCALE) {
-    return p === '/' ? SITE_ORIGIN : `${SITE_ORIGIN}${p}`;
-  }
-  const base = p === '/' ? `/${locale}` : `/${locale}${p}`;
-  return `${SITE_ORIGIN}${base}`;
+function loc(locale: LocaleCode, canonicalPath: string) {
+  return `${SITE_ORIGIN}${pathWithLocale(locale, canonicalPath)}`;
 }
 
 function escapeXml(value: string) {
@@ -52,25 +33,25 @@ function escapeXml(value: string) {
     .replace(/"/g, '&quot;');
 }
 
-function hreflangLinks(path: string): string {
+function hreflangLinks(canonicalPath: string): string {
   const lines = LOCALES.map(
     (locale) =>
-      `    <xhtml:link rel="alternate" hreflang="${locale}" href="${escapeXml(loc(locale, path))}" />`,
+      `    <xhtml:link rel="alternate" hreflang="${locale}" href="${escapeXml(loc(locale, canonicalPath))}" />`,
   );
   lines.push(
-    `    <xhtml:link rel="alternate" hreflang="x-default" href="${escapeXml(loc(DEFAULT_LOCALE, path))}" />`,
+    `    <xhtml:link rel="alternate" hreflang="x-default" href="${escapeXml(loc(DEFAULT_LOCALE, canonicalPath))}" />`,
   );
   return lines.join('\n');
 }
 
-function urlEntry(path: string, priority: string, changefreq: string) {
+function urlEntry(canonicalPath: string, priority: string, changefreq: string) {
   const lastmod = new Date().toISOString().slice(0, 10);
   return `  <url>
-    <loc>${escapeXml(loc(DEFAULT_LOCALE, path))}</loc>
+    <loc>${escapeXml(loc(DEFAULT_LOCALE, canonicalPath))}</loc>
     <lastmod>${lastmod}</lastmod>
     <changefreq>${changefreq}</changefreq>
     <priority>${priority}</priority>
-${hreflangLinks(path)}
+${hreflangLinks(canonicalPath)}
   </url>`;
 }
 

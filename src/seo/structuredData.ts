@@ -2,6 +2,7 @@ import { BRAND_NAME, SITE_URL, SUPPORT_EMAIL } from '../config/brand';
 import { DEFAULT_CURRENCY } from '../lib/currency';
 import { pathWithLocale } from '../i18n/routing';
 import type { LocaleCode } from '../i18n/locales';
+import { localizedProductDescription, localizedProductTitle } from '../lib/localizedProduct';
 import { productPath } from '../lib/productUrl';
 
 export function siteOrigin(): string {
@@ -47,12 +48,14 @@ export function productJsonLd(product: ProductRow, locale: LocaleCode) {
   const url = `${siteOrigin()}${pathWithLocale(locale, path)}`;
   const images = (product.images ?? []).filter(Boolean);
   const inStock = Number(product.inventory ?? 0) > 0;
+  const title = localizedProductTitle(product, locale);
+  const description = localizedProductDescription(product, locale);
 
   return {
     '@context': 'https://schema.org',
     '@type': 'Product',
-    name: product.title,
-    description: product.description ?? undefined,
+    name: title,
+    description: description || undefined,
     image: images.length ? images : undefined,
     sku: product.slug ?? String(product.id),
     url,

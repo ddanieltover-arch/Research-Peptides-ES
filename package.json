@@ -25,6 +25,7 @@
     "i18n:generate": "tsx scripts/generate-i18n-locales.ts",
     "i18n:sync": "tsx scripts/sync-all-i18n.ts",
     "logo:optimize": "node scripts/optimize-brand-logo.mjs",
+    "og:generate": "node scripts/generate-og-image.mjs",
     "qa:currency": "tsx scripts/qa-currency-check.ts",
     "qa:phase10": "node scripts/qa-phase10-browser.mjs"
   },

@@ -1,4 +1,15 @@
 {
+  "breadcrumb": {
+    "home": "Početna",
+    "shop": "Trgovina"
+  },
+  "defaultDescription": "Péptido de investigación premium exclusivamente para uso en investigación de laboratorio.",
+  "seoDescription": "{{title}} — precios en EUR, envío en la UE.",
+  "card": {
+    "addToWishlist": "Añadir {{title}} a la lista de deseos",
+    "removeFromWishlist": "Quitar {{title}} de la lista de deseos",
+    "addToCart": "Añadir {{title}} al carrito"
+  },
   "notFound": {
     "title": "Proizvod nije pronađen",
     "cta": "Povratak u trgovinu"
@@ -6,7 +17,21 @@
   "reviews": {
     "eyebrow": "Zajednica istraživača",
     "title": "Provjerene recenzije",
-    "ratingLabel": "4,9 / 5,0"
+    "ratingLabel": "4,9 / 5,0",
+    "samples": [
+      {
+        "name": "Dr. Alexander V.",
+        "role": "Investigación clínica · UE",
+        "content": "Los niveles de pureza superaron los requisitos de nuestro laboratorio. El sellado al vacío se mantuvo intacto durante el tránsito en la UE.",
+        "date": "Hace 2 días"
+      },
+      {
+        "name": "Sarah M.",
+        "role": "Analista biotecnológica · NL",
+        "content": "La integridad estructural del polvo liofilizado fue excelente. La reconstitución fue inmediata y transparente.",
+        "date": "Hace 1 semana"
+      }
+    ]
   },
   "purchase": {
     "reviewsCount": "({{count}} reseñas)",

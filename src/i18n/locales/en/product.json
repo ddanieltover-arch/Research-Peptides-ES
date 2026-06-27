@@ -1,4 +1,15 @@
 {
+  "breadcrumb": {
+    "home": "Home",
+    "shop": "Shop"
+  },
+  "defaultDescription": "Premium research peptide for laboratory research use only.",
+  "seoDescription": "{{title}} — EUR pricing, EU dispatch.",
+  "card": {
+    "addToWishlist": "Add {{title}} to wishlist",
+    "removeFromWishlist": "Remove {{title}} from wishlist",
+    "addToCart": "Add {{title}} to cart"
+  },
   "notFound": {
     "title": "Product not found",
     "cta": "Return to shop"
@@ -6,7 +17,21 @@
   "reviews": {
     "eyebrow": "Researcher community",
     "title": "Verified reviews",
-    "ratingLabel": "4.9 / 5.0"
+    "ratingLabel": "4.9 / 5.0",
+    "samples": [
+      {
+        "name": "Dr. Alexander V.",
+        "role": "Clinical Research · EU",
+        "content": "Purity levels exceeded our laboratory requirements. Vacuum sealing remained intact during EU transit.",
+        "date": "2 days ago"
+      },
+      {
+        "name": "Sarah M.",
+        "role": "Biotech Analyst · NL",
+        "content": "Structural integrity of the lyophilized powder was excellent. Reconstitution was immediate and clear.",
+        "date": "1 week ago"
+      }
+    ]
   },
   "purchase": {
     "reviewsCount": "({{count}} reviews)",

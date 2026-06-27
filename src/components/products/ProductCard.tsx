@@ -1,4 +1,5 @@
 import { LocaleLink } from '../../i18n/LocaleLink';
+import { useTranslation } from 'react-i18next';
 import { Heart, ShoppingCart } from 'lucide-react';
 import { motion } from 'motion/react';
 import { Card } from '../../design-system';
@@ -10,11 +11,15 @@ import { getPrimaryProductBadge } from '../../lib/productBadges';
 import { productPath } from '../../lib/productUrl';
 import { cardHoverState, fadeUpVariants } from '../../design-system/motion';
 import { cn } from '../../lib/utils';
+import type { LocaleCode } from '../../i18n/locales';
+import { localizedProductDescription, localizedProductTitle } from '../../lib/localizedProduct';
 
 export type CatalogProduct = {
   id: string;
   title: string;
   description?: string | null;
+  description_i18n?: Record<string, string> | null;
+  title_i18n?: Record<string, string> | null;
   price: number;
   inventory?: number | null;
   images?: string[] | null;
@@ -49,7 +54,11 @@ export function ProductCard({
   entrance = 'stagger',
   className,
 }: ProductCardProps) {
+  const { t, i18n } = useTranslation('product');
+  const locale = i18n.language as LocaleCode;
   const productHref = productPath(product);
+  const displayTitle = localizedProductTitle(product, locale);
+  const displayDescription = localizedProductDescription(product, locale);
   const primaryBadge = getPrimaryProductBadge(product);
   const lowStock = Number(product.inventory) < 10;
   const categoryLabel = product.categories?.[0];
@@ -75,7 +84,7 @@ export function ProductCard({
         {product.images?.[0] ? (
           <img
             src={product.images[0]}
-            alt={product.title}
+            alt={displayTitle}
             loading="lazy"
             decoding="async"
             width={400}
@@ -85,7 +94,7 @@ export function ProductCard({
         ) : (
           <ProductImagePlaceholder
             productId={String(product.id)}
-            title={product.title}
+            title={displayTitle}
             className="h-full min-h-full rounded-2xl"
           />
         )}
@@ -101,8 +110,8 @@ export function ProductCard({
           )}
           aria-label={
             inWishlist
-              ? `Remove ${product.title} from wishlist`
-              : `Add ${product.title} to wishlist`
+              ? t('card.removeFromWishlist', { title: displayTitle })
+              : t('card.addToWishlist', { title: displayTitle })
           }
         >
           <Heart className="h-4 w-4" fill={inWishlist ? 'currentColor' : 'none'} />
@@ -119,7 +128,7 @@ export function ProductCard({
           to={productHref}
           className="font-display font-bold text-navy-950 group-hover:text-brand-600 transition-colors line-clamp-2 text-sm md:text-base"
         >
-          {product.title}
+          {displayTitle}
         </LocaleLink>
         <ProductCardRating
           rating={product.rating}
@@ -127,9 +136,9 @@ export function ProductCard({
           className="mt-2 mb-2"
           starClassName="h-3.5 w-3.5"
         />
-        {showDescription && product.description ? (
+        {showDescription && displayDescription ? (
           <p className="text-xs text-steel-600 line-clamp-2 leading-relaxed mb-3 flex-1">
-            {product.description}
+            {displayDescription}
           </p>
         ) : (
           <div className="flex-1 min-h-[0.5rem]" />
@@ -140,7 +149,7 @@ export function ProductCard({
             type="button"
             onClick={onAddToCart}
             className="shrink-0 p-3 rounded-full bg-brand-600 text-white hover:bg-brand-700 shadow-card transition-all active:scale-95"
-            aria-label={`Add ${product.title} to cart`}
+            aria-label={t('card.addToCart', { title: displayTitle })}
           >
             <ShoppingCart className="h-4 w-4 md:h-5 md:w-5" />
           </button>

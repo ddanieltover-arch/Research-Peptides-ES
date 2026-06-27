@@ -9,6 +9,9 @@ export const SUPPORT_EMAIL =
 export const SITE_URL =
   import.meta.env.VITE_SITE_URL || 'https://researchpeptides.es';
 
+/** Default Open Graph / Twitter card image (1200×630, logo on white). */
+export const DEFAULT_OG_IMAGE_PATH = '/og-image.jpg';
+
 export const LEGAL_ENTITY = 'Research Peptides ES S.L.';
 export const HQ_LOCATION = 'Calle de la Innovación 12, 28001 Madrid, España';
 

@@ -8,6 +8,7 @@ import { Button, Container, GlassPanel } from '../design-system';
 import { motion } from 'motion/react';
 import { pageEnterTransition } from '../design-system/motion';
 import logo from '../assets/brandLogo';
+import { BRAND_NAME } from '../config/brand';
 
 export default function Login() {
   const { t } = useTranslation('auth');
@@ -70,7 +71,13 @@ export default function Login() {
         >
         <GlassPanel variant="dark" padding="lg" className="shadow-glow">
           <div className="text-center mb-8">
-            <img src={logo} alt="" className="h-12 w-auto mx-auto mb-6 drop-shadow-[0_4px_20px_rgba(45,181,163,0.4)]" width={52} height={52} />
+            <img
+              src={logo}
+              alt={BRAND_NAME}
+              className="h-12 sm:h-14 w-auto mx-auto mb-6 max-w-[260px]"
+              width={192}
+              height={56}
+            />
             <h1 className="font-display font-bold text-2xl text-white mb-2">
               {isSignUp ? t('signUpTitle') : t('signInTitle')}
             </h1>

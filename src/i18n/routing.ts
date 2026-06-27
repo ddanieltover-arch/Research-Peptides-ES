@@ -1,4 +1,5 @@
 import { isLocaleCode, type LocaleCode } from './locales';
+import { toCanonicalPath, toLocalizedPath } from './routeSlugs';
 
 export const DEFAULT_LOCALE: LocaleCode = 'es';
 const LOCALE_COOKIE = 'rp-es-locale';
@@ -14,18 +15,24 @@ export function resolveLocaleFromPath(pathname: string): LocaleCode {
   return getLocaleFromPath(pathname) ?? DEFAULT_LOCALE;
 }
 
-/** Path without leading locale segment, always starts with `/` (or `/` for home). */
+/** Path without leading locale segment, normalized to canonical internal paths. */
 export function stripLocaleFromPath(pathname: string): string {
   const locale = getLocaleFromPath(pathname);
-  if (!locale) return pathname || '/';
-  const rest = pathname.slice(locale.length + 1);
-  if (!rest || rest === '/') return '/';
-  return rest.startsWith('/') ? rest : `/${rest}`;
+  let rest: string;
+  if (!locale) {
+    rest = pathname || '/';
+  } else {
+    rest = pathname.slice(locale.length + 1);
+    if (!rest || rest === '/') rest = '/';
+    else if (!rest.startsWith('/')) rest = `/${rest}`;
+  }
+  return toCanonicalPath(rest);
 }
 
-/** Build a locale-aware path. Spanish (default) has no URL prefix. */
+/** Build a locale-aware path with translated slugs. Spanish (default) has no URL prefix. */
 export function pathWithLocale(locale: LocaleCode, path = '/'): string {
-  const normalized = path.startsWith('/') ? path : `/${path}`;
+  const localized = toLocalizedPath(path, locale);
+  const normalized = localized.startsWith('/') ? localized : `/${localized}`;
   const bare = normalized === '/' ? '' : normalized;
 
   if (locale === DEFAULT_LOCALE) {

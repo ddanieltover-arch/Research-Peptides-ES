@@ -80,10 +80,10 @@ export default function Header({
           >
             <img
               src={logo}
-              alt=""
-              className="h-10 md:h-11 w-auto"
-              width={44}
-              height={44}
+              alt={BRAND_NAME}
+              className="h-10 sm:h-11 md:h-12 w-auto"
+              width={164}
+              height={48}
               fetchPriority="high"
               decoding="async"
             />

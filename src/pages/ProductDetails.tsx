@@ -23,22 +23,12 @@ import { breadcrumbJsonLd, productJsonLd } from '../seo/structuredData';
 import type { LocaleCode } from '../i18n/locales';
 import { localizedProductDescription, localizedProductTitle } from '../lib/localizedProduct';
 
-const STATIC_REVIEWS = [
-  {
-    name: 'Dr. Alexander V.',
-    role: 'Clinical Research · EU',
-    content:
-      'Purity levels exceeded our laboratory requirements. Vacuum sealing remained intact during EU transit.',
-    date: '2 days ago',
-  },
-  {
-    name: 'Sarah M.',
-    role: 'Biotech Analyst · NL',
-    content:
-      'Structural integrity of the lyophilized powder was excellent. Reconstitution was immediate and clear.',
-    date: '1 week ago',
-  },
-];
+type SampleReview = {
+  name: string;
+  role: string;
+  content: string;
+  date: string;
+};
 
 export default function ProductDetails() {
   const { t, i18n } = useTranslation('product');
@@ -65,6 +55,8 @@ export default function ProductDetails() {
   const displayTitle = product ? localizedProductTitle(product, locale) : '';
   const displayDescription = product ? localizedProductDescription(product, locale) : '';
 
+  const sampleReviews = t('reviews.samples', { returnObjects: true }) as SampleReview[];
+
   const seoConfig = useMemo(() => {
     if (!product) return null;
     const title = localizedProductTitle(product, locale);
@@ -76,7 +68,8 @@ export default function ProductDetails() {
       .slice(0, 160);
     return {
       title: `${title} | ${BRAND_NAME}`,
-      description: plainDescription || `Research-grade ${title} — EUR pricing, EU dispatch.`,
+      description:
+        plainDescription || t('seoDescription', { title, lng: locale }),
       canonicalPath,
       ogType: 'product' as const,
       ogImage: product.images?.[0] || undefined,
@@ -84,15 +77,15 @@ export default function ProductDetails() {
         productJsonLd(product, locale),
         breadcrumbJsonLd(
           [
-            { name: 'Home', path: '/' },
-            { name: 'Shop', path: '/shop' },
+            { name: t('breadcrumb.home', { lng: locale }), path: '/' },
+            { name: t('breadcrumb.shop', { lng: locale }), path: '/shop' },
             { name: title, path: canonicalPath },
           ],
           locale,
         ),
       ],
     };
-  }, [product, locale]);
+  }, [product, locale, t]);
 
   usePageSeo(seoConfig);
 
@@ -225,13 +218,13 @@ export default function ProductDetails() {
           <ol className="flex flex-wrap items-center gap-2 text-steel-600">
             <li>
               <LocaleLink to="/" className="hover:text-brand-600 transition-colors">
-                {t('breadcrumb.home', { defaultValue: 'Home' })}
+                {t('breadcrumb.home')}
               </LocaleLink>
             </li>
             <li className="text-silver-400" aria-hidden>/</li>
             <li>
               <LocaleLink to="/shop" className="hover:text-brand-600 transition-colors">
-                {t('breadcrumb.shop', { defaultValue: 'Shop' })}
+                {t('breadcrumb.shop')}
               </LocaleLink>
             </li>
             <li className="text-silver-400" aria-hidden>/</li>
@@ -288,7 +281,7 @@ export default function ProductDetails() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {STATIC_REVIEWS.map((review) => (
+            {sampleReviews.map((review) => (
               <blockquote
                 key={review.name}
                 className="bento-card border-t-2 border-t-accent-500/25 text-steel-600 text-sm leading-relaxed"
