@@ -5,7 +5,7 @@ import { useSearchStore } from '../../store/useSearchStore';
 import { useCartStore } from '../../store/useCartStore';
 import { supabase } from '../../supabase';
 import { formatCurrency } from '../../lib/utils';
-import { useNavigate } from 'react-router-dom';
+import { useLocaleNavigate } from '../../i18n/useLocaleNavigate';
 import { ProductImagePlaceholder } from '../products/ProductImagePlaceholder';
 import { productPath } from '../../lib/productUrl';
 
@@ -18,7 +18,7 @@ export default function Omnisearch() {
   const [results, setResults] = useState<any[]>([]);
   const [loading, setLoading] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
-  const navigate = useNavigate();
+  const navigate = useLocaleNavigate();
 
   useEffect(() => {
     if (isOpen) {
@@ -155,6 +155,8 @@ export default function Omnisearch() {
                             productId: product.id,
                             title: product.title,
                             price: product.price,
+                            unitPrice: product.price,
+                            slug: product.slug,
                             quantity: 1,
                             imageUrl: product.images?.[0] || ''
                           });
@@ -166,7 +168,7 @@ export default function Omnisearch() {
                     </div>
                   ))}
                   <button 
-                    onClick={() => { navigate(`/search?q=${query}`); closeSearch(); }}
+                    onClick={() => { navigate(`/search?q=${encodeURIComponent(query)}`); closeSearch(); }}
                     className="w-full mt-4 p-4 flex items-center justify-center gap-2 text-sm font-bold text-brand-600 hover:bg-brand-50 dark:hover:bg-brand-900/20 rounded-2xl transition-all"
                   >
                     View all results <ArrowRight className="h-4 w-4" />

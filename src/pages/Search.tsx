@@ -34,6 +34,11 @@ export default function Search() {
   const { isInWishlist, handleToggleWishlist, handleAddToCart } = useProductCatalogActions();
 
   useEffect(() => {
+    const q = searchParams.get('q');
+    if (q != null) setSearchTerm(q);
+  }, [searchParams]);
+
+  useEffect(() => {
     void (async () => {
       try {
         const [prodRes, catRes] = await Promise.all([

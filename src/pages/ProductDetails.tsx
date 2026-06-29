@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useLocation } from 'react-router-dom';
 import { LocaleLink } from '../i18n/LocaleLink';
 import { useLocaleNavigate } from '../i18n/useLocaleNavigate';
 import { useTranslation } from 'react-i18next';
@@ -22,6 +22,7 @@ import { usePageSeo } from '../seo/SeoProvider';
 import { breadcrumbJsonLd, productJsonLd } from '../seo/structuredData';
 import type { LocaleCode } from '../i18n/locales';
 import { localizedProductDescription, localizedProductTitle } from '../lib/localizedProduct';
+import { pathWithLocale } from '../i18n/routing';
 
 type SampleReview = {
   name: string;
@@ -49,6 +50,7 @@ export default function ProductDetails() {
   const { productIds, toggleWishlist } = useWishlistStore();
   const addToast = useToastStore((state) => state.addToast);
   const navigate = useLocaleNavigate();
+  const location = useLocation();
   const { isInWishlist, handleToggleWishlist, handleAddToCart: addRelatedToCart } =
     useProductCatalogActions();
 
@@ -90,6 +92,8 @@ export default function ProductDetails() {
   usePageSeo(seoConfig);
 
   useEffect(() => {
+    let cancelled = false;
+
     const fetchProductAndReviews = async () => {
       if (!slug && !id) return;
       setLoading(true);
@@ -99,10 +103,12 @@ export default function ProductDetails() {
           ? await query.eq('slug', slug).maybeSingle()
           : await query.eq('id', id as string).maybeSingle();
 
+        if (cancelled) return;
+
         if (pData) {
-          const canonical = productPath(pData);
-          if (canonical !== window.location.pathname) {
-            navigate(canonical, { replace: true });
+          const canonicalPath = pathWithLocale(locale, productPath(pData));
+          if (location.pathname !== canonicalPath) {
+            navigate(productPath(pData), { replace: true });
           }
           setProduct(pData);
           if (pData.variants?.length > 0) {
@@ -118,22 +124,24 @@ export default function ProductDetails() {
           const displayIds = prevIds.filter((pid: string) => pid !== pData.id).slice(0, 4);
           if (displayIds.length > 0) {
             const { data: rvData } = await supabase.from('products').select('*').in('id', displayIds);
-            if (rvData) setRecentlyViewed(rvData as CatalogProduct[]);
+            if (!cancelled && rvData) setRecentlyViewed(rvData as CatalogProduct[]);
           }
         }
 
         const productId = pData?.id;
         if (!productId) {
-          setReviews([]);
-          setRecommended([]);
+          if (!cancelled) {
+            setReviews([]);
+            setRecommended([]);
+          }
           return;
         }
 
         const { data: rData } = await supabase.from('reviews').select('*').eq('product_id', productId);
-        if (rData) setReviews(rData);
+        if (!cancelled && rData) setReviews(rData);
 
         const { data: recData } = await supabase.from('products').select('*').limit(5);
-        if (recData) {
+        if (!cancelled && recData) {
           setRecommended(
             recData.filter((p) => String(p.id) !== String(productId)).slice(0, 4) as CatalogProduct[],
           );
@@ -141,23 +149,27 @@ export default function ProductDetails() {
       } catch (error) {
         console.error('Error fetching product:', error);
       } finally {
-        setLoading(false);
+        if (!cancelled) setLoading(false);
       }
     };
     fetchProductAndReviews();
     window.scrollTo(0, 0);
-  }, [slug, id, navigate]);
+
+    return () => {
+      cancelled = true;
+    };
+  }, [slug, id, navigate, locale, location.pathname]);
 
   const handleAddToCart = () => {
     if (!product) return;
-    let pricePerUnit = selectedVariant ? selectedVariant.display_price : product.price;
-    if (quantity >= 5) pricePerUnit = pricePerUnit * 0.85;
-    else if (quantity >= 3) pricePerUnit = pricePerUnit * 0.9;
+    const unitPrice = selectedVariant ? selectedVariant.display_price : product.price;
 
     addItem({
       productId: product.id,
       title: product.title,
-      price: pricePerUnit,
+      price: unitPrice,
+      unitPrice,
+      slug: product.slug,
       quantity,
       imageUrl: product.images?.[0] || '',
       specification: selectedVariant

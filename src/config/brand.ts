@@ -6,6 +6,9 @@ export const BRAND_SHORT = 'Research Peptides ES';
 export const SUPPORT_EMAIL =
   import.meta.env.VITE_SUPPORT_EMAIL || 'info@researchpeptides.es';
 
+/** WhatsApp sales / product enquiries (E.164 without +). */
+export const WHATSAPP_NUMBER = '34944643059';
+
 export const SITE_URL =
   import.meta.env.VITE_SITE_URL || 'https://researchpeptides.es';
 

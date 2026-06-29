@@ -2,7 +2,7 @@ import React, { Suspense, useEffect, useState } from 'react';
 import { Outlet, useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { useLocaleNavigate } from '../i18n/useLocaleNavigate';
-import { ArrowUp } from 'lucide-react';
+import { ArrowUp, MessageCircle } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import { useAuthStore } from '../store/useAuthStore';
 import { useSearchStore } from '../store/useSearchStore';
@@ -26,6 +26,7 @@ import { JsonLd } from './seo/JsonLd';
 import { BRAND_NAME, SITE_URL } from '../config/brand';
 import { DevConfigBanner } from './DevConfigBanner';
 import { prefetchCriticalRoutes } from '../lib/routePrefetch';
+import { whatsappUrl } from '../lib/whatsapp';
 
 function LayoutShell() {
   const { t } = useTranslation('common');
@@ -54,12 +55,13 @@ function LayoutShell() {
 
   useEffect(() => {
     const run = () => prefetchCriticalRoutes();
-    if (typeof window !== 'undefined' && 'requestIdleCallback' in window) {
+    if (typeof window === 'undefined') return;
+    if ('requestIdleCallback' in window) {
       const id = window.requestIdleCallback(run);
       return () => window.cancelIdleCallback(id);
     }
-    const timer = window.setTimeout(run, 300);
-    return () => window.clearTimeout(timer);
+    const timer = globalThis.setTimeout(run, 300);
+    return () => globalThis.clearTimeout(timer);
   }, []);
 
   useEffect(() => {
@@ -106,6 +108,7 @@ function LayoutShell() {
   };
 
   const siteUrl = SITE_URL.replace(/\/+$/, '');
+  const whatsappHref = whatsappUrl();
   const globalSchemas = [
     {
       "@context": "https://schema.org",
@@ -182,22 +185,33 @@ function LayoutShell() {
         onNewsletterSubmit={handleNewsletterSubmit}
       />
 
-      <AnimatePresence>
-        {showBackToTop && (
-          <motion.button
-            type="button"
-            onClick={handleBackToTop}
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: 10 }}
-            transition={{ duration: 0.2 }}
-            className="fixed bottom-24 md:bottom-8 left-4 md:left-8 z-50 bg-brand-500 hover:bg-brand-600 text-white rounded-full p-3 shadow-glow focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-2"
-            aria-label="Back to top"
-          >
-            <ArrowUp className="h-5 w-5" aria-hidden />
-          </motion.button>
-        )}
-      </AnimatePresence>
+      <div className="fixed bottom-24 md:bottom-8 right-4 md:right-8 z-50 flex items-center gap-3">
+        <a
+          href={whatsappHref}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="bg-brand-500 hover:bg-brand-600 text-white rounded-full p-3 shadow-glow focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-2"
+          aria-label="Contact us on WhatsApp"
+        >
+          <MessageCircle className="h-5 w-5" aria-hidden />
+        </a>
+        <AnimatePresence>
+          {showBackToTop && (
+            <motion.button
+              type="button"
+              onClick={handleBackToTop}
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: 10 }}
+              transition={{ duration: 0.2 }}
+              className="bg-brand-500 hover:bg-brand-600 text-white rounded-full p-3 shadow-glow focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-2"
+              aria-label="Back to top"
+            >
+              <ArrowUp className="h-5 w-5" aria-hidden />
+            </motion.button>
+          )}
+        </AnimatePresence>
+      </div>
 
       <MobileBottomNav />
       {!location.pathname.includes('/admin') && <SalesNotification />}

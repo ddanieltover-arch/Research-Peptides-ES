@@ -12,7 +12,7 @@ export default function CartDrawer() {
   const { items, isOpen, closeCart, removeItem, updateQuantity, getTotal } = useCartStore();
 
   const cartLineCount = items.reduce((sum, i) => sum + i.quantity, 0);
-  const subtotal = useCartStore.getState().getSubtotal();
+  const subtotal = useCartStore((s) => s.getSubtotal());
   const progress = Math.min((subtotal / FREE_SHIPPING_THRESHOLD) * 100, 100);
   const amountToFreeShipping = Math.max(FREE_SHIPPING_THRESHOLD - subtotal, 0);
 

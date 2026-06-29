@@ -22,6 +22,8 @@ export function useProductCatalogActions() {
       productId: product.id,
       title: product.title,
       price: product.price,
+      unitPrice: product.price,
+      slug: product.slug,
       quantity: 1,
       imageUrl: product.images?.[0] || '',
     });

@@ -26,6 +26,8 @@
   },
   "exclude": [
     "supabase/functions/**",
-    "api/**"
+    "api/**",
+    "server/**",
+    "scratch/**"
   ]
 }

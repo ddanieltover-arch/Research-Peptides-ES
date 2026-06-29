@@ -1,17 +1,20 @@
-import { Link } from 'react-router-dom';
+import { LocaleLink } from '../../i18n/LocaleLink';
 import { Minus, Plus, Trash2 } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { ProductImagePlaceholder } from '../products/ProductImagePlaceholder';
 import { formatCurrency } from '../../lib/utils';
 import { productPath } from '../../lib/productUrl';
+import { cartLineUnitPrice } from '../../store/useCartStore';
 import { cn } from '../../lib/utils';
 
 export type CartLineItemData = {
   productId: string;
   title: string;
   price: number;
+  unitPrice?: number;
   quantity: number;
   imageUrl?: string;
+  slug?: string;
   specification?: string;
 };
 
@@ -24,6 +27,7 @@ type CartLineItemProps = {
 
 export function CartLineItem({ item, compact = false, onUpdateQuantity, onRemove }: CartLineItemProps) {
   const { t } = useTranslation('checkout');
+  const unitPrice = cartLineUnitPrice(item);
 
   return (
     <div
@@ -51,21 +55,21 @@ export function CartLineItem({ item, compact = false, onUpdateQuantity, onRemove
       </div>
 
       <div className="flex-1 min-w-0 flex flex-col">
-        <Link
-          to={productPath({ title: item.title })}
+        <LocaleLink
+          to={productPath({ slug: item.slug, title: item.title })}
           className={cn(
             'font-display font-semibold text-navy-950 hover:text-brand-600 transition-colors line-clamp-2',
             compact ? 'text-sm' : 'text-base',
           )}
         >
           {item.title}
-        </Link>
+        </LocaleLink>
         {item.specification ? (
           <span className="inline-block mt-1 text-[10px] font-semibold uppercase tracking-wide text-steel-600 bg-mist-50 px-2 py-0.5 rounded-md w-fit border border-brand-50">
             {item.specification}
           </span>
         ) : null}
-        <p className="text-brand-600 font-semibold text-sm mt-1 tabular-nums">{formatCurrency(item.price)}</p>
+        <p className="text-brand-600 font-semibold text-sm mt-1 tabular-nums">{formatCurrency(unitPrice)}</p>
 
         <div className="flex items-center justify-between mt-auto pt-3 gap-2">
           <div className="flex items-center border border-brand-100 rounded-full overflow-hidden bg-white">
@@ -103,7 +107,7 @@ export function CartLineItem({ item, compact = false, onUpdateQuantity, onRemove
 
       {!compact && (
         <div className="hidden sm:block text-lg font-display font-semibold text-navy-950 tabular-nums shrink-0">
-          {formatCurrency(item.price * item.quantity)}
+          {formatCurrency(unitPrice * item.quantity)}
         </div>
       )}
     </div>

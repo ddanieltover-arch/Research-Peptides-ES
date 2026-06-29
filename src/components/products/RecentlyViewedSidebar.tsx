@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { History, X, ChevronLeft, ChevronRight } from 'lucide-react';
-import { Link, useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
+import { LocaleLink } from '../../i18n/LocaleLink';
 import { supabase } from '../../supabase';
 import { ProductImagePlaceholder } from './ProductImagePlaceholder';
 import { productPath } from '../../lib/productUrl';
@@ -58,7 +59,7 @@ export default function RecentlyViewedSidebar() {
           >
             <p className="text-[8px] font-black uppercase tracking-widest text-gray-400 text-center mb-2">History</p>
             {products.map((product) => (
-              <Link
+              <LocaleLink
                 key={product.id}
                 to={productPath(product)}
                 className="relative group"
@@ -80,7 +81,7 @@ export default function RecentlyViewedSidebar() {
                 <span className="absolute right-14 top-1/2 -translate-y-1/2 bg-gray-900 text-white text-[10px] font-bold px-3 py-1.5 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none shadow-xl">
                   {product.title}
                 </span>
-              </Link>
+              </LocaleLink>
             ))}
             <button 
               onClick={() => {

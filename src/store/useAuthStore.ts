@@ -44,11 +44,11 @@ export const useAuthStore = create<AuthState>((set) => ({
   setAuthReady: (isReady) => set({ isAuthReady: isReady }),
   fetchProfile: async (id, email, displayName, photoURL) => {
     try {
-      const { data: existingUser, error: reqError } = await supabase
+      const { data: existingUser } = await supabase
         .from('users')
         .select('*')
         .eq('id', id)
-        .single();
+        .maybeSingle();
         
       if (existingUser) {
         set({ profile: existingUser });
@@ -68,6 +68,9 @@ export const useAuthStore = create<AuthState>((set) => ({
           
         if (inserted) {
           set({ profile: inserted });
+        } else {
+          console.error('Error creating user profile:', insertError);
+          set({ profile: newProfile });
         }
       }
     } catch (error) {

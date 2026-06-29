@@ -1,3 +1,5 @@
+import crypto from 'node:crypto';
+
 type PsilioWebhookPayload = {
   txn_id?: string;
   invoice_id?: string;
@@ -36,8 +38,11 @@ function mapPsilioStatusToOrderStatus(status: string): string | null {
   const s = status.trim().toLowerCase();
   if (!s) return null;
 
-  if (['completed', 'mismatch', 'confirmed', 'paid', 'success', 'done'].includes(s)) {
+  if (['completed', 'confirmed', 'paid', 'success', 'done'].includes(s)) {
     return 'paid';
+  }
+  if (s === 'mismatch') {
+    return 'processing';
   }
   if (['expired', 'cancelled', 'canceled', 'failed', 'error'].includes(s)) {
     return 'cancelled';
@@ -46,6 +51,20 @@ function mapPsilioStatusToOrderStatus(status: string): string | null {
     return 'pending';
   }
   return null;
+}
+
+function verifyPlisioHash(data: Record<string, unknown>, secret: string): boolean {
+  const received = toText(data.verify_hash);
+  if (!received || !secret) return false;
+
+  const sorted = Object.keys(data)
+    .filter((key) => key !== 'verify_hash')
+    .sort()
+    .map((key) => String(data[key] ?? ''))
+    .join('');
+
+  const expected = crypto.createHash('md5').update(sorted + secret).digest('hex');
+  return expected === received;
 }
 
 export default async function handler(req: any, res: any) {
@@ -71,6 +90,11 @@ export default async function handler(req: any, res: any) {
     const sourceCurrency = toText(merged.source_currency) || toText(merged.currency);
     const txUrl = toText(merged.tx_url);
     const hasVerifyHash = Boolean(toText(merged.verify_hash));
+    const secret = toText(process.env.PSILIO_SECRET_KEY) || toText(process.env.PLISIO_SECRET_KEY);
+
+    if (secret && hasVerifyHash && !verifyPlisioHash(merged as Record<string, unknown>, secret)) {
+      return res.status(400).json({ success: false, error: 'Invalid Plisio verify_hash' });
+    }
 
     const mappedOrderStatus = mapPsilioStatusToOrderStatus(status);
 

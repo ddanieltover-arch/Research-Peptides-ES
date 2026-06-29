@@ -7,6 +7,8 @@ import { Container, PageShell } from '../../design-system';
 import { CatalogPageHeader } from '../catalog/CatalogPageHeader';
 import { LocaleButton } from '../../i18n/LocaleButton';
 import { LocaleLink } from '../../i18n/LocaleLink';
+import { stripLocaleFromPath } from '../../i18n/routing';
+
 import { cn } from '../../lib/utils';
 
 const NAV = [
@@ -26,6 +28,8 @@ export function AccountShell({ title, subtitle, children }: AccountShellProps) {
   const { t } = useTranslation('account');
   const { user, profile } = useAuthStore();
   const location = useLocation();
+
+  const canonicalPath = stripLocaleFromPath(location.pathname);
 
   if (!user || !profile) {
     return (
@@ -76,7 +80,7 @@ export function AccountShell({ title, subtitle, children }: AccountShellProps) {
 
             <nav className="bg-white rounded-3xl border border-brand-100 p-3 shadow-card space-y-1">
               {NAV.map((item) => {
-                const active = location.pathname.endsWith(item.path);
+                const active = canonicalPath === item.path;
                 return (
                   <LocaleLink
                     key={item.path + item.labelKey}

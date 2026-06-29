@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { formatLocaleDate } from '../lib/formatLocaleDate';
-import { Link } from 'react-router-dom';
+import { LocaleLink } from '../i18n/LocaleLink';
 import { motion } from 'motion/react';
 import {
   Package,
@@ -49,12 +49,16 @@ export default function Orders() {
     switch (status) {
       case 'pending':
         return 1;
+      case 'processing':
+        return 1;
       case 'paid':
         return 2;
       case 'shipped':
         return 3;
       case 'delivered':
         return 4;
+      case 'cancelled':
+        return 0;
       default:
         return 1;
     }
@@ -170,12 +174,12 @@ export default function Orders() {
                         <div className="w-12 h-12 rounded-xl bg-mist-50 border border-brand-50" />
                       )}
                       <div className="min-w-0">
-                        <Link
+                        <LocaleLink
                           to={productPath({ slug: item.slug, title: item.title })}
                           className="text-sm font-semibold text-navy-950 hover:text-brand-600 truncate block"
                         >
                           {item.title}
-                        </Link>
+                        </LocaleLink>
                         <p className="text-xs text-steel-600">
                           {t('orders.qty', {
                             quantity: item.quantity,

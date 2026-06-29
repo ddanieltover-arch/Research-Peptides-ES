@@ -1,8 +1,6 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { LocaleLayout } from './i18n/LocaleLayout';
-import { NON_DEFAULT_LOCALE_ROUTE_PARAM } from './i18n/routing';
-import { createAppPageRoutes } from './routes/appPageRoutes';
 import ScrollToTop from './components/ScrollToTop';
 import { useAuthStore } from './store/useAuthStore';
 import { useWishlistStore } from './store/useWishlistStore';
@@ -63,12 +61,7 @@ export default function App() {
 function AppRoutes() {
   return (
     <Routes>
-      <Route path="/" element={<LocaleLayout />}>
-        {createAppPageRoutes()}
-      </Route>
-      <Route path={`/:locale(${NON_DEFAULT_LOCALE_ROUTE_PARAM})`} element={<LocaleLayout />}>
-        {createAppPageRoutes()}
-      </Route>
+      <Route path="*" element={<LocaleLayout />} />
     </Routes>
   );
 }

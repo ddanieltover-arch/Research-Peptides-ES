@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useCartStore } from '../store/useCartStore';
 import { useAuthStore } from '../store/useAuthStore';
@@ -9,7 +9,7 @@ import { CheckCircle, Loader2, Truck, Package, Globe, Shield, CreditCard, Landma
 import { europeanLocations } from '../data/europeanCountries';
 import { postOrderCreatedEmail, postPsilioCreateInvoice } from '../lib/transactionalEmailApi';
 import { CheckoutSkeleton } from '../components/Skeleton';
-import { PRIMARY_PROMO_CODE, PROMO_DISCOUNT_PERCENT, isValidPromoCode } from '../lib/promoCodes';
+import { PRIMARY_PROMO_CODE } from '../lib/promoCodes';
 import { Container, Button, PageShell } from '../design-system';
 import { CatalogPageHeader } from '../components/catalog/CatalogPageHeader';
 import { CheckoutProgress } from '../components/checkout/CheckoutProgress';
@@ -36,7 +36,7 @@ const EUROPEAN_COUNTRIES = Array.from(new Set(europeanLocations.map(l => l.count
 export default function Checkout() {
   usePageSeo({ canonicalPath: '/checkout', noindex: true });
   const { t } = useTranslation('checkout');
-  const { items, getTotal, getSubtotal, clearCart, hasHydrated } = useCartStore();
+  const { items, getTotal, getSubtotal, clearCart, hasHydrated, promoCode: storePromoCode, discount: storeDiscountPercent, applyPromoCode, clearPromoCode } = useCartStore();
   const { user } = useAuthStore();
   const navigate = useLocaleNavigate();
   const [step, setStep] = useState(1);
@@ -63,10 +63,9 @@ export default function Checkout() {
     finalTotal: number;
   } | null>(null);
 
-  const [promoCode, setPromoCode] = useState('');
-  const [appliedDiscount, setAppliedDiscount] = useState(0);
+  const [promoCode, setPromoCode] = useState(storePromoCode ?? '');
   const [promoError, setPromoError] = useState('');
-  const [showPromo, setShowPromo] = useState(false);
+  const [showPromo, setShowPromo] = useState(Boolean(storePromoCode));
   const [shippingErrors, setShippingErrors] = useState<Record<string, string>>({});
   const [paymentErrors, setPaymentErrors] = useState<Record<string, string>>({});
 
@@ -84,18 +83,17 @@ export default function Checkout() {
     }
   }, [hasHydrated, items.length, placedOrderId, navigate]);
 
-  if (!hasHydrated) {
-    return <CheckoutSkeleton />;
-  }
+  React.useEffect(() => {
+    if (storePromoCode) {
+      setPromoCode(storePromoCode);
+      setShowPromo(true);
+    }
+  }, [storePromoCode]);
 
-  if (items.length === 0 && !placedOrderId) {
-    return <CheckoutSkeleton />;
-  }
+  const subtotalValue = getSubtotal();
 
-  // Get available methods based on country and total
-  const getAvailableMethods = () => {
-    const subtotal = getSubtotal();
-    let baseMethods = [];
+  const availableMethods = useMemo(() => {
+    let baseMethods: typeof SHIPPING_METHODS.EUROPE = [];
     let threshold = 500;
 
     if (EUROPEAN_COUNTRIES.includes(shipping.country)) {
@@ -109,46 +107,50 @@ export default function Checkout() {
       threshold = 1000;
     }
 
-    if (subtotal >= threshold) {
+    if (subtotalValue >= threshold) {
       return [
         { id: 'free', name: 'Free Shipping', subtext: 'Complimentary Delivery', price: 0 },
-        ...baseMethods
+        ...baseMethods,
       ];
     }
     return baseMethods;
-  };
+  }, [shipping.country, subtotalValue]);
 
-  const availableMethods = getAvailableMethods();
-  
-  // Auto-select Free Shipping if it becomes available, or keep current selection if still valid
   React.useEffect(() => {
-    const hasFree = availableMethods.find(m => m.id === 'free');
+    const hasFree = availableMethods.find((m) => m.id === 'free');
     if (hasFree && selectedShippingId !== 'free') {
       setSelectedShippingId('free');
-    } else if (!availableMethods.find(m => m.id === selectedShippingId)) {
-      setSelectedShippingId(availableMethods[0].id);
+    } else if (!availableMethods.find((m) => m.id === selectedShippingId)) {
+      setSelectedShippingId(availableMethods[0]?.id ?? 'intl_eu');
     }
-  }, [availableMethods.length, shipping.country]);
+  }, [availableMethods, selectedShippingId]);
 
-  const selectedMethod = availableMethods.find(m => m.id === selectedShippingId) || availableMethods[0];
-  const shippingCost = selectedMethod.price;
-  
-  const subtotalValue = getSubtotal();
-  const promoDiscountValue = Math.min(appliedDiscount, subtotalValue);
-  // Calculate crypto discount after promo discount is applied.
+  const selectedMethod = availableMethods.find((m) => m.id === selectedShippingId) || availableMethods[0];
+  const shippingCost = selectedMethod?.price ?? 0;
+
+  const promoDiscountValue =
+    storePromoCode && storeDiscountPercent > 0
+      ? Math.min(subtotalValue * (storeDiscountPercent / 100), subtotalValue)
+      : 0;
   const cryptoDiscount = paymentMethod === 'crypto' ? (subtotalValue - promoDiscountValue) * 0.05 : 0;
   const finalTotalValue = subtotalValue - promoDiscountValue - cryptoDiscount + shippingCost;
 
   const applyPromo = () => {
-    if (isValidPromoCode(promoCode)) {
-      const discount = getSubtotal() * (PROMO_DISCOUNT_PERCENT / 100);
-      setAppliedDiscount(discount);
+    if (applyPromoCode(promoCode)) {
       setPromoError('');
     } else {
       setPromoError(`Invalid code. Try ${PRIMARY_PROMO_CODE}`);
-      setAppliedDiscount(0);
+      clearPromoCode();
     }
   };
+
+  if (!hasHydrated) {
+    return <CheckoutSkeleton />;
+  }
+
+  if (items.length === 0 && !placedOrderId) {
+    return <CheckoutSkeleton />;
+  }
 
   const focusField = (id: string) => {
     const el = document.getElementById(id) as HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement | null;
@@ -598,7 +600,7 @@ export default function Checkout() {
                       <button type="button" onClick={applyPromo} className="bg-brand-600 text-white px-4 py-2 rounded-xl text-[10px] font-bold uppercase tracking-widest hover:bg-brand-700 transition-colors">Apply</button>
                     </div>
                     {promoError && <p className="text-[10px] text-red-500 font-bold">{promoError}</p>}
-                    {appliedDiscount > 0 && <p className="text-[10px] text-emerald-500 font-bold">✓ Reference Code Accepted</p>}
+                    {storePromoCode && promoDiscountValue > 0 && <p className="text-[10px] text-emerald-500 font-bold">✓ Reference Code Accepted</p>}
                   </div>
                 )}
               </div>

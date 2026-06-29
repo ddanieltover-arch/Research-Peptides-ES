@@ -6,9 +6,19 @@ export interface CartItem {
   productId: string;
   title: string;
   price: number;
+  /** Catalog unit price before quantity-tier discounts (falls back to `price`). */
+  unitPrice?: number;
   quantity: number;
   imageUrl: string;
+  slug?: string;
   specification?: string;
+}
+
+export function cartLineUnitPrice(item: Pick<CartItem, 'price' | 'unitPrice' | 'quantity'>): number {
+  const base = item.unitPrice ?? item.price;
+  if (item.quantity >= 5) return base * 0.85;
+  if (item.quantity >= 3) return base * 0.9;
+  return base;
 }
 
 interface CartState {
@@ -88,7 +98,10 @@ export const useCartStore = create<CartState>()(
       },
       clearPromoCode: () => set({ promoCode: null, discount: 0 }),
       getSubtotal: () => {
-        return get().items.reduce((total, item) => total + item.price * item.quantity, 0);
+        return get().items.reduce(
+          (total, item) => total + cartLineUnitPrice(item) * item.quantity,
+          0,
+        );
       },
       getTotal: () => {
         const subtotal = get().getSubtotal();

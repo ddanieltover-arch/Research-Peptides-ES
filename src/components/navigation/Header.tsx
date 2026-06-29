@@ -93,26 +93,27 @@ export default function Header({
             {primaryNav.map((item) => {
               if (isMegaItem(item)) {
                 const open = activeMega === item.megaMenu;
+                const megaHref = item.megaMenu === 'shop' ? '/shop' : '/peptide-research';
                 return (
                   <div
                     key={item.labelKey}
                     className="relative"
                     onMouseEnter={() => setActiveMega(item.megaMenu)}
                   >
-                    <button
-                      type="button"
+                    <LocaleLink
+                      to={megaHref}
+                      onClick={() => setActiveMega(null)}
                       className={cn(
-                        'px-4 py-2 rounded-xl text-sm font-semibold transition-colors',
-                        open
+                        'px-4 py-2 rounded-xl text-sm font-semibold transition-colors inline-block',
+                        open || pathWithoutLocale === megaHref
                           ? 'text-brand-600 bg-brand-50'
                           : 'text-steel-600 hover:text-brand-600 hover:bg-brand-50/60',
                       )}
                       aria-expanded={open}
                       aria-controls="mega-menu-panel"
-                      onClick={() => setActiveMega(open ? null : item.megaMenu)}
                     >
                       {tNav(item.labelKey)}
-                    </button>
+                    </LocaleLink>
                   </div>
                 );
               }

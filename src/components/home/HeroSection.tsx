@@ -3,7 +3,7 @@ import { usePreloadImage } from '../../hooks/usePreloadImage';
 import { ArrowRight, FlaskConical, ShieldCheck, Sparkles, Truck } from 'lucide-react';
 import { motion } from 'motion/react';
 import { LocaleLink } from '../../i18n/LocaleLink';
-import { Button, Container } from '../../design-system';
+import { Button, Container, buttonClassName } from '../../design-system';
 import { useWizardStore } from '../../store/useWizardStore';
 import heroPeptides from '../../assets/hero_peptides.png';
 
@@ -53,11 +53,12 @@ export function HeroSection() {
               </p>
 
               <div className="flex flex-row flex-wrap items-center gap-3 mb-10">
-                <LocaleLink to="/shop">
-                  <Button size="lg" className="w-auto gap-2">
-                    {t('hero.ctaShop')}
-                    <ArrowRight className="h-4 w-4" />
-                  </Button>
+                <LocaleLink
+                  to="/shop"
+                  className={buttonClassName({ size: 'lg', className: 'w-auto gap-2' })}
+                >
+                  {t('hero.ctaShop')}
+                  <ArrowRight className="h-4 w-4" />
                 </LocaleLink>
                 <Button
                   variant="outline"

@@ -8,7 +8,9 @@
   "card": {
     "addToWishlist": "Add {{title}} to wishlist",
     "removeFromWishlist": "Remove {{title}} from wishlist",
-    "addToCart": "Add {{title}} to cart"
+    "addToCart": "Add {{title}} to cart",
+    "whatsapp": "WhatsApp",
+    "whatsappMessage": "Hi, I'm interested in: {{title}}"
   },
   "notFound": {
     "title": "Product not found",
