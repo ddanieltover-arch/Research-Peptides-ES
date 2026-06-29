@@ -149,7 +149,7 @@ export function ProductCard({
             href={whatsappUrl(t('card.whatsappMessage', { title: displayTitle }))}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex w-full items-center justify-center gap-2 rounded-full border border-[#25D366]/35 bg-[#25D366]/10 px-3 py-2 text-sm font-semibold text-[#128C7E] transition-colors hover:bg-[#25D366]/20"
+            className="flex w-full items-center justify-center gap-2 rounded-full border border-brand-200 bg-mist-50 px-3 py-2 text-sm font-semibold text-brand-600 transition-colors hover:bg-mist-100 hover:text-brand-700"
             aria-label={t('card.whatsapp')}
           >
             <svg className="h-4 w-4 shrink-0" viewBox="0 0 24 24" fill="currentColor" aria-hidden>
