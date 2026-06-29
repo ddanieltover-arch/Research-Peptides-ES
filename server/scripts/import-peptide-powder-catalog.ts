@@ -33,7 +33,8 @@ import {
   resolveResearchPeptideImage,
 } from '../src/lib/researchPeptideShopImages.js';
 
-const MARKER = 'Source: peptide-powder-price-list (PDF)';
+const OLD_MARKER = 'Source: peptide-powder-price-list (PDF)';
+const MARKER = 'Fuente: lista de precios de péptidos en polvo (PDF)';
 const ARGS = process.argv.slice(2);
 const REPLACE = ARGS.includes('--replace');
 const NO_SHOP_IMAGES = ARGS.includes('--no-shop-images');
@@ -152,9 +153,9 @@ async function main() {
     if (REPLACE) {
       await client.query(
         `DELETE FROM products WHERE EXISTS (
-           SELECT 1 FROM unnest(specifications) s WHERE s = $1
+           SELECT 1 FROM unnest(specifications) s WHERE s = $1 OR s = $2
          )`,
-        [MARKER]
+        [MARKER, OLD_MARKER]
       );
     }
 
@@ -177,8 +178,8 @@ async function main() {
 
       const specifications = [
         MARKER,
-        'Lyophilized powder catalog line (research use only).',
-        `Wholesale list amounts were USD nominal; stored as GBP using rate ${usdGbpRate} (see import script / FX cache).`,
+        'Línea de catálogo de polvo liofilizado (solo para uso en investigación).',
+        `Las cantidades de la lista al por mayor eran nominales en USD; almacenadas como GBP usando la tasa ${usdGbpRate} (ver script de importación / caché FX).`,
         ...entry.variants.map((r) => `${r.sku}: ${r.specLabel}`),
       ];
 
