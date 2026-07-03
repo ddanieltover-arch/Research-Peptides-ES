@@ -18,7 +18,7 @@ import MobileBottomNav from './MobileBottomNav';
 import SalesNotification from './SalesNotification';
 import CartDrawer from './cart/CartDrawer';
 import Omnisearch from './search/Omnisearch';
-import TawkToChat from './chat/TawkToChat';
+import ChatwayChat from './chat/ChatwayChat';
 import { CookieConsent } from './gdpr/CookieConsent';
 import { PageLoader } from './PageLoader';
 import { postNewsletterSubscribe } from '../lib/transactionalEmailApi';
@@ -221,7 +221,7 @@ function LayoutShell() {
       <RecentlyViewedSidebar />
       <ToastContainer />
       <CookieConsent />
-      {!location.pathname.includes('/admin') && <TawkToChat />}
+      {!location.pathname.includes('/admin') && <ChatwayChat />}
     </div>
   );
 }
