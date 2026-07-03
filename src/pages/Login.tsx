@@ -1,7 +1,9 @@
-import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { useLocaleNavigate } from '../i18n/useLocaleNavigate';
+import { useAuthStore } from '../store/useAuthStore';
+import { resolvePostLoginPath } from '../lib/postLoginRedirect';
 import { supabase } from '../supabase';
 import { LogIn, Mail, Lock, Loader2 } from 'lucide-react';
 import { Button, Container, GlassPanel } from '../design-system';
@@ -19,6 +21,51 @@ export default function Login() {
   const [error, setError] = useState<string | null>(null);
   const [success, setSuccess] = useState<string | null>(null);
   const navigate = useLocaleNavigate();
+  const [searchParams] = useSearchParams();
+  const redirectParam = searchParams.get('redirect');
+  const { user, profile, isAuthReady, fetchProfile } = useAuthStore();
+
+  useEffect(() => {
+    if (!isAuthReady || !user || isSignUp) return;
+
+    let cancelled = false;
+
+    const redirectSignedInUser = async () => {
+      const destination = await resolvePostLoginPath(
+        user.id,
+        user.email,
+        redirectParam,
+        profile?.role,
+      );
+      if (!cancelled) navigate(destination, { replace: true });
+    };
+
+    if (profile) {
+      void redirectSignedInUser();
+      return () => {
+        cancelled = true;
+      };
+    }
+
+    void fetchProfile(
+      user.id,
+      user.email || '',
+      user.user_metadata?.full_name || null,
+      user.user_metadata?.avatar_url || null,
+    ).then(() => {
+      if (cancelled) return;
+      const latestProfile = useAuthStore.getState().profile;
+      void resolvePostLoginPath(user.id, user.email, redirectParam, latestProfile?.role).then(
+        (destination) => {
+          if (!cancelled) navigate(destination, { replace: true });
+        },
+      );
+    });
+
+    return () => {
+      cancelled = true;
+    };
+  }, [user, profile, isAuthReady, isSignUp, redirectParam, navigate, fetchProfile]);
 
   const handleAuth = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -36,7 +83,22 @@ export default function Login() {
       } else {
         const { data, error: loginError } = await supabase.auth.signInWithPassword({ email, password });
         if (loginError) throw loginError;
-        if (data.user) navigate('/profile');
+        if (data.user) {
+          await fetchProfile(
+            data.user.id,
+            data.user.email || email,
+            data.user.user_metadata?.full_name || null,
+            data.user.user_metadata?.avatar_url || null,
+          );
+          const latestProfile = useAuthStore.getState().profile;
+          const destination = await resolvePostLoginPath(
+            data.user.id,
+            data.user.email || email,
+            redirectParam,
+            latestProfile?.role,
+          );
+          navigate(destination, { replace: true });
+        }
       }
     } catch (err: unknown) {
       const message =
@@ -49,9 +111,10 @@ export default function Login() {
 
   const handleGoogleLogin = async () => {
     try {
+      const returnPath = `${window.location.pathname}${window.location.search}`;
       await supabase.auth.signInWithOAuth({
         provider: 'google',
-        options: { redirectTo: `${window.location.origin}/profile` },
+        options: { redirectTo: `${window.location.origin}${returnPath}` },
       });
     } catch (err: unknown) {
       setError(err instanceof Error ? err.message : t('googleFailed'));
