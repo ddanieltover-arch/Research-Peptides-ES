@@ -1,12 +1,26 @@
-import { useEffect } from 'react';
+import { useLayoutEffect } from 'react';
 import { useLocation } from 'react-router-dom';
+import { scrollToTop } from '../lib/scrollToTop';
 
 export default function ScrollToTop() {
-  const { pathname } = useLocation();
+  const { pathname, key } = useLocation();
 
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [pathname]);
+  useLayoutEffect(() => {
+    if ('scrollRestoration' in history) {
+      history.scrollRestoration = 'manual';
+    }
+  }, []);
+
+  useLayoutEffect(() => {
+    scrollToTop();
+
+    // Lazy routes can paint after the first scroll pass — run again on the next frame.
+    const frame = requestAnimationFrame(() => {
+      scrollToTop();
+    });
+
+    return () => cancelAnimationFrame(frame);
+  }, [pathname, key]);
 
   return null;
 }

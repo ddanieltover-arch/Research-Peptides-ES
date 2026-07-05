@@ -2,7 +2,8 @@ import React, { Suspense, useEffect, useState } from 'react';
 import { Outlet, useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { useLocaleNavigate } from '../i18n/useLocaleNavigate';
-import { ArrowUp, MessageCircle } from 'lucide-react';
+import { ArrowUp } from 'lucide-react';
+import { WhatsAppIcon } from './icons/WhatsAppIcon';
 import { motion, AnimatePresence } from 'motion/react';
 import { useAuthStore } from '../store/useAuthStore';
 import { useSearchStore } from '../store/useSearchStore';
@@ -193,7 +194,7 @@ function LayoutShell() {
           className="bg-brand-500 hover:bg-brand-600 text-white rounded-full p-3 shadow-glow focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-2"
           aria-label="Contact us on WhatsApp"
         >
-          <MessageCircle className="h-5 w-5" aria-hidden />
+          <WhatsAppIcon className="h-5 w-5" />
         </a>
         <AnimatePresence>
           {showBackToTop && (

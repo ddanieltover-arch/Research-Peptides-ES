@@ -153,7 +153,6 @@ export default function ProductDetails() {
       }
     };
     fetchProductAndReviews();
-    window.scrollTo(0, 0);
 
     return () => {
       cancelled = true;
