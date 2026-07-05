@@ -18,9 +18,6 @@
     },
     "api/product-feed.ts": {
       "maxDuration": 30
-    },
-    "api/payments/psilio/*.ts": {
-      "maxDuration": 30
     }
   },
   "rewrites": [

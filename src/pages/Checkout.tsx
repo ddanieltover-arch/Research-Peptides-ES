@@ -5,9 +5,9 @@ import { useAuthStore } from '../store/useAuthStore';
 import { formatCurrency, DEFAULT_CURRENCY } from '../lib/utils';
 import { useLocaleNavigate } from '../i18n/useLocaleNavigate';
 import { supabase } from '../supabase';
-import { CheckCircle, Loader2, Shield, Landmark, Bitcoin } from 'lucide-react';
+import { CheckCircle, Loader2, Shield, Landmark } from 'lucide-react';
 import { europeanLocations } from '../data/europeanCountries';
-import { postOrderCreatedEmail, postPsilioCreateInvoice } from '../lib/transactionalEmailApi';
+import { postOrderCreatedEmail } from '../lib/transactionalEmailApi';
 import { CheckoutSkeleton } from '../components/Skeleton';
 import { PRIMARY_PROMO_CODE } from '../lib/promoCodes';
 import { Container, Button, PageShell } from '../design-system';
@@ -51,14 +51,13 @@ export default function Checkout() {
     postalCode: ''
   });
   const [selectedShippingId, setSelectedShippingId] = useState('intl_eu');
-  const [paymentMethod, setPaymentMethod] = useState<'bank' | 'crypto'>('crypto');
+  const paymentMethod = 'bank' as const;
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [placedOrderId, setPlacedOrderId] = useState<string | null>(null);
   const [checkoutMessage, setCheckoutMessage] = useState('');
   const [lockedTotals, setLockedTotals] = useState<{
     subtotal: number;
     promoDiscount: number;
-    cryptoDiscount: number;
     shippingCost: number;
     finalTotal: number;
   } | null>(null);
@@ -138,8 +137,7 @@ export default function Checkout() {
     storePromoCode && storeDiscountPercent > 0
       ? Math.min(subtotalValue * (storeDiscountPercent / 100), subtotalValue)
       : 0;
-  const cryptoDiscount = paymentMethod === 'crypto' ? (subtotalValue - promoDiscountValue) * 0.05 : 0;
-  const finalTotalValue = subtotalValue - promoDiscountValue - cryptoDiscount + shippingCost;
+  const finalTotalValue = subtotalValue - promoDiscountValue + shippingCost;
 
   const applyPromo = () => {
     if (applyPromoCode(promoCode)) {
@@ -229,13 +227,12 @@ export default function Checkout() {
       setLockedTotals({
         subtotal: subtotalValue,
         promoDiscount: promoDiscountValue,
-        cryptoDiscount,
         shippingCost,
         finalTotal: finalTotalValue
       });
       setCheckoutMessage('');
 
-      // NOTE: We wrap non-schema columns (payment_method, crypto_discount) inside shipping_address JSON
+      // NOTE: We wrap non-schema columns (payment_method) inside shipping_address JSON
       // to avoid Supabase errors until columns are officially added to the database.
       // 1. Generate ID manually so we don't need .select() (which fails for guests due to RLS)
       const generatedId = crypto.randomUUID();
@@ -250,7 +247,6 @@ export default function Checkout() {
         shipping_address: {
           ...shipping,
           payment_method: paymentMethod,
-          crypto_discount: cryptoDiscount,
           shipping_method: selectedMethod.name,
           shipping_cost: shippingCost
         }
@@ -273,26 +269,6 @@ export default function Checkout() {
 
       if (emailDispatchFailed) {
         setCheckoutMessage(t('messages.emailFailed'));
-      } else if (paymentMethod === 'crypto') {
-        try {
-          const result = await postPsilioCreateInvoice({
-            order_id: orderId,
-            amount: finalTotalValue,
-            currency: 'EUR',
-            email: shipping.email,
-            name: shipping.fullName
-          });
-          clearCart();
-          window.location.assign(result.paymentUrl);
-          return;
-        } catch (psilioError: any) {
-          console.error('Psilio redirect failed:', psilioError);
-          setCheckoutMessage(
-            t('messages.cryptoRedirectFailed', {
-              detail: psilioError?.message || t('messages.cryptoRedirectFallback'),
-            }),
-          );
-        }
       } else {
         setCheckoutMessage(t('messages.bankSuccess'));
       }
@@ -421,28 +397,18 @@ export default function Checkout() {
                 </div>
 
                 <div className="grid grid-cols-1 gap-4" role="radiogroup" aria-labelledby="checkout-payment-heading">
-                  {(
-                    [
-                      { id: 'crypto' as const, icon: Bitcoin, badge: t('payment.crypto.badge') },
-                      { id: 'bank' as const, icon: Landmark },
-                    ] as const
-                  ).map((method) => (
-                    <button key={method.id} type="button" role="radio" aria-checked={paymentMethod === method.id} onClick={() => setPaymentMethod(method.id)} className={`relative flex items-center gap-5 p-6 rounded-[1.25rem] border-2 transition-all ${paymentMethod === method.id ? 'border-brand-500 bg-brand-50/40 shadow-card' : 'border-brand-100 bg-white hover:border-accent-500/30'}`}>
-                      <div className={`w-14 h-14 rounded-xl flex items-center justify-center ${paymentMethod === method.id ? 'bg-brand-600 text-white' : 'bg-mist-50 text-silver-400 border border-brand-100'}`}>
-                        <method.icon className="w-8 h-8" aria-hidden />
-                      </div>
-                      <div className="text-left flex-1">
-                        <div className="flex items-center gap-2">
-                           <span className="text-lg font-black text-navy-950">{t(`payment.${method.id}.name`)}</span>
-                           {'badge' in method && method.badge ? <span className="bg-emerald-500 text-white text-[8px] font-black px-2 py-0.5 rounded-full uppercase">{method.badge}</span> : null}
-                        </div>
-                        <p className="text-xs font-bold text-silver-400">{t(`payment.${method.id}.subtext`)}</p>
-                      </div>
-                      <div className={`w-6 h-6 rounded-full border-2 flex items-center justify-center ${paymentMethod === method.id ? 'border-brand-500 bg-brand-500' : 'border-gray-200'}`}>
-                        {paymentMethod === method.id && <div className="w-2.5 h-2.5 rounded-full bg-white shadow-sm" />}
-                      </div>
-                    </button>
-                  ))}
+                  <div className="relative flex items-center gap-5 p-6 rounded-[1.25rem] border-2 border-brand-500 bg-brand-50/40 shadow-card">
+                    <div className="w-14 h-14 rounded-xl flex items-center justify-center bg-brand-600 text-white">
+                      <Landmark className="w-8 h-8" aria-hidden />
+                    </div>
+                    <div className="text-left flex-1">
+                      <span className="text-lg font-black text-navy-950">{t('payment.bank.name')}</span>
+                      <p className="text-xs font-bold text-silver-400">{t('payment.bank.subtext')}</p>
+                    </div>
+                    <div className="w-6 h-6 rounded-full border-2 border-brand-500 bg-brand-500 flex items-center justify-center">
+                      <div className="w-2.5 h-2.5 rounded-full bg-white shadow-sm" />
+                    </div>
+                  </div>
                 </div>
                 {paymentErrors.paymentMethod && <p className="text-xs font-semibold text-red-600">{paymentErrors.paymentMethod}</p>}
 
@@ -459,37 +425,19 @@ export default function Checkout() {
                   <button type="button" onClick={() => setStep(2)} className="text-xs font-black text-brand-600 uppercase tracking-widest hover:underline">{t('confirm.changeMethod')}</button>
                 </div>
 
-                {paymentMethod === 'bank' && (
-                  <div className="bg-mist-50 p-8 rounded-[2rem] text-center space-y-4">
-                    <Landmark className="w-16 h-16 text-navy-950 mx-auto opacity-20" />
-                    <div>
-                      <h3 className="text-xl font-black text-navy-950">{t('confirm.bank.title')}</h3>
-                      <p className="text-sm font-bold text-steel-600 mt-2">
-                        <Trans
-                          i18nKey="confirm.bank.body"
-                          values={{ email: shipping.email }}
-                          components={{ 1: <span className="text-brand-600" /> }}
-                        />
-                      </p>
-                    </div>
+                <div className="bg-mist-50 p-8 rounded-[2rem] text-center space-y-4">
+                  <Landmark className="w-16 h-16 text-navy-950 mx-auto opacity-20" />
+                  <div>
+                    <h3 className="text-xl font-black text-navy-950">{t('confirm.bank.title')}</h3>
+                    <p className="text-sm font-bold text-steel-600 mt-2">
+                      <Trans
+                        i18nKey="confirm.bank.body"
+                        values={{ email: shipping.email }}
+                        components={{ 1: <span className="text-brand-600" /> }}
+                      />
+                    </p>
                   </div>
-                )}
-
-                {paymentMethod === 'crypto' && (
-                  <div className="bg-orange-50 p-8 rounded-[2rem] text-center space-y-4 border border-orange-100">
-                    <Bitcoin className="w-16 h-16 text-orange-500 mx-auto" />
-                    <div>
-                      <h3 className="text-xl font-black text-navy-950">{t('confirm.crypto.title')}</h3>
-                      <p className="text-sm font-bold text-orange-800 mt-2">
-                        <Trans
-                          i18nKey="confirm.crypto.body"
-                          values={{ amount: formatCurrency(cryptoDiscount) }}
-                          components={{ 1: <span className="font-black underline" /> }}
-                        />
-                      </p>
-                    </div>
-                  </div>
-                )}
+                </div>
 
                 <Button type="button" size="lg" fullWidth onClick={handleOrderSubmit} disabled={isSubmitting} className="gap-3 text-lg py-6">
                   {isSubmitting ? <Loader2 className="w-6 h-6 animate-spin" aria-hidden /> : t('confirm.completePurchase')}
@@ -508,9 +456,7 @@ export default function Checkout() {
                    <p className="text-lg font-black text-brand-600 select-all tracking-wider">{placedOrderId || t('success.processing')}</p>
                 </div>
                 <p className="text-steel-600 mt-6 max-w-sm mx-auto font-medium">
-                  {paymentMethod === 'bank'
-                    ? t('success.bankFollowUp')
-                    : t('success.defaultFollowUp')}
+                  {t('success.bankFollowUp')}
                 </p>
                 {checkoutMessage && (
                   <p className="text-amber-700 bg-amber-50 border border-amber-200 rounded-2xl px-4 py-3 mt-4 text-sm font-semibold max-w-lg mx-auto">
@@ -567,12 +513,6 @@ export default function Checkout() {
                 <div className="flex justify-between text-sm font-black text-emerald-500">
                   <span>{t('summary.promoDiscount')}</span>
                   <span>-{formatCurrency(lockedTotals?.promoDiscount ?? promoDiscountValue)}</span>
-                </div>
-              )}
-              {(lockedTotals?.cryptoDiscount ?? cryptoDiscount) > 0 && (
-                <div className="flex justify-between text-sm font-black text-orange-500">
-                  <span>{t('summary.cryptoDiscount')}</span>
-                  <span>-{formatCurrency(lockedTotals?.cryptoDiscount ?? cryptoDiscount)}</span>
                 </div>
               )}
               <div className="flex justify-between text-sm font-bold text-steel-600">
