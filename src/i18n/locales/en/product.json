@@ -9,7 +9,7 @@
     "addToWishlist": "Add {{title}} to wishlist",
     "removeFromWishlist": "Remove {{title}} from wishlist",
     "addToCart": "Add {{title}} to cart",
-    "whatsapp": "WhatsApp",
+    "whatsapp": "WhatsApp us",
     "whatsappMessage": "Hi, I'm interested in: {{title}}"
   },
   "notFound": {

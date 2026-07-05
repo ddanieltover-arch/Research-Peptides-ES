@@ -145,21 +145,19 @@ export function ProductCard({
         ) : (
           <div className="flex-1 min-h-[0.5rem]" />
         )}
-        <div className="pt-3 mt-auto">
+        <div className="pt-3 mt-auto space-y-3">
+          <a
+            href={whatsappUrl(t('card.whatsappMessage', { title: displayTitle }))}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex w-full items-center justify-center gap-2 rounded-full border border-brand-200 bg-mist-50 px-3 py-2 text-sm font-semibold text-brand-600 transition-colors hover:bg-mist-100 hover:text-brand-700"
+            aria-label={t('card.whatsapp')}
+          >
+            <WhatsAppIcon className="h-4 w-4 shrink-0" />
+            {t('card.whatsapp')}
+          </a>
           <div className="flex items-end justify-between gap-2 border-t border-brand-100/60 pt-3">
           <ProductCardPriceBlock product={product} />
-          <div className="flex items-center gap-2">
-            <a
-              href={whatsappUrl(t('card.whatsappMessage', { title: displayTitle }))}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center justify-center rounded-full border border-brand-200 bg-mist-50 p-2.5 text-brand-600 transition-colors hover:bg-mist-100 hover:text-brand-700"
-              aria-label={t('card.whatsapp')}
-              title={t('card.whatsapp')}
-            >
-              <WhatsAppIcon className="h-4 w-4 shrink-0" />
-              <span className="sr-only">{t('card.whatsapp')}</span>
-            </a>
           <button
             type="button"
             onClick={onAddToCart}
@@ -168,7 +166,6 @@ export function ProductCard({
           >
             <ShoppingCart className="h-4 w-4 md:h-5 md:w-5" />
           </button>
-          </div>
         </div>
         </div>
       </div>
