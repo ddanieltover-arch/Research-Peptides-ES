@@ -9,6 +9,133 @@
     "payment": "Pago",
     "confirm": "Confirmar"
   },
+  "form": {
+    "email": "Correo electrónico",
+    "emailPlaceholder": "investigador@universidad.es",
+    "emailLocked": "Vinculado a su cuenta",
+    "fullName": "Nombre completo",
+    "fullNamePlaceholder": "María García",
+    "phone": "Teléfono",
+    "phonePlaceholder": "+34 600 000 000",
+    "address": "Dirección",
+    "addressPlaceholder": "Calle de la Innovación 12",
+    "city": "Ciudad",
+    "cityPlaceholder": "Madrid",
+    "postalCode": "Código postal",
+    "postalCodePlaceholder": "28001",
+    "country": "País",
+    "selectShipping": "Seleccionar servicio de envío",
+    "countryGroups": {
+      "eu": "Unión Europea",
+      "restOfWorld": "Resto del mundo"
+    }
+  },
+  "validation": {
+    "email": "El correo electrónico es obligatorio.",
+    "fullName": "El nombre completo es obligatorio.",
+    "phone": "El teléfono es obligatorio.",
+    "address": "La dirección es obligatoria.",
+    "city": "La ciudad es obligatoria.",
+    "postalCode": "El código postal es obligatorio.",
+    "country": "El país es obligatorio.",
+    "shippingMethod": "Seleccione un método de envío.",
+    "paymentMethod": "Seleccione un método de pago."
+  },
+  "shippingMethods": {
+    "free": {
+      "name": "Envío gratuito",
+      "subtext": "Entrega incluida"
+    },
+    "intl_eu": {
+      "name": "UE estándar (PostNL / DPD)",
+      "subtext": "3–7 días laborables"
+    },
+    "eu_express": {
+      "name": "UE express",
+      "subtext": "2–4 días laborables"
+    },
+    "rm24": {
+      "name": "Royal Mail 24",
+      "subtext": "1–2 días laborables"
+    },
+    "rm_special": {
+      "name": "Royal Mail Special",
+      "subtext": "1 día laborable"
+    },
+    "dpd_uk": {
+      "name": "DPD UK",
+      "subtext": "1–2 días laborables"
+    },
+    "intl_row": {
+      "name": "Internacional",
+      "subtext": "5–14 días laborables"
+    }
+  },
+  "payment": {
+    "title": "Método de pago",
+    "editShipping": "Editar envío",
+    "confirmChoice": "Confirmar método de pago",
+    "crypto": {
+      "name": "Criptomoneda",
+      "subtext": "Pague con BTC, ETH, USDT (+5 % dto.)",
+      "badge": "Ahorre 5 %"
+    },
+    "bank": {
+      "name": "Transferencia bancaria",
+      "subtext": "Pago estructurado directo"
+    }
+  },
+  "confirm": {
+    "title": "Confirmación final",
+    "changeMethod": "Cambiar método",
+    "completePurchase": "Completar compra segura",
+    "bank": {
+      "title": "Esperando conexión",
+      "body": "Tras realizar el pedido, un administrador se pondrá en contacto con usted en <1>{{email}}</1> con las instrucciones de pago."
+    },
+    "crypto": {
+      "title": "Descuento por criptomoneda",
+      "body": "Ha desbloqueado un 5 % de descuento por elegir un método de pago criptográfico. Ahorro total: <1>{{amount}}</1>"
+    }
+  },
+  "success": {
+    "title": "Pedido de investigación confirmado",
+    "orderIdLabel": "Identificación del pedido",
+    "processing": "Procesando…",
+    "bankFollowUp": "Un administrador se pondrá en contacto con usted en breve por correo con las instrucciones de transferencia.",
+    "defaultFollowUp": "Su pedido está siendo procesado por nuestro equipo analítico.",
+    "viewOrders": "Ver mis pedidos",
+    "guestNote": "Guarde su ID de pedido arriba. Al haber comprado como invitado, es su referencia principal para cualquier consulta.",
+    "continueResearch": "Seguir investigando",
+    "whatsapp": "WhatsApp sobre este pedido",
+    "whatsappMessage": "Hola, soy {{name}}. Necesito ayuda con mi pedido #{{orderId}}."
+  },
+  "messages": {
+    "emailFailed": "Pedido registrado, pero uno o más correos transaccionales no se enviaron. Contacte con soporte con su ID de pedido.",
+    "cryptoRedirectFailed": "Pedido creado, pero la redirección automática a cripto falló. {{detail}}",
+    "cryptoRedirectFallback": "Contacte con soporte con su ID de pedido.",
+    "bankSuccess": "Pedido creado correctamente. Se enviaron los correos al administrador y al cliente. Las instrucciones de transferencia llegarán por email.",
+    "orderSaved": "Pedido guardado correctamente. Use su ID de pedido para soporte y seguimiento del pago.",
+    "processFailed": "No se pudo procesar el pedido. Inténtelo de nuevo."
+  },
+  "summary": {
+    "title": "Resumen de precios",
+    "subtotal": "Subtotal",
+    "promoDiscount": "Descuento promocional",
+    "cryptoDiscount": "Incentivo cripto (5 %)",
+    "shipping": "Gastos logísticos",
+    "total": "Total a pagar",
+    "applyPromo": "¿Tiene un código de referencia?",
+    "promoLabel": "Código promocional",
+    "apply": "Aplicar",
+    "promoAccepted": "✓ Código de referencia aceptado",
+    "invalidPromo": "Código no válido. Pruebe {{code}}",
+    "sslSecure": "SSL seguro",
+    "protected": "Protegido"
+  },
+  "actions": {
+    "continueToPayment": "Continuar al pago"
+  },
   "cart": {
     "title": "Su carrito",
     "empty": "Su carrito está vacío",

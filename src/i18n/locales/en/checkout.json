@@ -9,6 +9,133 @@
     "payment": "Payment",
     "confirm": "Confirm"
   },
+  "form": {
+    "email": "Email address",
+    "emailPlaceholder": "researcher@university.edu",
+    "emailLocked": "Locked to account email",
+    "fullName": "Full name",
+    "fullNamePlaceholder": "Maria Garcia",
+    "phone": "Phone number",
+    "phonePlaceholder": "+34 600 000 000",
+    "address": "Street address",
+    "addressPlaceholder": "Calle de la Innovación 12",
+    "city": "City",
+    "cityPlaceholder": "Madrid",
+    "postalCode": "Postal code",
+    "postalCodePlaceholder": "28001",
+    "country": "Country",
+    "selectShipping": "Select shipping service",
+    "countryGroups": {
+      "eu": "European Union",
+      "restOfWorld": "Rest of world"
+    }
+  },
+  "validation": {
+    "email": "Email is required.",
+    "fullName": "Full name is required.",
+    "phone": "Phone number is required.",
+    "address": "Street address is required.",
+    "city": "City is required.",
+    "postalCode": "Postal code is required.",
+    "country": "Country is required.",
+    "shippingMethod": "Please select a shipping method.",
+    "paymentMethod": "Please select a payment method."
+  },
+  "shippingMethods": {
+    "free": {
+      "name": "Free shipping",
+      "subtext": "Complimentary delivery"
+    },
+    "intl_eu": {
+      "name": "EU Standard (PostNL / DPD)",
+      "subtext": "3–7 business days"
+    },
+    "eu_express": {
+      "name": "EU Express",
+      "subtext": "2–4 business days"
+    },
+    "rm24": {
+      "name": "Royal Mail 24",
+      "subtext": "1–2 working days"
+    },
+    "rm_special": {
+      "name": "Royal Mail Special",
+      "subtext": "1 working day"
+    },
+    "dpd_uk": {
+      "name": "DPD UK",
+      "subtext": "1–2 working days"
+    },
+    "intl_row": {
+      "name": "International",
+      "subtext": "5–14 business days"
+    }
+  },
+  "payment": {
+    "title": "Payment method",
+    "editShipping": "Edit shipping",
+    "confirmChoice": "Confirm payment choice",
+    "crypto": {
+      "name": "Cryptocurrency",
+      "subtext": "Pay with BTC, ETH, USDT (+5% OFF)",
+      "badge": "Save 5%"
+    },
+    "bank": {
+      "name": "Bank transfer",
+      "subtext": "Direct structured payment"
+    }
+  },
+  "confirm": {
+    "title": "Final confirmation",
+    "changeMethod": "Change method",
+    "completePurchase": "Complete secure purchase",
+    "bank": {
+      "title": "Awaiting connection",
+      "body": "After placing your order, an administrator will contact you at <1>{{email}}</1> with structured payment instructions."
+    },
+    "crypto": {
+      "title": "Crypto efficiency discount",
+      "body": "You have unlocked a 5% discount for choosing a cryptographically secure payment method. Total saved: <1>{{amount}}</1>"
+    }
+  },
+  "success": {
+    "title": "Research order secured",
+    "orderIdLabel": "Order identification",
+    "processing": "Processing…",
+    "bankFollowUp": "An admin will contact you shortly via email with transfer details.",
+    "defaultFollowUp": "Your order is now being processed by our analytical team.",
+    "viewOrders": "View my history",
+    "guestNote": "Please save your order ID above. Since you checked out as a guest, this is your primary reference for correspondence.",
+    "continueResearch": "Continue research",
+    "whatsapp": "WhatsApp us about this order",
+    "whatsappMessage": "Hi, this is {{name}}. I need assistance with my order #{{orderId}}."
+  },
+  "messages": {
+    "emailFailed": "Order placed, but one or more transactional emails failed. Please contact support with your order ID.",
+    "cryptoRedirectFailed": "Order created, but automatic crypto redirect failed. {{detail}}",
+    "cryptoRedirectFallback": "Please contact support with your order ID.",
+    "bankSuccess": "Order created successfully. Admin and customer emails were sent. Bank transfer instructions will follow by email.",
+    "orderSaved": "Order saved successfully. Please use your order ID for support and payment follow-up.",
+    "processFailed": "Failed to process order. Please try again."
+  },
+  "summary": {
+    "title": "Price synthesis",
+    "subtotal": "Subtotal",
+    "promoDiscount": "Promo discount",
+    "cryptoDiscount": "Crypto incentive (5%)",
+    "shipping": "Logistic costs",
+    "total": "Total payable",
+    "applyPromo": "Apply reference code?",
+    "promoLabel": "Promotion code",
+    "apply": "Apply",
+    "promoAccepted": "✓ Reference code accepted",
+    "invalidPromo": "Invalid code. Try {{code}}",
+    "sslSecure": "SSL secure",
+    "protected": "Protected"
+  },
+  "actions": {
+    "continueToPayment": "Continue to payment"
+  },
   "cart": {
     "title": "Your cart",
     "empty": "Your cart is empty",
