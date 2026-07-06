@@ -21,10 +21,11 @@ declare global {
 
 const CHATWAY_STYLE_ID = 'rp-chatway-brand-styles';
 const LEGACY_SMARTSUPP_STYLE_ID = 'smartsupp-hide-default-bubble';
+const DEFAULT_CHATWAY_WIDGET_ID = 'Mh7Ql3P38I3w';
 
-function getChatwayWidgetId(): string | null {
+function getChatwayWidgetId(): string {
   const id = (import.meta.env.VITE_CHATWAY_WIDGET_ID as string | undefined)?.trim();
-  return id || null;
+  return id || DEFAULT_CHATWAY_WIDGET_ID;
 }
 
 function removeLegacyChatScripts() {
@@ -110,8 +111,6 @@ export default function ChatwayChat() {
   useEffect(() => {
     removeLegacyChatScripts();
 
-    if (!widgetId) return;
-
     injectChatwayBrandStyles(mobileOffset);
 
     const previousOnLoad = window.$chatwayOnLoad;
@@ -160,8 +159,6 @@ export default function ChatwayChat() {
       console.warn('Chatway open failed:', err);
     }
   };
-
-  if (!widgetId) return null;
 
   return (
     <button
