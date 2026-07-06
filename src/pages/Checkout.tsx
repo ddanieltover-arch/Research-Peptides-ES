@@ -16,6 +16,7 @@ import { CheckoutProgress } from '../components/checkout/CheckoutProgress';
 import { usePageSeo } from '../seo/SeoProvider';
 import { whatsappUrl } from '../lib/whatsapp';
 import { WhatsAppIcon } from '../components/icons/WhatsAppIcon';
+import { rememberCheckoutChatwayContext, syncChatwayVisitor } from '../lib/chatway';
 
 const SHIPPING_METHODS = {
   EUROPE: [
@@ -258,6 +259,15 @@ export default function Checkout() {
       const orderId = generatedId;
       createdOrderId = orderId;
       setPlacedOrderId(orderId);
+
+      const chatwayContext = {
+        name: shipping.fullName,
+        email: shipping.email,
+        orderId,
+        page: '/checkout',
+      };
+      rememberCheckoutChatwayContext(chatwayContext);
+      void syncChatwayVisitor(chatwayContext);
 
       let emailDispatchFailed = false;
       try {

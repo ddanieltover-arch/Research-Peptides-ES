@@ -40,6 +40,20 @@
       gtag('js', new Date());
       gtag('config', 'G-0CJRFHNL7Z');
     </script>
+    <script>
+      window.__rpChatwayReadyQueue = window.__rpChatwayReadyQueue || [];
+      (function () {
+        var previousOnLoad = window.$chatwayOnLoad;
+        window.$chatwayOnLoad = function () {
+          if (typeof previousOnLoad === 'function') previousOnLoad();
+          window.__rpChatwayReady = true;
+          window.__rpChatwayReadyQueue.forEach(function (callback) {
+            try { callback(); } catch (e) {}
+          });
+          window.__rpChatwayReadyQueue = [];
+        };
+      })();
+    </script>
     <script id="chatway" async="true" src="https://cdn.chatway.app/widget.js?id=Mh7Ql3P38I3w"></script>
   </head>
   <body>

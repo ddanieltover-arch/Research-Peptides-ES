@@ -1,32 +1,18 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import { MessageCircle } from 'lucide-react';
 import { accentColors } from '../../design-system/tokens';
-
-declare global {
-  interface Window {
-    $chatway?: {
-      hideChatwayIcon?: () => void;
-      showChatwayIcon?: () => void;
-      openChatwayWidget?: () => void;
-      closeChatwayWidget?: () => void;
-    };
-    $chatwayOnLoad?: () => void;
-    Tawk_API?: unknown;
-    __tawkLoaded?: boolean;
-    _smartsupp?: Record<string, unknown>;
-    smartsupp?: ((...args: unknown[]) => void) & { _: unknown[] };
-    __smartsuppLoaded?: boolean;
-  }
-}
-
-const CHATWAY_STYLE_ID = 'rp-chatway-brand-styles';
-const LEGACY_SMARTSUPP_STYLE_ID = 'smartsupp-hide-default-bubble';
+import {
+  hideChatwayLauncher,
+  installChatwayReadyHook,
+  openChatwayPanel,
+  setupChatwayBranding,
+} from '../../lib/chatway';
 
 function removeLegacyChatScripts() {
   document.getElementById('tawk-loader')?.remove();
   document.getElementById('smartsupp-loader')?.remove();
-  document.getElementById(LEGACY_SMARTSUPP_STYLE_ID)?.remove();
+  document.getElementById('smartsupp-hide-default-bubble')?.remove();
   document.querySelectorAll('script[src*="smartsuppchat.com"], script[src*="embed.tawk.to"]').forEach((el) => {
     el.remove();
   });
@@ -38,98 +24,31 @@ function removeLegacyChatScripts() {
   delete window.__smartsuppLoaded;
 }
 
-function hideChatwayLauncher() {
-  try {
-    window.$chatway?.hideChatwayIcon?.();
-  } catch {
-    /* ignore */
-  }
-}
-
-function applyChatwayBrandLayout(mobileOffset: number) {
-  const container = document.querySelector('.chatway--container');
-  if (!container) return;
-
-  container.classList.add('widget--left');
-  (container as HTMLElement).style.setProperty('--quick-reply-left', '1rem');
-  (container as HTMLElement).style.setProperty('--quick-reply-right', 'unset');
-}
-
-function injectChatwayBrandStyles(mobileOffset: number) {
-  if (document.getElementById(CHATWAY_STYLE_ID)) return;
-
-  const style = document.createElement('style');
-  style.id = CHATWAY_STYLE_ID;
-  style.textContent = `
-    /* Hide Chatway default launcher — branded trigger is .rp-live-chat-trigger */
-    .chatway--container .chatway--trigger-container {
-      display: none !important;
-      visibility: hidden !important;
-      pointer-events: none !important;
-    }
-
-    /* Bottom-left panel alignment (garnet brand) */
-    .chatway--container.widget--left .chatway--frame-container,
-    .chatway--container.widget--left .chatway--quick--reply--container,
-    .chatway--container.widget--left .chatway--preview--only--container {
-      left: 1rem !important;
-      right: auto !important;
-      transform-origin: left bottom !important;
-    }
-
-    .chatway--container.widget--left .chatway--preview-container {
-      left: 0 !important;
-      right: auto !important;
-      transform-origin: left bottom !important;
-    }
-
-    @media (max-width: 768px) {
-      .chatway--container.widget--left .chatway--frame-container.chatway--no-mobile-fullscreen {
-        bottom: ${mobileOffset}px !important;
-        left: 1rem !important;
-        right: auto !important;
-      }
-    }
-  `;
-  document.head.appendChild(style);
-}
-
 /**
  * Chatway live chat with Iberian Lab branded trigger (bottom-left, garnet + gold).
- * Set widget color to #A91D3A in the Chatway dashboard for matching panel chrome.
+ * Widget script loads from index.html; this component handles branding and open actions.
  */
 export default function ChatwayChat() {
   const location = useLocation();
   const isAdmin = location.pathname.includes('/admin');
+  const [isOpening, setIsOpening] = useState(false);
   const mobileOffset =
     Number(import.meta.env.VITE_CHATWAY_MOBILE_OFFSET_Y as string | undefined) || 96;
 
   useEffect(() => {
     removeLegacyChatScripts();
-
-    injectChatwayBrandStyles(mobileOffset);
-
-    const previousOnLoad = window.$chatwayOnLoad;
-    window.$chatwayOnLoad = function onChatwayLoad() {
-      previousOnLoad?.();
-      hideChatwayLauncher();
-      applyChatwayBrandLayout(mobileOffset);
-    };
-
-    hideChatwayLauncher();
-    applyChatwayBrandLayout(mobileOffset);
+    installChatwayReadyHook(mobileOffset);
+    setupChatwayBranding(mobileOffset);
 
     const observer = new MutationObserver(() => {
-      hideChatwayLauncher();
-      applyChatwayBrandLayout(mobileOffset);
+      setupChatwayBranding(mobileOffset);
     });
     observer.observe(document.body, { childList: true, subtree: true });
 
     const poll = window.setInterval(() => {
       hideChatwayLauncher();
-      applyChatwayBrandLayout(mobileOffset);
-    }, 400);
-    const stopPoll = window.setTimeout(() => window.clearInterval(poll), 12_000);
+    }, 500);
+    const stopPoll = window.setTimeout(() => window.clearInterval(poll), 20_000);
 
     return () => {
       observer.disconnect();
@@ -138,11 +57,15 @@ export default function ChatwayChat() {
     };
   }, [mobileOffset]);
 
-  const openChat = () => {
+  const openChat = async () => {
+    if (isOpening) return;
+    setIsOpening(true);
     try {
-      window.$chatway?.openChatwayWidget?.();
-    } catch (err) {
-      console.warn('Chatway open failed:', err);
+      await openChatwayPanel();
+    } catch (error) {
+      console.warn('Chatway open failed:', error);
+    } finally {
+      setIsOpening(false);
     }
   };
 
@@ -151,8 +74,9 @@ export default function ChatwayChat() {
   return (
     <button
       type="button"
-      onClick={openChat}
-      className="rp-live-chat-trigger fixed bottom-24 md:bottom-8 left-4 md:left-8 z-[100] bg-brand-500 hover:bg-brand-600 text-white rounded-full p-4 shadow-glow transition-all duration-300 hover:scale-110 active:scale-95 flex items-center justify-center group ring-4 ring-accent-500/20"
+      onClick={() => void openChat()}
+      disabled={isOpening}
+      className="rp-live-chat-trigger fixed bottom-24 md:bottom-8 left-4 md:left-8 z-[200] bg-brand-500 hover:bg-brand-600 text-white rounded-full p-4 shadow-glow transition-all duration-300 hover:scale-110 active:scale-95 flex items-center justify-center group ring-4 ring-accent-500/20 disabled:opacity-80"
       aria-label="Open live chat"
       title="Open live chat"
       style={{
