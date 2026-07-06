@@ -222,7 +222,7 @@ function LayoutShell() {
       <RecentlyViewedSidebar />
       <ToastContainer />
       <CookieConsent />
-      {!location.pathname.includes('/admin') && <ChatwayChat />}
+      <ChatwayChat />
     </div>
   );
 }

@@ -1,4 +1,5 @@
 import { useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 import { MessageCircle } from 'lucide-react';
 import { accentColors } from '../../design-system/tokens';
 
@@ -21,12 +22,6 @@ declare global {
 
 const CHATWAY_STYLE_ID = 'rp-chatway-brand-styles';
 const LEGACY_SMARTSUPP_STYLE_ID = 'smartsupp-hide-default-bubble';
-const DEFAULT_CHATWAY_WIDGET_ID = 'Mh7Ql3P38I3w';
-
-function getChatwayWidgetId(): string {
-  const id = (import.meta.env.VITE_CHATWAY_WIDGET_ID as string | undefined)?.trim();
-  return id || DEFAULT_CHATWAY_WIDGET_ID;
-}
 
 function removeLegacyChatScripts() {
   document.getElementById('tawk-loader')?.remove();
@@ -104,7 +99,8 @@ function injectChatwayBrandStyles(mobileOffset: number) {
  * Set widget color to #A91D3A in the Chatway dashboard for matching panel chrome.
  */
 export default function ChatwayChat() {
-  const widgetId = getChatwayWidgetId();
+  const location = useLocation();
+  const isAdmin = location.pathname.includes('/admin');
   const mobileOffset =
     Number(import.meta.env.VITE_CHATWAY_MOBILE_OFFSET_Y as string | undefined) || 96;
 
@@ -120,18 +116,8 @@ export default function ChatwayChat() {
       applyChatwayBrandLayout(mobileOffset);
     };
 
-    if (!document.getElementById('chatway')) {
-      const script = document.createElement('script');
-      script.id = 'chatway';
-      script.async = true;
-      script.src = `https://cdn.chatway.app/widget.js?id=${encodeURIComponent(widgetId)}`;
-      document.head.appendChild(script);
-    } else {
-      hideChatwayLauncher();
-      applyChatwayBrandLayout(mobileOffset);
-    }
-
     hideChatwayLauncher();
+    applyChatwayBrandLayout(mobileOffset);
 
     const observer = new MutationObserver(() => {
       hideChatwayLauncher();
@@ -150,7 +136,7 @@ export default function ChatwayChat() {
       window.clearInterval(poll);
       window.clearTimeout(stopPoll);
     };
-  }, [widgetId, mobileOffset]);
+  }, [mobileOffset]);
 
   const openChat = () => {
     try {
@@ -159,6 +145,8 @@ export default function ChatwayChat() {
       console.warn('Chatway open failed:', err);
     }
   };
+
+  if (isAdmin) return null;
 
   return (
     <button
