@@ -113,7 +113,7 @@ export default function SalesNotification() {
           animate={{ opacity: 1, y: 0, scale: 1 }}
           exit={{ opacity: 0, scale: 0.9, y: 20 }}
           transition={{ type: 'spring', stiffness: 300, damping: 25 }}
-          className="fixed z-[60] bottom-20 md:bottom-6 md:left-6 left-1/2 -translate-x-1/2 md:translate-x-0 w-11/12 max-w-[340px]"
+          className="fixed z-[60] bottom-20 md:bottom-6 md:left-20 left-1/2 -translate-x-1/2 md:translate-x-0 w-11/12 max-w-[340px]"
         >
           <div
             onClick={() => navigate(`/search?q=${encodeURIComponent(currentEvent.product)}`)}
