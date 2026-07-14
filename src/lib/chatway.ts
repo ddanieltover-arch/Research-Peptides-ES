@@ -86,21 +86,20 @@ export async function openChatwayPanel(): Promise<void> {
 }
 
 export function hideChatwayLauncher() {
-  try {
-    window.$chatway?.hideChatwayIcon?.();
-  } catch {
-    /* ignore */
-  }
+  // We hide the launcher entirely via CSS (.chatway--trigger-container { display: none }),
+  // so we don't need to call $chatway.hideChatwayIcon(), which actually hides the ENTIRE widget!
 }
 
 function applyChatwayBrandLayout(mobileOffset: number) {
   const container = document.querySelector('.chatway--container');
-  if (!container) return;
+  if (!container) return false;
 
   container.classList.add('widget--left');
   (container as HTMLElement).style.setProperty('--quick-reply-left', '1rem');
   (container as HTMLElement).style.setProperty('--quick-reply-right', 'unset');
   (container as HTMLElement).style.setProperty('--frame-bottom-mobile', `${mobileOffset}px`);
+  
+  return true;
 }
 
 export function injectChatwayBrandStyles(mobileOffset: number) {
@@ -158,8 +157,9 @@ export function injectChatwayBrandStyles(mobileOffset: number) {
 
 export function setupChatwayBranding(mobileOffset: number) {
   injectChatwayBrandStyles(mobileOffset);
-  hideChatwayLauncher();
-  applyChatwayBrandLayout(mobileOffset);
+  // We no longer call hideChatwayLauncher() here because it hides the entire widget.
+  // The trigger is hidden via CSS in injectChatwayBrandStyles.
+  return applyChatwayBrandLayout(mobileOffset);
 }
 
 export function installChatwayReadyHook(mobileOffset: number) {

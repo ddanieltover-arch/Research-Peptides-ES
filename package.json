@@ -22,6 +22,8 @@
     "sitemap:generate": "tsx scripts/generate-sitemap.ts",
     "db:copy:catalog": "tsx scripts/supabase-copy-catalog.ts --dry-run",
     "db:copy:catalog:apply": "tsx scripts/supabase-copy-catalog.ts --apply",
+    "db:migrate:images": "tsx scripts/migrate-product-images.ts --dry-run",
+    "db:migrate:images:apply": "tsx scripts/migrate-product-images.ts --apply",
     "i18n:generate": "tsx scripts/generate-i18n-locales.ts",
     "i18n:sync": "tsx scripts/sync-all-i18n.ts",
     "logo:optimize": "node scripts/optimize-brand-logo.mjs",

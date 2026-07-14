@@ -40,18 +40,19 @@ export default function ChatwayChat() {
     installChatwayReadyHook(mobileOffset);
     setupChatwayBranding(mobileOffset);
 
-    const observer = new MutationObserver(() => {
-      setupChatwayBranding(mobileOffset);
-    });
-    observer.observe(document.body, { childList: true, subtree: true });
-
+    // Wait for the Chatway container to be injected into the DOM,
+    // apply our branding layout to it, then stop polling.
+    // This avoids the infinite loop caused by a MutationObserver modifying the DOM it observes.
     const poll = window.setInterval(() => {
-      hideChatwayLauncher();
+      const container = document.querySelector('.chatway--container');
+      if (container) {
+        setupChatwayBranding(mobileOffset);
+        window.clearInterval(poll);
+      }
     }, 500);
     const stopPoll = window.setTimeout(() => window.clearInterval(poll), 20_000);
 
     return () => {
-      observer.disconnect();
       window.clearInterval(poll);
       window.clearTimeout(stopPoll);
     };
