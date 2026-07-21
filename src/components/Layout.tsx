@@ -19,8 +19,8 @@ import MobileBottomNav from './MobileBottomNav';
 import SalesNotification from './SalesNotification';
 import CartDrawer from './cart/CartDrawer';
 import Omnisearch from './search/Omnisearch';
-import ChatwayChat from './chat/ChatwayChat';
-import ChatwayVisitorSync from './chat/ChatwayVisitorSync';
+import LiveChatChat from './chat/LiveChatChat';
+import LiveChatVisitorSync from './chat/LiveChatVisitorSync';
 import { CookieConsent } from './gdpr/CookieConsent';
 import { PageLoader } from './PageLoader';
 import { postNewsletterSubscribe } from '../lib/transactionalEmailApi';
@@ -223,8 +223,8 @@ function LayoutShell() {
       <RecentlyViewedSidebar />
       <ToastContainer />
       <CookieConsent />
-      <ChatwayVisitorSync />
-      <ChatwayChat />
+      <LiveChatVisitorSync />
+      <LiveChatChat />
     </div>
   );
 }

@@ -289,11 +289,21 @@
     color: transparent;
   }
 
+  .rp-live-chat-trigger {
+    background: var(--gradient-brand, linear-gradient(120deg, #c93d5e 0%, #a91d3a 45%, #c9a961 100%));
+    box-shadow: 0 16px 48px rgba(169, 29, 58, 0.14), 0 0 48px rgba(201, 169, 97, 0.22);
+  }
+
+  .rp-live-chat-trigger:hover {
+    filter: brightness(1.05);
+  }
+
   #tawk-bubble-container,
   .tawk-min-container,
   .tawk-button,
   .tawk-branding,
-  .tawk-branding-small {
+  .tawk-branding-small,
+  .chatway--trigger-container {
     display: none !important;
     visibility: hidden !important;
     opacity: 0 !important;

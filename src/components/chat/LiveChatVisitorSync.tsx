@@ -2,9 +2,9 @@ import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import { useAuthStore } from '../../store/useAuthStore';
 import {
-  readCheckoutChatwayContext,
-  syncChatwayVisitor,
-} from '../../lib/chatway';
+  readCheckoutLiveChatContext,
+  syncLiveChatVisitor,
+} from '../../lib/livechat';
 
 function resolveVisitorName(
   displayName: string | null | undefined,
@@ -17,18 +17,18 @@ function resolveVisitorName(
   return mail.split('@')[0];
 }
 
-export default function ChatwayVisitorSync() {
+export default function LiveChatVisitorSync() {
   const location = useLocation();
   const { user, profile } = useAuthStore();
 
   useEffect(() => {
-    const checkoutContext = readCheckoutChatwayContext();
+    const checkoutContext = readCheckoutLiveChatContext();
     const email = profile?.email || user?.email || checkoutContext?.email;
     const name =
       resolveVisitorName(profile?.display_name, email) ||
       resolveVisitorName(checkoutContext?.name, email);
 
-    void syncChatwayVisitor({
+    void syncLiveChatVisitor({
       name,
       email,
       orderId: checkoutContext?.orderId,

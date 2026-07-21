@@ -40,23 +40,18 @@
       gtag('js', new Date());
       gtag('config', 'G-0CJRFHNL7Z');
     </script>
+    <!-- Start of LiveChat (www.livechat.com) code -->
     <script>
-      window.__rpChatwayReadyQueue = window.__rpChatwayReadyQueue || [];
-      (function () {
-        var previousOnLoad = window.$chatwayOnLoad;
-        window.$chatwayOnLoad = function () {
-          if (typeof previousOnLoad === 'function') previousOnLoad();
-          window.__rpChatwayReady = true;
-          window.__rpChatwayReadyQueue.forEach(function (callback) {
-            try { callback(); } catch (e) {}
-          });
-          window.__rpChatwayReadyQueue = [];
-        };
-      })();
+      window.__lc = window.__lc || {};
+      window.__lc.license = 19857205;
+      window.__lc.integration_name = "manual_onboarding";
+      window.__lc.product_name = "livechat";
+      ;(function(n,t,c){function i(n){return e._h?e._h.apply(null,n):e._q.push(n)}var e={_q:[],_h:null,_v:"2.0",on:function(){i(["on",c.call(arguments)])},once:function(){i(["once",c.call(arguments)])},off:function(){i(["off",c.call(arguments)])},get:function(){if(!e._h)throw new Error("[LiveChatWidget] You can't use getters before load.");return i(["get",c.call(arguments)])},call:function(){i(["call",c.call(arguments)])},init:function(){var n=t.createElement("script");n.async=!0,n.type="text/javascript",n.src="https://cdn.livechatinc.com/tracking.js",t.head.appendChild(n)}};!n.__lc.asyncInit&&e.init(),n.LiveChatWidget=n.LiveChatWidget||e}(window,document,[].slice))
     </script>
-    <script id="chatway" async="true" src="https://cdn.chatway.app/widget.js?id=Mh7Ql3P38I3w"></script>
+    <!-- End of LiveChat code -->
   </head>
   <body>
+    <noscript><a href="https://www.livechat.com/chat-with/19857205/" rel="nofollow">Chat with us</a>, powered by <a href="https://www.livechat.com/?welcome" rel="noopener nofollow" target="_blank">LiveChat</a></noscript>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
