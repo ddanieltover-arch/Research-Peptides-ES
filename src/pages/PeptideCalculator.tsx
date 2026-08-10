@@ -2,12 +2,14 @@ import React from 'react';
 import { motion } from 'motion/react';
 import { useTranslation } from 'react-i18next';
 import { Calculator, Sigma } from 'lucide-react';
+import { usePageSeo } from '../seo/SeoProvider';
 
 function round(value: number) {
   return Math.round(value * 10000) / 10000;
 }
 
 export default function PeptideCalculator() {
+  usePageSeo({ canonicalPath: '/peptide-calculator' });
   const { t } = useTranslation('research');
   const [massMg, setMassMg] = React.useState(10);
   const [diluentMl, setDiluentMl] = React.useState(2);

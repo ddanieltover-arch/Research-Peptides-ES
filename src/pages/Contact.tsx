@@ -7,10 +7,12 @@ import { pageEnterTransition } from '../design-system/motion';
 import { HQ_LOCATION, SUPPORT_EMAIL } from '../config/brand';
 import { useToastStore } from '../store/useToastStore';
 import { postContactEmail } from '../lib/transactionalEmailApi';
+import { usePageSeo } from '../seo/SeoProvider';
 
 const SUBJECT_KEYS = ['general', 'bulk', 'coa', 'shipping'] as const;
 
 export default function Contact() {
+  usePageSeo({ canonicalPath: '/contact' });
   const { t } = useTranslation('legal');
   const addToast = useToastStore((state) => state.addToast);
   const defaultSubject = t('contact.subjects.general');

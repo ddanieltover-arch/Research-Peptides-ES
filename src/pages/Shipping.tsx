@@ -4,8 +4,10 @@ import { motion } from 'motion/react';
 import { Container, PageShell } from '../design-system';
 import { pageEnterTransition } from '../design-system/motion';
 import { CatalogPageHeader } from '../components/catalog/CatalogPageHeader';
+import { usePageSeo } from '../seo/SeoProvider';
 
 export default function Shipping() {
+  usePageSeo({ canonicalPath: '/shipping' });
   const { t } = useTranslation('shipping');
 
   const features = [

@@ -2,8 +2,10 @@ import { useTranslation } from 'react-i18next';
 import { RotateCcw, AlertTriangle, Mail, ShieldCheck } from 'lucide-react';
 import { LegalPageLayout, LegalSection } from '../components/legal/LegalPageLayout';
 import { SUPPORT_EMAIL } from '../config/brand';
+import { usePageSeo } from '../seo/SeoProvider';
 
 export default function RefundReturns() {
+  usePageSeo({ canonicalPath: '/refund-returns' });
   const { t } = useTranslation('legal');
 
   return (

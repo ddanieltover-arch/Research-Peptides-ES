@@ -4,8 +4,10 @@ import { motion } from 'motion/react';
 import { Container, GlassPanel, GlowPanel, PageShell, Reveal } from '../design-system';
 import { pageEnterTransition } from '../design-system/motion';
 import { HQ_LOCATION, SUPPORT_EMAIL } from '../config/brand';
+import { usePageSeo } from '../seo/SeoProvider';
 
 export default function AboutUs() {
+  usePageSeo({ canonicalPath: '/about-us' });
   const { t } = useTranslation('legal');
 
   return (

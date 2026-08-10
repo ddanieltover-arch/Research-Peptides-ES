@@ -2,10 +2,12 @@ import { useTranslation } from 'react-i18next';
 import { Lock } from 'lucide-react';
 import { LegalPageLayout, LegalSection } from '../components/legal/LegalPageLayout';
 import { SUPPORT_EMAIL } from '../config/brand';
+import { usePageSeo } from '../seo/SeoProvider';
 
 type LegalBlock = { heading: string; body: string };
 
 export default function Privacy() {
+  usePageSeo({ canonicalPath: '/privacy' });
   const { t } = useTranslation('legal');
   const sections = t('privacy.sections', { returnObjects: true }) as LegalBlock[];
 

@@ -1,10 +1,12 @@
 import { useTranslation } from 'react-i18next';
 import { Scale } from 'lucide-react';
 import { LegalPageLayout, LegalSection } from '../components/legal/LegalPageLayout';
+import { usePageSeo } from '../seo/SeoProvider';
 
 type LegalBlock = { heading: string; body: string };
 
 export default function Terms() {
+  usePageSeo({ canonicalPath: '/terms' });
   const { t } = useTranslation('legal');
   const sections = t('terms.sections', { returnObjects: true }) as LegalBlock[];
 

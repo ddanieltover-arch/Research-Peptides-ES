@@ -17,10 +17,12 @@ import { formatCurrency } from '../lib/utils';
 import { productPath } from '../lib/productUrl';
 import { AccountShell } from '../components/account/AccountShell';
 import { LocaleButton } from '../i18n/LocaleButton';
+import { usePageSeo } from '../seo/SeoProvider';
 
 const STATUS_STEPS = ['pending', 'paid', 'shipped', 'delivered'] as const;
 
 export default function Orders() {
+  usePageSeo({ canonicalPath: '/orders', noindex: true });
   const { t, i18n } = useTranslation('account');
   const { user } = useAuthStore();
   const [orders, setOrders] = useState<any[]>([]);

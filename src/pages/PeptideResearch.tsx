@@ -2,8 +2,10 @@ import React from 'react';
 import { motion } from 'motion/react';
 import { useTranslation } from 'react-i18next';
 import { Microscope, ShieldAlert } from 'lucide-react';
+import { usePageSeo } from '../seo/SeoProvider';
 
 export default function PeptideResearch() {
+  usePageSeo({ canonicalPath: '/peptide-research' });
   const { t } = useTranslation('research');
   const cards = t('hub.cards', { returnObjects: true }) as Array<{
     category: string;

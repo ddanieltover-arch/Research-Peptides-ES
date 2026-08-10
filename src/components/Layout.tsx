@@ -24,8 +24,6 @@ import LiveChatVisitorSync from './chat/LiveChatVisitorSync';
 import { CookieConsent } from './gdpr/CookieConsent';
 import { PageLoader } from './PageLoader';
 import { postNewsletterSubscribe } from '../lib/transactionalEmailApi';
-import { JsonLd } from './seo/JsonLd';
-import { BRAND_NAME, SITE_URL } from '../config/brand';
 import { DevConfigBanner } from './DevConfigBanner';
 import { prefetchCriticalRoutes } from '../lib/routePrefetch';
 import { whatsappUrl } from '../lib/whatsapp';
@@ -109,41 +107,10 @@ function LayoutShell() {
     }
   };
 
-  const siteUrl = SITE_URL.replace(/\/+$/, '');
   const whatsappHref = whatsappUrl();
-  const globalSchemas = [
-    {
-      "@context": "https://schema.org",
-      "@type": "Organization",
-      "name": BRAND_NAME,
-      "url": siteUrl,
-      "logo": {
-        "@type": "ImageObject",
-        "url": `${siteUrl}/brand_logo.png`
-      }
-    },
-    {
-      "@context": "https://schema.org",
-      "@type": "WebSite",
-      "url": siteUrl,
-      "name": BRAND_NAME,
-      "potentialAction": {
-        "@type": "SearchAction",
-        "target": `${siteUrl}/search?q={search_term_string}`,
-        "query-input": "required name=search_term_string"
-      }
-    },
-    {
-      "@context": "https://schema.org",
-      "@type": "LocalBusiness",
-      "name": BRAND_NAME,
-      "url": siteUrl
-    }
-  ];
 
   return (
     <div className="min-h-screen flex flex-col bg-mist-50 text-navy-950">
-      <JsonLd data={globalSchemas} />
       <a
         href="#main-content"
         className="absolute left-4 -top-20 z-[100] rounded-xl bg-white px-4 py-2.5 text-sm font-semibold text-navy-950 shadow-elevated ring-2 ring-brand-500 transition-[top] focus:top-4 focus:outline-none"

@@ -18,10 +18,12 @@ import { useProductCatalogActions } from '../hooks/useProductCatalogActions';
 import { LocaleLink } from '../i18n/LocaleLink';
 import type { CategoryOption } from '../components/catalog/types';
 import type { CatalogProduct } from '../components/products/ProductCard';
+import { usePageSeo } from '../seo/SeoProvider';
 
 const CATEGORY_GRID_CLASS = 'grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6';
 
 export default function Search() {
+  usePageSeo({ canonicalPath: '/search', noindex: true });
   const { t } = useTranslation(['search', 'shop']);
   const [allProducts, setAllProducts] = useState<CatalogProduct[]>([]);
   const [categories, setCategories] = useState<CategoryOption[]>([]);

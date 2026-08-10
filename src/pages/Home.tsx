@@ -2,7 +2,6 @@ import { lazy, Suspense, type ReactNode } from 'react';
 import { HeroSection } from '../components/home/HeroSection';
 import { HomeSectionFallback } from '../components/home/HomeSectionFallback';
 import { LazyWhenVisible } from '../components/LazyWhenVisible';
-import { SEO } from '../components/seo/SEO';
 import { usePageSeo } from '../seo/SeoProvider';
 import { DEFAULT_DESCRIPTION } from '../seo/pageTitles';
 

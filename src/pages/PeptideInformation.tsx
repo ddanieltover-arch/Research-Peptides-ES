@@ -3,8 +3,10 @@ import { motion } from 'motion/react';
 import { useTranslation } from 'react-i18next';
 import { BookText, FlaskConical, TestTube2 } from 'lucide-react';
 import { SUPPORT_EMAIL } from '../config/brand';
+import { usePageSeo } from '../seo/SeoProvider';
 
 export default function PeptideInformation() {
+  usePageSeo({ canonicalPath: '/peptide-information' });
   const { t } = useTranslation('research');
   const articles = t('information.articles', { returnObjects: true }) as Array<{
     title: string;

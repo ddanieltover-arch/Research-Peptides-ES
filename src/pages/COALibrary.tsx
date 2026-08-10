@@ -3,6 +3,7 @@ import { motion } from 'motion/react';
 import { useTranslation } from 'react-i18next';
 import { FileCheck2, Search, ShieldCheck } from 'lucide-react';
 import { SUPPORT_EMAIL } from '../config/brand';
+import { usePageSeo } from '../seo/SeoProvider';
 
 type COARow = {
   product: string;
@@ -21,6 +22,7 @@ const coaRows: COARow[] = [
 ];
 
 export default function COALibrary() {
+  usePageSeo({ canonicalPath: '/coas' });
   const { t } = useTranslation('coa');
   const [query, setQuery] = React.useState('');
   const labLabel = t('labPlaceholder');

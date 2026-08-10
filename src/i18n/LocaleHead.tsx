@@ -1,16 +1,32 @@
 import { useEffect, useMemo } from 'react';
 import { useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { BRAND_NAME, HQ_ADDRESS, SITE_URL, SUPPORT_EMAIL, DEFAULT_OG_IMAGE_PATH } from '../config/brand';
+import { BRAND_NAME, DEFAULT_OG_IMAGE_PATH } from '../config/brand';
 import { supportedLocales } from './locales';
 import { pathWithLocale, stripLocaleFromPath } from './routing';
 import { useSeoOverride } from '../seo/SeoProvider';
-import { DEFAULT_DESCRIPTION, titleForPath } from '../seo/pageTitles';
-import { organizationJsonLd, siteOrigin, websiteJsonLd } from '../seo/structuredData';
+import { descriptionForPath, titleForPath } from '../seo/pageTitles';
+import {
+  localBusinessJsonLd,
+  organizationJsonLd,
+  siteOrigin,
+  websiteJsonLd,
+} from '../seo/structuredData';
 import { JsonLd } from '../components/seo/JsonLd';
 import type { LocaleCode } from './locales';
 
 const META_ATTR = 'data-rp-seo';
+
+/** Open Graph locale tags (language_TERRITORY). */
+const OG_LOCALE: Partial<Record<LocaleCode, string>> & { es: string; en: string } = {
+  es: 'es_ES',
+  en: 'en_GB',
+  nl: 'nl_NL',
+  de: 'de_DE',
+  fr: 'fr_FR',
+  it: 'it_IT',
+  pt: 'pt_PT',
+};
 
 function upsertMeta(name: string, content: string, property = false) {
   const attr = property ? 'property' : 'name';
@@ -36,11 +52,13 @@ function upsertCanonical(href: string) {
 }
 
 function upsertRobots(noindex: boolean) {
-  if (!noindex) {
-    document.querySelector(`meta[name="robots"][${META_ATTR}]`)?.remove();
-    return;
-  }
-  upsertMeta('robots', 'noindex, nofollow');
+  upsertMeta('robots', noindex ? 'noindex, nofollow' : 'index, follow');
+}
+
+function clearOgLocaleAlternates() {
+  document.querySelectorAll(`meta[property="og:locale:alternate"][${META_ATTR}]`).forEach((el) => {
+    el.remove();
+  });
 }
 
 export function LocaleHead() {
@@ -50,37 +68,10 @@ export function LocaleHead() {
   const locale = i18n.language as LocaleCode;
   const path = stripLocaleFromPath(location.pathname);
   const origin = siteOrigin();
-  const siteUrl = siteOrigin();
 
   const globalJsonLd = useMemo(
-    () => [
-      organizationJsonLd(), 
-      websiteJsonLd(locale),
-      {
-        "@context": "https://schema.org",
-        "@type": "LocalBusiness",
-        "@id": `${siteUrl}/#localbusiness`,
-        "name": BRAND_NAME,
-        "url": siteUrl,
-        "logo": `${siteUrl}/brand_logo.png`,
-        "image": `${siteUrl}/brand_logo.png`,
-        "description": "Péptidos y compuestos de investigación premium para laboratorios europeos. Verificación de terceros, distribución en la UE.",
-        "address": {
-          "@type": "PostalAddress",
-          "streetAddress": HQ_ADDRESS.streetAddress,
-          "postalCode": HQ_ADDRESS.postalCode,
-          "addressLocality": HQ_ADDRESS.addressLocality,
-          "addressRegion": HQ_ADDRESS.addressRegion,
-          "addressCountry": HQ_ADDRESS.addressCountry
-        },
-        "contactPoint": {
-          "@type": "ContactPoint",
-          "email": SUPPORT_EMAIL,
-          "contactType": "customer support"
-        }
-      }
-    ],
-    [locale, siteUrl],
+    () => [organizationJsonLd(), websiteJsonLd(locale), localBusinessJsonLd()],
+    [locale],
   );
 
   const pageJsonLd = override?.jsonLd ?? [];
@@ -90,7 +81,7 @@ export function LocaleHead() {
     document.documentElement.lang = locale;
 
     const title = override?.title ?? titleForPath(path, locale);
-    const description = override?.description ?? DEFAULT_DESCRIPTION;
+    const description = override?.description ?? descriptionForPath(path, locale);
     const canonicalPath = override?.canonicalPath ?? path;
     const canonical = `${origin}${pathWithLocale(locale, canonicalPath === '/' ? '/' : canonicalPath)}`;
 
@@ -108,6 +99,19 @@ export function LocaleHead() {
     upsertMeta('og:image', ogImage, true);
     upsertMeta('og:image:width', '1200', true);
     upsertMeta('og:image:height', '630', true);
+
+    const ogLocale = OG_LOCALE[locale] ?? OG_LOCALE.es;
+    upsertMeta('og:locale', ogLocale, true);
+    clearOgLocaleAlternates();
+    for (const loc of supportedLocales.slice(0, 5)) {
+      const alt = OG_LOCALE[loc.code];
+      if (!alt || alt === ogLocale) continue;
+      const el = document.createElement('meta');
+      el.setAttribute('property', 'og:locale:alternate');
+      el.setAttribute(META_ATTR, '1');
+      el.content = alt;
+      document.head.appendChild(el);
+    }
 
     upsertMeta('twitter:card', 'summary_large_image');
     upsertMeta('twitter:title', title);

@@ -6,8 +6,10 @@ import { BookOpen, Sparkles, ArrowRight, Clock, User } from 'lucide-react';
 import { motion } from 'motion/react';
 import { BlogPostCover } from '../components/blog/BlogPostCover';
 import { blogExcerpt } from '../lib/blogContent';
+import { usePageSeo } from '../seo/SeoProvider';
 
 export default function Blog() {
+  usePageSeo({ canonicalPath: '/blog' });
   const { t } = useTranslation('blog');
   const [posts, setPosts] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);

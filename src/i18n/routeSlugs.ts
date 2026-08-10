@@ -622,4 +622,21 @@ export function getProductSlugVariants(): string[] {
   return [...new Set(PRODUCT_PREFIX_BY_LOCALE.values())];
 }
 
-export const PUBLIC_STATIC_CANONICAL_PATHS = Object.values(STATIC_ROUTE_PATHS);
+/** Indexable static routes only — exclude cart/checkout/auth/account/search. */
+export const PUBLIC_STATIC_CANONICAL_PATHS: string[] = [
+  STATIC_ROUTE_PATHS.shop,
+  STATIC_ROUTE_PATHS.blog,
+  STATIC_ROUTE_PATHS.categories,
+  STATIC_ROUTE_PATHS.faq,
+  STATIC_ROUTE_PATHS.shipping,
+  STATIC_ROUTE_PATHS.contact,
+  STATIC_ROUTE_PATHS.aboutUs,
+  STATIC_ROUTE_PATHS.peptideGuide,
+  STATIC_ROUTE_PATHS.peptideCalculator,
+  STATIC_ROUTE_PATHS.coas,
+  STATIC_ROUTE_PATHS.peptideInformation,
+  STATIC_ROUTE_PATHS.peptideResearch,
+  STATIC_ROUTE_PATHS.terms,
+  STATIC_ROUTE_PATHS.privacy,
+  STATIC_ROUTE_PATHS.refundReturns,
+];

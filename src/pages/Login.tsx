@@ -11,8 +11,10 @@ import { motion } from 'motion/react';
 import { pageEnterTransition } from '../design-system/motion';
 import logo from '../assets/brandLogo';
 import { BRAND_NAME } from '../config/brand';
+import { usePageSeo } from '../seo/SeoProvider';
 
 export default function Login() {
+  usePageSeo({ canonicalPath: '/login', noindex: true });
   const { t } = useTranslation('auth');
   const [isSignUp, setIsSignUp] = useState(false);
   const [email, setEmail] = useState('');

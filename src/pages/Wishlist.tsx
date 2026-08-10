@@ -9,8 +9,10 @@ import { ProductGrid } from '../components/catalog/ProductGrid';
 import { useProductCatalogActions } from '../hooks/useProductCatalogActions';
 import { LocaleButton } from '../i18n/LocaleButton';
 import type { CatalogProduct } from '../components/products/ProductCard';
+import { usePageSeo } from '../seo/SeoProvider';
 
 export default function Wishlist() {
+  usePageSeo({ canonicalPath: '/wishlist', noindex: true });
   const { t } = useTranslation('account');
   const { user } = useAuthStore();
   const { productIds } = useWishlistStore();

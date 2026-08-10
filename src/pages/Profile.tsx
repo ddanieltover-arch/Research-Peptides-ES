@@ -4,8 +4,10 @@ import { formatLocaleDate } from '../lib/formatLocaleDate';
 import { motion } from 'motion/react';
 import { AccountShell } from '../components/account/AccountShell';
 import { useAuthStore } from '../store/useAuthStore';
+import { usePageSeo } from '../seo/SeoProvider';
 
 export default function Profile() {
+  usePageSeo({ canonicalPath: '/profile', noindex: true });
   const { t, i18n } = useTranslation('account');
   const { profile } = useAuthStore();
 
