@@ -1,7 +1,7 @@
 import { isSupabaseConfigured } from '../supabase';
 
 export function DevConfigBanner() {
-  if (!import.meta.env.DEV || isSupabaseConfigured) return null;
+  if (process.env.NODE_ENV === 'production' || isSupabaseConfigured) return null;
 
   return (
     <div

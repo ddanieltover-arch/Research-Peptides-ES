@@ -1,7 +1,10 @@
+'use client';
+
 import { useEffect, useState } from 'react';
 import { usePathname } from 'next/navigation';
 import { MessageCircle } from 'lucide-react';
 import { accentColors, gradients, shadows } from '../../design-system/tokens';
+import { publicEnv } from '../../lib/publicEnv';
 import {
   installLiveChatReadyHook,
   openLiveChatPanel,
@@ -38,8 +41,7 @@ export default function LiveChatChat() {
   const pathname = usePathname() || '/';
   const isAdmin = pathname.includes('/admin');
   const [isOpening, setIsOpening] = useState(false);
-  const mobileOffset =
-    Number(import.meta.env.VITE_LIVECHAT_MOBILE_OFFSET_Y as string | undefined) || 96;
+  const mobileOffset = Number(publicEnv('VITE_LIVECHAT_MOBILE_OFFSET_Y')) || 96;
 
   useEffect(() => {
     removeLegacyChatScripts();
