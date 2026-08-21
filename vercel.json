@@ -2,18 +2,6 @@
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "framework": "nextjs",
   "outputDirectory": null,
-  "redirects": [
-    {
-      "source": "/es",
-      "destination": "/",
-      "permanent": true
-    },
-    {
-      "source": "/es/:path*",
-      "destination": "/:path*",
-      "permanent": true
-    }
-  ],
   "headers": [
     {
       "source": "/(.*)",
