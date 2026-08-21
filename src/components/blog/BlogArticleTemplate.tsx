@@ -21,6 +21,8 @@ import { Container, GlassPanel, PageShell } from '../../design-system';
 import { LocaleButton } from '../../i18n/LocaleButton';
 import { BlogPostCover } from './BlogPostCover';
 import { cn } from '../../lib/utils';
+import { RelatedSeoLinks } from '../seo/RelatedSeoLinks';
+import { getSeoLinksForBlogPost } from '../../seo/seoLinkGraph';
 
 export type BlogPostRecord = {
   id: string;
@@ -277,6 +279,8 @@ export function BlogArticleTemplate({ post, related = [] }: BlogArticleTemplateP
             </div>
           </section>
         )}
+
+        <RelatedSeoLinks links={getSeoLinksForBlogPost()} contained={false} className="mt-12 rounded-2xl px-4" />
       </Container>
     </PageShell>
   );

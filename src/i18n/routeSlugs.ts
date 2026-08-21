@@ -21,6 +21,9 @@ export const STATIC_ROUTE_PATHS = {
   coas: '/coas',
   peptideInformation: '/peptide-information',
   peptideResearch: '/peptide-research',
+  peptideGlossary: '/peptide-glossary',
+  peptideStats: '/peptide-stats',
+  coaVsNoCoa: '/coa-vs-no-coa',
   terms: '/terms',
   privacy: '/privacy',
   refundReturns: '/refund-returns',
@@ -477,6 +480,30 @@ defineRoute(STATIC_ROUTE_PATHS.peptideResearch, {
   bg: 'izsledvane-na-peptidi',
 });
 
+defineRoute(STATIC_ROUTE_PATHS.peptideGlossary, {
+  en: 'peptide-glossary',
+  es: 'glosario-peptidos',
+  nl: 'peptide-woordenlijst',
+  de: 'peptid-glossar',
+  fr: 'glossaire-peptides',
+});
+
+defineRoute(STATIC_ROUTE_PATHS.peptideStats, {
+  en: 'peptide-stats',
+  es: 'estadisticas-peptidos-investigacion',
+  nl: 'peptide-statistieken',
+  de: 'peptid-statistiken',
+  fr: 'statistiques-peptides',
+});
+
+defineRoute(STATIC_ROUTE_PATHS.coaVsNoCoa, {
+  en: 'coa-vs-no-coa',
+  es: 'coa-vs-sin-coa',
+  nl: 'coa-vs-geen-coa',
+  de: 'coa-vs-kein-coa',
+  fr: 'coa-vs-sans-coa',
+});
+
 defineRoute(STATIC_ROUTE_PATHS.terms, {
   en: 'terms',
   es: 'terminos',
@@ -636,6 +663,9 @@ export const PUBLIC_STATIC_CANONICAL_PATHS: string[] = [
   STATIC_ROUTE_PATHS.coas,
   STATIC_ROUTE_PATHS.peptideInformation,
   STATIC_ROUTE_PATHS.peptideResearch,
+  STATIC_ROUTE_PATHS.peptideGlossary,
+  STATIC_ROUTE_PATHS.peptideStats,
+  STATIC_ROUTE_PATHS.coaVsNoCoa,
   STATIC_ROUTE_PATHS.terms,
   STATIC_ROUTE_PATHS.privacy,
   STATIC_ROUTE_PATHS.refundReturns,

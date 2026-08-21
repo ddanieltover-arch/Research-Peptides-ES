@@ -1,0 +1,31 @@
+Prospect,Website,Type,Contact,Status,Last Contact,Pitch Angle,RUO OK,Notes,Priority
+SEBBM resource desk,https://www.sebbm.es,Association,,Prospect,,Educational resource listing,Y,Spanish biochemistry society,High
+Universidad Complutense core facility,https://www.ucm.es,University lab,,Prospect,,Preferred supplier intro,Y,Madrid proximity,High
+UAM facultad ciencias,https://www.uam.es,University,,Prospect,,Lab supplier + COA library,Y,,High
+UB Centres Científics,https://www.ub.edu,University,,Prospect,,Cold-chain EU shipping,Y,Barcelona labs,Medium
+University of Valencia research support,https://www.uv.es,University,,Prospect,,ES-language protocols,Y,,Medium
+Ciencia Park Madrid directory,https://www.fpcm.es,Local directory,,Prospect,,NAP citation,Y,Verify exact park org URL before outreach,Medium
+ASEBIO,https://www.asebio.com,Association,,Prospect,,Member/resource mention,Y,Spanish biotech association,High
+Lab Protocol Hub ES,https://example-lab-protocols.es,Publisher,,Prospect,,Guest: reconstitución RUO,Y,Placeholder domain — replace with real target,High
+Analítica HPLC Blog,https://example-hplc-blog.eu,Blog,,Prospect,,Guest: leer un COA,Y,Replace with real prospect,High
+Cold Chain Logistics EU,https://example-coldchain.eu,Blog,,Prospect,,Expert quote shipping peptides,Y,Replace URL,Medium
+Open Lab Notebooks,https://example-oln.org,Community,,Prospect,,Calculator + glossary share,Y,,Medium
+EU Reagent Roundup,https://example-reagent-roundup.eu,Publisher,,Prospect,,Inclusion request,Y,,Medium
+Spanish PhD newsletter,https://example-phd-es.com,Newsletter,,Prospect,,Educational mention,Y,No dosing content,Low
+Madrid Chamber directory,https://www.camaramadrid.es,Directory,,Prospect,,Business listing NAP,Y,,Medium
+Bing Places,https://www.bing.com/maps,Maps,,Prospect,,Claim listing,Y,Parallel to GBP,High
+Apple Business Connect,https://businessconnect.apple.com,Maps,,Prospect,,NAP sync,Y,,Medium
+Research reagent comparison blog,https://example-compare-reagents.com,Blog,,Prospect,,COA vs no COA cite,Y,,High
+EU startup bio directory,https://example-biostartups.eu,Directory,,Prospect,,Company profile,Y,,Low
+Core facility LinkedIn admins (UCM),https://www.linkedin.com,Social/B2B,,Prospect,,Connection + resource PDF,Y,Person-level later,Medium
+Hospital research institutes (non-clinical supply),https://example-iis-madrid.es,Institute,,Prospect,,Only if they buy RUO reagents,Y,Strict RUO messaging,Medium
+Portuguese university labs,https://example-ulisboa.pt,University,,Prospect,,EU shipping narrative,Y,Secondary locale,Low
+French peptide methods blog,https://example-peptides-fr.fr,Blog,,Prospect,,hreflang FR content later,Y,,Low
+German analytical chemistry forum,https://example-analytics-de.de,Forum,,Prospect,,COA literacy EN/DE,Y,,Low
+Packaging / thermal shipper OEM blog,https://example-thermal-pack.eu,Vendor blog,,Prospect,,Co-marketing logistics tips,Y,,Medium
+Spanish freelance science writers,https://example-sciwrite.es,Creator,,Prospect,,Sponsored educational article,Y,Disclose sponsorship,Low
+Broken link: old peptide handbook PDF pages,various,Broken-link,,Prospect,,Offer replacement ES guide,Y,Find via crawler,Medium
+Competitor resource page 404s,various,Broken-link,,Prospect,,Suggest our glossary/guide,Y,,Medium
+EURAXESS Spain partners,https://www.euraxess.es,Network,,Prospect,,Researcher resource,Y,,Medium
+Lab equipment distributors ES,https://example-labequip.es,Partner,,Prospect,,Cross-link consumables,Y,No conflict of interest,Medium
+Science communication podcast ES,https://example-scipod.es,Podcast,,Prospect,,Episode on lab quality docs,Y,RUO only,Low

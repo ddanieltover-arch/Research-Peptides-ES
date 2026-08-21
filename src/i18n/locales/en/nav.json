@@ -15,7 +15,9 @@
     "information": "Peptide Information",
     "informationDesc": "Compound profiles and research references.",
     "researchHub": "Peptide Research",
-    "researchHubDesc": "Latest findings and application notes."
+    "researchHubDesc": "Latest findings and application notes.",
+    "glossary": "Peptide Glossary",
+    "glossaryDesc": "Definitions for COA, reconstitution, purity, and more."
   },
   "footer": {
     "inventory": "Inventory",
@@ -23,6 +25,8 @@
     "legal": "Legal",
     "fullCatalog": "Full Catalog",
     "categories": "Categories",
+    "glossary": "Glossary",
+    "stats": "Statistics",
     "advancedSearch": "Advanced Search",
     "wishlist": "Wishlist",
     "faq": "Researcher FAQ",

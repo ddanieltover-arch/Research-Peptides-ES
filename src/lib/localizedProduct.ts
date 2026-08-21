@@ -1,4 +1,3 @@
-import i18n from '../i18n';
 import type { LocaleCode } from '../i18n/locales';
 
 type ProductRow = {
@@ -40,8 +39,13 @@ export function isGenericCatalogDescription(text: string): boolean {
   return GENERIC_DESCRIPTION_PATTERNS.some((pattern) => pattern.test(trimmed));
 }
 
+const DEFAULT_DESC: Partial<Record<LocaleCode, string>> & { es: string; en: string } = {
+  es: 'Péptido de investigación premium para uso exclusivo en laboratorio.',
+  en: 'Premium research peptide for laboratory research use only.',
+};
+
 function defaultDescriptionForLocale(locale: LocaleCode): string {
-  return i18n.t('product:defaultDescription', { lng: locale });
+  return DEFAULT_DESC[locale] ?? DEFAULT_DESC.es;
 }
 
 /** Localized PDP copy from optional JSONB maps; replaces generic English catalog boilerplate. */

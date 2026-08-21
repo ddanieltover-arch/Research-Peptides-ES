@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useLocation } from 'react-router-dom';
+import { usePathname } from 'next/navigation';
 import { MessageCircle } from 'lucide-react';
 import { accentColors, gradients, shadows } from '../../design-system/tokens';
 import {
@@ -35,8 +35,8 @@ function removeLegacyChatScripts() {
  * Widget script loads from index.html; this component handles branding and open actions.
  */
 export default function LiveChatChat() {
-  const location = useLocation();
-  const isAdmin = location.pathname.includes('/admin');
+  const pathname = usePathname() || '/';
+  const isAdmin = pathname.includes('/admin');
   const [isOpening, setIsOpening] = useState(false);
   const mobileOffset =
     Number(import.meta.env.VITE_LIVECHAT_MOBILE_OFFSET_Y as string | undefined) || 96;

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { History, X, ChevronLeft, ChevronRight } from 'lucide-react';
-import { useLocation } from 'react-router-dom';
+import { usePathname } from 'next/navigation';
 import { LocaleLink } from '../../i18n/LocaleLink';
 import { supabase } from '../../supabase';
 import { ProductImagePlaceholder } from './ProductImagePlaceholder';
@@ -11,7 +11,7 @@ export default function RecentlyViewedSidebar() {
   const [products, setProducts] = useState<any[]>([]);
   const [isVisible, setIsVisible] = useState(false);
   const [isExpanded, setIsExpanded] = useState(false);
-  const location = useLocation();
+  const pathname = usePathname() || '/';
 
   useEffect(() => {
     const fetchRecent = async () => {
@@ -35,7 +35,7 @@ export default function RecentlyViewedSidebar() {
     };
 
     fetchRecent();
-  }, [location.pathname]);
+  }, [pathname]);
 
   if (!isVisible || products.length === 0) return null;
 

@@ -1,0 +1,55 @@
+name: SEO Lighthouse CI
+
+on:
+  pull_request:
+    branches: [main, master]
+  workflow_dispatch:
+    inputs:
+      ping_sitemap:
+        description: Ping Google/Bing with production sitemap URL
+        type: boolean
+        default: true
+      base_url:
+        description: Origin to audit (production or staging)
+        type: string
+        default: https://researchpeptides.es
+
+jobs:
+  lighthouse:
+    name: Lighthouse (home + tienda)
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Run Lighthouse CI
+        uses: treosh/lighthouse-ci-action@v12
+        with:
+          urls: |
+            ${{ github.event.inputs.base_url || 'https://researchpeptides.es' }}/
+            ${{ github.event.inputs.base_url || 'https://researchpeptides.es' }}/tienda
+          uploadArtifacts: true
+          temporaryPublicStorage: true
+          # Soft gate: collect scores for review; tighten asserts once baselines exist
+          runs: 1
+
+      # If production is not yet the Next SSR deploy, set base_url to staging in
+      # workflow_dispatch or replace defaults above with your Vercel preview pattern.
+
+  ping-sitemap:
+    name: Ping sitemap
+    if: github.event_name == 'workflow_dispatch' && (github.event.inputs.ping_sitemap == 'true' || github.event.inputs.ping_sitemap == true)
+    runs-on: ubuntu-latest
+    steps:
+      - name: Ping Google & Bing
+        env:
+          SITEMAP_URL: https://researchpeptides.es/sitemap.xml
+        run: |
+          set -e
+          echo "Pinging sitemap: $SITEMAP_URL"
+          curl -fsS -o /dev/null -w "Google ping HTTP %{http_code}\n" \
+            "https://www.google.com/ping?sitemap=${SITEMAP_URL}"
+          curl -fsS -o /dev/null -w "Bing ping HTTP %{http_code}\n" \
+            "https://www.bing.com/ping?sitemap=${SITEMAP_URL}"

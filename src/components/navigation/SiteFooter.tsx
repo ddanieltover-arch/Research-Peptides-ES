@@ -5,6 +5,7 @@ import footerLogo from '../../assets/footerLogo';
 import { Container, ScientificBackdrop } from '../../design-system';
 import { footerInventory, footerLegal, footerSupport } from '../../navigation/config';
 import { BRAND_NAME, HQ_LOCATION, SUPPORT_EMAIL } from '../../config/brand';
+import { FOOTER_EXTERNAL_LINKS, FOOTER_SEO_LINKS } from '../../seo/seoLinkGraph';
 
 type SiteFooterProps = {
   newsletterEmail: string;
@@ -64,6 +65,23 @@ export default function SiteFooter({
                 {SUPPORT_EMAIL}
               </a>
             </address>
+            <div className="mt-6">
+              <h4 className="text-caption text-brand-400 mb-3">Fuentes externas</h4>
+              <ul className="space-y-2 text-sm text-silver-400">
+                {FOOTER_EXTERNAL_LINKS.map((item) => (
+                  <li key={item.href}>
+                    <a
+                      href={item.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="hover:text-white transition-colors"
+                    >
+                      {item.label}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
 
           <div className="md:col-span-2">
@@ -93,6 +111,16 @@ export default function SiteFooter({
           </div>
 
           <div className="md:col-span-4">
+            <h4 className="text-caption text-brand-400 mb-5">Investigación y catálogo</h4>
+            <ul className="columns-1 sm:columns-2 gap-x-6 space-y-2 text-sm text-silver-400 mb-8">
+              {FOOTER_SEO_LINKS.map((item) => (
+                <li key={`${item.to}:${item.anchor}`} className="break-inside-avoid">
+                  <LocaleLink to={item.to} className="hover:text-white transition-colors">
+                    {item.anchor}
+                  </LocaleLink>
+                </li>
+              ))}
+            </ul>
             <h4 className="text-caption text-brand-400 mb-5">{tCommon('footer.newsletterTitle')}</h4>
             <p className="text-silver-400 text-sm mb-5 leading-relaxed">
               {tCommon('footer.newsletterDescription')}

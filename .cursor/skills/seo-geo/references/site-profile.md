@@ -22,7 +22,9 @@ Sitemap hreflang set typically includes: `es` (default / x-default), `en`, `nl`,
 
 | Concern | Path |
 |---------|------|
-| Page SEO overrides | `src/seo/SeoProvider.tsx` (`usePageSeo`) |
+| Pages (views) | `src/views/*` (renamed from `src/pages` for Next App Router) |
+| Next App Router | `app/[locale]/...` |
+| Client hosts | `src/next/StaticPageHost.tsx`, `AppProviders.tsx` |
 | Head injection | `src/i18n/LocaleHead.tsx` |
 | Titles / descriptions | `src/seo/pageTitles.ts` |
 | Structured data helpers | `src/seo/structuredData.ts` |

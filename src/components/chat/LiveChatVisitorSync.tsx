@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
+import { usePathname } from 'next/navigation';
 import { useAuthStore } from '../../store/useAuthStore';
 import {
   readCheckoutLiveChatContext,
@@ -18,7 +18,7 @@ function resolveVisitorName(
 }
 
 export default function LiveChatVisitorSync() {
-  const location = useLocation();
+  const pathname = usePathname() || '/';
   const { user, profile } = useAuthStore();
 
   useEffect(() => {
@@ -32,9 +32,9 @@ export default function LiveChatVisitorSync() {
       name,
       email,
       orderId: checkoutContext?.orderId,
-      page: location.pathname,
+      page: pathname,
     });
-  }, [user, profile, location.pathname]);
+  }, [user, profile, pathname]);
 
   return null;
 }

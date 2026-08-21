@@ -1,3 +1,4 @@
+import { publicEnv } from '../lib/publicEnv';
 import { create } from 'zustand';
 import { User } from '@supabase/supabase-js';
 import { supabase } from '../supabase';
@@ -21,7 +22,7 @@ interface AuthState {
   fetchProfile: (uid: string, email: string, displayName: string | null, photoURL: string | null) => Promise<void>;
 }
 
-const adminEmails = (import.meta.env.VITE_ADMIN_EMAILS || 'admin@researchpeptides.es')
+const adminEmails = (publicEnv('VITE_ADMIN_EMAILS') || 'admin@researchpeptides.es')
   .split(',')
   .map((e) => e.trim().toLowerCase())
   .filter(Boolean);

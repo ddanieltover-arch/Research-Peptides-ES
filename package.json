@@ -7,10 +7,13 @@
     "node": "24.x"
   },
   "scripts": {
-    "dev": "vite --port=5173 --host=0.0.0.0",
-    "build": "vite build && npm run sitemap:generate",
-    "preview": "vite preview",
-    "clean": "rm -rf dist",
+    "dev": "next dev --port 5173",
+    "dev:vite": "vite --port=5174 --host=0.0.0.0",
+    "build": "next build",
+    "build:vite": "vite build && npm run sitemap:generate",
+    "start": "next start",
+    "preview": "next start",
+    "clean": "rm -rf dist .next",
     "lint": "tsc --noEmit",
     "db:test": "tsx server/scripts/test-db.ts",
     "db:migrate": "tsx server/scripts/migrate.ts",
@@ -30,11 +33,13 @@
     "og:generate": "node scripts/generate-og-image.mjs",
     "products:localize": "tsx scripts/audit-product-descriptions.ts --apply",
     "qa:currency": "tsx scripts/qa-currency-check.ts",
-    "qa:phase10": "node scripts/qa-phase10-browser.mjs"
+    "qa:phase10": "node scripts/qa-phase10-browser.mjs",
+    "db:seed:seo-posts": "tsx scripts/seed-seo-blog-posts.ts"
   },
   "dependencies": {
     "@google/genai": "^1.29.0",
     "@supabase/supabase-js": "^2.103.2",
+    "@tailwindcss/postcss": "^4.3.3",
     "@tailwindcss/vite": "^4.1.14",
     "@vitejs/plugin-react": "^5.0.4",
     "clsx": "^2.1.1",
@@ -45,6 +50,8 @@
     "i18next-browser-languagedetector": "^8.2.1",
     "lucide-react": "^0.546.0",
     "motion": "^12.23.24",
+    "next": "^15.5.23",
+    "postcss": "^8.5.26",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-helmet-async": "^3.0.0",
@@ -58,6 +65,8 @@
   "devDependencies": {
     "@types/express": "^4.17.21",
     "@types/node": "^22.14.0",
+    "@types/react": "^19.2.18",
+    "@types/react-dom": "^19.2.4",
     "@vercel/node": "^5.7.15",
     "autoprefixer": "^10.4.21",
     "playwright": "^1.60.0",

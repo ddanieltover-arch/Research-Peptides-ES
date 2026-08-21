@@ -1,5 +1,5 @@
 import { useMemo } from 'react';
-import { Link } from 'react-router-dom';
+import { LocaleLink } from '../../i18n/LocaleLink';
 import { useTranslation } from 'react-i18next';
 import {
   CheckCircle2,
@@ -315,9 +315,9 @@ export function ProductPurchasePanel({
       </div>
 
       <p className="text-xs text-silver-400 text-center">
-        <Link to="/coas" className="text-brand-600 hover:underline font-medium">
+        <LocaleLink to="/coas" className="text-brand-600 hover:underline font-medium">
           {t('purchase.viewCoaLibrary')}
-        </Link>
+        </LocaleLink>
         {' · '}
         {t('purchase.laboratoryOnly')}
       </p>

@@ -1,9 +1,10 @@
-import { BRAND_NAME, HQ_ADDRESS, SITE_URL, SUPPORT_EMAIL } from '../config/brand';
+import { BRAND_NAME, HQ_ADDRESS, HQ_GEO, SITE_URL, SUPPORT_EMAIL, WHATSAPP_NUMBER } from '../config/brand';
 import { DEFAULT_CURRENCY } from '../lib/currency';
 import { pathWithLocale } from '../i18n/routing';
 import { STATIC_ROUTE_PATHS } from '../i18n/routeSlugs';
 import type { LocaleCode } from '../i18n/locales';
 import { localizedProductDescription, localizedProductTitle } from '../lib/localizedProduct';
+import { getProductSeoCopy } from './productSeoCopy';
 import { productPath } from '../lib/productUrl';
 
 export function siteOrigin(): string {
@@ -18,9 +19,18 @@ export function organizationJsonLd() {
     name: BRAND_NAME,
     url: origin,
     email: SUPPORT_EMAIL,
+    telephone: `+${WHATSAPP_NUMBER}`,
     logo: {
       '@type': 'ImageObject',
       url: `${origin}/brand_logo.png`,
+    },
+    address: {
+      '@type': 'PostalAddress',
+      streetAddress: HQ_ADDRESS.streetAddress,
+      postalCode: HQ_ADDRESS.postalCode,
+      addressLocality: HQ_ADDRESS.addressLocality,
+      addressRegion: HQ_ADDRESS.addressRegion,
+      addressCountry: HQ_ADDRESS.addressCountry,
     },
     areaServed: ['Spain', 'European Union'],
   };
@@ -58,6 +68,8 @@ export function localBusinessJsonLd() {
     image: `${origin}/brand_logo.png`,
     description:
       'Péptidos y compuestos de investigación premium para laboratorios europeos. Verificación de terceros, distribución en la UE.',
+    telephone: `+${WHATSAPP_NUMBER}`,
+    email: SUPPORT_EMAIL,
     address: {
       '@type': 'PostalAddress',
       streetAddress: HQ_ADDRESS.streetAddress,
@@ -66,12 +78,35 @@ export function localBusinessJsonLd() {
       addressRegion: HQ_ADDRESS.addressRegion,
       addressCountry: HQ_ADDRESS.addressCountry,
     },
+    geo: {
+      '@type': 'GeoCoordinates',
+      latitude: HQ_GEO.latitude,
+      longitude: HQ_GEO.longitude,
+    },
     areaServed: ['Spain', 'European Union'],
     contactPoint: {
       '@type': 'ContactPoint',
+      telephone: `+${WHATSAPP_NUMBER}`,
       email: SUPPORT_EMAIL,
       contactType: 'customer support',
+      areaServed: ['ES', 'EU'],
+      availableLanguage: ['Spanish', 'English'],
     },
+  };
+}
+
+export function howToJsonLd(name: string, description: string, steps: { name: string; text: string }[]) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'HowTo',
+    name,
+    description,
+    step: steps.map((step, index) => ({
+      '@type': 'HowToStep',
+      position: index + 1,
+      name: step.name,
+      text: step.text,
+    })),
   };
 }
 
@@ -93,8 +128,12 @@ export function productJsonLd(product: ProductRow, locale: LocaleCode) {
   const url = `${siteOrigin()}${pathWithLocale(locale, path)}`;
   const images = (product.images ?? []).filter(Boolean);
   const inStock = Number(product.inventory ?? 0) > 0;
-  const title = localizedProductTitle(product, locale);
-  const description = localizedProductDescription(product, locale);
+  const seo = getProductSeoCopy(product.slug, locale);
+  const title = seo?.h1 ?? localizedProductTitle(product, locale);
+  const description =
+    seo?.metaDescription ??
+    seo?.shortDescription ??
+    localizedProductDescription(product, locale);
 
   return {
     '@context': 'https://schema.org',
@@ -124,6 +163,23 @@ export function productJsonLd(product: ProductRow, locale: LocaleCode) {
           },
         }
       : {}),
+  };
+}
+
+export function productFaqJsonLd(slug: string, locale: LocaleCode) {
+  const seo = getProductSeoCopy(slug, locale);
+  if (!seo?.faqs?.length) return null;
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: seo.faqs.map((faq) => ({
+      '@type': 'Question',
+      name: faq.question,
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: faq.answer,
+      },
+    })),
   };
 }
 

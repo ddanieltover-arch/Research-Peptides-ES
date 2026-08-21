@@ -4,10 +4,7 @@
 > **Version:** 2026 Edition — Covers Traditional SEO + Generative Engine Optimization (GEO/AEO)
 > **Target Stack:** Next.js / React (adaptable to any framework)
 
-> **Research Peptides ES:** Use the project skill [`.cursor/skills/seo-geo/SKILL.md`](.cursor/skills/seo-geo/SKILL.md) for execution on this repo (Vite SPA adaptations + bound site profile). This file remains the full section reference.
-
 ---
-
 
 ## ⚡ AGENT MISSION STATEMENT
 

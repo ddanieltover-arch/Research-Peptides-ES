@@ -5,13 +5,19 @@ type TitleEntry = { es: string; en?: string; nl?: string; de?: string; fr?: stri
 
 export const PAGE_TITLES: Record<string, TitleEntry> = {
   '/': {
-    es: 'Péptidos de investigación premium',
-    en: 'Premium Research Peptides',
+    es: 'Péptidos España | comprar péptidos de investigación',
+    en: 'Peptides Spain | buy research peptides',
     nl: 'Premium onderzoekspeptiden',
     de: 'Premium-Forschungspeptide',
     fr: 'Peptides de recherche premium',
   },
-  '/shop': { es: 'Tienda', en: 'Shop', nl: 'Shop', de: 'Shop', fr: 'Boutique' },
+  '/shop': {
+    es: 'Comprar péptidos España | tienda',
+    en: 'Buy peptides Spain | shop',
+    nl: 'Shop',
+    de: 'Shop',
+    fr: 'Boutique',
+  },
   '/categories': { es: 'Categorías', en: 'Categories', nl: 'Categorieën', de: 'Kategorien', fr: 'Catégories' },
   '/search': { es: 'Buscar', en: 'Search', nl: 'Zoeken', de: 'Suche', fr: 'Recherche' },
   '/cart': { es: 'Carrito', en: 'Cart', nl: 'Winkelwagen', de: 'Warenkorb', fr: 'Panier' },
@@ -57,16 +63,37 @@ export const PAGE_TITLES: Record<string, TitleEntry> = {
     de: 'Peptid-Forschung',
     fr: 'Recherche peptides',
   },
+  '/peptide-glossary': {
+    es: 'Glosario de péptidos',
+    en: 'Peptide Glossary',
+    nl: 'Peptide-woordenlijst',
+    de: 'Peptid-Glossar',
+    fr: 'Glossaire peptides',
+  },
+  '/peptide-stats': {
+    es: 'Estadísticas de péptidos',
+    en: 'Peptide Research Stats',
+    nl: 'Peptide-statistieken',
+    de: 'Peptid-Statistiken',
+    fr: 'Statistiques peptides',
+  },
+  '/coa-vs-no-coa': {
+    es: 'COA vs sin COA',
+    en: 'COA vs No COA',
+    nl: 'COA vs geen COA',
+    de: 'COA vs kein COA',
+    fr: 'COA vs sans COA',
+  },
 };
 
 export const PAGE_DESCRIPTIONS: Record<string, TitleEntry> = {
   '/': {
-    es: 'Research Peptides ES — péptidos de investigación premium para laboratorios europeos. Verificación de terceros, precios en EUR, distribución desde España.',
-    en: 'Research Peptides ES — premium research peptides for European laboratories. Third-party verification, EUR pricing, distribution from Spain.',
+    es: 'Comprar péptidos en España y la UE — catálogo de investigación (péptidos España, peptides Spain). COA, envío en frío y uso exclusivo de laboratorio.',
+    en: 'Buy research peptides in Spain and the EU — verified catalog with COAs and cold-chain shipping. Research use only.',
   },
   '/shop': {
-    es: 'Catálogo de péptidos de investigación de alta pureza. Compra online con envío a laboratorios en España y la UE.',
-    en: 'Shop high-purity research peptides online. Ships to laboratories across Spain and the EU.',
+    es: 'Comprar péptidos España: catálogo para laboratorios. Péptidos comprar online con COA, precios en EUR y envío UE. Solo investigación.',
+    en: 'Shop research peptides for laboratories in Spain and the EU. COA documentation, EUR pricing. Research use only.',
   },
   '/categories': {
     es: 'Explora categorías de péptidos de investigación: elige por uso previsto de laboratorio y tipo de compuesto.',
@@ -112,6 +139,18 @@ export const PAGE_DESCRIPTIONS: Record<string, TitleEntry> = {
     es: 'Recursos de investigación sobre péptidos: contexto científico y referencias para laboratorios.',
     en: 'Peptide research resources — scientific context and references for laboratories.',
   },
+  '/peptide-glossary': {
+    es: 'Glosario de términos de péptidos de investigación: COA, liofilización, reconstitución y pureza.',
+    en: 'Glossary of research peptide terms: COA, lyophilization, reconstitution, and purity.',
+  },
+  '/peptide-stats': {
+    es: 'Estadísticas y fuentes citables sobre péptidos de investigación para laboratorios europeos.',
+    en: 'Citable statistics and sources on research peptides for European laboratories.',
+  },
+  '/coa-vs-no-coa': {
+    es: 'Comparativa COA de terceros frente a péptidos sin certificado para compradores de laboratorio.',
+    en: 'Third-party COA vs uncertified peptides — comparison for laboratory buyers.',
+  },
   '/terms': {
     es: 'Términos y condiciones de Research Peptides ES. Uso exclusivo para investigación.',
     en: 'Terms and conditions for Research Peptides ES. Research use only.',
@@ -127,7 +166,7 @@ export const PAGE_DESCRIPTIONS: Record<string, TitleEntry> = {
 };
 
 export const DEFAULT_DESCRIPTION =
-  'Research Peptides ES — péptidos de investigación premium para laboratorios europeos. Verificación de terceros, precios en EUR, distribución desde España.';
+  'Comprar péptidos en España (péptidos España / peptides Spain): catálogo de investigación con COA, precios EUR y envío UE. Solo uso de laboratorio.';
 
 function localizedEntry(entry: TitleEntry | undefined, locale: LocaleCode): string | undefined {
   if (!entry) return undefined;

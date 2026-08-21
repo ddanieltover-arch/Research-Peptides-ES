@@ -4,29 +4,29 @@ const prefetched = new Set<string>();
 
 /** Lazy route loaders — warms Vite chunks before navigation. */
 const routeLoaders: Record<string, () => Promise<unknown>> = {
-  '/': () => import('../pages/Home'),
-  '/shop': () => import('../pages/Shop'),
-  '/cart': () => import('../pages/Cart'),
-  '/checkout': () => import('../pages/Checkout'),
-  '/categories': () => import('../pages/Categories'),
-  '/search': () => import('../pages/Search'),
-  '/wishlist': () => import('../pages/Wishlist'),
-  '/login': () => import('../pages/Login'),
-  '/faq': () => import('../pages/FAQ'),
-  '/shipping': () => import('../pages/Shipping'),
-  '/contact': () => import('../pages/Contact'),
-  '/about-us': () => import('../pages/AboutUs'),
-  '/blog': () => import('../pages/Blog'),
-  '/coas': () => import('../pages/COALibrary'),
-  '/peptide-guide': () => import('../pages/PeptideGuide'),
-  '/peptide-calculator': () => import('../pages/PeptideCalculator'),
-  '/peptide-information': () => import('../pages/PeptideInformation'),
-  '/peptide-research': () => import('../pages/PeptideResearch'),
-  '/terms': () => import('../pages/Terms'),
-  '/privacy': () => import('../pages/Privacy'),
-  '/refund-returns': () => import('../pages/RefundReturns'),
-  '/orders': () => import('../pages/Orders'),
-  '/profile': () => import('../pages/Profile'),
+  '/': () => import('../views/Home'),
+  '/shop': () => import('../views/Shop'),
+  '/cart': () => import('../views/Cart'),
+  '/checkout': () => import('../views/Checkout'),
+  '/categories': () => import('../views/Categories'),
+  '/search': () => import('../views/Search'),
+  '/wishlist': () => import('../views/Wishlist'),
+  '/login': () => import('../views/Login'),
+  '/faq': () => import('../views/FAQ'),
+  '/shipping': () => import('../views/Shipping'),
+  '/contact': () => import('../views/Contact'),
+  '/about-us': () => import('../views/AboutUs'),
+  '/blog': () => import('../views/Blog'),
+  '/coas': () => import('../views/COALibrary'),
+  '/peptide-guide': () => import('../views/PeptideGuide'),
+  '/peptide-calculator': () => import('../views/PeptideCalculator'),
+  '/peptide-information': () => import('../views/PeptideInformation'),
+  '/peptide-research': () => import('../views/PeptideResearch'),
+  '/terms': () => import('../views/Terms'),
+  '/privacy': () => import('../views/Privacy'),
+  '/refund-returns': () => import('../views/RefundReturns'),
+  '/orders': () => import('../views/Orders'),
+  '/profile': () => import('../views/Profile'),
 };
 
 export function normalizeRoutePath(path: string): string {
@@ -43,7 +43,7 @@ export function prefetchRoute(path: string): void {
   const stripped = stripLocaleFromPath(withSlash.split('?')[0] ?? withSlash);
 
   if (stripped.startsWith('/blog/') && stripped !== '/blog') {
-    void import('../pages/BlogPost');
+    void import('../views/BlogPost');
   }
 
   const key = normalizeRoutePath(path);

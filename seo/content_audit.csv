@@ -1,0 +1,25 @@
+URL,Page Type,Locale,Title Present,Meta Description,H1 Clarity,Word Count Est,Research-Use Disclaimer,Internal Links,Schema Notes,Content Quality,Priority Action
+https://researchpeptides.es/,Home,es,Y,Y,Strong,Medium,Required on-page,Nav+trust,Org/WebSite,Good brand hero; keep SSR LCP clean,Maintain + CWV measure
+https://researchpeptides.es/tienda,Catalog,es,Y,Y,Strong,Low-Medium,Y in banners,Filters+PDP,ItemList/Product,Thin category copy — add ES intro,Expand intro copy
+https://researchpeptides.es/categorias,Hub,es,Y,Y,OK,Low,Y,Category links,ItemList,Add unique blurbs per category,Expand
+https://researchpeptides.es/producto/{slug},PDP,es,Y,Y,Product name,Medium,Must be explicit,Related+COA,Product,Verify uniqueness per SKU,Audit top 20 SKUs
+https://researchpeptides.es/blog,Blog index,es,Y,Y,OK,Low,Y,Posts,Blog,Index OK; grow ES posts,Seed SEO posts
+https://researchpeptides.es/blog/{id},Article,es,Y,Y,Varies,Varies,Required,Hub links,Article,Quality varies by post,Standardize briefs
+https://researchpeptides.es/preguntas-frecuentes,FAQ,es,Y,Y,Strong,Medium,Y,Support pages,FAQPage,Strong GEO candidate,Add answer capsules
+https://researchpeptides.es/envio,Support,es,Y,Y,OK,Medium,Y,Checkout trust,None/WebPage,Add cold-chain depth,Expand
+https://researchpeptides.es/contacto,Contact,es,Y,Y,OK,Low,Y,NAP,LocalBusiness,Confirm NAP match,Align GBP
+https://researchpeptides.es/sobre-nosotros,About,es,Y,Y,OK,Medium,Y,Trust,Org,Madrid story OK,Add lab process photos later
+https://researchpeptides.es/certificados-coas,Trust,es,Y,Y,Strong,Low-Medium,Y,PDP+blog,WebPage,Core trust asset,Improve findability copy
+https://researchpeptides.es/coa-vs-sin-coa,Comparison,es,Y,Y,Strong,Medium,Y,COA library,WebPage,High intent; expand FAQs,Refresh Q&A
+https://researchpeptides.es/guia-de-peptidos,Guide,es,Y,Y,Strong,Medium-High,Y,Calc+glossary,HowTo candidate,Pillar page,Add HowTo schema when ready
+https://researchpeptides.es/calculadora-de-peptidos,Tool,es,Y,Y,Strong,Low,Y,Guide,WebApplication/HowTo,Utility SEO; add instructions,Content wrap
+https://researchpeptides.es/informacion-peptidos,Edu,es,Y,Y,OK,Medium,Y,Research hub,WebPage,Avoid medical claims drift,Editorial review
+https://researchpeptides.es/investigacion-peptidos,Edu,es,Y,Y,OK,Medium,Y,Blog,WebPage,Cite sources,Add citations
+https://researchpeptides.es/glosario-peptidos,Glossary,es,Y,Y,OK,Medium,Y,Guide,DefinedTermSet candidate,Expand terms,GEO expand
+https://researchpeptides.es/estadisticas-peptidos-investigacion,Edu,es,Y,Y,OK,Low-Medium,Y,Research,WebPage,Only cite sourced stats,Verify numbers
+https://researchpeptides.es/terminos,Legal,es,Y,Y,OK,High,Y,Footer,WebPage,RUO terms critical,Annual legal review
+https://researchpeptides.es/privacidad,Legal,es,Y,Y,OK,High,N/A,Footer,WebPage,GDPR aligned,Maintain
+https://researchpeptides.es/devoluciones,Legal,es,Y,Y,OK,Medium,Y,Shipping,WebPage,Clear lab return rules,Maintain
+https://researchpeptides.es/carrito,Transactional,es,noindex,—,—,—,—,—,—,Exclude sitemap,Keep noindex
+https://researchpeptides.es/pago,Transactional,es,noindex,—,—,—,—,—,—,Exclude sitemap,Keep noindex
+https://researchpeptides.es/buscar,Search,es,noindex,—,—,—,—,—,—,Exclude sitemap,Keep noindex

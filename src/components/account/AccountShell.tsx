@@ -1,5 +1,5 @@
 import type { ReactNode } from 'react';
-import { useLocation } from 'react-router-dom';
+import { usePathname } from 'next/navigation';
 import { useTranslation } from 'react-i18next';
 import { ChevronRight, Heart, Package, Settings, User } from 'lucide-react';
 import { useAuthStore } from '../../store/useAuthStore';
@@ -27,9 +27,9 @@ type AccountShellProps = {
 export function AccountShell({ title, subtitle, children }: AccountShellProps) {
   const { t } = useTranslation('account');
   const { user, profile } = useAuthStore();
-  const location = useLocation();
+  const pathname = usePathname() || '/';
 
-  const canonicalPath = stripLocaleFromPath(location.pathname);
+  const canonicalPath = stripLocaleFromPath(pathname);
 
   if (!user || !profile) {
     return (

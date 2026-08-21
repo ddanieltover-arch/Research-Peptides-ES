@@ -7,32 +7,32 @@ import {
   STATIC_ROUTE_PATHS,
 } from '../i18n/routeSlugs';
 
-const Home = lazy(() => import('../pages/Home'));
-const Shop = lazy(() => import('../pages/Shop'));
-const ProductDetails = lazy(() => import('../pages/ProductDetails'));
-const Cart = lazy(() => import('../pages/Cart'));
-const Checkout = lazy(() => import('../pages/Checkout'));
-const AdminDashboard = lazy(() => import('../pages/AdminDashboard'));
-const Blog = lazy(() => import('../pages/Blog'));
-const BlogPost = lazy(() => import('../pages/BlogPost'));
-const Profile = lazy(() => import('../pages/Profile'));
-const Orders = lazy(() => import('../pages/Orders'));
-const Wishlist = lazy(() => import('../pages/Wishlist'));
-const Search = lazy(() => import('../pages/Search'));
-const Categories = lazy(() => import('../pages/Categories'));
-const Login = lazy(() => import('../pages/Login'));
-const FAQ = lazy(() => import('../pages/FAQ'));
-const Shipping = lazy(() => import('../pages/Shipping'));
-const Contact = lazy(() => import('../pages/Contact'));
-const Terms = lazy(() => import('../pages/Terms'));
-const Privacy = lazy(() => import('../pages/Privacy'));
-const RefundReturns = lazy(() => import('../pages/RefundReturns'));
-const PeptideGuide = lazy(() => import('../pages/PeptideGuide'));
-const AboutUs = lazy(() => import('../pages/AboutUs'));
-const PeptideCalculator = lazy(() => import('../pages/PeptideCalculator'));
-const COALibrary = lazy(() => import('../pages/COALibrary'));
-const PeptideInformation = lazy(() => import('../pages/PeptideInformation'));
-const PeptideResearch = lazy(() => import('../pages/PeptideResearch'));
+const Home = lazy(() => import('../views/Home'));
+const Shop = lazy(() => import('../views/Shop'));
+const ProductDetails = lazy(() => import('../views/ProductDetails'));
+const Cart = lazy(() => import('../views/Cart'));
+const Checkout = lazy(() => import('../views/Checkout'));
+const AdminDashboard = lazy(() => import('../views/AdminDashboard'));
+const Blog = lazy(() => import('../views/Blog'));
+const BlogPost = lazy(() => import('../views/BlogPost'));
+const Profile = lazy(() => import('../views/Profile'));
+const Orders = lazy(() => import('../views/Orders'));
+const Wishlist = lazy(() => import('../views/Wishlist'));
+const Search = lazy(() => import('../views/Search'));
+const Categories = lazy(() => import('../views/Categories'));
+const Login = lazy(() => import('../views/Login'));
+const FAQ = lazy(() => import('../views/FAQ'));
+const Shipping = lazy(() => import('../views/Shipping'));
+const Contact = lazy(() => import('../views/Contact'));
+const Terms = lazy(() => import('../views/Terms'));
+const Privacy = lazy(() => import('../views/Privacy'));
+const RefundReturns = lazy(() => import('../views/RefundReturns'));
+const PeptideGuide = lazy(() => import('../views/PeptideGuide'));
+const AboutUs = lazy(() => import('../views/AboutUs'));
+const PeptideCalculator = lazy(() => import('../views/PeptideCalculator'));
+const COALibrary = lazy(() => import('../views/COALibrary'));
+const PeptideInformation = lazy(() => import('../views/PeptideInformation'));
+const PeptideResearch = lazy(() => import('../views/PeptideResearch'));
 
 const STATIC_PAGE_ROUTES: Array<{ canonical: string; element: ReactNode }> = [
   { canonical: STATIC_ROUTE_PATHS.shop, element: <Shop /> },

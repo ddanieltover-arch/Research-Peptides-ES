@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import { ChevronDown, Globe } from 'lucide-react';
 import { AnimatePresence, motion } from 'motion/react';
 import { useTranslation } from 'react-i18next';
@@ -15,8 +15,9 @@ type LanguageSwitcherProps = {
 export default function LanguageSwitcher({ variant = 'header' }: LanguageSwitcherProps) {
   const { locale, setLocale, localeLabel } = useLocale();
   const { t } = useTranslation('common');
-  const navigate = useNavigate();
-  const location = useLocation();
+  const router = useRouter();
+  const pathname = usePathname() || '/';
+  const searchParams = useSearchParams();
   const [open, setOpen] = useState(false);
   const rootRef = useRef<HTMLDivElement>(null);
 
@@ -41,8 +42,10 @@ export default function LanguageSwitcher({ variant = 'header' }: LanguageSwitche
   const current = supportedLocales.find((l) => l.code === locale) ?? supportedLocales[0];
 
   const handleSelect = (code: LocaleCode) => {
-    const path = stripLocaleFromPath(location.pathname);
-    navigate(`${pathWithLocale(code, path)}${location.search}${location.hash}`);
+    const path = stripLocaleFromPath(pathname);
+    const search = searchParams?.toString();
+    const href = `${pathWithLocale(code, path)}${search ? `?${search}` : ''}`;
+    router.push(href);
     setLocale(code);
     persistLocaleCookie(code);
     setOpen(false);

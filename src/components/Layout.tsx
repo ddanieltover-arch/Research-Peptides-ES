@@ -1,5 +1,7 @@
-import React, { Suspense, useEffect, useState } from 'react';
-import { Outlet, useLocation } from 'react-router-dom';
+'use client';
+
+import React, { Suspense, useEffect, useState, type ReactNode } from 'react';
+import { usePathname } from 'next/navigation';
 import { useTranslation } from 'react-i18next';
 import { useLocaleNavigate } from '../i18n/useLocaleNavigate';
 import { ArrowUp } from 'lucide-react';
@@ -28,12 +30,13 @@ import { DevConfigBanner } from './DevConfigBanner';
 import { prefetchCriticalRoutes } from '../lib/routePrefetch';
 import { whatsappUrl } from '../lib/whatsapp';
 
-function LayoutShell() {
+function LayoutShell({ children }: { children: ReactNode }) {
   const { t } = useTranslation('common');
   const { user, profile, setUser } = useAuthStore();
   const { openSearch } = useSearchStore();
   const navigate = useLocaleNavigate();
-  const location = useLocation();
+  const pathname = usePathname() || '/';
+  const location = { pathname };
   const [mobileNavOpen, setMobileNavOpen] = useState(false);
   const [showBackToTop, setShowBackToTop] = useState(false);
   const [newsletterEmail, setNewsletterEmail] = useState('');
@@ -66,6 +69,9 @@ function LayoutShell() {
 
   useEffect(() => {
     setMobileNavOpen(false);
+    if (typeof window !== 'undefined') {
+      window.scrollTo(0, 0);
+    }
   }, [location.pathname]);
 
   useEffect(() => {
@@ -140,9 +146,7 @@ function LayoutShell() {
       />
 
       <main id="main-content" className="flex-grow pb-20 md:pb-0 relative" tabIndex={-1}>
-        <Suspense fallback={<PageLoader />}>
-          <Outlet key={location.pathname} />
-        </Suspense>
+        <Suspense fallback={<PageLoader />}>{children}</Suspense>
       </main>
 
       <SiteFooter
@@ -196,6 +200,6 @@ function LayoutShell() {
   );
 }
 
-export default function Layout() {
-  return <LayoutShell />;
+export default function Layout({ children }: { children: ReactNode }) {
+  return <LayoutShell>{children}</LayoutShell>;
 }

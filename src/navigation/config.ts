@@ -43,11 +43,18 @@ export const researchTools: NavLinkItem[] = [
     href: '/peptide-research',
     descriptionKey: 'research.researchHubDesc',
   },
+  {
+    labelKey: 'research.glossary',
+    href: '/peptide-glossary',
+    descriptionKey: 'research.glossaryDesc',
+  },
 ];
 
 export const footerInventory: NavLinkItem[] = [
   { labelKey: 'footer.fullCatalog', href: '/shop' },
   { labelKey: 'footer.categories', href: '/categories' },
+  { labelKey: 'footer.glossary', href: '/peptide-glossary' },
+  { labelKey: 'footer.stats', href: '/peptide-stats' },
   { labelKey: 'footer.advancedSearch', href: '/search' },
   { labelKey: 'footer.wishlist', href: '/wishlist' },
 ];

@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useLocation } from 'react-router-dom';
+import { usePathname } from 'next/navigation';
 import { LocaleLink } from '../../i18n/LocaleLink';
 import { stripLocaleFromPath } from '../../i18n/routing';
 import { Heart, Search, ShoppingCart } from 'lucide-react';
@@ -38,8 +38,8 @@ export default function Header({
   const { openSearch } = useSearchStore();
   const { t } = useTranslation('common');
   const { t: tNav } = useTranslation('nav');
-  const location = useLocation();
-  const pathWithoutLocale = stripLocaleFromPath(location.pathname);
+  const pathname = usePathname() || '/';
+  const pathWithoutLocale = stripLocaleFromPath(pathname);
   const [scrolled, setScrolled] = useState(false);
   const [activeMega, setActiveMega] = useState<MegaMenuId | null>(null);
   const [accountOpen, setAccountOpen] = useState(false);
@@ -56,7 +56,7 @@ export default function Header({
   useEffect(() => {
     setActiveMega(null);
     setAccountOpen(false);
-  }, [location.pathname]);
+  }, [pathname]);
 
   const iconBtnClass =
     'relative flex h-10 w-10 items-center justify-center rounded-full text-steel-600 hover:text-brand-600 hover:bg-brand-50 transition-colors';

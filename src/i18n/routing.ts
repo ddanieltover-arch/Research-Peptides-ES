@@ -35,16 +35,25 @@ export function stripLocaleFromPath(pathname: string): string {
   return toCanonicalPath(rest);
 }
 
-/** Build a locale-aware path with translated slugs. Spanish (default) has no URL prefix. */
+/** Build an App Router path: `/{locale}/{english-canonical...}`.
+ * Soft client navigation must hit real `app/[locale]/…` segments.
+ * Pretty localized URLs (`/tienda`, `/producto/…`, `/`) 308 → these paths in middleware.
+ */
 export function pathWithLocale(locale: LocaleCode, path = '/'): string {
+  const [pathnamePart, query = ''] = path.split('?');
+  const raw = pathnamePart && pathnamePart.length > 0 ? pathnamePart : '/';
+  const canonical = toCanonicalPath(raw.startsWith('/') ? raw : `/${raw}`);
+  const bare = canonical === '/' ? '' : canonical;
+  const base = bare ? `/${locale}${bare}` : `/${locale}`;
+  return query ? `${base}?${query}` : base;
+}
+
+/** Public SEO alias path (translated slugs; Spanish unprefixed). Used for rewrites/docs only. */
+export function publicAliasPath(locale: LocaleCode, path = '/'): string {
   const localized = toLocalizedPath(path, locale);
   const normalized = localized.startsWith('/') ? localized : `/${localized}`;
   const bare = normalized === '/' ? '' : normalized;
-
-  if (locale === DEFAULT_LOCALE) {
-    return bare || '/';
-  }
-
+  if (locale === DEFAULT_LOCALE) return bare || '/';
   return bare ? `/${locale}${bare}` : `/${locale}`;
 }
 

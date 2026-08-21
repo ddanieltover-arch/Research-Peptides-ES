@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import { Shield } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Button } from '../../design-system';
@@ -67,7 +67,7 @@ export function CookieConsent() {
             </Button>
           </div>
           <Link
-            to={privacyPath}
+            href={privacyPath}
             className="block text-center text-xs text-brand-600 font-semibold mt-3 hover:text-brand-700"
           >
             {t('cookie.privacyLink')}

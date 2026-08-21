@@ -1,3 +1,5 @@
+'use client';
+
 import React, { createContext, useCallback, useContext, useEffect, useMemo, useState } from 'react';
 import { setActiveLocale } from '../lib/currency';
 import { getLocaleDefinition, isLocaleCode, type LocaleCode } from './locales';
@@ -23,8 +25,20 @@ function readStoredLocale(): LocaleCode | null {
   return null;
 }
 
-export function LocaleProvider({ children }: { children: React.ReactNode }) {
-  const [locale, setLocaleState] = useState<LocaleCode>(() => readStoredLocale() ?? DEFAULT_LOCALE);
+export function LocaleProvider({
+  children,
+  initialLocale,
+}: {
+  children: React.ReactNode;
+  initialLocale?: LocaleCode;
+}) {
+  const [locale, setLocaleState] = useState<LocaleCode>(
+    () => initialLocale ?? readStoredLocale() ?? DEFAULT_LOCALE,
+  );
+
+  useEffect(() => {
+    if (initialLocale) setLocaleState(initialLocale);
+  }, [initialLocale]);
 
   const setLocale = useCallback((code: LocaleCode) => {
     setLocaleState(code);

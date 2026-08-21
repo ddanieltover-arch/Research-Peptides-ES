@@ -1,0 +1,56 @@
+{
+  "site": "https://researchpeptides.es",
+  "brand": "Research Peptides ES",
+  "market": "ES/EU",
+  "defaultLocale": "es",
+  "nap": {
+    "streetAddress": "Calle de la Innovación 12",
+    "postalCode": "28001",
+    "addressLocality": "Madrid",
+    "addressCountry": "ES",
+    "email": "info@researchpeptides.es"
+  },
+  "auditDate": "2026-08-20",
+  "stack": {
+    "previous": "Vite SPA + react-helmet-async",
+    "current": "Next.js App Router SSR",
+    "ssrCutover": true,
+    "notes": "Indexable routes served via app/[locale] pages; sitemap and robots via app/sitemap.ts and app/robots.ts."
+  },
+  "indexableRoutes": [
+    { "canonical": "/", "esPath": "/", "pageType": "home", "index": true },
+    { "canonical": "/shop", "esPath": "/tienda", "pageType": "catalog", "index": true },
+    { "canonical": "/categories", "esPath": "/categorias", "pageType": "hub", "index": true },
+    { "canonical": "/blog", "esPath": "/blog", "pageType": "blog_index", "index": true },
+    { "canonical": "/blog/[id]", "esPath": "/blog/[id]", "pageType": "article", "index": true },
+    { "canonical": "/product/[slug]", "esPath": "/producto/[slug]", "pageType": "pdp", "index": true },
+    { "canonical": "/preguntas-frecuentes", "esPath": "/preguntas-frecuentes", "pageType": "faq", "index": true },
+    { "canonical": "/shipping", "esPath": "/envio", "pageType": "support", "index": true },
+    { "canonical": "/contact", "esPath": "/contacto", "pageType": "contact", "index": true },
+    { "canonical": "/about-us", "esPath": "/sobre-nosotros", "pageType": "about", "index": true },
+    { "canonical": "/certificados-coas", "esPath": "/certificados-coas", "pageType": "trust", "index": true },
+    { "canonical": "/coa-vs-sin-coa", "esPath": "/coa-vs-sin-coa", "pageType": "comparison", "index": true },
+    { "canonical": "/peptide-guide", "esPath": "/guia-de-peptidos", "pageType": "guide", "index": true },
+    { "canonical": "/peptide-calculator", "esPath": "/calculadora-de-peptidos", "pageType": "tool", "index": true },
+    { "canonical": "/peptide-information", "esPath": "/informacion-peptidos", "pageType": "edu", "index": true },
+    { "canonical": "/peptide-research", "esPath": "/investigacion-peptidos", "pageType": "edu", "index": true },
+    { "canonical": "/peptide-glossary", "esPath": "/glosario-peptidos", "pageType": "glossary", "index": true },
+    { "canonical": "/peptide-stats", "esPath": "/estadisticas-peptidos-investigacion", "pageType": "edu", "index": true },
+    { "canonical": "/terms", "esPath": "/terminos", "pageType": "legal", "index": true },
+    { "canonical": "/privacy", "esPath": "/privacidad", "pageType": "legal", "index": true },
+    { "canonical": "/refund-returns", "esPath": "/devoluciones", "pageType": "legal", "index": true }
+  ],
+  "noindexRoutes": [
+    { "canonical": "/cart", "esPath": "/carrito", "reason": "transactional" },
+    { "canonical": "/checkout", "esPath": "/pago", "reason": "transactional" },
+    { "canonical": "/login", "esPath": "/iniciar-sesion", "reason": "account" },
+    { "canonical": "/profile", "esPath": "/perfil", "reason": "account" },
+    { "canonical": "/orders", "esPath": "/pedidos", "reason": "account" },
+    { "canonical": "/wishlist", "esPath": "/lista-de-deseos", "reason": "account" },
+    { "canonical": "/search", "esPath": "/buscar", "reason": "faceted_search" },
+    { "canonical": "/admin", "esPath": "/admin", "reason": "private" }
+  ],
+  "robotsDisallow": ["/api/", "/*/admin", "/*/checkout", "/*/cart", "/*/login", "/*/profile", "/*/orders", "/*/wishlist", "/*/search"],
+  "aiCrawlersAllowed": ["GPTBot", "ChatGPT-User", "Google-Extended", "ClaudeBot", "PerplexityBot", "Applebot-Extended"],
+  "framing": "research_use_only"
+}

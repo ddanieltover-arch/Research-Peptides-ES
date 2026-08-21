@@ -15,7 +15,9 @@
     "information": "Información sobre péptidos",
     "informationDesc": "Perfiles de compuestos y referencias de investigación.",
     "researchHub": "Investigación con péptidos",
-    "researchHubDesc": "Últimos hallazgos y notas de aplicación."
+    "researchHubDesc": "Últimos hallazgos y notas de aplicación.",
+    "glossary": "Glosario de péptidos",
+    "glossaryDesc": "Definiciones de COA, reconstitución, pureza y más."
   },
   "footer": {
     "inventory": "Inventario",
@@ -23,6 +25,8 @@
     "legal": "Legal",
     "fullCatalog": "Catálogo completo",
     "categories": "Categorías",
+    "glossary": "Glosario",
+    "stats": "Estadísticas",
     "advancedSearch": "Búsqueda avanzada",
     "wishlist": "Lista de deseos",
     "faq": "FAQ para investigadores",
