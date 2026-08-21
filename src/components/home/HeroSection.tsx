@@ -6,6 +6,9 @@ import { LocaleLink } from '../../i18n/LocaleLink';
 import { Button, Container, buttonClassName } from '../../design-system';
 import { useWizardStore } from '../../store/useWizardStore';
 import heroPeptides from '../../assets/hero_peptides.png';
+import { assetUrl } from '../../lib/assetUrl';
+
+const heroPeptidesSrc = assetUrl(heroPeptides);
 
 const trustPills = [
   { icon: ShieldCheck, value: '99.8%', labelKey: 'hero.trustPurity' },
@@ -16,7 +19,7 @@ const trustPills = [
 export function HeroSection() {
   const { t } = useTranslation('home');
   const openWizard = useWizardStore((s) => s.openWizard);
-  usePreloadImage(heroPeptides);
+  usePreloadImage(heroPeptidesSrc);
 
   return (
     <section className="relative overflow-hidden bg-gradient-parchment">
@@ -117,7 +120,7 @@ export function HeroSection() {
               <div className="relative rounded-[2rem] md:rounded-[2.5rem] overflow-hidden border border-brand-100/80 bg-white shadow-elevated">
                 <div className="absolute inset-0 bg-gradient-to-br from-brand-50/40 via-transparent to-accent-500/10 pointer-events-none" />
                 <img
-                  src={heroPeptides}
+                  src={heroPeptidesSrc}
                   alt=""
                   width={960}
                   height={640}

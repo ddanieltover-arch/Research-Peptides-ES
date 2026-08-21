@@ -1,15 +1,17 @@
 import { createClient, type SupabaseClient } from '@supabase/supabase-js';
-import { publicEnv } from './lib/publicEnv';
 
-const supabaseUrl = publicEnv('VITE_SUPABASE_URL');
-const supabaseAnonKey = publicEnv('VITE_SUPABASE_ANON_KEY');
+/** Literal env reads so Next can inline them into the client bundle. */
+const supabaseUrl =
+  process.env.NEXT_PUBLIC_SUPABASE_URL || process.env.VITE_SUPABASE_URL || '';
+const supabaseAnonKey =
+  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || process.env.VITE_SUPABASE_ANON_KEY || '';
 
-/** True when real Supabase credentials are present in .env / .env.local */
+/** True when real Supabase credentials are present in .env / .env.local / Vercel. */
 export const isSupabaseConfigured = Boolean(supabaseUrl && supabaseAnonKey);
 
 if (!isSupabaseConfigured && process.env.NODE_ENV === 'development') {
   console.warn(
-    '[Research Peptides ES] Missing VITE_SUPABASE_URL / NEXT_PUBLIC_SUPABASE_URL or anon key. ' +
+    '[Research Peptides ES] Missing NEXT_PUBLIC_SUPABASE_URL / VITE_SUPABASE_URL or anon key. ' +
       'Copy .env.example to .env.local and restart for catalog, auth, and checkout.',
   );
 }

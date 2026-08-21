@@ -7,7 +7,7 @@ import { useLocaleNavigate } from '../i18n/useLocaleNavigate';
 import { ShoppingBag } from 'lucide-react';
 import { useCartStore } from '../store/useCartStore';
 import { CartPageSkeleton } from '../components/Skeleton';
-import { Container, Button, Reveal, PageShell } from '../design-system';
+import { Container, Reveal, PageShell, buttonClassName } from '../design-system';
 import { CatalogPageHeader } from '../components/catalog/CatalogPageHeader';
 import { CartLineItem } from '../components/cart/CartLineItem';
 import { OrderSummaryPanel } from '../components/cart/OrderSummaryPanel';
@@ -65,8 +65,8 @@ export default function Cart() {
             <ShoppingBag className="h-14 w-14 text-brand-200 mx-auto mb-4" aria-hidden />
             <h2 className="font-display font-bold text-2xl text-navy-950 mb-3">{t('cart.empty')}</h2>
             <p className="text-steel-600 mb-8">{t('hero.subtitle', { ns: 'home' })}</p>
-            <LocaleLink to="/shop">
-              <Button size="lg">{t('cart.emptyCta')}</Button>
+            <LocaleLink to="/shop" className={buttonClassName({ size: 'lg' })}>
+              {t('cart.emptyCta')}
             </LocaleLink>
           </Reveal>
         </Container>

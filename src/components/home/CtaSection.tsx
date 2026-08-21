@@ -2,7 +2,7 @@ import { ArrowRight, Sparkles } from 'lucide-react';
 import { motion } from 'motion/react';
 import { useTranslation } from 'react-i18next';
 import { LocaleLink } from '../../i18n/LocaleLink';
-import { Button, Container, Section } from '../../design-system';
+import { Button, Container, Section, buttonClassName } from '../../design-system';
 import { useWizardStore } from '../../store/useWizardStore';
 
 export function CtaSection() {
@@ -27,11 +27,12 @@ export function CtaSection() {
             {t('cta.subtitle')}
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
-            <LocaleLink to="/shop">
-              <Button size="lg" className="gap-2 min-w-[220px]">
-                {t('cta.button')}
-                <ArrowRight className="h-4 w-4" />
-              </Button>
+            <LocaleLink
+              to="/shop"
+              className={buttonClassName({ size: 'lg', className: 'gap-2 min-w-[220px]' })}
+            >
+              {t('cta.button')}
+              <ArrowRight className="h-4 w-4" />
             </LocaleLink>
             <Button variant="gold" size="lg" onClick={openWizard} className="gap-2 min-w-[220px]">
               <Sparkles className="h-4 w-4" />

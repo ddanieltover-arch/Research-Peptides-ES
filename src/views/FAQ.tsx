@@ -6,7 +6,7 @@ import { HelpCircle, ChevronDown, FlaskConical, Truck, CreditCard } from 'lucide
 import { motion, AnimatePresence } from 'motion/react';
 import { LegalPageLayout } from '../components/legal/LegalPageLayout';
 import { LocaleLink } from '../i18n/LocaleLink';
-import { Button } from '../design-system';
+import { buttonClassName } from '../design-system';
 import { cn } from '../lib/utils';
 import { usePageSeo } from '../seo/SeoProvider';
 
@@ -129,8 +129,11 @@ export default function FAQ() {
         <div className="absolute top-0 right-0 w-32 h-32 bg-brand-500/20 rounded-full blur-3xl" aria-hidden />
         <h3 className="text-white font-display font-bold mb-2 relative z-10">{t('faq.ctaTitle')}</h3>
         <p className="text-silver-400 text-sm mb-6 relative z-10">{t('faq.ctaBody')}</p>
-        <LocaleLink to="/contact" className="relative z-10 inline-block">
-          <Button variant="primary">{t('faq.ctaButton')}</Button>
+        <LocaleLink
+          to="/contact"
+          className={buttonClassName({ variant: 'primary', className: 'relative z-10 inline-block' })}
+        >
+          {t('faq.ctaButton')}
         </LocaleLink>
       </div>
     </LegalPageLayout>

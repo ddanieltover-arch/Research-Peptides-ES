@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { LocaleLink } from '../../i18n/LocaleLink';
 import { ArrowRight } from 'lucide-react';
 import { supabase, isSupabaseConfigured } from '../../supabase';
-import { Container, Section, Button } from '../../design-system';
+import { Container, Section, buttonClassName } from '../../design-system';
 import { ProductGrid } from '../catalog/ProductGrid';
 import { useProductCatalogActions } from '../../hooks/useProductCatalogActions';
 import { SectionHeading } from './SectionHeading';
@@ -45,11 +45,12 @@ export function FeaturedProductsSection() {
             description={t('featured.subtitle')}
             className="mb-0"
           />
-          <LocaleLink to="/shop" className="shrink-0">
-            <Button variant="outline" className="gap-2">
-              {t('categories.viewAll')}
-              <ArrowRight className="h-4 w-4" />
-            </Button>
+          <LocaleLink
+            to="/shop"
+            className={buttonClassName({ variant: 'outline', className: 'shrink-0 gap-2' })}
+          >
+            {t('categories.viewAll')}
+            <ArrowRight className="h-4 w-4" />
           </LocaleLink>
         </div>
 

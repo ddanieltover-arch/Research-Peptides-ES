@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from 'motion/react';
 import { ShoppingBag, X } from 'lucide-react';
 import { useCartStore } from '../../store/useCartStore';
 import { formatCurrency } from '../../lib/utils';
-import { Button } from '../../design-system';
+import { buttonClassName } from '../../design-system';
 import { CartLineItem } from './CartLineItem';
 
 const FREE_SHIPPING_THRESHOLD = 500;
@@ -87,7 +87,13 @@ export default function CartDrawer() {
                   <p className="text-steel-600 text-sm mb-6 max-w-[240px]">
                     Research compounds you add will appear here.
                   </p>
-                  <Button onClick={closeCart}>Browse catalog</Button>
+                  <LocaleLink
+                    to="/shop"
+                    onClick={closeCart}
+                    className={buttonClassName({})}
+                  >
+                    Browse catalog
+                  </LocaleLink>
                 </div>
               ) : (
                 <AnimatePresence initial={false}>
@@ -120,10 +126,12 @@ export default function CartDrawer() {
                   <span className="tabular-nums">{formatCurrency(getTotal())}</span>
                 </div>
                 <p className="text-xs text-steel-600">Shipping &amp; VAT calculated at checkout.</p>
-                <LocaleLink to="/checkout" onClick={closeCart}>
-                  <Button fullWidth size="lg">
-                    Checkout securely
-                  </Button>
+                <LocaleLink
+                  to="/checkout"
+                  onClick={closeCart}
+                  className={buttonClassName({ fullWidth: true, size: 'lg' })}
+                >
+                  Checkout securely
                 </LocaleLink>
                 <LocaleLink
                   to="/cart"

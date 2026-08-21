@@ -3,8 +3,11 @@ import { motion } from 'motion/react';
 import { useTranslation } from 'react-i18next';
 import { LocaleLink } from '../../i18n/LocaleLink';
 import scientistLab from '../../assets/scientist_lab.png';
+import { assetUrl } from '../../lib/assetUrl';
 import { Container, Section, Card } from '../../design-system';
 import { SectionHeading } from './SectionHeading';
+
+const scientistLabSrc = assetUrl(scientistLab);
 
 export function CustomerExperienceSection() {
   const { t } = useTranslation('home');
@@ -33,7 +36,7 @@ export function CustomerExperienceSection() {
             className="lg:col-span-5 relative rounded-3xl overflow-hidden min-h-[280px] border border-brand-100 shadow-elevated"
           >
             <img
-              src={scientistLab}
+              src={scientistLabSrc}
               alt=""
               className="absolute inset-0 w-full h-full object-cover"
               loading="lazy"

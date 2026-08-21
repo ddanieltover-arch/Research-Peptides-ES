@@ -1,38 +1,37 @@
-/** Public env that works under Vite (`import.meta.env`) and Next (`process.env`). */
-function readProcess(name: string): string | undefined {
-  if (typeof process === 'undefined') return undefined;
-  return process.env?.[name];
-}
-
-function readVite(name: string): string | undefined {
-  try {
-    // Prefer property access form for bundlers
-    const env = (import.meta as ImportMeta & { env?: Record<string, string | undefined> }).env;
-    return env?.[name];
-  } catch {
-    return undefined;
-  }
-}
+/**
+ * Public env for Vite + Next.
+ * Next only inlines *static* `process.env.NEXT_PUBLIC_*` member access — dynamic
+ * `process.env[name]` is always undefined in the browser bundle.
+ */
+const STATIC_PUBLIC: Record<string, string | undefined> = {
+  NEXT_PUBLIC_SUPABASE_URL:
+    process.env.NEXT_PUBLIC_SUPABASE_URL || process.env.VITE_SUPABASE_URL,
+  VITE_SUPABASE_URL:
+    process.env.NEXT_PUBLIC_SUPABASE_URL || process.env.VITE_SUPABASE_URL,
+  NEXT_PUBLIC_SUPABASE_ANON_KEY:
+    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || process.env.VITE_SUPABASE_ANON_KEY,
+  VITE_SUPABASE_ANON_KEY:
+    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || process.env.VITE_SUPABASE_ANON_KEY,
+  NEXT_PUBLIC_SITE_URL:
+    process.env.NEXT_PUBLIC_SITE_URL || process.env.VITE_SITE_URL || process.env.SITE_URL,
+  VITE_SITE_URL:
+    process.env.NEXT_PUBLIC_SITE_URL || process.env.VITE_SITE_URL || process.env.SITE_URL,
+  NEXT_PUBLIC_SUPPORT_EMAIL:
+    process.env.NEXT_PUBLIC_SUPPORT_EMAIL || process.env.VITE_SUPPORT_EMAIL,
+  VITE_SUPPORT_EMAIL:
+    process.env.NEXT_PUBLIC_SUPPORT_EMAIL || process.env.VITE_SUPPORT_EMAIL,
+  NEXT_PUBLIC_ADMIN_EMAILS:
+    process.env.NEXT_PUBLIC_ADMIN_EMAILS || process.env.VITE_ADMIN_EMAILS,
+  VITE_ADMIN_EMAILS:
+    process.env.NEXT_PUBLIC_ADMIN_EMAILS || process.env.VITE_ADMIN_EMAILS,
+  NEXT_PUBLIC_LIVECHAT_MOBILE_OFFSET_Y:
+    process.env.NEXT_PUBLIC_LIVECHAT_MOBILE_OFFSET_Y ||
+    process.env.VITE_LIVECHAT_MOBILE_OFFSET_Y,
+  VITE_LIVECHAT_MOBILE_OFFSET_Y:
+    process.env.NEXT_PUBLIC_LIVECHAT_MOBILE_OFFSET_Y ||
+    process.env.VITE_LIVECHAT_MOBILE_OFFSET_Y,
+};
 
 export function publicEnv(name: string, fallback = ''): string {
-  const nextName = name.startsWith('VITE_')
-    ? `NEXT_PUBLIC_${name.slice('VITE_'.length)}`
-    : name.startsWith('NEXT_PUBLIC_')
-      ? name
-      : `NEXT_PUBLIC_${name}`;
-  const viteName = name.startsWith('NEXT_PUBLIC_')
-    ? `VITE_${name.slice('NEXT_PUBLIC_'.length)}`
-    : name.startsWith('VITE_')
-      ? name
-      : `VITE_${name}`;
-
-  return (
-    readProcess(nextName) ||
-    readProcess(viteName) ||
-    readProcess(name) ||
-    readVite(nextName) ||
-    readVite(viteName) ||
-    readVite(name) ||
-    fallback
-  );
+  return STATIC_PUBLIC[name] || fallback;
 }
