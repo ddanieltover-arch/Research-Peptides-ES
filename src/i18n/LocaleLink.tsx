@@ -1,8 +1,15 @@
 'use client';
 
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
-import { useMemo, type ComponentProps, type ReactNode, type MouseEvent, type FocusEvent, type PointerEvent } from 'react';
+import { usePathname, useRouter } from 'next/navigation';
+import {
+  useMemo,
+  type ComponentProps,
+  type ReactNode,
+  type MouseEvent,
+  type FocusEvent,
+  type PointerEvent,
+} from 'react';
 import { useLocale } from './LocaleProvider';
 import { getLocaleFromPath, pathWithLocale, stripLocaleFromPath } from './routing';
 import type { LocaleCode } from './locales';
@@ -19,6 +26,10 @@ function useAppRouterHref(to: string): string {
   }, [to, pathname, ctxLocale]);
 }
 
+function isModifiedClick(e: MouseEvent<HTMLAnchorElement>) {
+  return e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || e.button !== 0;
+}
+
 type LocaleLinkProps = Omit<ComponentProps<typeof Link>, 'href'> & { to: string; href?: never };
 
 export function LocaleLink({
@@ -26,14 +37,17 @@ export function LocaleLink({
   onMouseEnter,
   onFocus,
   onPointerDown,
+  onClick,
   ...props
 }: LocaleLinkProps) {
   const href = useAppRouterHref(to);
+  const router = useRouter();
 
   return (
     <Link
       href={href}
       prefetch
+      {...props}
       onMouseEnter={(e) => {
         prefetchRoute(to);
         onMouseEnter?.(e);
@@ -46,7 +60,14 @@ export function LocaleLink({
         if (e.button === 0) prefetchRoute(to);
         onPointerDown?.(e);
       }}
-      {...props}
+      onClick={(e) => {
+        onClick?.(e);
+        if (e.defaultPrevented || isModifiedClick(e)) return;
+        // Explicit soft navigation — avoids stalled Link transitions when the
+        // address bar is on a pretty alias or hydration is racing overlays.
+        e.preventDefault();
+        router.push(href);
+      }}
     />
   );
 }
@@ -67,10 +88,12 @@ export function LocaleNavLink({
   onMouseEnter,
   onFocus,
   onPointerDown,
+  onClick,
   children,
   ...props
 }: LocaleNavLinkProps) {
   const href = useAppRouterHref(to);
+  const router = useRouter();
   const pathname = usePathname() || '/';
   const canonicalPath = stripLocaleFromPath(pathname);
   const targetPath = (() => {
@@ -90,6 +113,7 @@ export function LocaleNavLink({
       prefetch
       className={resolvedClass}
       aria-current={isActive ? 'page' : undefined}
+      {...props}
       onMouseEnter={(e: MouseEvent<HTMLAnchorElement>) => {
         prefetchRoute(to);
         onMouseEnter?.(e);
@@ -102,7 +126,12 @@ export function LocaleNavLink({
         if (e.button === 0) prefetchRoute(to);
         onPointerDown?.(e);
       }}
-      {...props}
+      onClick={(e: MouseEvent<HTMLAnchorElement>) => {
+        onClick?.(e);
+        if (e.defaultPrevented || isModifiedClick(e)) return;
+        e.preventDefault();
+        router.push(href);
+      }}
     >
       {children}
     </Link>

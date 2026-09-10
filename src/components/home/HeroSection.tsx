@@ -36,7 +36,7 @@ export function HeroSection() {
 
       <Container className="relative z-10 pt-10 pb-14 md:pt-14 md:pb-18 lg:pt-16 lg:pb-20">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center min-h-[min(72vh,720px)]">
-          <div className="lg:col-span-6 xl:col-span-6 order-2 lg:order-1">
+          <div className="relative z-30 lg:col-span-6 xl:col-span-6 order-2 lg:order-1">
             <motion.div
               initial={{ opacity: 0, y: 14 }}
               animate={{ opacity: 1, y: 0 }}
@@ -79,23 +79,26 @@ export function HeroSection() {
                 </div>
               ) : null}
 
-              <div className="flex flex-wrap items-center gap-3 mb-8">
-                <LocaleLink to="/shop" className={buttonClassName({ size: 'lg', className: 'gap-2' })}>
+              <div className="relative z-30 flex flex-wrap items-center gap-3 mb-8">
+                <LocaleLink
+                  to="/shop"
+                  className={buttonClassName({ size: 'lg', className: 'gap-2 relative z-30' })}
+                >
                   {t('hero.ctaShop')}
-                  <ArrowRight className="h-4 w-4" />
+                  <ArrowRight className="h-4 w-4" aria-hidden />
                 </LocaleLink>
                 <Button
                   variant="outline"
                   size="lg"
                   onClick={openWizard}
-                  className="gap-2 border-slate-200 text-navy-950 hover:bg-slate-50"
+                  className="gap-2 border-slate-200 text-navy-950 hover:bg-slate-50 relative z-30"
                 >
-                  <Sparkles className="h-4 w-4 text-brand-600" />
+                  <Sparkles className="h-4 w-4 text-brand-600" aria-hidden />
                   {t('hero.ctaWizard')}
                 </Button>
                 <LocaleLink
                   to="/coas"
-                  className="text-xs font-semibold uppercase tracking-wider text-slate-600 hover:text-brand-600 transition-colors ml-2 py-2"
+                  className="relative z-30 text-xs font-semibold uppercase tracking-wider text-brand-600 hover:text-brand-700 transition-colors ml-0 sm:ml-2 py-2"
                 >
                   {t('hero.ctaCoa')}
                 </LocaleLink>
@@ -126,7 +129,7 @@ export function HeroSection() {
             </motion.div>
           </div>
 
-          <div className="lg:col-span-6 xl:col-span-6 order-1 lg:order-2 relative">
+          <div className="relative z-10 lg:col-span-6 xl:col-span-6 order-1 lg:order-2">
             <motion.div
               initial={{ opacity: 0, scale: 0.98 }}
               animate={{ opacity: 1, scale: 1 }}
@@ -173,7 +176,8 @@ export function HeroSection() {
                 initial={{ opacity: 0, y: 12 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.3, duration: 0.4 }}
-                className="hidden sm:block absolute -bottom-5 -left-4 sm:-bottom-6 sm:-left-6 w-72 sm:w-80 rounded-xl border border-slate-200/90 bg-white/95 backdrop-blur-md p-3.5 sm:p-4 shadow-elevated z-20"
+                aria-hidden
+                className="pointer-events-none hidden sm:block absolute -bottom-5 -left-4 sm:-bottom-6 sm:-left-6 w-72 sm:w-80 rounded-xl border border-slate-200/90 bg-white/95 backdrop-blur-md p-3.5 sm:p-4 shadow-elevated z-10"
               >
                 <div className="flex items-center justify-between gap-2 border-b border-slate-100 pb-2 mb-2">
                   <span className="flex items-center gap-1.5 text-[10px] font-mono font-semibold uppercase tracking-wider text-slate-500">
