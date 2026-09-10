@@ -16,7 +16,7 @@ const variantClasses: Record<ButtonVariant, string> = {
   secondary:
     'bg-navy-950 text-white hover:bg-slate-800 shadow-sm border border-navy-900/30',
   gold:
-    'bg-accent-500 text-navy-950 hover:bg-accent-400 shadow-sm border border-accent-600/30 font-semibold',
+    'bg-brand-600 hover:bg-brand-700 text-white shadow-sm border border-brand-700/20',
   outline:
     'bg-white border border-slate-200 text-navy-950 hover:bg-slate-50 hover:border-slate-300 shadow-sm',
   ghost:

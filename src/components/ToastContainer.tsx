@@ -16,7 +16,7 @@ export default function ToastContainer() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, scale: 0.5, transition: { duration: 0.2 } }}
             className={`
-              flex items-center p-4 rounded-2xl shadow-2xl border backdrop-blur-md
+              flex items-center p-4 rounded-xl shadow-elevated border backdrop-blur-md
               ${toast.type === 'success' ? 'bg-white/90 border-green-100 text-green-900' : ''}
               ${toast.type === 'error' ? 'bg-white/90 border-red-100 text-red-900' : ''}
               ${toast.type === 'info' ? 'bg-white/90 border-brand-100 text-navy-900' : ''}

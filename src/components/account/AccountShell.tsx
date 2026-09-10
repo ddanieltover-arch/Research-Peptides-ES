@@ -57,7 +57,7 @@ export function AccountShell({ title, subtitle, children }: AccountShellProps) {
       <Container className="py-10 md:py-12">
         <div className="flex flex-col lg:flex-row gap-8 lg:gap-10">
           <aside className="w-full lg:w-72 shrink-0 space-y-4">
-            <div className="bg-white rounded-3xl border border-brand-100 p-6 shadow-card text-center">
+            <div className="bg-white rounded-xl border border-slate-200 p-6 shadow-card text-center">
               <div className="h-20 w-20 mx-auto rounded-full bg-brand-50 p-1 mb-4">
                 <div className="w-full h-full rounded-full overflow-hidden border-2 border-white bg-white flex items-center justify-center">
                   {profile.photo_url ? (
@@ -78,7 +78,7 @@ export function AccountShell({ title, subtitle, children }: AccountShellProps) {
               <p className="text-caption text-brand-600 mt-1">{profile.role}</p>
             </div>
 
-            <nav className="bg-white rounded-3xl border border-brand-100 p-3 shadow-card space-y-1">
+            <nav className="bg-white rounded-xl border border-slate-200 p-2 shadow-card space-y-1">
               {NAV.map((item) => {
                 const active = canonicalPath === item.path;
                 return (
@@ -86,10 +86,10 @@ export function AccountShell({ title, subtitle, children }: AccountShellProps) {
                     key={item.path + item.labelKey}
                     to={item.path}
                     className={cn(
-                      'flex items-center justify-between p-3.5 rounded-2xl transition-all group',
+                      'flex items-center justify-between p-3 rounded-xl transition-all group',
                       active
                         ? 'bg-brand-500 text-white shadow-card'
-                        : 'text-steel-600 hover:bg-brand-50 hover:text-brand-700',
+                        : 'text-steel-600 hover:bg-mist-50 hover:text-brand-700',
                     )}
                   >
                     <span className="flex items-center gap-3 font-semibold text-sm">

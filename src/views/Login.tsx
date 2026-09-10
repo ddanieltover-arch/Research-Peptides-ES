@@ -136,7 +136,7 @@ export default function Login() {
           animate={{ opacity: 1, y: 0, scale: 1 }}
           transition={pageEnterTransition()}
         >
-        <GlassPanel variant="dark" padding="lg" className="shadow-glow">
+        <GlassPanel variant="dark" padding="lg" className="shadow-elevated border border-white/10">
           <div className="text-center mb-8">
             <img
               src={logo}
@@ -145,7 +145,7 @@ export default function Login() {
               width={192}
               height={56}
             />
-            <h1 className="font-display font-bold text-2xl text-white mb-2">
+            <h1 className="font-display font-semibold text-2xl text-white mb-2">
               {isSignUp ? t('signUpTitle') : t('signInTitle')}
             </h1>
             <p className="text-silver-400 text-sm">

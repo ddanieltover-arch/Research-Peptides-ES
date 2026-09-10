@@ -118,7 +118,7 @@ export default function Omnisearch() {
                   {results.map((product) => (
                     <div
                       key={product.id}
-                      className="group flex items-center gap-4 p-4 rounded-2xl hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-all cursor-pointer border border-transparent hover:border-brand-100 dark:hover:border-brand-900/50"
+                      className="group flex items-center gap-4 p-4 rounded-xl hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-all cursor-pointer border border-transparent hover:border-brand-100 dark:hover:border-brand-900/50"
                       onClick={() => handleProductClick(product)}
                     >
                       <div className="h-16 w-16 rounded-xl overflow-hidden bg-gray-100 dark:bg-gray-800 shrink-0">
@@ -169,7 +169,7 @@ export default function Omnisearch() {
                   ))}
                   <button 
                     onClick={() => { navigate(`/search?q=${encodeURIComponent(query)}`); closeSearch(); }}
-                    className="w-full mt-4 p-4 flex items-center justify-center gap-2 text-sm font-bold text-brand-600 hover:bg-brand-50 dark:hover:bg-brand-900/20 rounded-2xl transition-all"
+                    className="w-full mt-4 p-4 flex items-center justify-center gap-2 text-sm font-bold text-brand-600 hover:bg-brand-50 dark:hover:bg-brand-900/20 rounded-xl transition-all"
                   >
                     View all results <ArrowRight className="h-4 w-4" />
                   </button>

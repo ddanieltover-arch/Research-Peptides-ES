@@ -6,9 +6,42 @@
     "subtitle": "Research Peptides ES supplies institutional-grade compounds with third-party analytical verification, pharmaceutical handling, and trusted distribution from Spain across the EU.",
     "ctaShop": "Browse catalog",
     "ctaWizard": "Compound selector",
-    "trustPurity": "99.8%+ verified purity",
-    "trustShipping": "EU-wide cold-chain dispatch",
-    "trustCoa": "COA on every batch"
+    "ctaCoa": "View certificates (COA) →",
+    "liveBadge": "2026 batches verified HPLC/MS · Madrid hub",
+    "quickAccess": "Quick access by compound:",
+    "trustPurity": "Verified purity",
+    "trustPuritySub": "HPLC / MS verified",
+    "trustShipping": "24/48h dispatch",
+    "trustShippingSub": "Madrid cold chain",
+    "trustCoa": "COA",
+    "trustCoaSub": "Certificate per batch",
+    "trustPurityValue": "≥99.4%",
+    "trustShippingValue": "24/48h",
+    "trustCoaValue": "COA",
+    "imageAlt": "Research Peptides ES — high-purity peptide laboratory",
+    "gradeBadge": "Research grade (≥99.4%)",
+    "visualBrand": "Research Peptides Spain",
+    "visualCaption": "Pure lyophilizate · Nitrogen-sealed pharma-grade vials",
+    "marketBadge": "EUR · ES / EU",
+    "telemetryTitle": "Analytical specification",
+    "telemetryBatch": "Batch ES-2026",
+    "telemetryCompound": "Compound:",
+    "telemetryCompoundValue": "Semaglutide 5 mg",
+    "telemetryPurity": "HPLC purity:",
+    "telemetryPurityValue": "99.82% passed",
+    "telemetryAnalysis": "Analysis:",
+    "telemetryAnalysisValue": "LC-MS / Janoshik ref",
+    "telemetryChrom": "HPLC chromatogram (UV 214 nm)",
+    "telemetryPeak": "Peak: 4.82 min",
+    "shortcuts": [
+      { "label": "BPC-157", "q": "bpc-157" },
+      { "label": "Semaglutide", "q": "semaglutide" },
+      { "label": "Tirzepatide", "q": "tirzepatide" },
+      { "label": "NAD+", "q": "nad" },
+      { "label": "TB-500", "q": "tb-500" },
+      { "label": "Retatrutide", "q": "retatrutide" },
+      { "label": "GHK-Cu", "q": "ghk-cu" }
+    ]
   },
   "featured": {
     "eyebrow": "Catalog highlights",
@@ -47,7 +80,31 @@
   "trust": {
     "eyebrow": "Quality assurance",
     "title": "Verification you can document",
-    "coaCta": "Explore COA library"
+    "body": "Leading biomedical research demands reagents free of impurities and degradation. Every compound is produced and assayed under strict pharmaceutical quality-control protocols.",
+    "coaCta": "Explore COA library",
+    "whyCoa": "Why require a COA? →",
+    "standards": [
+      {
+        "title": "HPLC purity ≥ 99.4%",
+        "desc": "High-performance liquid chromatography and mass spectrometry (LC-MS) to confirm molecular weight and chemical identity."
+      },
+      {
+        "title": "Third-party verification",
+        "desc": "Batches cross-checked by independent EU analytical laboratories, with public, traceable assay reports."
+      },
+      {
+        "title": "Cold chain & inert handling",
+        "desc": "Lyophilized under ultra-pure nitrogen for maximum stability; continuously temperature-controlled storage."
+      },
+      {
+        "title": "Batch traceability & COA",
+        "desc": "Each vial carries a batch code linked directly to its downloadable certificate of analysis."
+      }
+    ]
+  },
+  "keywords": {
+    "ariaLabel": "Popular searches",
+    "label": "Popular searches:"
   },
   "experience": {
     "eyebrow": "Researcher experience",
@@ -56,6 +113,7 @@
     "faqCta": "Read researcher FAQ",
     "communityBlurb": "Join 15,000+ researchers sourcing EU-verified compounds with institutional-grade support.",
     "satisfaction": "4.9 average satisfaction",
+    "imageAlt": "European biomedical laboratory research",
     "testimonials": [
       {
         "quote": "Batch consistency and COA transparency are exceptional. Our EU metabolic research program relies on documented purity for every acquisition.",

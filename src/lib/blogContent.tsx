@@ -39,7 +39,7 @@ export function BlogContent({ content }: BlogContentProps) {
           return (
             <section key={index} className="relative pl-0 md:pl-6">
               <div
-                className="hidden md:block absolute left-0 top-1 bottom-1 w-1 rounded-full bg-gradient-to-b from-brand-500 via-accent-500 to-brand-300"
+                className="hidden md:block absolute left-0 top-1 bottom-1 w-1 rounded-full bg-gradient-to-b from-brand-500 via-brand-500 to-brand-300"
                 aria-hidden
               />
               <h2 className="text-xl md:text-2xl font-display font-semibold text-navy-950 mb-4 leading-tight">

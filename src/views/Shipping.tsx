@@ -35,9 +35,9 @@ export default function Shipping() {
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ ...pageEnterTransition(), delay: i * 0.06 }}
-              className="bg-white p-8 rounded-3xl border border-brand-100 shadow-card flex flex-col items-center text-center"
+              className="bg-white p-8 rounded-xl border border-slate-200 shadow-card flex flex-col items-center text-center"
             >
-              <div className="w-14 h-14 bg-brand-50 rounded-2xl flex items-center justify-center mb-6">
+              <div className="w-14 h-14 bg-brand-50 rounded-lg flex items-center justify-center mb-6">
                 <feature.icon className="h-7 w-7 text-brand-600" aria-hidden />
               </div>
               <h3 className="text-lg font-bold text-navy-950 mb-3">{feature.title}</h3>
@@ -47,7 +47,7 @@ export default function Shipping() {
         </div>
 
         <div className="space-y-12">
-          <section className="bg-navy-950 text-white rounded-3xl p-8 md:p-14 relative overflow-hidden">
+          <section className="bg-navy-950 text-white rounded-xl p-8 md:p-14 relative overflow-hidden">
             <div className="absolute top-0 right-0 w-64 h-64 bg-brand-500/20 rounded-full blur-[100px]" aria-hidden />
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center relative z-10">
               <div>
@@ -82,12 +82,12 @@ export default function Shipping() {
                   </div>
                 </div>
               </div>
-              <div className="bg-white/5 backdrop-blur-xl border border-white/10 p-8 rounded-3xl">
+              <div className="bg-white/5 backdrop-blur-xl border border-white/10 p-8 rounded-xl">
                 <h4 className="text-brand-400 font-semibold uppercase tracking-wider text-xs mb-4">
                   {t('responsibility.eyebrow')}
                 </h4>
                 <p className="text-sm text-silver-300 leading-relaxed mb-4">{t('responsibility.body')}</p>
-                <div className="flex items-start gap-3 p-4 bg-amber-500/10 border border-amber-500/20 rounded-2xl">
+                <div className="flex items-start gap-3 p-4 bg-amber-500/10 border border-amber-500/20 rounded-xl">
                   <AlertTriangle className="h-5 w-5 text-amber-400 shrink-0 mt-0.5" aria-hidden />
                   <p className="text-xs text-amber-100/90 leading-relaxed font-medium">
                     {t('responsibility.disclaimer')}

@@ -29,7 +29,7 @@ export function SectionHeading({
         className={cn(
           'text-eyebrow-accent mb-4',
           align === 'center' && 'justify-center',
-          light ? 'text-accent-400 before:bg-accent-400' : 'text-brand-600 before:bg-brand-500',
+          light ? 'text-brand-300 before:bg-brand-400' : 'text-brand-600 before:bg-brand-500',
         )}
       >
         {eyebrow}

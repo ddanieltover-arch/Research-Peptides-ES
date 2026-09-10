@@ -60,7 +60,7 @@ export default function PeptideGuide() {
               initial={{ opacity: 0, y: 12 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: idx * 0.05 }}
-              className="bg-gray-50 border border-gray-100 rounded-3xl p-7"
+              className="bg-gray-50 border border-gray-100 rounded-xl p-7"
             >
               <h3 className="text-xl font-black tracking-tight mb-3">{topic.title}</h3>
               <p className="text-sm text-gray-600 leading-relaxed">{topic.summary}</p>
@@ -68,7 +68,7 @@ export default function PeptideGuide() {
           ))}
         </section>
 
-        <section className="bg-slate-950 text-white rounded-[2.5rem] p-8 md:p-12">
+        <section className="bg-slate-950 text-white rounded-xl p-8 md:p-12">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div>
               <FlaskConical className="h-6 w-6 text-brand-400 mb-3" />

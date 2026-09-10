@@ -36,7 +36,7 @@ export function CustomerExperienceSection() {
           >
             <img
               src={scientistLabSrc}
-              alt="Investigación en laboratorio biomédico europeo"
+              alt={t('experience.imageAlt')}
               className="absolute inset-0 w-full h-full object-cover"
               loading="lazy"
               decoding="async"

@@ -16,11 +16,11 @@ export function CatalogEmptyState({
 }: CatalogEmptyStateProps) {
   return (
     <div
-      className="rounded-3xl border-2 border-dashed border-brand-100 bg-white p-12 text-center shadow-card"
+      className="rounded-xl border-2 border-dashed border-slate-200 bg-white p-12 text-center shadow-card"
       role="status"
       aria-live="polite"
     >
-      <div className="mx-auto w-14 h-14 rounded-2xl bg-brand-50 flex items-center justify-center mb-4">
+      <div className="mx-auto w-14 h-14 rounded-lg bg-brand-50 flex items-center justify-center mb-4">
         <Filter className="h-7 w-7 text-brand-300" aria-hidden />
       </div>
       <h3 className="font-display font-bold text-xl text-navy-950 mb-2">{title}</h3>

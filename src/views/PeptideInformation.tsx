@@ -37,7 +37,7 @@ export default function PeptideInformation() {
               initial={{ opacity: 0, y: 10 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: idx * 0.04 }}
-              className="bg-gray-50 border border-gray-100 rounded-3xl p-7"
+              className="bg-gray-50 border border-gray-100 rounded-xl p-7"
             >
               <p className="text-[10px] font-black uppercase tracking-widest text-brand-600 mb-2">{article.readTime}</p>
               <h3 className="text-xl font-black tracking-tight mb-3">{article.title}</h3>
@@ -46,7 +46,7 @@ export default function PeptideInformation() {
           ))}
         </div>
 
-        <section className="mt-10 bg-slate-950 text-white rounded-3xl p-8 grid grid-cols-1 md:grid-cols-3 gap-6">
+        <section className="mt-10 bg-slate-950 text-white rounded-xl p-8 grid grid-cols-1 md:grid-cols-3 gap-6">
           <div>
             <FlaskConical className="h-5 w-5 text-brand-400 mb-2" />
             <h4 className="font-black text-sm uppercase tracking-widest mb-1">{t('information.cards.scopeTitle')}</h4>

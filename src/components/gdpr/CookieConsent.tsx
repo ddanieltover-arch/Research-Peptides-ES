@@ -40,16 +40,17 @@ export function CookieConsent() {
           role="dialog"
           aria-labelledby="cookie-consent-title"
           aria-describedby="cookie-consent-desc"
-          initial={{ opacity: 0, y: 24 }}
+          initial={{ opacity: 0, y: -12 }}
           animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: 24 }}
-          className="fixed bottom-20 md:bottom-6 left-4 right-4 md:left-auto md:right-6 md:max-w-md z-[90] bg-white border border-slate-200 rounded-xl shadow-elevated p-5 md:p-6"
+          exit={{ opacity: 0, y: -12 }}
+          /* Mobile: top under header so hero CTAs stay visible. Desktop: bottom corner. */
+          className="fixed z-[90] left-3 right-3 top-[4.75rem] md:top-auto md:bottom-6 md:left-auto md:right-6 md:max-w-md bg-white border border-slate-200 rounded-xl shadow-elevated p-4 md:p-5"
         >
-          <div className="flex gap-3 mb-4">
-            <div className="shrink-0 w-10 h-10 rounded-xl bg-brand-50 flex items-center justify-center">
-              <Shield className="h-5 w-5 text-brand-600" aria-hidden />
+          <div className="flex gap-3 mb-3">
+            <div className="shrink-0 w-9 h-9 rounded-lg bg-brand-50 flex items-center justify-center">
+              <Shield className="h-4 w-4 text-brand-600" aria-hidden />
             </div>
-            <div>
+            <div className="min-w-0">
               <h2 id="cookie-consent-title" className="font-display font-bold text-navy-950 text-sm">
                 {t('cookie.title')}
               </h2>
@@ -68,7 +69,7 @@ export function CookieConsent() {
           </div>
           <Link
             href={privacyPath}
-            className="block text-center text-xs text-brand-600 font-semibold mt-3 hover:text-brand-700"
+            className="block text-center text-xs text-brand-600 font-semibold mt-2.5 hover:text-brand-700"
           >
             {t('cookie.privacyLink')}
           </Link>

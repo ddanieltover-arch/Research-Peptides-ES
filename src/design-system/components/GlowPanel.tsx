@@ -23,7 +23,7 @@ export function GlowPanel({
   return (
     <div
       className={cn(
-        'relative overflow-hidden rounded-[1.75rem] bg-navy-950 text-white border border-accent-500/15',
+        'relative overflow-hidden rounded-xl bg-navy-950 text-white border border-slate-200/20',
         glow !== 'none' &&
           'before:pointer-events-none before:absolute before:inset-0 before:z-[1] before:opacity-100',
         glowClasses[glow],

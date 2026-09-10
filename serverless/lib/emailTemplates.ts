@@ -167,8 +167,8 @@ export function renderOrderCreatedAdminEmail(payload: OrderEmailPayload): EmailR
     <p style="margin:0 0 14px;font-size:14px;color:${EMAIL_BRAND.steel};line-height:1.7;">
       A new order has been submitted and requires admin tracking.
     </p>
-    <div style="padding:16px;border:1px solid ${EMAIL_BRAND.gold};background:#FBF6F1;border-radius:14px;margin-bottom:18px;">
-      <p style="margin:0 0 8px;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:${EMAIL_BRAND.garnet};font-weight:800;">Order ID</p>
+    <div style="padding:16px;border:1px solid ${EMAIL_BRAND.roseBorder};background:${EMAIL_BRAND.mist};border-radius:12px;margin-bottom:18px;">
+      <p style="margin:0 0 8px;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:${EMAIL_BRAND.garnet};font-weight:700;font-family:Consolas,Monaco,monospace;">Order ID</p>
       <p style="margin:0;font-size:18px;color:${EMAIL_BRAND.ink};font-weight:800;font-family:Consolas,Monaco,monospace;">${safeHtml(payload.orderId)}</p>
     </div>
     <p style="margin:0 0 12px;font-size:13px;color:${EMAIL_BRAND.steel};">
@@ -262,7 +262,7 @@ export function renderContactSubmittedAdminEmail(payload: ContactEmailPayload): 
         <td style="font-size:13px;color:${EMAIL_BRAND.ink};text-align:right;padding:6px 0;font-weight:700;">${safeHtml(payload.subject)}</td>
       </tr>
     </table>
-    <div style="margin-top:18px;padding:14px;border:1px solid ${EMAIL_BRAND.roseBorder};border-radius:14px;background:${EMAIL_BRAND.parchment};">
+    <div style="margin-top:18px;padding:14px;border:1px solid ${EMAIL_BRAND.roseBorder};border-radius:12px;background:${EMAIL_BRAND.mist};">
       <p style="margin:0;font-size:13px;color:${EMAIL_BRAND.steel};line-height:1.8;white-space:pre-wrap;">${safeHtml(payload.message)}</p>
     </div>`;
 
@@ -287,7 +287,7 @@ export function renderContactSubmittedCustomerEmail(payload: ContactEmailPayload
     <p style="margin:0 0 16px;font-size:14px;color:${EMAIL_BRAND.steel};line-height:1.7;">
       We received your message and our team will reply as soon as possible.
     </p>
-    <div style="padding:16px;border:1px solid ${EMAIL_BRAND.roseBorder};background:${EMAIL_BRAND.rose};border-radius:14px;margin-bottom:8px;">
+    <div style="padding:16px;border:1px solid ${EMAIL_BRAND.roseBorder};background:${EMAIL_BRAND.rose};border-radius:12px;margin-bottom:8px;">
       <p style="margin:0 0 6px;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:${EMAIL_BRAND.garnet};font-weight:800;">Subject</p>
       <p style="margin:0;font-size:14px;color:${EMAIL_BRAND.ink};font-weight:700;">${safeHtml(payload.subject)}</p>
     </div>
@@ -343,7 +343,7 @@ export function renderNewsletterSubscribeCustomerEmail(
       Thanks for subscribing to the ${safeHtml(brandName)} newsletter.
       You will receive updates on supply chains, stability reports, and newly synthesized compounds.
     </p>
-    <div style="padding:16px;border:1px solid ${EMAIL_BRAND.roseBorder};background:${EMAIL_BRAND.rose};border-radius:14px;margin-bottom:8px;">
+    <div style="padding:16px;border:1px solid ${EMAIL_BRAND.roseBorder};background:${EMAIL_BRAND.rose};border-radius:12px;margin-bottom:8px;">
       <p style="margin:0 0 6px;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:${EMAIL_BRAND.garnet};font-weight:800;">Subscribed Email</p>
       <p style="margin:0;font-size:14px;color:${EMAIL_BRAND.ink};font-weight:700;">${safeHtml(payload.email)}</p>
     </div>

@@ -70,7 +70,14 @@
     "euDispatchDetail": "Cumplimiento desde España · transportistas con seguimiento",
     "researchOnly": "Solo uso en investigación",
     "researchOnlyDetail": "No apto para consumo humano ni veterinario",
-    "coaAvailable": "Documentación COA disponible bajo solicitud"
+    "coaAvailable": "Documentación COA disponible bajo solicitud",
+    "labIdentity": "Identidad de laboratorio",
+    "specCas": "CAS",
+    "specMw": "MW",
+    "specFormula": "Fórmula",
+    "specPurity": "Pureza",
+    "coaCtaTitle": "Ver certificados COA (HPLC/MS)",
+    "coaCtaBody": "Consulta lotes verificados, pureza y documentación analítica para este compuesto."
   },
   "recommendations": {
     "relatedTitle": "Compuestos de investigación relacionados",

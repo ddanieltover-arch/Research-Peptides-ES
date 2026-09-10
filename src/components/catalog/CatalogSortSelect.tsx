@@ -28,7 +28,7 @@ export function CatalogSortSelect({
         id="catalog-sort"
         value={value}
         onChange={(e) => onChange(e.target.value as SortValue)}
-        className="appearance-none w-full min-w-[180px] pl-4 pr-10 py-2.5 bg-white border border-brand-100 rounded-xl text-sm font-semibold text-steel-600 focus:outline-none focus:ring-2 focus:ring-brand-400 cursor-pointer shadow-card"
+        className="appearance-none w-full min-w-[180px] pl-3.5 pr-9 py-2 bg-white border border-slate-200 rounded-xl text-sm font-semibold text-slate-700 focus:outline-none focus:ring-2 focus:ring-brand-400/40 cursor-pointer shadow-card"
       >
         {includeRelevance ? <option value="relevance">{t('sort.relevance')}</option> : null}
         <option value="featured">{t('sort.featured')}</option>

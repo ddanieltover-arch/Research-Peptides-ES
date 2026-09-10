@@ -57,7 +57,7 @@ export default function Wishlist() {
           onAddToCart={handleAddToCart}
         />
       ) : products.length === 0 ? (
-        <div className="text-center py-16 bg-white rounded-3xl border border-brand-100 shadow-card">
+        <div className="text-center py-16 bg-white rounded-xl border border-slate-200 shadow-card">
           <Heart className="h-12 w-12 text-brand-200 mx-auto mb-4" aria-hidden />
           <h2 className="font-display font-bold text-xl text-navy-950 mb-2">{t('wishlist.emptyTitle')}</h2>
           <p className="text-steel-600 text-sm mb-6 max-w-sm mx-auto">{t('wishlist.emptyBody')}</p>

@@ -30,7 +30,7 @@ export function LegalPageLayout({
           transition={pageEnterTransition()}
           className="text-center mb-12 md:mb-14"
         >
-          <div className="inline-flex items-center gap-2 px-4 py-2 bg-brand-50 text-brand-600 rounded-full text-xs font-semibold uppercase tracking-wider mb-5">
+          <div className="inline-flex items-center gap-2 px-4 py-2 bg-brand-50 text-brand-600 rounded-lg text-xs font-semibold uppercase tracking-wider mb-5 border border-brand-100">
             {icon}
             {eyebrow}
           </div>
@@ -55,7 +55,7 @@ export function LegalSection({
   return (
     <Reveal as="section">
     <GlassPanel variant="light" padding="md" className="shadow-card">
-      <h2 className="text-xl font-display font-bold text-navy-950 mb-4">{heading}</h2>
+      <h2 className="text-xl font-display font-semibold text-navy-950 mb-4">{heading}</h2>
       <div className="text-sm md:text-base space-y-3">{children}</div>
     </GlassPanel>
     </Reveal>

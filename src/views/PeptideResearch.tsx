@@ -30,7 +30,7 @@ export default function PeptideResearch() {
           </p>
         </motion.div>
 
-        <section className="bg-amber-50 border border-amber-100 rounded-3xl p-6 mb-8 flex items-start gap-3">
+        <section className="bg-amber-50 border border-amber-100 rounded-xl p-6 mb-8 flex items-start gap-3">
           <ShieldAlert className="h-5 w-5 text-amber-600 mt-0.5 shrink-0" />
           <p className="text-sm text-amber-900 leading-relaxed">
             {t('hub.disclaimer')}
@@ -44,7 +44,7 @@ export default function PeptideResearch() {
               initial={{ opacity: 0, y: 12 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: idx * 0.04 }}
-              className="bg-gray-50 border border-gray-100 rounded-3xl p-7"
+              className="bg-gray-50 border border-gray-100 rounded-xl p-7"
             >
               <div className="flex items-center justify-between mb-3">
                 <span className="text-[10px] font-black uppercase tracking-widest text-brand-600">{card.category}</span>

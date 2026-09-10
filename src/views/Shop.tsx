@@ -17,6 +17,7 @@ import {
   CatalogFilters,
   CatalogActiveChips,
   type CatalogFiltersProps,
+  type PurityMinFilter,
 } from '../components/catalog/CatalogFilters';
 import { CatalogSortSelect } from '../components/catalog/CatalogSortSelect';
 import { CatalogEmptyState } from '../components/catalog/CatalogEmptyState';
@@ -28,6 +29,7 @@ import {
 import { useProductCatalogActions } from '../hooks/useProductCatalogActions';
 import type { CategoryOption } from '../components/catalog/types';
 import type { CatalogProduct } from '../components/products/ProductCard';
+import { productMeetsPurityMin } from '../lib/productLabSpecs';
 
 export default function Shop() {
   const { t, i18n } = useTranslation('shop');
@@ -38,6 +40,7 @@ export default function Shop() {
   const [loading, setLoading] = useState(true);
   const [selectedCategorySlugs, setSelectedCategorySlugs] = useState<string[]>([]);
   const [priceRange, setPriceRange] = useState(500);
+  const [purityMin, setPurityMin] = useState<PurityMinFilter>(null);
   const [sortBy, setSortBy] = useState<CatalogSortKey>('newest');
   const [showMobileFilters, setShowMobileFilters] = useState(false);
 
@@ -101,8 +104,11 @@ export default function Shop() {
       );
     }
     result = result.filter((p) => productEffectiveMaxPrice(p) <= priceRange);
+    if (purityMin != null) {
+      result = result.filter((p) => productMeetsPurityMin(p.slug, purityMin));
+    }
     return sortProducts(result, sortBy);
-  }, [allProducts, selectedCategorySlugs, priceRange, sortBy]);
+  }, [allProducts, selectedCategorySlugs, priceRange, purityMin, sortBy]);
 
   const totalPages = Math.max(1, Math.ceil(filteredProducts.length / SHOP_PRODUCTS_PER_PAGE));
   const rawPage = parseInt(searchParams.get('page') ?? '1', 10) || 1;
@@ -165,6 +171,7 @@ export default function Shop() {
     resetPage();
     setSelectedCategorySlugs([]);
     setPriceRange(priceSliderMax);
+    setPurityMin(null);
     setSortBy('newest');
   };
 
@@ -178,6 +185,11 @@ export default function Shop() {
     onPriceChange: (value: number) => {
       resetPage();
       setPriceRange(value);
+    },
+    purityMin,
+    onPurityMinChange: (value) => {
+      resetPage();
+      setPurityMin(value);
     },
     onClear: clearFilters,
     showMobile: showMobileFilters,
@@ -200,11 +212,11 @@ export default function Shop() {
       <CatalogTrustBar />
 
       <Container className="py-10 md:py-12">
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8 p-4 rounded-xl bg-white border border-slate-200/80 shadow-card">
-          <p className="text-sm text-steel-600">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-6 p-3.5 rounded-xl bg-white border border-slate-200/80 shadow-card">
+          <p className="text-sm text-slate-600 font-mono tabular-nums">
             {t('results', { from: resultsFrom, to: resultsTo, total: filteredProducts.length })}
           </p>
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2.5">
             <CatalogFilters {...filterProps} mode="trigger" />
             <CatalogSortSelect
               value={sortBy}
@@ -216,7 +228,7 @@ export default function Shop() {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 lg:grid-cols-4 gap-6 lg:gap-8">
           <CatalogFilters {...filterProps} mode="sidebar" />
 
           <div id="shop-products" className="lg:col-span-3 scroll-mt-28">

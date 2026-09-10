@@ -62,12 +62,12 @@ export default function COALibrary() {
               value={query}
               onChange={(e) => setQuery(e.target.value)}
               placeholder={t('searchPlaceholder')}
-              className="w-full pl-12 pr-4 py-4 rounded-2xl border border-gray-200 bg-gray-50 font-medium outline-none focus:bg-white focus:ring-2 focus:ring-brand-400/30"
+              className="w-full pl-12 pr-4 py-4 rounded-xl border border-gray-200 bg-gray-50 font-medium outline-none focus:bg-white focus:ring-2 focus:ring-brand-400/30"
             />
           </div>
         </section>
 
-        <section className="bg-white border border-gray-100 rounded-3xl overflow-hidden shadow-sm">
+        <section className="bg-white border border-gray-100 rounded-xl overflow-hidden shadow-sm">
           <div className="overflow-x-auto">
             <table className="w-full min-w-[760px]">
               <thead className="bg-gray-50">
@@ -97,7 +97,7 @@ export default function COALibrary() {
           )}
         </section>
 
-        <section className="mt-8 bg-slate-950 text-white rounded-3xl p-6 md:p-8 flex items-start gap-3">
+        <section className="mt-8 bg-slate-950 text-white rounded-xl p-6 md:p-8 flex items-start gap-3">
           <ShieldCheck className="h-5 w-5 text-brand-400 mt-0.5 shrink-0" />
           <p className="text-sm text-gray-300 leading-relaxed">
             {t('footerNote')}{' '}

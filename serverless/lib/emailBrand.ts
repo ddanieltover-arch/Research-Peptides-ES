@@ -1,17 +1,21 @@
 import { safeHtml } from './safeHtml.js';
 
-/** Iberian Lab email palette — matches storefront tokens. */
+/** Ultra-clinical / Swiss Lab email palette — matches storefront tokens. */
 export const EMAIL_BRAND = {
   garnet: '#A91D3A',
   garnetDark: '#8B1830',
-  gold: '#C9A961',
-  navy: '#0F080A',
-  ink: '#1A1014',
-  parchment: '#FBF6F1',
+  /** @deprecated kept as alias — was Iberian gold; now slate accent */
+  gold: '#64748B',
+  emerald: '#059669',
+  navy: '#0F172A',
+  ink: '#0F172A',
+  /** @deprecated alias — was parchment cream; now clinical mist */
+  parchment: '#F8FAFC',
+  mist: '#F8FAFC',
   rose: '#FDF2F4',
-  roseBorder: '#F9DDE3',
-  steel: '#6B5C56',
-  muted: '#A39088',
+  roseBorder: '#E2E8F0',
+  steel: '#64748B',
+  muted: '#94A3B8',
   whatsapp: '#25D366',
   whatsappDark: '#1DA851',
 } as const;
@@ -59,14 +63,14 @@ export function renderEmailButton(href: string, label: string, variant: ButtonVa
     brand: { bg: EMAIL_BRAND.garnet, color: '#ffffff', border: EMAIL_BRAND.garnet },
     whatsapp: { bg: EMAIL_BRAND.whatsapp, color: '#ffffff', border: EMAIL_BRAND.whatsappDark },
     outline: { bg: '#ffffff', color: EMAIL_BRAND.garnet, border: EMAIL_BRAND.roseBorder },
-    gold: { bg: EMAIL_BRAND.gold, color: EMAIL_BRAND.navy, border: EMAIL_BRAND.gold },
+    gold: { bg: '#ffffff', color: EMAIL_BRAND.navy, border: EMAIL_BRAND.roseBorder },
   };
   const style = styles[variant];
 
   return `<table role="presentation" cellspacing="0" cellpadding="0" style="margin:0 auto;">
     <tr>
-      <td align="center" style="border-radius:999px;background:${style.bg};border:1px solid ${style.border};">
-        <a href="${safeHtml(href)}" target="_blank" rel="noopener noreferrer" style="display:inline-block;padding:13px 22px;font-size:14px;font-weight:700;color:${style.color};text-decoration:none;border-radius:999px;font-family:Manrope,Arial,sans-serif;">
+      <td align="center" style="border-radius:10px;background:${style.bg};border:1px solid ${style.border};">
+        <a href="${safeHtml(href)}" target="_blank" rel="noopener noreferrer" style="display:inline-block;padding:12px 20px;font-size:13px;font-weight:700;color:${style.color};text-decoration:none;border-radius:10px;font-family:Arial,Helvetica,sans-serif;letter-spacing:0.02em;">
           ${safeHtml(label)}
         </a>
       </td>
@@ -77,8 +81,8 @@ export function renderEmailButton(href: string, label: string, variant: ButtonVa
 export function renderWhatsAppButton(href: string, label: string) {
   return `<table role="presentation" cellspacing="0" cellpadding="0" style="margin:0 auto;">
     <tr>
-      <td align="center" style="border-radius:999px;background:${EMAIL_BRAND.whatsapp};border:1px solid ${EMAIL_BRAND.whatsappDark};">
-        <a href="${safeHtml(href)}" target="_blank" rel="noopener noreferrer" style="display:inline-block;padding:13px 22px;font-size:14px;font-weight:700;color:#ffffff;text-decoration:none;border-radius:999px;font-family:Manrope,Arial,sans-serif;">
+      <td align="center" style="border-radius:10px;background:${EMAIL_BRAND.whatsapp};border:1px solid ${EMAIL_BRAND.whatsappDark};">
+        <a href="${safeHtml(href)}" target="_blank" rel="noopener noreferrer" style="display:inline-block;padding:12px 20px;font-size:13px;font-weight:700;color:#ffffff;text-decoration:none;border-radius:10px;font-family:Arial,Helvetica,sans-serif;">
           <img src="${WHATSAPP_ICON_DATA_URI}" width="18" height="18" alt="" style="display:inline-block;vertical-align:middle;margin-right:8px;border:0;" />
           <span style="vertical-align:middle;">${safeHtml(label)}</span>
         </a>
@@ -98,7 +102,7 @@ export function renderOrderCustomerCtas(orderId: string, customerName?: string) 
 
   return `
     <div style="margin-top:28px;padding-top:24px;border-top:1px solid ${EMAIL_BRAND.roseBorder};">
-      <p style="margin:0 0 16px;font-size:12px;letter-spacing:0.1em;text-transform:uppercase;color:${EMAIL_BRAND.garnet};font-weight:800;text-align:center;">Quick actions</p>
+      <p style="margin:0 0 16px;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:${EMAIL_BRAND.steel};font-weight:700;text-align:center;font-family:Consolas,Monaco,monospace;">Quick actions</p>
       <table role="presentation" width="100%" cellspacing="0" cellpadding="0">
         <tr>
           <td align="center" style="padding:0 0 12px;">
@@ -135,7 +139,7 @@ export function renderGeneralCustomerCtas(customerName?: string) {
 
   return `
     <div style="margin-top:28px;padding-top:24px;border-top:1px solid ${EMAIL_BRAND.roseBorder};">
-      <p style="margin:0 0 16px;font-size:12px;letter-spacing:0.1em;text-transform:uppercase;color:${EMAIL_BRAND.garnet};font-weight:800;text-align:center;">Quick actions</p>
+      <p style="margin:0 0 16px;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:${EMAIL_BRAND.steel};font-weight:700;text-align:center;font-family:Consolas,Monaco,monospace;">Quick actions</p>
       <table role="presentation" width="100%" cellspacing="0" cellpadding="0">
         <tr>
           <td align="center" style="padding:0 0 12px;">
@@ -157,15 +161,15 @@ export function renderGeneralCustomerCtas(customerName?: string) {
 }
 
 export function renderOrderIdBox(orderId: string) {
-  return `<div style="padding:16px;border:1px solid ${EMAIL_BRAND.roseBorder};background:${EMAIL_BRAND.rose};border-radius:14px;margin-bottom:18px;">
-    <p style="margin:0 0 8px;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:${EMAIL_BRAND.garnet};font-weight:800;">Order ID</p>
+  return `<div style="padding:16px;border:1px solid ${EMAIL_BRAND.roseBorder};background:${EMAIL_BRAND.mist};border-radius:12px;margin-bottom:18px;">
+    <p style="margin:0 0 8px;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:${EMAIL_BRAND.garnet};font-weight:700;font-family:Consolas,Monaco,monospace;">Order ID</p>
     <p style="margin:0;font-size:18px;color:${EMAIL_BRAND.ink};font-weight:800;font-family:Consolas,Monaco,monospace;">${safeHtml(orderId)}</p>
   </div>`;
 }
 
 export function renderInfoPanel(title: string, innerHtml: string) {
-  return `<div style="margin-bottom:18px;padding:14px;border:1px solid ${EMAIL_BRAND.roseBorder};border-radius:14px;background:${EMAIL_BRAND.parchment};">
-    <p style="margin:0 0 8px;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:${EMAIL_BRAND.steel};font-weight:800;">${safeHtml(title)}</p>
+  return `<div style="margin-bottom:18px;padding:14px;border:1px solid ${EMAIL_BRAND.roseBorder};border-radius:12px;background:${EMAIL_BRAND.mist};">
+    <p style="margin:0 0 8px;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:${EMAIL_BRAND.steel};font-weight:700;font-family:Consolas,Monaco,monospace;">${safeHtml(title)}</p>
     ${innerHtml}
   </div>`;
 }
@@ -183,16 +187,16 @@ export function renderBrandLayout(params: { title: string; preheader: string; bo
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>${safeHtml(params.title)}</title>
 </head>
-<body style="margin:0;padding:0;background:${EMAIL_BRAND.parchment};font-family:Manrope,Arial,sans-serif;color:${EMAIL_BRAND.ink};">
+<body style="margin:0;padding:0;background:${EMAIL_BRAND.mist};font-family:Arial,Helvetica,sans-serif;color:${EMAIL_BRAND.ink};">
   <div style="display:none;max-height:0;overflow:hidden;opacity:0;">${safeHtml(params.preheader)}</div>
   <table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="padding:24px 12px;">
     <tr>
       <td align="center">
-        <table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="max-width:640px;background:#ffffff;border-radius:20px;overflow:hidden;border:1px solid ${EMAIL_BRAND.roseBorder};box-shadow:0 4px 24px rgba(15,8,10,0.08);">
+        <table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="max-width:640px;background:#ffffff;border-radius:12px;overflow:hidden;border:1px solid ${EMAIL_BRAND.roseBorder};">
           <tr>
-            <td style="background:linear-gradient(135deg,${EMAIL_BRAND.navy} 0%,${EMAIL_BRAND.garnetDark} 48%,${EMAIL_BRAND.garnet} 100%);padding:26px 28px;">
-              <h1 style="margin:0;font-size:22px;line-height:1.2;color:#ffffff;font-weight:800;font-family:Georgia,'Times New Roman',serif;">${safeHtml(brandName)}</h1>
-              <p style="margin:8px 0 0;color:${EMAIL_BRAND.gold};font-size:11px;letter-spacing:0.14em;text-transform:uppercase;font-weight:700;">Premium research peptides · España</p>
+            <td style="background:${EMAIL_BRAND.navy};padding:24px 28px;border-bottom:3px solid ${EMAIL_BRAND.garnet};">
+              <h1 style="margin:0;font-size:20px;line-height:1.25;color:#ffffff;font-weight:700;font-family:Arial,Helvetica,sans-serif;letter-spacing:-0.02em;">${safeHtml(brandName)}</h1>
+              <p style="margin:8px 0 0;color:${EMAIL_BRAND.muted};font-size:11px;letter-spacing:0.14em;text-transform:uppercase;font-weight:600;font-family:Consolas,Monaco,monospace;">Research grade · España / EU</p>
             </td>
           </tr>
           <tr>
@@ -201,7 +205,7 @@ export function renderBrandLayout(params: { title: string; preheader: string; bo
             </td>
           </tr>
           <tr>
-            <td style="padding:22px 28px;border-top:1px solid ${EMAIL_BRAND.roseBorder};background:${EMAIL_BRAND.parchment};">
+            <td style="padding:22px 28px;border-top:1px solid ${EMAIL_BRAND.roseBorder};background:${EMAIL_BRAND.mist};">
               <p style="margin:0 0 14px;font-size:12px;color:${EMAIL_BRAND.steel};line-height:1.7;text-align:center;">
                 Need help? Reply to this email, contact <a href="mailto:${safeHtml(supportAddress)}" style="color:${EMAIL_BRAND.garnet};font-weight:700;text-decoration:none;">${safeHtml(supportAddress)}</a>, or message us on WhatsApp.
               </p>

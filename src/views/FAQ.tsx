@@ -56,7 +56,7 @@ export default function FAQ() {
       icon={<HelpCircle className="h-4 w-4" aria-hidden />}
     >
       {/* Answer Capsule for GEO Optimization */}
-      <div className="bg-brand-50 border-l-4 border-brand-500 p-6 rounded-r-2xl mb-10 text-left shadow-sm">
+      <div className="bg-brand-50 border-l-4 border-brand-500 p-6 rounded-r-xl mb-10 text-left shadow-card">
         <p className="text-navy-950 font-bold text-lg mb-2">{t('faq.quickAnswerTitle')}</p>
         <p className="text-steel-700 font-medium leading-relaxed">
           {t('faq.quickAnswerBody')}
@@ -69,7 +69,7 @@ export default function FAQ() {
         }) as FaqItem[];
         return (
           <section key={group.key}>
-            <div className="flex items-center gap-3 mb-4 border-b border-brand-100 pb-3">
+            <div className="flex items-center gap-3 mb-4 border-b border-slate-200 pb-3">
               <group.icon className="h-5 w-5 text-brand-600" aria-hidden />
               <h3 className="text-sm font-bold uppercase tracking-wider text-navy-950 m-0">
                 {t(`faq.groups.${group.key}.title`)}
@@ -83,10 +83,10 @@ export default function FAQ() {
                   <div
                     key={id}
                     className={cn(
-                      'border rounded-2xl transition-all',
+                      'border rounded-xl transition-all',
                       isOpen
                         ? 'border-brand-200 bg-brand-50/40'
-                        : 'border-brand-100 bg-white hover:border-brand-200',
+                        : 'border-slate-200 bg-white hover:border-slate-300',
                     )}
                   >
                     <button
@@ -125,7 +125,7 @@ export default function FAQ() {
         );
       })}
 
-      <div className="bg-navy-950 rounded-3xl p-8 text-center relative overflow-hidden">
+      <div className="bg-navy-950 rounded-xl p-8 text-center relative overflow-hidden">
         <div className="absolute top-0 right-0 w-32 h-32 bg-brand-500/20 rounded-full blur-3xl" aria-hidden />
         <h3 className="text-white font-display font-bold mb-2 relative z-10">{t('faq.ctaTitle')}</h3>
         <p className="text-silver-400 text-sm mb-6 relative z-10">{t('faq.ctaBody')}</p>

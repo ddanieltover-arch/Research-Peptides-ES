@@ -17,7 +17,7 @@ export default function RefundReturns() {
       subtitle={t('refund.subtitle')}
       icon={<RotateCcw className="h-4 w-4" aria-hidden />}
     >
-      <div className="bg-error/10 border border-error/20 rounded-3xl p-6 flex gap-4">
+      <div className="bg-error/10 border border-error/20 rounded-xl p-6 flex gap-4">
         <AlertTriangle className="h-6 w-6 text-error shrink-0" aria-hidden />
         <p className="text-sm text-navy-950 m-0 leading-relaxed">{t('refund.warning')}</p>
       </div>
@@ -40,7 +40,7 @@ export default function RefundReturns() {
 
       <p>{t('refund.body')}</p>
 
-      <div className="bg-navy-950 text-white rounded-3xl p-8 flex flex-col sm:flex-row gap-6 justify-between items-start">
+      <div className="bg-navy-950 text-white rounded-xl p-8 flex flex-col sm:flex-row gap-6 justify-between items-start">
         <div>
           <h3 className="text-white font-display font-bold text-lg mb-2">{t('refund.supportTitle')}</h3>
           <p className="text-silver-400 text-sm">{t('refund.body')}</p>

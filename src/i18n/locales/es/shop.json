@@ -16,7 +16,15 @@
   "filters": {
     "categories": "Categorías",
     "maxPrice": "Precio máximo",
-    "clearAll": "Borrar todos los filtros",
+    "purity": "Pureza HPLC",
+    "purityHint": "ref.",
+    "purityAny": "Cualquiera",
+    "purity98": "≥98%",
+    "purity99": "≥99%",
+    "underPrice": "Hasta {{price}}",
+    "activeCount": "{{count}} activos",
+    "removeChip": "Quitar filtro {{label}}",
+    "clearAll": "Borrar todos",
     "clearShort": "Borrar filtros",
     "filters": "Filtros",
     "close": "Cerrar filtros",
@@ -34,6 +42,6 @@
   },
   "empty": {
     "title": "Ningún producto coincide con sus filtros",
-    "description": "Pruebe a ampliar el rango de precios o borrar las categorías seleccionadas."
+    "description": "Pruebe a ampliar el precio, bajar la pureza mínima o borrar las categorías seleccionadas."
   }
 }

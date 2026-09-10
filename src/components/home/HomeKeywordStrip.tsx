@@ -1,5 +1,6 @@
 'use client';
 
+import { useTranslation } from 'react-i18next';
 import { LocaleLink } from '../../i18n/LocaleLink';
 import { Container } from '../../design-system';
 import { SEO_HUB_LINKS } from '../../seo/seoLinkGraph';
@@ -19,12 +20,14 @@ const TOP_GAP_LINKS = [
 
 /** Visible keyword anchors from espanapeptide.es gap (top commercial ES queries). */
 export function HomeKeywordStrip() {
+  const { t } = useTranslation('home');
+
   return (
-    <section aria-label="Búsquedas frecuentes" className="border-b border-slate-200/80 bg-slate-50/70">
+    <section aria-label={t('keywords.ariaLabel')} className="border-b border-slate-200/80 bg-slate-50/70">
       <Container className="py-3.5">
         <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4">
           <span className="shrink-0 text-[11px] font-mono font-semibold uppercase tracking-wider text-slate-500">
-            Búsquedas frecuentes:
+            {t('keywords.label')}
           </span>
           <ul className="flex flex-wrap items-center gap-x-2 gap-y-1.5 text-xs text-slate-600">
             {TOP_GAP_LINKS.map((link) => (
@@ -35,7 +38,9 @@ export function HomeKeywordStrip() {
                 >
                   {link.anchor}
                 </LocaleLink>
-                <span className="ml-2 text-slate-300 select-none" aria-hidden>·</span>
+                <span className="ml-2 text-slate-300 select-none" aria-hidden>
+                  ·
+                </span>
               </li>
             ))}
           </ul>

@@ -1,3 +1,4 @@
+import { useMemo } from 'react';
 import { BadgeCheck, FileCheck, ShieldCheck, Thermometer, ArrowRight } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { motion } from 'motion/react';
@@ -5,31 +6,17 @@ import { LocaleLink } from '../../i18n/LocaleLink';
 import { Container, Section, buttonClassName } from '../../design-system';
 import { SectionHeading } from './SectionHeading';
 
-const standards = [
-  {
-    icon: ShieldCheck,
-    title: 'Pureza HPLC ≥ 99.4%',
-    desc: 'Cromatografía líquida de alta resolución y espectrometría de masas (LC-MS) para confirmar peso molecular e identidad química.',
-  },
-  {
-    icon: FileCheck,
-    title: 'Verificación por Terceros',
-    desc: 'Lotes contrastados por laboratorios analíticos independientes de la UE, con informes de ensayo públicos y trazables.',
-  },
-  {
-    icon: Thermometer,
-    title: 'Cadena de Frío e Inercia',
-    desc: 'Liofilizado bajo atmósfera de nitrógeno ultra puro para máxima estabilidad; conservación constante a temperatura controlada.',
-  },
-  {
-    icon: BadgeCheck,
-    title: 'Trazabilidad y COA por Lote',
-    desc: 'Cada vial incluye código de lote vinculado directamente a su correspondiente Certificado de Análisis descargable.',
-  },
-] as const;
+const STANDARD_ICONS = [ShieldCheck, FileCheck, Thermometer, BadgeCheck] as const;
+
+type TrustStandard = { title: string; desc: string };
 
 export function TrustQualitySection() {
   const { t } = useTranslation('home');
+
+  const standards = useMemo(() => {
+    const raw = t('trust.standards', { returnObjects: true });
+    return Array.isArray(raw) ? (raw as TrustStandard[]) : [];
+  }, [t]);
 
   return (
     <Section size="lg" tone="light" className="relative overflow-hidden bg-white border-b border-slate-200/80">
@@ -39,19 +26,11 @@ export function TrustQualitySection() {
           <div className="lg:col-span-5">
             <SectionHeading
               eyebrow={t('trust.eyebrow')}
-              title={
-                <>
-                  {t('trust.title')}{' '}
-                  <span className="text-brand-600 block sm:inline">{t('trust.eyebrow')}</span>
-                </>
-              }
-              description={t('whyEu.description')}
+              title={t('trust.title')}
+              description={t('trust.body')}
               className="mb-6"
             />
-            <p className="text-sm text-slate-600 leading-relaxed mb-6 font-sans">
-              La investigación biomédica de vanguardia exige reactivos sin impurezas ni degradación. Todos nuestros compuestos son producidos y analizados bajo estrictos protocolos de control de calidad farmacéutico.
-            </p>
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-3 flex-wrap">
               <LocaleLink
                 to="/coas"
                 className={buttonClassName({
@@ -67,14 +46,14 @@ export function TrustQualitySection() {
                 to="/coa-vs-no-coa"
                 className="text-xs font-mono font-semibold uppercase tracking-wider text-slate-600 hover:text-brand-600 transition-colors py-2 px-3"
               >
-                ¿Por qué exigir COA? →
+                {t('trust.whyCoa')}
               </LocaleLink>
             </div>
           </div>
 
           <div className="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-4">
             {standards.map((item, i) => {
-              const Icon = item.icon;
+              const Icon = STANDARD_ICONS[i] ?? ShieldCheck;
               return (
                 <motion.div
                   key={item.title}

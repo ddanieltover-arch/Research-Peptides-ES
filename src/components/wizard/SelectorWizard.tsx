@@ -115,7 +115,7 @@ export default function SelectorWizard() {
             initial={{ scale: 0.9, opacity: 0, y: 20 }}
             animate={{ scale: 1, opacity: 1, y: 0 }}
             exit={{ scale: 0.9, opacity: 0, y: 20 }}
-            className="relative w-full max-w-2xl bg-white dark:bg-gray-900 rounded-[2.5rem] shadow-2xl overflow-hidden"
+            className="relative w-full max-w-2xl bg-white dark:bg-gray-900 rounded-xl shadow-elevated overflow-hidden border border-slate-200"
           >
             {/* Header */}
             <div className="p-8 border-b dark:border-gray-800 flex justify-between items-center">
@@ -158,10 +158,10 @@ export default function SelectorWizard() {
                       <button
                         key={option.id}
                         onClick={() => handleSelect(STEPS[currentStep].id, option.id)}
-                        className="group p-6 rounded-3xl border-2 border-gray-100 dark:border-gray-800 hover:border-brand-500 dark:hover:border-brand-500 hover:bg-brand-50/30 transition-all text-left flex items-start gap-4"
+                        className="group p-6 rounded-xl border-2 border-gray-100 dark:border-gray-800 hover:border-brand-500 dark:hover:border-brand-500 hover:bg-brand-50/30 transition-all text-left flex items-start gap-4"
                       >
                         {option.icon && (
-                          <div className="p-3 bg-gray-50 dark:bg-gray-800 rounded-2xl group-hover:bg-brand-100 dark:group-hover:bg-brand-900/50 transition-colors">
+                          <div className="p-3 bg-gray-50 dark:bg-gray-800 rounded-xl group-hover:bg-brand-100 dark:group-hover:bg-brand-900/50 transition-colors">
                             <option.icon className="h-6 w-6 text-gray-400 group-hover:text-brand-600" />
                           </div>
                         )}
@@ -207,9 +207,9 @@ export default function SelectorWizard() {
                         <div
                           key={product.id}
                           onClick={() => handleProductClick(product)}
-                          className="flex items-center gap-4 p-4 rounded-3xl border border-gray-100 dark:border-gray-800 hover:shadow-xl transition-all cursor-pointer group"
+                          className="flex items-center gap-4 p-4 rounded-xl border border-gray-100 dark:border-gray-800 hover:shadow-elevated transition-all cursor-pointer group"
                         >
-                          <div className="h-20 w-20 rounded-2xl overflow-hidden bg-gray-50 shrink-0">
+                          <div className="h-20 w-20 rounded-xl overflow-hidden bg-gray-50 shrink-0">
                             {product.images?.[0] ? (
                             <img src={product.images[0]} alt="" className="h-full w-full object-cover group-hover:scale-110 transition-transform" />
                             ) : (
@@ -235,13 +235,13 @@ export default function SelectorWizard() {
                   <div className="flex gap-4">
                     <button 
                       onClick={() => setCurrentStep(0)}
-                      className="flex-1 py-4 font-bold text-gray-500 hover:bg-gray-50 dark:hover:bg-gray-800 rounded-2xl transition-all"
+                      className="flex-1 py-4 font-bold text-gray-500 hover:bg-gray-50 dark:hover:bg-gray-800 rounded-xl transition-all"
                     >
                       Restart Protocol
                     </button>
                     <button 
                       onClick={() => { navigate('/shop'); closeWizard(); }}
-                      className="flex-1 py-4 bg-gray-900 dark:bg-white text-white dark:text-gray-900 font-black rounded-2xl shadow-xl hover:scale-[1.02] active:scale-[0.98] transition-all"
+                      className="flex-1 py-4 bg-gray-900 dark:bg-white text-white dark:text-gray-900 font-black rounded-xl shadow-elevated hover:scale-[1.02] active:scale-[0.98] transition-all"
                     >
                       View All Shop
                     </button>

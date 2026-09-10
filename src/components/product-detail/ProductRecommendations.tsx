@@ -51,8 +51,8 @@ export function ProductRecommendations({
       )}
 
       {recentlyViewed.length > 0 && (
-        <section className="pt-12 border-t border-brand-100/80">
-          <h2 className="text-eyebrow-accent text-accent-600 before:bg-accent-500 mb-6">{t('recommendations.recentTitle')}</h2>
+        <section className="pt-12 border-t border-slate-200/80">
+          <h2 className="text-eyebrow-accent text-brand-600 before:bg-brand-500 mb-6">{t('recommendations.recentTitle')}</h2>
           <div className="flex gap-4 overflow-x-auto pb-2">
             {recentlyViewed.map((rv) => (
               <LocaleLink
@@ -60,7 +60,7 @@ export function ProductRecommendations({
                 to={productPath(rv)}
                 className="shrink-0 w-44 group"
               >
-                <div className="h-44 rounded-2xl overflow-hidden bg-mist-50 border border-brand-50 group-hover:shadow-elevated transition-shadow">
+                <div className="h-44 rounded-xl overflow-hidden bg-mist-50 border border-slate-200 group-hover:shadow-elevated transition-shadow">
                   {rv.images?.[0] ? (
                     <img
                       src={rv.images[0]}

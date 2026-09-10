@@ -57,11 +57,11 @@ export default function Categories() {
           {loading ? (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {[...Array(6)].map((_, i) => (
-                <div key={i} className="h-48 rounded-3xl bg-white animate-pulse border border-brand-50" />
+                <div key={i} className="h-48 rounded-xl bg-white animate-pulse border border-slate-200" />
               ))}
             </div>
           ) : categories.length === 0 ? (
-            <div className="text-center py-16 rounded-3xl bg-white border border-brand-100 shadow-card">
+            <div className="text-center py-16 rounded-xl bg-white border border-slate-200 shadow-card">
               <p className="text-steel-600">{t('empty')}</p>
               <LocaleLink to="/shop" className="inline-block mt-4 text-brand-600 font-semibold text-sm">
                 {t('browseShop')} →
@@ -82,12 +82,12 @@ export default function Categories() {
                     <LocaleLink
                       to={`/search?category=${category.slug}`}
                       className={cn(
-                        'group flex flex-col h-full p-8 rounded-3xl bg-white border border-brand-100',
+                        'group flex flex-col h-full p-8 rounded-xl bg-white border border-slate-200',
                         'shadow-card hover:shadow-elevated hover:border-brand-300 transition-all duration-300',
                         'hover:-translate-y-1',
                       )}
                     >
-                      <div className="w-12 h-12 rounded-2xl bg-brand-50 flex items-center justify-center mb-5 group-hover:bg-brand-500 transition-colors">
+                      <div className="w-12 h-12 rounded-lg bg-brand-50 flex items-center justify-center mb-5 group-hover:bg-brand-500 transition-colors">
                         <Icon className="h-6 w-6 text-brand-600 group-hover:text-white" aria-hidden />
                       </div>
                       <h2 className="font-display font-bold text-xl text-navy-950 group-hover:text-brand-600 transition-colors mb-2">

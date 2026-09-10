@@ -69,12 +69,12 @@ export function BlogArticleTemplate({ post, related = [] }: BlogArticleTemplateP
   };
 
   return (
-    <PageShell tone="parchment" className="pb-20 md:pb-28">
+    <PageShell tone="mist" className="pb-20 md:pb-28">
       {/* Hero band */}
-      <div className="relative border-b border-brand-100/80 bg-gradient-parchment overflow-hidden">
-        <div className="absolute inset-0 bg-scientific-grid opacity-25 pointer-events-none" aria-hidden />
+      <div className="relative border-b border-slate-200/80 bg-white overflow-hidden">
+        <div className="absolute inset-0 bg-scientific-grid opacity-30 pointer-events-none" aria-hidden />
         <div
-          className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-accent-500/50 to-transparent"
+          className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-brand-500/40 to-transparent"
           aria-hidden
         />
         <Container className="relative z-10 pt-10 pb-8 md:pt-14 md:pb-10">
@@ -92,15 +92,15 @@ export function BlogArticleTemplate({ post, related = [] }: BlogArticleTemplateP
             </LocaleLink>
 
             <div className="flex flex-wrap items-center gap-2 sm:gap-3 mb-5">
-              <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-brand-50 text-brand-700 text-[10px] font-bold uppercase tracking-widest border border-brand-100">
+              <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-brand-50 text-brand-700 text-[10px] font-bold uppercase tracking-widest border border-brand-100">
                 <Tag className="h-3 w-3" aria-hidden />
                 {t('tagResearch')}
               </span>
-              <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/80 text-steel-600 text-[10px] font-semibold uppercase tracking-wider border border-brand-100/80">
+              <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white text-steel-600 text-[10px] font-semibold uppercase tracking-wider border border-slate-200">
                 <Calendar className="h-3 w-3" aria-hidden />
                 {published}
               </span>
-              <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/80 text-steel-600 text-[10px] font-semibold uppercase tracking-wider border border-brand-100/80">
+              <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white text-steel-600 text-[10px] font-semibold uppercase tracking-wider border border-slate-200">
                 <Clock className="h-3 w-3" aria-hidden />
                 {t('minRead', { count: readMinutes })}
               </span>
@@ -123,7 +123,7 @@ export function BlogArticleTemplate({ post, related = [] }: BlogArticleTemplateP
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ ...pageEnterTransition(), delay: 0.08 }}
-          className="relative rounded-[1.75rem] md:rounded-[2rem] overflow-hidden border border-brand-100/90 bg-white shadow-elevated"
+          className="relative rounded-xl overflow-hidden border border-slate-200/80 bg-white shadow-elevated"
         >
           <div className="absolute inset-0 bg-gradient-to-t from-navy-950/20 via-transparent to-transparent z-10 pointer-events-none" />
           <div className="aspect-[21/9] md:aspect-[2.4/1] max-h-[420px]">
@@ -145,7 +145,7 @@ export function BlogArticleTemplate({ post, related = [] }: BlogArticleTemplateP
             transition={{ ...pageEnterTransition(), delay: 0.12 }}
             className="lg:col-span-8"
           >
-            <GlassPanel variant="parchment" padding="lg" className="shadow-card">
+            <GlassPanel variant="light" padding="lg" className="shadow-card">
               <BlogContent content={post.content} />
             </GlassPanel>
 
@@ -170,8 +170,8 @@ export function BlogArticleTemplate({ post, related = [] }: BlogArticleTemplateP
             >
               <GlassPanel variant="light" padding="md" className="shadow-card">
                 <div className="flex items-center gap-4 mb-5">
-                  <div className="h-14 w-14 rounded-2xl bg-brand-500 flex items-center justify-center shadow-card shrink-0">
-                    <span className="font-display font-bold text-accent-400 text-lg">RP</span>
+                  <div className="h-14 w-14 rounded-xl bg-brand-500 flex items-center justify-center shadow-card shrink-0">
+                    <span className="font-display font-bold text-white text-lg">RP</span>
                   </div>
                   <div>
                     <p className="text-[10px] font-bold uppercase tracking-widest text-silver-400">
@@ -185,10 +185,10 @@ export function BlogArticleTemplate({ post, related = [] }: BlogArticleTemplateP
                   type="button"
                   onClick={() => void handleShare()}
                   className={cn(
-                    'w-full inline-flex items-center justify-center gap-2 h-11 rounded-full text-sm font-semibold border transition-colors',
+                    'w-full inline-flex items-center justify-center gap-2 h-11 rounded-xl text-sm font-semibold border transition-colors',
                     copied
                       ? 'border-success/30 bg-success/10 text-success'
-                      : 'border-brand-200 text-brand-700 hover:bg-brand-50',
+                      : 'border-slate-200 text-brand-700 hover:bg-brand-50',
                   )}
                 >
                   {copied ? (
@@ -227,12 +227,12 @@ export function BlogArticleTemplate({ post, related = [] }: BlogArticleTemplateP
                 </ul>
               </GlassPanel>
 
-              <GlassPanel variant="light" padding="md" className="bg-navy-950 text-white border-navy-900 shadow-elevated">
-                <p className="text-[10px] font-bold uppercase tracking-widest text-accent-400 mb-2">
+              <GlassPanel variant="dark" padding="md" className="shadow-elevated">
+                <p className="text-[10px] font-bold uppercase tracking-widest text-brand-300 mb-2">
                   {BRAND_NAME}
                 </p>
                 <p className="text-sm text-silver-400 leading-relaxed mb-4">{t('disclaimer')}</p>
-                <LocaleButton to="/shop" variant="gold" size="sm" fullWidth className="gap-2">
+                <LocaleButton to="/shop" variant="primary" size="sm" fullWidth className="gap-2">
                   {t('resourceShop')}
                   <ArrowRight className="h-4 w-4" />
                 </LocaleButton>
@@ -242,7 +242,7 @@ export function BlogArticleTemplate({ post, related = [] }: BlogArticleTemplateP
         </div>
 
         {related.length > 0 && (
-          <section className="mt-16 md:mt-20 pt-12 border-t border-brand-100/80">
+          <section className="mt-16 md:mt-20 pt-12 border-t border-slate-200/80">
             <div className="flex items-end justify-between gap-4 mb-8">
               <h2 className="text-h2 font-display font-semibold text-navy-950">{t('relatedPosts')}</h2>
               <LocaleLink
@@ -262,7 +262,7 @@ export function BlogArticleTemplate({ post, related = [] }: BlogArticleTemplateP
                   transition={{ delay: idx * 0.06 }}
                 >
                   <LocaleLink to={`/blog/${item.id}`} className="group block h-full">
-                    <div className="rounded-[1.25rem] overflow-hidden border border-brand-100/80 bg-white shadow-card mb-4 aspect-[16/10]">
+                    <div className="rounded-xl overflow-hidden border border-slate-200/80 bg-white shadow-card mb-4 aspect-[16/10]">
                       <BlogPostCover
                         imageUrl={item.image_url}
                         title={item.title}
@@ -280,7 +280,7 @@ export function BlogArticleTemplate({ post, related = [] }: BlogArticleTemplateP
           </section>
         )}
 
-        <RelatedSeoLinks links={getSeoLinksForBlogPost()} contained={false} className="mt-12 rounded-2xl px-4" />
+        <RelatedSeoLinks links={getSeoLinksForBlogPost()} contained={false} className="mt-12 rounded-xl px-4" />
       </Container>
     </PageShell>
   );
@@ -288,15 +288,15 @@ export function BlogArticleTemplate({ post, related = [] }: BlogArticleTemplateP
 
 export function BlogArticleSkeleton() {
   return (
-    <PageShell tone="parchment" className="pb-20">
+    <PageShell tone="mist" className="pb-20">
       <Container className="py-12 space-y-8 animate-pulse">
-        <div className="h-4 w-36 rounded-full skeleton-shimmer" />
-        <div className="h-14 w-full max-w-3xl rounded-2xl skeleton-shimmer" />
+        <div className="h-4 w-36 rounded-lg skeleton-shimmer" />
+        <div className="h-14 w-full max-w-3xl rounded-xl skeleton-shimmer" />
         <div className="h-4 w-2/3 max-w-xl rounded-lg skeleton-shimmer" />
-        <div className="aspect-[21/9] rounded-[2rem] skeleton-shimmer" />
+        <div className="aspect-[21/9] rounded-xl skeleton-shimmer" />
         <div className="grid lg:grid-cols-12 gap-8">
-          <div className="lg:col-span-8 h-96 rounded-[1.75rem] skeleton-shimmer" />
-          <div className="lg:col-span-4 h-64 rounded-[1.75rem] skeleton-shimmer" />
+          <div className="lg:col-span-8 h-96 rounded-xl skeleton-shimmer" />
+          <div className="lg:col-span-4 h-64 rounded-xl skeleton-shimmer" />
         </div>
       </Container>
     </PageShell>

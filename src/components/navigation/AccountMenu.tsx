@@ -70,7 +70,7 @@ export default function AccountMenu({
           id="account-menu-dropdown"
           role="menu"
           aria-orientation="vertical"
-          className="absolute right-0 mt-2 w-52 py-2 rounded-2xl bg-white border border-brand-100 shadow-elevated z-50"
+          className="absolute right-0 mt-2 w-52 py-2 rounded-xl bg-white border border-brand-100 shadow-elevated z-50"
         >
           {isAdmin && (
             <LocaleLink

@@ -3,7 +3,7 @@ import { Skeleton } from './Skeleton';
 
 export function StatSkeleton() {
   return (
-    <div className="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 flex flex-col gap-2">
+    <div className="bg-white p-6 rounded-xl shadow-card border border-slate-200 flex flex-col gap-2">
       <Skeleton className="h-4 w-24" />
       <Skeleton className="h-10 w-32" />
       <Skeleton className="h-3 w-40 mt-2" />
@@ -13,7 +13,7 @@ export function StatSkeleton() {
 
 export function TableRowSkeleton() {
   return (
-    <div className="flex items-center justify-between p-6 hover:bg-gray-50 border-b border-gray-100">
+    <div className="flex items-center justify-between p-6 hover:bg-mist-50 border-b border-slate-200">
       <div className="flex items-center gap-4">
         <Skeleton className="h-12 w-12 rounded-lg" />
         <div className="space-y-2">
@@ -38,8 +38,8 @@ export function DashboardSkeleton() {
         <StatSkeleton />
         <StatSkeleton />
       </div>
-      <div className="bg-white rounded-3xl border border-gray-100 shadow-sm overflow-hidden">
-        <div className="p-6 border-b border-gray-100 flex justify-between items-center">
+      <div className="bg-white rounded-xl border border-slate-200 shadow-card overflow-hidden">
+        <div className="p-6 border-b border-slate-200 flex justify-between items-center">
            <Skeleton className="h-8 w-48" />
            <Skeleton className="h-10 w-32 rounded-xl" />
         </div>

@@ -70,7 +70,14 @@
     "euDispatchDetail": "Netherlands fulfillment · tracked carriers",
     "researchOnly": "Research use only",
     "researchOnlyDetail": "Not for human or veterinary consumption",
-    "coaAvailable": "COA documentation available on request"
+    "coaAvailable": "COA documentation available on request",
+    "labIdentity": "Laboratory identity",
+    "specCas": "CAS",
+    "specMw": "MW",
+    "specFormula": "Formula",
+    "specPurity": "Purity",
+    "coaCtaTitle": "View COA certificates (HPLC/MS)",
+    "coaCtaBody": "Browse verified batches, purity, and analytical documentation for this compound."
   },
   "recommendations": {
     "relatedTitle": "Related research compounds",

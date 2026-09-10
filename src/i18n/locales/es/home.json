@@ -6,9 +6,42 @@
     "subtitle": "Research Peptides ES: péptidos España para laboratorios — catálogo para comprar péptidos con COA, verificación de terceros y envío en cadena de frío desde España a toda la UE. Solo uso de investigación.",
     "ctaShop": "Comprar péptidos",
     "ctaWizard": "Selector de compuestos",
-    "trustPurity": "Pureza verificada del 99,8 %+",
-    "trustShipping": "Envío en cadena de frío en toda la UE",
-    "trustCoa": "COA en cada lote"
+    "ctaCoa": "Ver certificados (COA) →",
+    "liveBadge": "Lotes 2026 verificados HPLC/MS · Hub Madrid",
+    "quickAccess": "Acceso rápido por compuesto:",
+    "trustPurity": "Pureza verificada",
+    "trustPuritySub": "HPLC / MS verificado",
+    "trustShipping": "Envío 24/48 h",
+    "trustShippingSub": "Cadena de frío Madrid",
+    "trustCoa": "COA",
+    "trustCoaSub": "Certificado por lote",
+    "trustPurityValue": "≥99.4%",
+    "trustShippingValue": "24/48h",
+    "trustCoaValue": "COA",
+    "imageAlt": "Research Peptides ES — laboratorio de péptidos de alta pureza",
+    "gradeBadge": "Grado investigación (≥99.4%)",
+    "visualBrand": "Research Peptides España",
+    "visualCaption": "Liofilizado puro · Viales sellados con nitrógeno grado farmacéutico",
+    "marketBadge": "EUR · ES / UE",
+    "telemetryTitle": "Especificación analítica",
+    "telemetryBatch": "Lote ES-2026",
+    "telemetryCompound": "Compuesto:",
+    "telemetryCompoundValue": "Semaglutida 5 mg",
+    "telemetryPurity": "Pureza HPLC:",
+    "telemetryPurityValue": "99,82 % aprobado",
+    "telemetryAnalysis": "Análisis:",
+    "telemetryAnalysisValue": "LC-MS / ref. Janoshik",
+    "telemetryChrom": "Cromatograma HPLC (UV 214 nm)",
+    "telemetryPeak": "Pico: 4,82 min",
+    "shortcuts": [
+      { "label": "BPC-157", "q": "bpc-157" },
+      { "label": "Semaglutida", "q": "semaglutide" },
+      { "label": "Tirzepatida", "q": "tirzepatide" },
+      { "label": "NAD+", "q": "nad" },
+      { "label": "TB-500", "q": "tb-500" },
+      { "label": "Retatrutida", "q": "retatrutide" },
+      { "label": "GHK-Cu", "q": "ghk-cu" }
+    ]
   },
   "featured": {
     "eyebrow": "Destacados del catálogo",
@@ -47,7 +80,31 @@
   "trust": {
     "eyebrow": "Garantía de calidad",
     "title": "Verificación que puede documentar",
-    "coaCta": "Explorar biblioteca COA"
+    "body": "La investigación biomédica de vanguardia exige reactivos sin impurezas ni degradación. Todos nuestros compuestos se producen y analizan bajo estrictos protocolos de control de calidad farmacéutico.",
+    "coaCta": "Explorar biblioteca COA",
+    "whyCoa": "¿Por qué exigir COA? →",
+    "standards": [
+      {
+        "title": "Pureza HPLC ≥ 99,4 %",
+        "desc": "Cromatografía líquida de alta resolución y espectrometría de masas (LC-MS) para confirmar peso molecular e identidad química."
+      },
+      {
+        "title": "Verificación por terceros",
+        "desc": "Lotes contrastados por laboratorios analíticos independientes de la UE, con informes de ensayo públicos y trazables."
+      },
+      {
+        "title": "Cadena de frío e inercia",
+        "desc": "Liofilizado bajo atmósfera de nitrógeno ultrapuro para máxima estabilidad; conservación a temperatura controlada."
+      },
+      {
+        "title": "Trazabilidad y COA por lote",
+        "desc": "Cada vial incluye un código de lote vinculado a su certificado de análisis descargable."
+      }
+    ]
+  },
+  "keywords": {
+    "ariaLabel": "Búsquedas frecuentes",
+    "label": "Búsquedas frecuentes:"
   },
   "experience": {
     "eyebrow": "Experiencia del investigador",
@@ -56,6 +113,7 @@
     "faqCta": "Leer FAQ para investigadores",
     "communityBlurb": "Únase a más de 15.000 investigadores que obtienen compuestos verificados en la UE con soporte de grado institucional.",
     "satisfaction": "4,9 de satisfacción media",
+    "imageAlt": "Investigación en laboratorio biomédico europeo",
     "testimonials": [
       {
         "quote": "La consistencia por lote y la transparencia del COA son excepcionales. Nuestro programa de investigación metabólica en la UE depende de pureza documentada en cada adquisición.",

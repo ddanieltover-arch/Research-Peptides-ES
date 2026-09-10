@@ -91,7 +91,7 @@ export default function LanguageSwitcher({ variant = 'header' }: LanguageSwitche
             role="listbox"
             aria-label="Select language"
             className={cn(
-              'z-[60] overflow-hidden rounded-2xl border border-brand-100 bg-white shadow-elevated',
+              'z-[60] overflow-hidden rounded-xl border border-brand-100 bg-white shadow-elevated',
               variant === 'header'
                 ? 'absolute right-0 top-full mt-2 w-56 max-h-80 overflow-y-auto'
                 : 'mt-2 w-full max-h-64 overflow-y-auto',

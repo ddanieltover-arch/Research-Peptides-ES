@@ -86,7 +86,7 @@ export default function BlogPost() {
   if (!post) {
     return (
       <PageShell tone="mist" className="min-h-[70vh] flex items-center justify-center p-8">
-        <div className="text-center max-w-md bg-white rounded-[1.75rem] border border-brand-100 p-10 shadow-elevated">
+        <div className="text-center max-w-md bg-white rounded-xl border border-slate-200 p-10 shadow-card">
           <BookOpen className="h-14 w-14 text-brand-200 mx-auto mb-5" aria-hidden />
           <h2 className="text-2xl font-display font-semibold text-navy-950 mb-3">{t('notFoundTitle')}</h2>
           <p className="text-steel-600 text-sm mb-8">{t('notFoundBody')}</p>

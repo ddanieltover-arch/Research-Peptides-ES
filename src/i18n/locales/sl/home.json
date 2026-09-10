@@ -8,7 +8,61 @@
     "ctaWizard": "Izbirnik spojin",
     "trustPurity": "Preverjena čistost 99,8 %+",
     "trustShipping": "Pošiljanje hladne verige v celotni EU",
-    "trustCoa": "COA za vsako serijo"
+    "trustCoa": "COA za vsako serijo",
+    "ctaCoa": "View certificates (COA) →",
+    "liveBadge": "2026 batches verified HPLC/MS · Madrid hub",
+    "quickAccess": "Quick access by compound:",
+    "trustPuritySub": "HPLC / MS verified",
+    "trustShippingSub": "Madrid cold chain",
+    "trustCoaSub": "Certificate per batch",
+    "trustPurityValue": "≥99.4%",
+    "trustShippingValue": "24/48h",
+    "trustCoaValue": "COA",
+    "imageAlt": "Research Peptides ES — high-purity peptide laboratory",
+    "gradeBadge": "Research grade (≥99.4%)",
+    "visualBrand": "Research Peptides Spain",
+    "visualCaption": "Pure lyophilizate · Nitrogen-sealed pharma-grade vials",
+    "marketBadge": "EUR · ES / EU",
+    "telemetryTitle": "Analytical specification",
+    "telemetryBatch": "Batch ES-2026",
+    "telemetryCompound": "Compound:",
+    "telemetryCompoundValue": "Semaglutide 5 mg",
+    "telemetryPurity": "HPLC purity:",
+    "telemetryPurityValue": "99.82% passed",
+    "telemetryAnalysis": "Analysis:",
+    "telemetryAnalysisValue": "LC-MS / Janoshik ref",
+    "telemetryChrom": "HPLC chromatogram (UV 214 nm)",
+    "telemetryPeak": "Peak: 4.82 min",
+    "shortcuts": [
+      {
+        "label": "BPC-157",
+        "q": "bpc-157"
+      },
+      {
+        "label": "Semaglutide",
+        "q": "semaglutide"
+      },
+      {
+        "label": "Tirzepatide",
+        "q": "tirzepatide"
+      },
+      {
+        "label": "NAD+",
+        "q": "nad"
+      },
+      {
+        "label": "TB-500",
+        "q": "tb-500"
+      },
+      {
+        "label": "Retatrutide",
+        "q": "retatrutide"
+      },
+      {
+        "label": "GHK-Cu",
+        "q": "ghk-cu"
+      }
+    ]
   },
   "featured": {
     "eyebrow": "Izpostavljeno v katalogu",
@@ -47,7 +101,27 @@
   "trust": {
     "eyebrow": "Zagotavljanje kakovosti",
     "title": "Preverjanje, ki ga lahko dokumentirate",
-    "coaCta": "Raziščite knjižnico COA"
+    "coaCta": "Raziščite knjižnico COA",
+    "body": "Leading biomedical research demands reagents free of impurities and degradation. Every compound is produced and assayed under strict pharmaceutical quality-control protocols.",
+    "whyCoa": "Why require a COA? →",
+    "standards": [
+      {
+        "title": "HPLC purity ≥ 99.4%",
+        "desc": "High-performance liquid chromatography and mass spectrometry (LC-MS) to confirm molecular weight and chemical identity."
+      },
+      {
+        "title": "Third-party verification",
+        "desc": "Batches cross-checked by independent EU analytical laboratories, with public, traceable assay reports."
+      },
+      {
+        "title": "Cold chain & inert handling",
+        "desc": "Lyophilized under ultra-pure nitrogen for maximum stability; continuously temperature-controlled storage."
+      },
+      {
+        "title": "Batch traceability & COA",
+        "desc": "Each vial carries a batch code linked directly to its downloadable certificate of analysis."
+      }
+    ]
   },
   "experience": {
     "eyebrow": "Izkušnja raziskovalca",
@@ -72,7 +146,8 @@
         "author": "Dra. Sofia R.",
         "role": "Investigación farmacéutica · Barcelona"
       }
-    ]
+    ],
+    "imageAlt": "European biomedical laboratory research"
   },
   "cta": {
     "eyebrow": "Inicie su protocolo de investigación",
@@ -80,5 +155,9 @@
     "subtitle": "Pureza verificada, lotes respaldados por COA y cumplimiento desde España — diseñado para laboratorios que exigen precisión clínica.",
     "button": "Trgovina raziskovalnega kataloga",
     "buttonWizard": "Encuentre su compuesto"
+  },
+  "keywords": {
+    "ariaLabel": "Popular searches",
+    "label": "Popular searches:"
   }
 }

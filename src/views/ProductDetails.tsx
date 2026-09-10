@@ -30,6 +30,7 @@ import { RelatedSeoLinks } from '../components/seo/RelatedSeoLinks';
 import { getSeoLinksForProduct } from '../seo/seoLinkGraph';
 import { ProductSeoContent } from '../components/product-detail/ProductSeoContent';
 import { getProductSeoCopy } from '../seo/productSeoCopy';
+import { resolveProductLabSpecs } from '../lib/productLabSpecs';
 
 type SampleReview = {
   name: string;
@@ -245,9 +246,10 @@ export default function ProductDetails() {
         : null;
 
   const images: string[] = product.images?.length ? product.images : [];
+  const labSpecs = resolveProductLabSpecs(product.slug, product.specifications);
 
   return (
-    <PageShell tone="white">
+    <PageShell tone="white" className="pb-28 lg:pb-0">
       <Container className="py-8 md:py-10">
         <nav className="mb-6 text-xs sm:text-sm" aria-label="Breadcrumb">
           <ol className="flex flex-wrap items-center gap-2 text-slate-500 font-mono">
@@ -267,7 +269,7 @@ export default function ProductDetails() {
           </ol>
         </nav>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 mb-14">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 mb-14 items-start">
           <ProductGallery
             productId={String(product.id)}
             title={displayTitle}
@@ -290,6 +292,7 @@ export default function ProductDetails() {
             selectedVariant={selectedVariant}
             onSelectVariant={setSelectedVariant}
             specifications={product.specifications || []}
+            labSpecs={labSpecs}
             onAddToCart={handleAddToCart}
             inWishlist={productIds.includes(product.id)}
             onToggleWishlist={() => toggleWishlist(product.id, user?.id || '')}

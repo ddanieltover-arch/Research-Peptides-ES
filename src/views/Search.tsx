@@ -199,7 +199,7 @@ export default function Search() {
               setSearchTerm(e.target.value);
             }}
             placeholder={t('search:searchPlaceholder')}
-            className="w-full pl-14 pr-4 py-4 rounded-2xl border border-brand-100 bg-white text-navy-950 placeholder:text-silver-400 shadow-card focus:outline-none focus:ring-2 focus:ring-brand-400 text-base font-medium"
+            className="w-full pl-14 pr-4 py-4 rounded-xl border border-slate-200 bg-white text-navy-950 placeholder:text-silver-400 shadow-card focus:outline-none focus:ring-2 focus:ring-brand-400 text-base font-medium"
           />
         </div>
 
@@ -224,7 +224,7 @@ export default function Search() {
                   { replace: true },
                 );
               }}
-              className="w-full py-3 px-4 rounded-xl border border-brand-100 bg-white text-sm font-semibold text-steel-600 focus:outline-none focus:ring-2 focus:ring-brand-400 shadow-card"
+              className="w-full py-3 px-4 rounded-xl border border-slate-200 bg-white text-sm font-semibold text-steel-600 focus:outline-none focus:ring-2 focus:ring-brand-400 shadow-card"
             >
               <option value="">{t('search:allCategories')}</option>
               {categories.map((cat) => (

@@ -105,7 +105,7 @@ export default function Contact() {
               </Reveal>
             </div>
 
-            <GlowPanel glow="brand" className="mt-12 p-8 bg-gradient-cta text-white relative overflow-hidden rounded-[2.5rem]">
+            <GlowPanel glow="brand" className="mt-12 p-8 bg-gradient-cta text-white relative overflow-hidden rounded-xl">
               <ShieldCheck className="absolute -right-8 -bottom-8 h-48 w-48 text-white/10 pointer-events-none" aria-hidden />
               <h4 className="text-lg font-bold mb-2">{t('contact.privacyTitle')}</h4>
               <p className="text-brand-100 text-sm leading-relaxed">{t('contact.privacyBody')}</p>
@@ -113,7 +113,7 @@ export default function Contact() {
           </div>
 
           <Reveal>
-            <GlassPanel variant="light" padding="lg" className="shadow-glow p-8 md:p-12">
+            <GlassPanel variant="light" padding="lg" className="shadow-card p-8 md:p-12">
               <h3 className="text-2xl font-black mb-8 tracking-tight">{t('contact.formTitle')}</h3>
               <form className="space-y-6" onSubmit={handleSubmit}>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -129,7 +129,7 @@ export default function Contact() {
                       onChange={(e) => setFullName(e.target.value)}
                       required
                       autoComplete="name"
-                      className="w-full px-6 py-4 bg-mist-50 border border-brand-100 rounded-2xl focus:outline-none focus:ring-2 focus:ring-brand-400/30 focus:bg-white transition-all text-sm font-medium"
+                      className="w-full px-6 py-4 bg-mist-50 border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-400/30 focus:bg-white transition-all text-sm font-medium"
                     />
                   </div>
                   <div className="space-y-2">
@@ -144,7 +144,7 @@ export default function Contact() {
                       onChange={(e) => setEmail(e.target.value)}
                       required
                       autoComplete="email"
-                      className="w-full px-6 py-4 bg-mist-50 border border-brand-100 rounded-2xl focus:outline-none focus:ring-2 focus:ring-brand-400/30 focus:bg-white transition-all text-sm font-medium"
+                      className="w-full px-6 py-4 bg-mist-50 border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-400/30 focus:bg-white transition-all text-sm font-medium"
                     />
                   </div>
                 </div>
@@ -157,7 +157,7 @@ export default function Contact() {
                     id="contact-subject"
                     value={subject}
                     onChange={(e) => setSubject(e.target.value)}
-                    className="w-full px-6 py-4 bg-mist-50 border border-brand-100 rounded-2xl focus:outline-none focus:ring-2 focus:ring-brand-400/30 focus:bg-white transition-all text-sm font-medium appearance-none"
+                    className="w-full px-6 py-4 bg-mist-50 border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-400/30 focus:bg-white transition-all text-sm font-medium appearance-none"
                   >
                     {SUBJECT_KEYS.map((key) => (
                       <option key={key} value={t(`contact.subjects.${key}`)}>
@@ -178,7 +178,7 @@ export default function Contact() {
                     value={message}
                     onChange={(e) => setMessage(e.target.value)}
                     required
-                    className="w-full px-6 py-4 bg-mist-50 border border-brand-100 rounded-2xl focus:outline-none focus:ring-2 focus:ring-brand-400/30 focus:bg-white transition-all text-sm font-medium"
+                    className="w-full px-6 py-4 bg-mist-50 border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-400/30 focus:bg-white transition-all text-sm font-medium"
                   />
                 </div>
 
@@ -199,7 +199,7 @@ export default function Contact() {
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full bg-brand-500 text-white font-black py-5 rounded-2xl hover:bg-brand-600 transition-all active:scale-95 shadow-lg shadow-glow flex items-center justify-center gap-2 uppercase tracking-widest text-xs disabled:opacity-60"
+                  className="w-full bg-brand-500 text-white font-black py-5 rounded-xl hover:bg-brand-600 transition-all active:scale-95 shadow-lg shadow-glow flex items-center justify-center gap-2 uppercase tracking-widest text-xs disabled:opacity-60"
                 >
                   {t('contact.submit')}
                   <ArrowRight className="h-4 w-4" aria-hidden />

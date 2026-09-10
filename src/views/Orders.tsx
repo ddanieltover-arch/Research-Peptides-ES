@@ -84,11 +84,11 @@ export default function Orders() {
       {loading ? (
         <div className="space-y-4">
           {[...Array(3)].map((_, i) => (
-            <div key={i} className="h-40 bg-white rounded-3xl border border-brand-50 animate-pulse" />
+            <div key={i} className="h-40 bg-white rounded-xl border border-slate-200 animate-pulse" />
           ))}
         </div>
       ) : orders.length === 0 ? (
-        <div className="text-center py-16 bg-white rounded-3xl border border-brand-100 shadow-card">
+        <div className="text-center py-16 bg-white rounded-xl border border-slate-200 shadow-card">
           <Package className="h-12 w-12 text-brand-200 mx-auto mb-4" aria-hidden />
           <p className="font-display font-bold text-xl text-navy-950 mb-2">{t('orders.emptyTitle')}</p>
           <p className="text-steel-600 text-sm mb-6">{t('orders.emptyBody')}</p>
@@ -102,9 +102,9 @@ export default function Orders() {
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: orderIdx * 0.06 }}
-              className="bg-white rounded-3xl border border-brand-100 shadow-card overflow-hidden"
+              className="bg-white rounded-xl border border-slate-200 shadow-card overflow-hidden"
             >
-              <div className="px-6 py-4 border-b border-brand-50 bg-mist-50/50 flex flex-wrap justify-between gap-4">
+              <div className="px-6 py-4 border-b border-slate-200 bg-mist-50/50 flex flex-wrap justify-between gap-4">
                 <div className="flex gap-8">
                   <div>
                     <p className="text-caption text-brand-600">{t('orders.placed')}</p>
@@ -164,7 +164,7 @@ export default function Orders() {
                 </div>
               </div>
 
-              <div className="px-6 pb-6 space-y-3 border-t border-brand-50 pt-4">
+              <div className="px-6 pb-6 space-y-3 border-t border-slate-200 pt-4">
                 {(order.items || []).map((item: any, i: number) => (
                   <div key={i} className="flex items-center justify-between gap-4">
                     <div className="flex items-center gap-3 min-w-0">
@@ -172,10 +172,10 @@ export default function Orders() {
                         <img
                           src={item.imageUrl}
                           alt=""
-                          className="w-12 h-12 rounded-xl object-cover border border-brand-50"
+                          className="w-12 h-12 rounded-xl object-cover border border-slate-200"
                         />
                       ) : (
-                        <div className="w-12 h-12 rounded-xl bg-mist-50 border border-brand-50" />
+                        <div className="w-12 h-12 rounded-xl bg-mist-50 border border-slate-200" />
                       )}
                       <div className="min-w-0">
                         <LocaleLink

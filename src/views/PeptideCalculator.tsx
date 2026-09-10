@@ -35,7 +35,7 @@ export default function PeptideCalculator() {
         </motion.div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-          <section className="bg-gray-50 border border-gray-100 rounded-3xl p-8 space-y-6">
+          <section className="bg-gray-50 border border-gray-100 rounded-xl p-8 space-y-6">
             <div>
               <label htmlFor="calc-mass" className="block text-[11px] font-black uppercase tracking-widest text-gray-500 mb-2">
                 {t('calculator.massLabel')}
@@ -47,7 +47,7 @@ export default function PeptideCalculator() {
                 step={0.1}
                 value={massMg}
                 onChange={(e) => setMassMg(Number(e.target.value) || 0)}
-                className="w-full p-4 rounded-2xl border border-gray-200 bg-white font-bold text-gray-900 outline-none focus:ring-2 focus:ring-brand-400/30"
+                className="w-full p-4 rounded-xl border border-gray-200 bg-white font-bold text-gray-900 outline-none focus:ring-2 focus:ring-brand-400/30"
               />
             </div>
             <div>
@@ -61,7 +61,7 @@ export default function PeptideCalculator() {
                 step={0.1}
                 value={diluentMl}
                 onChange={(e) => setDiluentMl(Number(e.target.value) || 0)}
-                className="w-full p-4 rounded-2xl border border-gray-200 bg-white font-bold text-gray-900 outline-none focus:ring-2 focus:ring-brand-400/30"
+                className="w-full p-4 rounded-xl border border-gray-200 bg-white font-bold text-gray-900 outline-none focus:ring-2 focus:ring-brand-400/30"
               />
             </div>
             <div>
@@ -75,22 +75,22 @@ export default function PeptideCalculator() {
                 step={1}
                 value={targetDoseMcg}
                 onChange={(e) => setTargetDoseMcg(Number(e.target.value) || 0)}
-                className="w-full p-4 rounded-2xl border border-gray-200 bg-white font-bold text-gray-900 outline-none focus:ring-2 focus:ring-brand-400/30"
+                className="w-full p-4 rounded-xl border border-gray-200 bg-white font-bold text-gray-900 outline-none focus:ring-2 focus:ring-brand-400/30"
               />
             </div>
           </section>
 
-          <section className="bg-slate-950 text-white rounded-3xl p-8">
+          <section className="bg-slate-950 text-white rounded-xl p-8">
             <h2 className="text-xl font-black mb-6 flex items-center gap-2">
               <Sigma className="h-5 w-5 text-brand-400" />
               {t('calculator.resultsTitle')}
             </h2>
             <div className="space-y-4 text-sm">
-              <div className="bg-white/5 rounded-2xl p-4 border border-white/10">
+              <div className="bg-white/5 rounded-xl p-4 border border-white/10">
                 <p className="text-gray-300 text-xs uppercase tracking-widest font-black mb-1">{t('calculator.concentration')}</p>
                 <p className="text-2xl font-black text-brand-300">{round(concentrationMcgPerMl)} mcg/mL</p>
               </div>
-              <div className="bg-white/5 rounded-2xl p-4 border border-white/10">
+              <div className="bg-white/5 rounded-xl p-4 border border-white/10">
                 <p className="text-gray-300 text-xs uppercase tracking-widest font-black mb-1">{t('calculator.volumePerDose')}</p>
                 <p className="text-2xl font-black text-brand-300">{round(requiredVolumeMl)} mL</p>
               </div>
