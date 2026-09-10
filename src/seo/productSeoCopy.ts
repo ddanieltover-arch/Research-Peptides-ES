@@ -477,29 +477,33 @@ const COPY: Record<string, LocaleBundle> = {
 
   retatrutide: {
     es: {
-      documentTitle: 'Retatrutide España | comprar retatrutide investigación',
+      documentTitle: 'Retatrutide comprar España | investigación',
       metaDescription:
-        'Retatrutide España para investigación: precio, variantes y COA. Comprar retatrutide para laboratorio con envío UE. Solo uso de investigación.',
-      h1: 'Retatrutide para investigación en España',
+        'Retatrutide comprar en España para laboratorio: precio, variantes y COA. Retatrutide barato institucional, envío UE. Solo investigación.',
+      h1: 'Retatrutide comprar para investigación en España',
       shortDescription:
-        'Retatrutide como material de referencia para laboratorio. Consulta retatrutide precio España y opciones para comprar retatrutide. Solo investigación. No consumo humano ni veterinario.',
+        'Retatrutide como material de referencia para laboratorio. Consulta retatrutide comprar, retatrutide precio España y opciones retatrutide barato para pedidos institucionales. Solo investigación. No consumo humano ni veterinario.',
       answerCapsule:
-        'Retatrutide es un compuesto de investigación del catálogo de Research Peptides ES, suministrado en viales para uso exclusivo de laboratorio en España y la UE. Incluye soporte de documentación de lote. No apto para consumo humano ni veterinario.',
+        'Retatrutide (también buscado como retatrutide spain / buy retatrutide) es un compuesto de investigación del catálogo de Research Peptides ES, suministrado en viales para uso exclusivo de laboratorio en España y la UE. Incluye soporte de documentación de lote. No apto para consumo humano ni veterinario.',
       sections: [
         {
-          heading: 'Retatrutide España — precio y compra para el lab',
-          body: 'Si buscas retatrutide comprar en España u opciones de pedido institucional, esta ficha resume variantes y condiciones de envío. Framing exclusivo de investigación: sin indicaciones clínicas ni posología humana.',
+          heading: 'Retatrutide comprar en España — precio y pedido lab',
+          body: 'Si buscas retatrutide comprar, comprar retatrutide en España, retatrutide barato para presupuesto de laboratorio o retatrutide spain, esta ficha resume variantes y condiciones de envío. Framing exclusivo de investigación: sin indicaciones clínicas ni posología humana. Variantes ortográficas como «retratutida» redirigen la intención de compra al mismo material de referencia.',
+        },
+        {
+          heading: 'Comparación con cagrilintide y semaglutide (investigación)',
+          body: 'Para ensayos que comparan andamiajes relacionados, consulta también comprar cagrilintide (blend cagrilintide–semaglutide) y semaglutide investigación en el catálogo. Cada ficha es material RUO con soporte COA.',
         },
         {
           heading: 'Documentación y envío',
-          body: 'Consulta COA de lote y la página de envío para plazos a laboratorios en España. Uso exclusivo para investigación.',
+          body: 'Consulta COA de lote y la página de envío para plazos a laboratorios en España. Usa la calculadora de péptidos y agua bacteriostática como apoyo de reconstitución según tu SOP. Uso exclusivo para investigación.',
         },
       ],
       faqs: [
         {
-          question: '¿Cuándo llega retatrutide a España?',
+          question: '¿Dónde comprar retatrutide en España?',
           answer:
-            'El catálogo online está disponible para pedidos de laboratorio según stock. Los plazos de envío se detallan en la página de envío.',
+            'En Research Peptides ES el catálogo online está disponible para pedidos de laboratorio según stock. Los plazos de envío se detallan en la página de envío.',
         },
         {
           question: '¿Es para uso humano?',
@@ -512,29 +516,31 @@ const COPY: Record<string, LocaleBundle> = {
       ],
       relatedLinks: [
         { to: '/shop', label: 'Comprar péptidos España' },
+        { to: '/product/cagrilintide-semaglutide-blend', label: 'Comprar cagrilintide' },
+        { to: '/product/semaglutide', label: 'Semaglutide investigación' },
+        { to: '/product/bacteriostatic-water', label: 'Agua bacteriostática' },
         { to: '/coas', label: 'Biblioteca COA' },
         { to: '/shipping', label: 'Envío' },
-        { to: '/product/bpc-157', label: 'BPC-157' },
         { to: '/peptide-guide', label: 'Guía de péptidos' },
       ],
     },
     en: {
-      documentTitle: 'Retatrutide Spain | buy retatrutide for research',
+      documentTitle: 'Buy retatrutide Spain | research use',
       metaDescription:
-        'Retatrutide for laboratory research in Spain/EU. Variant pricing, COA support, shipping. Research use only.',
-      h1: 'Retatrutide for research (Spain/EU)',
+        'Buy retatrutide for laboratory research in Spain/EU. Variant pricing, COA support, shipping. Research use only.',
+      h1: 'Buy retatrutide for research (Spain/EU)',
       shortDescription:
-        'Retatrutide reference material for laboratory research. Review pricing and variants. Research use only.',
+        'Retatrutide reference material for laboratory research. Review pricing and variants to buy retatrutide. Research use only.',
       answerCapsule:
-        'Retatrutide is supplied by Research Peptides ES as laboratory research material for Spain and the EU, with batch documentation support. Not for human or veterinary consumption.',
+        'Retatrutide is supplied by Research Peptides ES as laboratory research material for Spain and the EU (retatrutide spain), with batch documentation support. Not for human or veterinary consumption.',
       sections: [
         {
           heading: 'Buy retatrutide for laboratory protocols',
-          body: 'Institutional ordering only. No clinical indications or human dosing.',
+          body: 'Institutional ordering only. No clinical indications or human dosing. Related research scaffolds: cagrilintide blend and semaglutide pages.',
         },
         {
           heading: 'COA and shipping',
-          body: 'See the COA library and shipping page for documentation and dispatch details.',
+          body: 'See the COA library and shipping page for documentation and dispatch details. Bacteriostatic water and the peptide calculator support reconstitution SOPs.',
         },
       ],
       faqs: [
@@ -553,9 +559,11 @@ const COPY: Record<string, LocaleBundle> = {
       ],
       relatedLinks: [
         { to: '/shop', label: 'Shop' },
+        { to: '/product/cagrilintide-semaglutide-blend', label: 'Cagrilintide' },
+        { to: '/product/semaglutide', label: 'Semaglutide' },
+        { to: '/product/bacteriostatic-water', label: 'Bacteriostatic water' },
         { to: '/coas', label: 'COA library' },
         { to: '/shipping', label: 'Shipping' },
-        { to: '/product/bpc-157', label: 'BPC-157' },
         { to: '/peptide-guide', label: 'Peptide guide' },
       ],
     },
@@ -780,43 +788,60 @@ const COPY: Record<string, LocaleBundle> = {
 
   'bacteriostatic-water': {
     es: {
-      documentTitle: 'Agua bacteriostatica comprar | laboratorio',
+      documentTitle: 'Agua bacteriostática comprar | bacteriostatic water lab',
       metaDescription:
-        'Agua bacteriostatica comprar para reconstitución de péptidos de investigación. Envío España/UE. Solo laboratorio.',
-      h1: 'Agua bacteriostática para investigación',
+        'Agua bacteriostática para inyección / reconstitución de péptidos de investigación. Bacteriostatic water sterile para laboratorio. Envío España/UE. No farmacia clínica.',
+      h1: 'Agua bacteriostática (bacteriostatic water) para investigación',
       shortDescription:
-        'Agua bacteriostática como suministro de laboratorio para reconstitución según SOP. Agua bacteriostatica comprar con envío UE.',
+        'Agua bacteriostática como suministro de laboratorio para reconstitución según SOP. Agua bacteriostatica comprar y bacteriostatic water con envío UE. No es venta de farmacia clínica.',
       answerCapsule:
-        'El agua bacteriostática se suministra como material de laboratorio para protocolos de reconstitución de péptidos de investigación. No es un producto de uso clínico humano.',
+        'El agua bacteriostática (bacteriostatic water / water bacteriostatic) se suministra como material de laboratorio para protocolos de reconstitución de péptidos de investigación. Quienes buscan «agua bacteriostática farmacia» encuentran aquí un suministro RUO de laboratorio, no un producto de dispensación clínica humana.',
       sections: [
         {
           heading: 'Agua bacteriostatica comprar para el lab',
-          body: 'Úsala según el SOP de tu centro. Apoyo: calculadora de péptidos y guía de reconstitución. Solo investigación.',
+          body: 'Úsala según el SOP de tu centro. Apoyo: calculadora de péptidos (calculadora peptidos) y guía de reconstitución. Presentación orientada a agua bacteriostática para inyección en contexto de investigación — no uso clínico humano.',
+        },
+        {
+          heading: 'Bacteriostatic water sterile — especificaciones',
+          body: 'Material de laboratorio para reconstitución. Conservar según buenas prácticas hasta uso. Empareja con péptidos liofilizados del catálogo (p. ej. retatrutide, semaglutide) bajo tu protocolo interno.',
         },
       ],
       faqs: [
-        { question: '¿Uso humano?', answer: 'No — suministro de laboratorio.' },
+        {
+          question: '¿Es agua bacteriostática de farmacia?',
+          answer:
+            'No vendemos dispensación de farmacia clínica. Este es un suministro de laboratorio para investigación (RUO).',
+        },
         { question: '¿Para qué péptidos?', answer: 'Según el protocolo interno de reconstitución de tu lab.' },
         { question: '¿Envío?', answer: 'España y UE — ver envío.' },
       ],
       relatedLinks: [
-        { to: '/peptide-calculator', label: 'Calculadora de péptidos' },
+        { to: '/peptide-calculator', label: 'Calculadora peptidos' },
         { to: '/peptide-guide', label: 'Guía' },
         { to: '/shop', label: 'Comprar péptidos' },
+        { to: '/product/retatrutide', label: 'Retatrutide comprar' },
+        { to: '/product/semaglutide', label: 'Semaglutide' },
         { to: '/blog', label: 'Blog' },
         { to: '/shipping', label: 'Envío' },
       ],
     },
     en: {
-      documentTitle: 'Buy bacteriostatic water for research labs',
-      metaDescription: 'Bacteriostatic water for peptide reconstitution in laboratory protocols. EU shipping. Research use only.',
+      documentTitle: 'Bacteriostatic water | sterile lab supply',
+      metaDescription:
+        'Bacteriostatic water sterile for peptide reconstitution in laboratory protocols. EU shipping. Research use only — not pharmacy retail.',
       h1: 'Bacteriostatic water for research',
-      shortDescription: 'Laboratory bacteriostatic water for reconstitution SOPs. Research supply only.',
+      shortDescription:
+        'Laboratory bacteriostatic water (water bacteriostatic) for reconstitution SOPs. Research supply only.',
       answerCapsule:
-        'Bacteriostatic water is supplied as a laboratory reagent for research peptide reconstitution protocols. Not for clinical human use.',
-      sections: [{ heading: 'Lab supply', body: 'Follow your institutional SOP. See the peptide calculator and guide for general support.' }],
+        'Bacteriostatic water is supplied as a laboratory reagent for research peptide reconstitution protocols. Not for clinical human pharmacy use.',
+      sections: [
+        {
+          heading: 'Lab bacteriostatic water sterile',
+          body: 'Follow your institutional SOP. See the peptide calculator and guide for general volumetric support. Pair with lyophilized research peptides from the catalog.',
+        },
+      ],
       faqs: [
-        { question: 'Human use?', answer: 'No — laboratory supply.' },
+        { question: 'Pharmacy / human use?', answer: 'No — laboratory research supply only.' },
         { question: 'Which peptides?', answer: 'Per your internal reconstitution protocol.' },
         { question: 'Shipping?', answer: 'Spain and EU — see shipping.' },
       ],
@@ -824,8 +849,325 @@ const COPY: Record<string, LocaleBundle> = {
         { to: '/peptide-calculator', label: 'Calculator' },
         { to: '/peptide-guide', label: 'Guide' },
         { to: '/shop', label: 'Shop' },
+        { to: '/product/retatrutide', label: 'Retatrutide' },
+        { to: '/product/semaglutide', label: 'Semaglutide' },
         { to: '/blog', label: 'Blog' },
         { to: '/shipping', label: 'Shipping' },
+      ],
+    },
+  },
+
+  'cagrilintide-semaglutide-blend': {
+    es: {
+      documentTitle: 'Comprar cagrilintide | precio y venta investigación',
+      metaDescription:
+        'Comprar cagrilintide (blend cagrilintide–semaglutide) para laboratorio. Cagrilintide precio, venta y COA. Envío España/UE. Solo investigación.',
+      h1: 'Comprar cagrilintide para investigación',
+      shortDescription:
+        'Blend cagrilintide–semaglutide como material de referencia. Consulta cagrilintide precio, cagrilintide venta y dónde comprar cagrilintide. ' +
+        RUO_ES,
+      answerCapsule:
+        'Cagrilintide (cagrilintide peptide) se ofrece aquí en blend con semaglutide para protocolos de investigación de laboratorio. Research Peptides ES facilita comprar original cagrilintide / cagrilintide barato en sentido de presupuesto institucional, con soporte de documentación de lote. Uso exclusivo de investigación.',
+      sections: [
+        {
+          heading: 'Cagrilintide precio y venta para el laboratorio',
+          body: 'Si buscas precio cagrilintide, cagrilintide precio, cagrilintide venta o comprar original cagrilintide, esta ficha resume la presentación blend y condiciones de pedido. Sin indicaciones clínicas ni posología humana.',
+        },
+        {
+          heading: 'Relacionados: retatrutide y semaglutide',
+          body: 'Para comparación de andamiajes en el mismo eje de investigación, revisa retatrutide comprar y semaglutide investigación. Todos son materiales RUO con acceso a COA.',
+        },
+      ],
+      faqs: [
+        {
+          question: '¿Dónde comprar cagrilintide?',
+          answer:
+            'En este catálogo puedes pedir el blend cagrilintide–semaglutide para laboratorio según stock. Envío a España y UE.',
+        },
+        { question: '¿Uso humano?', answer: 'No. Solo investigación.' },
+        { question: '¿Hay COA?', answer: 'Sí — biblioteca COA / soporte de lote.' },
+      ],
+      relatedLinks: [
+        { to: '/shop', label: 'Comprar peptidos en España' },
+        { to: '/product/retatrutide', label: 'Retatrutide comprar' },
+        { to: '/product/semaglutide', label: 'Semaglutide' },
+        { to: '/product/cagrilintide', label: 'Cagrilintide' },
+        { to: '/coas', label: 'Biblioteca COA' },
+        { to: '/peptide-calculator', label: 'Calculadora peptidos' },
+        { to: '/shipping', label: 'Envío' },
+      ],
+    },
+    en: {
+      documentTitle: 'Buy cagrilintide | research blend pricing',
+      metaDescription:
+        'Buy cagrilintide–semaglutide research blend for laboratories. Pricing, COA, EU shipping. Research use only.',
+      h1: 'Buy cagrilintide for research',
+      shortDescription:
+        'Cagrilintide–semaglutide blend as laboratory reference material. Research use only.',
+      answerCapsule:
+        'Cagrilintide peptide is offered here as a cagrilintide–semaglutide blend for laboratory research protocols, with batch documentation support. Not for human or veterinary use.',
+      sections: [
+        {
+          heading: 'Cagrilintide pricing for lab procurement',
+          body: 'Institutional ordering only. Compare related scaffolds on the retatrutide and semaglutide product pages.',
+        },
+      ],
+      faqs: [
+        { question: 'Human use?', answer: 'No — research use only.' },
+        { question: 'COA?', answer: 'Via COA library / support.' },
+        { question: 'Shipping?', answer: 'Spain and EU — see shipping.' },
+      ],
+      relatedLinks: [
+        { to: '/shop', label: 'Shop' },
+        { to: '/product/retatrutide', label: 'Retatrutide' },
+        { to: '/product/semaglutide', label: 'Semaglutide' },
+        { to: '/product/cagrilintide', label: 'Cagrilintide' },
+        { to: '/coas', label: 'COA library' },
+        { to: '/peptide-calculator', label: 'Calculator' },
+        { to: '/shipping', label: 'Shipping' },
+      ],
+    },
+  },
+
+  cagrilintide: {
+    es: {
+      documentTitle: 'Cagrilintide precio | comprar cagrilintide lab',
+      metaDescription:
+        'Cagrilintide para investigación: precio, variantes y COA. Comprar cagrilintide con envío España/UE. Solo laboratorio.',
+      h1: 'Cagrilintide para investigación',
+      shortDescription:
+        'Cagrilintide como material de referencia de laboratorio. Consulta cagrilintide precio y opciones para comprar cagrilintide. ' +
+        RUO_ES,
+      answerCapsule:
+        'Cagrilintide es un análogo de amilina de investigación suministrado para protocolos de laboratorio. Uso exclusivo de investigación; no consumo humano ni veterinario.',
+      sections: [
+        {
+          heading: 'Comprar cagrilintide — ficha de laboratorio',
+          body: 'Revisa variantes y documentación. Para el blend con semaglutide consulta la ficha cagrilintide–semaglutide. Relacionado: retatrutide comprar.',
+        },
+      ],
+      faqs: [
+        { question: '¿Uso humano?', answer: 'No. Solo investigación.' },
+        { question: '¿Blend disponible?', answer: 'Sí — ver cagrilintide–semaglutide blend.' },
+        { question: '¿Envío?', answer: 'España y UE.' },
+      ],
+      relatedLinks: [
+        { to: '/product/cagrilintide-semaglutide-blend', label: 'Cagrilintide venta (blend)' },
+        { to: '/product/retatrutide', label: 'Retatrutide comprar' },
+        { to: '/product/semaglutide', label: 'Semaglutide' },
+        { to: '/shop', label: 'Tienda' },
+        { to: '/coas', label: 'COA' },
+        { to: '/peptide-guide', label: 'Guía' },
+      ],
+    },
+    en: {
+      documentTitle: 'Cagrilintide for research | buy lab grade',
+      metaDescription: 'Cagrilintide research material for laboratories. COA support, EU shipping. Research use only.',
+      h1: 'Cagrilintide for research',
+      shortDescription: 'Cagrilintide laboratory reference material. Research use only.',
+      answerCapsule:
+        'Cagrilintide is supplied for laboratory research protocols only. Not for human or veterinary consumption.',
+      sections: [
+        {
+          heading: 'Lab procurement',
+          body: 'See also the cagrilintide–semaglutide blend and retatrutide pages for related research scaffolds.',
+        },
+      ],
+      faqs: [
+        { question: 'Human use?', answer: 'No.' },
+        { question: 'Blend?', answer: 'Yes — see cagrilintide–semaglutide blend.' },
+        { question: 'Shipping?', answer: 'Spain and EU.' },
+      ],
+      relatedLinks: [
+        { to: '/product/cagrilintide-semaglutide-blend', label: 'Cagrilintide blend' },
+        { to: '/product/retatrutide', label: 'Retatrutide' },
+        { to: '/product/semaglutide', label: 'Semaglutide' },
+        { to: '/shop', label: 'Shop' },
+        { to: '/coas', label: 'COA' },
+        { to: '/peptide-guide', label: 'Guide' },
+      ],
+    },
+  },
+
+  semaglutide: {
+    es: {
+      documentTitle: 'Semaglutide investigación | péptidos España',
+      metaDescription:
+        'Semaglutide para investigación de laboratorio en España/UE. COA, precio y envío. Relacionado: retatrutide comprar y cagrilintide. Solo RUO.',
+      h1: 'Semaglutide para investigación',
+      shortDescription:
+        'Semaglutide (GLP-1) como material de referencia de laboratorio. No es retatrutide: si buscas retatrutide comprar, usa la ficha de retatrutide. ' +
+        RUO_ES,
+      answerCapsule:
+        'Semaglutide se suministra para investigación de laboratorio. Research Peptides ES ofrece viales con soporte de documentación de lote. Para retatrutide o cagrilintide, consulta sus fichas dedicadas — evita canibalización de intención de búsqueda.',
+      sections: [
+        {
+          heading: 'Semaglutide en el catálogo de laboratorio',
+          body: 'Material RUO para protocolos institucionales. Compara andamiajes relacionados: retatrutide comprar, comprar cagrilintide. Apoyo: agua bacteriostática y calculadora de péptidos.',
+        },
+      ],
+      faqs: [
+        { question: '¿Es lo mismo que retatrutide?', answer: 'No. Retatrutide tiene su propia ficha de producto.' },
+        { question: '¿Uso humano?', answer: 'No. Solo investigación.' },
+        { question: '¿COA?', answer: 'Biblioteca COA / soporte.' },
+      ],
+      relatedLinks: [
+        { to: '/product/retatrutide', label: 'Retatrutide comprar' },
+        { to: '/product/cagrilintide-semaglutide-blend', label: 'Cagrilintide precio' },
+        { to: '/product/bacteriostatic-water', label: 'Bacteriostatic water' },
+        { to: '/shop', label: 'Péptidos comprar en linea' },
+        { to: '/coas', label: 'COA' },
+        { to: '/peptide-guide', label: 'Guía' },
+      ],
+    },
+    en: {
+      documentTitle: 'Semaglutide for research | Spain/EU lab',
+      metaDescription:
+        'Semaglutide research material for laboratories. COA, EU shipping. Related: retatrutide and cagrilintide. Research use only.',
+      h1: 'Semaglutide for research',
+      shortDescription:
+        'Semaglutide (GLP-1) laboratory reference material. For retatrutide, see the dedicated product page. Research use only.',
+      answerCapsule:
+        'Semaglutide is supplied for laboratory research only. Related scaffolds: retatrutide and cagrilintide pages.',
+      sections: [
+        {
+          heading: 'Laboratory catalog',
+          body: 'RUO material with COA support. Pair reconstitution with bacteriostatic water per your SOP.',
+        },
+      ],
+      faqs: [
+        { question: 'Same as retatrutide?', answer: 'No — see the retatrutide product page.' },
+        { question: 'Human use?', answer: 'No.' },
+        { question: 'COA?', answer: 'COA library / support.' },
+      ],
+      relatedLinks: [
+        { to: '/product/retatrutide', label: 'Buy retatrutide' },
+        { to: '/product/cagrilintide-semaglutide-blend', label: 'Cagrilintide' },
+        { to: '/product/bacteriostatic-water', label: 'Bacteriostatic water' },
+        { to: '/shop', label: 'Shop' },
+        { to: '/coas', label: 'COA' },
+        { to: '/peptide-guide', label: 'Guide' },
+      ],
+    },
+  },
+
+  follistatin: {
+    es: {
+      documentTitle: 'Folistatina comprar | follistatin venta investigación',
+      metaDescription:
+        'Folistatina comprar y follistatin venta para laboratorio. Material de investigación con COA y envío España/UE. Solo RUO.',
+      h1: 'Folistatina (follistatin) para investigación',
+      shortDescription:
+        'Follistatin / folistatina como material de referencia de laboratorio. Folistatina comprar y follistatin venta con documentación de lote. ' +
+        RUO_ES,
+      answerCapsule:
+        'Follistatin (folistatina) se suministra para investigación de laboratorio. Research Peptides ES permite folistatina comprar con soporte COA. Uso exclusivo de investigación.',
+      sections: [
+        {
+          heading: 'Folistatina comprar — ficha de laboratorio',
+          body: 'Si buscas follistatin venta o folistatina comprar para ensayos, esta página resume el formato y pedido institucional. Relacionado: igf-1 comprar y PEG-MGF.',
+        },
+      ],
+      faqs: [
+        { question: '¿Uso humano?', answer: 'No. Solo investigación.' },
+        { question: '¿COA?', answer: 'Sí — biblioteca COA.' },
+        { question: '¿Envío?', answer: 'España y UE.' },
+      ],
+      relatedLinks: [
+        { to: '/shop', label: 'Péptidos inyectables comprar' },
+        { to: '/product/igf-1-lr3', label: 'IGF-1 comprar' },
+        { to: '/product/peg-mgf', label: 'PEG-MGF' },
+        { to: '/coas', label: 'COA' },
+        { to: '/peptide-guide', label: 'Guía' },
+        { to: '/peptide-calculator', label: 'Calculadora' },
+      ],
+    },
+    en: {
+      documentTitle: 'Buy follistatin | research lab supply',
+      metaDescription: 'Follistatin for laboratory research. COA support, EU shipping. Research use only.',
+      h1: 'Follistatin for research',
+      shortDescription: 'Follistatin laboratory reference material. Research use only.',
+      answerCapsule:
+        'Follistatin is supplied for laboratory research protocols with batch documentation support. Not for human use.',
+      sections: [
+        {
+          heading: 'Follistatin lab procurement',
+          body: 'Related research materials: IGF-1 LR3 and PEG-MGF product pages.',
+        },
+      ],
+      faqs: [
+        { question: 'Human use?', answer: 'No.' },
+        { question: 'COA?', answer: 'Yes — COA library.' },
+        { question: 'Shipping?', answer: 'Spain and EU.' },
+      ],
+      relatedLinks: [
+        { to: '/shop', label: 'Shop' },
+        { to: '/product/igf-1-lr3', label: 'IGF-1' },
+        { to: '/product/peg-mgf', label: 'PEG-MGF' },
+        { to: '/coas', label: 'COA' },
+        { to: '/peptide-guide', label: 'Guide' },
+        { to: '/peptide-calculator', label: 'Calculator' },
+      ],
+    },
+  },
+
+  'igf-1-lr3': {
+    es: {
+      documentTitle: 'IGF-1 comprar | IGF-1 LR3 investigación',
+      metaDescription:
+        'IGF-1 comprar (IGF-1 LR3) para laboratorio en España/UE. COA, precio y envío. Solo investigación.',
+      h1: 'IGF-1 LR3 (igf-1 comprar) para investigación',
+      shortDescription:
+        'IGF-1 LR3 como material de referencia. Consulta igf-1 comprar con documentación de lote. ' + RUO_ES,
+      answerCapsule:
+        'IGF-1 LR3 se suministra para investigación de laboratorio. Si buscas igf-1 comprar en España, esta ficha cubre variantes RUO con soporte COA. No consumo humano ni veterinario.',
+      sections: [
+        {
+          heading: 'IGF-1 comprar — laboratorio',
+          body: 'Material liofilizado para protocolos institucionales. Relacionados: folistatina comprar, frag 176-191 y agua bacteriostática para reconstitución según SOP.',
+        },
+      ],
+      faqs: [
+        { question: '¿Uso humano?', answer: 'No. Solo investigación.' },
+        { question: '¿Reconstitución?', answer: 'Sigue tu SOP; calculadora disponible como apoyo.' },
+        { question: '¿Envío?', answer: 'España y UE.' },
+      ],
+      relatedLinks: [
+        { to: '/shop', label: 'Comprar péptidos' },
+        { to: '/product/follistatin', label: 'Folistatina comprar' },
+        { to: '/product/hgh-fragment-176-191', label: 'Frag 176-191' },
+        { to: '/product/bacteriostatic-water', label: 'Bacteriostatic water' },
+        { to: '/coas', label: 'COA' },
+        { to: '/peptide-calculator', label: 'Calculadora peptidos' },
+        { to: '/peptide-guide', label: 'Guía' },
+      ],
+    },
+    en: {
+      documentTitle: 'Buy IGF-1 LR3 | research peptide',
+      metaDescription: 'Buy IGF-1 LR3 for laboratory research. COA, EU shipping. Research use only.',
+      h1: 'IGF-1 LR3 for research',
+      shortDescription: 'IGF-1 LR3 laboratory reference material. Research use only.',
+      answerCapsule:
+        'IGF-1 LR3 is supplied for laboratory research with batch documentation support. Not for human or veterinary use.',
+      sections: [
+        {
+          heading: 'Buy IGF-1 for lab protocols',
+          body: 'Related: follistatin, HGH fragment 176-191, and bacteriostatic water for reconstitution SOPs.',
+        },
+      ],
+      faqs: [
+        { question: 'Human use?', answer: 'No.' },
+        { question: 'Reconstitution?', answer: 'Follow your SOP; calculator available for volumetric support.' },
+        { question: 'Shipping?', answer: 'Spain and EU.' },
+      ],
+      relatedLinks: [
+        { to: '/shop', label: 'Shop' },
+        { to: '/product/follistatin', label: 'Follistatin' },
+        { to: '/product/hgh-fragment-176-191', label: 'Frag 176-191' },
+        { to: '/product/bacteriostatic-water', label: 'Bacteriostatic water' },
+        { to: '/coas', label: 'COA' },
+        { to: '/peptide-calculator', label: 'Calculator' },
+        { to: '/peptide-guide', label: 'Guide' },
       ],
     },
   },

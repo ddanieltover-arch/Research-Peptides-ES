@@ -36,6 +36,17 @@ const targets = [
   '/product/sermorelin-acetate',
   '/product/peg-mgf',
   '/product/hgh-fragment-176-191',
+  '/product/retatrutide',
+  '/product/cagrilintide-semaglutide-blend',
+  '/product/cagrilintide',
+  '/product/semaglutide',
+  '/product/follistatin',
+  '/product/igf-1-lr3',
+  '/product/ghk-cu',
+  '/product/bpc-157',
+  '/product/pt-141',
+  '/product/mt-2-melanotan-2-acetate',
+  '/product/bacteriostatic-water',
 ];
 
 let fail = 0;

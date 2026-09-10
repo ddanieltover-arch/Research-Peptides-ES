@@ -280,7 +280,11 @@ export function BlogArticleTemplate({ post, related = [] }: BlogArticleTemplateP
           </section>
         )}
 
-        <RelatedSeoLinks links={getSeoLinksForBlogPost()} contained={false} className="mt-12 rounded-xl px-4" />
+        <RelatedSeoLinks
+          links={getSeoLinksForBlogPost(post.id)}
+          contained={false}
+          className="mt-12 rounded-xl px-4"
+        />
       </Container>
     </PageShell>
   );

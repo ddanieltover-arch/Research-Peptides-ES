@@ -7,15 +7,19 @@ import { SEO_HUB_LINKS } from '../../seo/seoLinkGraph';
 
 const TOP_GAP_LINKS = [
   SEO_HUB_LINKS.shopComprar,
-  SEO_HUB_LINKS.shopPeptidosEs,
+  SEO_HUB_LINKS.shopComprarEs,
+  SEO_HUB_LINKS.shopOnline,
+  SEO_HUB_LINKS.shopInyectables,
   SEO_HUB_LINKS.peptidesSpain,
-  SEO_HUB_LINKS.retatrutide,
-  SEO_HUB_LINKS.retatrutideBuy,
-  SEO_HUB_LINKS.ghkCu,
-  SEO_HUB_LINKS.bpc157,
-  SEO_HUB_LINKS.pt141,
-  SEO_HUB_LINKS.melanotan,
+  SEO_HUB_LINKS.retatrutideComprar,
+  SEO_HUB_LINKS.cagrilintide,
+  SEO_HUB_LINKS.cagrilintidePrecio,
+  SEO_HUB_LINKS.follistatin,
+  SEO_HUB_LINKS.igf1,
   SEO_HUB_LINKS.bacWater,
+  SEO_HUB_LINKS.bacWaterEn,
+  SEO_HUB_LINKS.blogRetatrutide,
+  SEO_HUB_LINKS.blogComprarPeptidos,
 ] as const;
 
 /** Visible keyword anchors from espanapeptide.es gap (top commercial ES queries). */

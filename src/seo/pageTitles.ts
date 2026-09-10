@@ -5,15 +5,15 @@ type TitleEntry = { es: string; en?: string; nl?: string; de?: string; fr?: stri
 
 export const PAGE_TITLES: Record<string, TitleEntry> = {
   '/': {
-    es: 'Péptidos España | comprar péptidos de investigación',
-    en: 'Peptides Spain | buy research peptides',
+    es: 'Péptidos España | comprar péptidos en España — peptides EU',
+    en: 'Peptides Spain | buy research peptides EU',
     nl: 'Premium onderzoekspeptiden',
     de: 'Premium-Forschungspeptide',
     fr: 'Peptides de recherche premium',
   },
   '/shop': {
-    es: 'Comprar péptidos España | tienda',
-    en: 'Buy peptides Spain | shop',
+    es: 'Comprar péptidos España | péptidos comprar en linea',
+    en: 'Buy peptides Spain | peptides buy online',
     nl: 'Shop',
     de: 'Shop',
     fr: 'Boutique',
@@ -29,7 +29,13 @@ export const PAGE_TITLES: Record<string, TitleEntry> = {
   '/faq': { es: 'Preguntas frecuentes', en: 'FAQ', nl: 'Veelgestelde vragen', de: 'FAQ', fr: 'FAQ' },
   '/shipping': { es: 'Envío', en: 'Shipping', nl: 'Verzending', de: 'Versand', fr: 'Livraison' },
   '/contact': { es: 'Contacto', en: 'Contact', nl: 'Contact', de: 'Kontakt', fr: 'Contact' },
-  '/about-us': { es: 'Sobre nosotros', en: 'About Us', nl: 'Over ons', de: 'Über uns', fr: 'À propos' },
+  '/about-us': {
+    es: 'Sobre nosotros | europa peptide',
+    en: 'About Us | europa peptide',
+    nl: 'Over ons',
+    de: 'Über uns',
+    fr: 'À propos',
+  },
   '/terms': { es: 'Términos', en: 'Terms', nl: 'Voorwaarden', de: 'AGB', fr: 'Conditions' },
   '/privacy': { es: 'Privacidad', en: 'Privacy', nl: 'Privacy', de: 'Datenschutz', fr: 'Confidentialité' },
   '/refund-returns': { es: 'Devoluciones', en: 'Returns', nl: 'Retourneren', de: 'Rückgabe', fr: 'Retours' },
@@ -43,7 +49,7 @@ export const PAGE_TITLES: Record<string, TitleEntry> = {
     fr: 'Guide des peptides',
   },
   '/peptide-calculator': {
-    es: 'Calculadora de péptidos',
+    es: 'Calculadora peptidos',
     en: 'Peptide Calculator',
     nl: 'Peptide-calculator',
     de: 'Peptid-Rechner',
@@ -88,11 +94,11 @@ export const PAGE_TITLES: Record<string, TitleEntry> = {
 
 export const PAGE_DESCRIPTIONS: Record<string, TitleEntry> = {
   '/': {
-    es: 'Comprar péptidos en España y la UE — catálogo de investigación (péptidos España, peptides Spain). COA, envío en frío y uso exclusivo de laboratorio.',
+    es: 'Comprar péptidos en España y la UE — catálogo de investigación (péptidos España, peptides Spain, research peptides-europe). COA, envío en frío y uso exclusivo de laboratorio.',
     en: 'Buy research peptides in Spain and the EU — verified catalog with COAs and cold-chain shipping. Research use only.',
   },
   '/shop': {
-    es: 'Comprar péptidos España: catálogo para laboratorios. Péptidos comprar online con COA, precios en EUR y envío UE. Solo investigación.',
+    es: 'Comprar peptidos en España: péptidos comprar en linea e inyectables para laboratorios. Peptides comprar / peptides buy con COA, precios EUR y envío UE. Solo investigación.',
     en: 'Shop research peptides for laboratories in Spain and the EU. COA documentation, EUR pricing. Research use only.',
   },
   '/categories': {
@@ -112,8 +118,8 @@ export const PAGE_DESCRIPTIONS: Record<string, TitleEntry> = {
     en: 'Contact Research Peptides ES for product questions, B2B orders, and support.',
   },
   '/about-us': {
-    es: 'Quiénes somos: proveedor español de péptidos de investigación con verificación de terceros.',
-    en: 'About Research Peptides ES — Spanish research peptide supplier with third-party verification.',
+    es: 'Europa peptide / research peptides-europe: proveedor español de péptidos de investigación con verificación de terceros.',
+    en: 'About Research Peptides ES — European research peptide supplier (europa peptide) with third-party verification.',
   },
   '/coas': {
     es: 'Biblioteca de certificados de análisis (COA) de terceros para péptidos de investigación.',
@@ -128,7 +134,7 @@ export const PAGE_DESCRIPTIONS: Record<string, TitleEntry> = {
     en: 'Practical guide to handling, storage, and reconstitution of lyophilized research peptides.',
   },
   '/peptide-calculator': {
-    es: 'Calculadora de reconstitución de péptidos: concentra volúmenes de diluyente para uso de laboratorio.',
+    es: 'Calculadora peptidos / calculadora de reconstitución: concentra volúmenes de diluyente para uso de laboratorio.',
     en: 'Peptide reconstitution calculator — compute diluent volumes for laboratory use.',
   },
   '/peptide-information': {

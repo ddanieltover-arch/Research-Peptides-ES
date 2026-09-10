@@ -104,6 +104,10 @@ export const SEO_HUB_LINKS = {
     to: '/product/cagrilintide-semaglutide-blend',
     anchor: 'comprar cagrilintide',
   },
+  cagrilintideSolo: {
+    to: '/product/cagrilintide',
+    anchor: 'cagrilintide peptide',
+  },
   cagrilintidePrecio: {
     to: '/product/cagrilintide-semaglutide-blend',
     anchor: 'cagrilintide precio',
@@ -111,6 +115,10 @@ export const SEO_HUB_LINKS = {
   cagrilintideVenta: {
     to: '/product/cagrilintide-semaglutide-blend',
     anchor: 'cagrilintide venta',
+  },
+  cagrilintideDonde: {
+    to: '/product/cagrilintide-semaglutide-blend',
+    anchor: 'dónde comprar cagrilintide',
   },
   follistatin: { to: '/product/follistatin', anchor: 'folistatina comprar' },
   follistatinVenta: { to: '/product/follistatin', anchor: 'follistatin venta' },
@@ -133,6 +141,42 @@ export const SEO_HUB_LINKS = {
   calculatorAlt: { to: '/peptide-calculator', anchor: 'calculadora peptidos' },
   aboutEuropa: { to: '/about-us', anchor: 'europa peptide' },
   aboutEurope: { to: '/about-us', anchor: 'research peptides-europe' },
+  blogRetatrutide: {
+    to: '/blog/donde-comprar-retatrutide-espana',
+    anchor: 'dónde comprar retatrutide en España',
+  },
+  blogComprarPeptidos: {
+    to: '/blog/como-comprar-peptidos-investigacion-espana',
+    anchor: 'cómo comprar péptidos en España',
+  },
+  blogCagrilintide: {
+    to: '/blog/donde-comprar-cagrilintide-laboratorio',
+    anchor: 'dónde comprar cagrilintide',
+  },
+  blogBacWater: {
+    to: '/blog/por-que-agua-bacteriostatica-laboratorio',
+    anchor: 'por qué agua bacteriostática de laboratorio',
+  },
+  blogFollistatin: {
+    to: '/blog/como-comprar-folistatina-investigacion',
+    anchor: 'cómo comprar folistatina',
+  },
+  blogIgf1: {
+    to: '/blog/donde-comprar-igf-1-lr3-espana',
+    anchor: 'dónde comprar IGF-1 en España',
+  },
+  blogInyectables: {
+    to: '/blog/como-comprar-peptidos-inyectables-lab',
+    anchor: 'cómo comprar péptidos inyectables',
+  },
+  blogCalculator: {
+    to: '/blog/por-que-calculadora-peptidos-antes-reconstituir',
+    anchor: 'por qué usar calculadora peptidos',
+  },
+  blogCompareGlp: {
+    to: '/blog/como-elegir-retatrutide-cagrilintide-semaglutide',
+    anchor: 'cómo elegir retatrutide cagrilintide semaglutide',
+  },
 } as const;
 
 type HubKey = keyof typeof SEO_HUB_LINKS;
@@ -162,6 +206,8 @@ export const SEO_PAGE_LINKS: Record<string, SeoLinkSet> = {
       'follistatin',
       'igf1',
       'bacWater',
+      'blogRetatrutide',
+      'blogComprarPeptidos',
       'aboutEuropa',
       'guide',
       'coas',
@@ -178,6 +224,7 @@ export const SEO_PAGE_LINKS: Record<string, SeoLinkSet> = {
       'retatrutideBarato',
       'cagrilintidePrecio',
       'cagrilintideVenta',
+      'cagrilintideSolo',
       'follistatinVenta',
       'igf1',
       'semaglutide',
@@ -325,6 +372,7 @@ export const SEO_PAGE_LINKS: Record<string, SeoLinkSet> = {
       'coasHplc',
       'frag',
       'cagrilintideVenta',
+      'cagrilintideSolo',
       'categories',
       'blog',
     ),
@@ -429,6 +477,8 @@ export const SEO_PAGE_LINKS: Record<string, SeoLinkSet> = {
       'guide',
       'shipping',
       'bacWater',
+      'blogRetatrutide',
+      'blogCompareGlp',
     ),
     external: ext('pubmed', 'pubchem', 'ema'),
   },
@@ -437,6 +487,7 @@ export const SEO_PAGE_LINKS: Record<string, SeoLinkSet> = {
       'shopComprarEs',
       'retatrutideComprar',
       'semaglutide',
+      'cagrilintideSolo',
       'coas',
       'guide',
       'calculator',
@@ -448,6 +499,7 @@ export const SEO_PAGE_LINKS: Record<string, SeoLinkSet> = {
   'product:cagrilintide': {
     internal: pick(
       'cagrilintidePrecio',
+      'cagrilintideDonde',
       'retatrutideBuy',
       'semaglutide',
       'shop',
@@ -460,6 +512,7 @@ export const SEO_PAGE_LINKS: Record<string, SeoLinkSet> = {
   'product:semaglutide': {
     internal: pick(
       'cagrilintideVenta',
+      'cagrilintideSolo',
       'retatrutideComprar',
       'shopOnline',
       'coas',
@@ -522,6 +575,7 @@ export const SEO_PAGE_LINKS: Record<string, SeoLinkSet> = {
       'faq',
       'retatrutideComprar',
       'semaglutide',
+      'blogBacWater',
     ),
     external: ext('pubmed', 'eurlex', 'pubchem'),
   },
@@ -540,7 +594,7 @@ export const SEO_PAGE_LINKS: Record<string, SeoLinkSet> = {
     ),
     external: ext('pubmed', 'pubchem', 'peptideAtlas'),
   },
-  /** Blog posts share one set (plus related posts in template). */
+  /** Blog posts share a default set; question posts get keyword-specific outlinks. */
   'blog:post': {
     internal: pick(
       'blog',
@@ -551,8 +605,135 @@ export const SEO_PAGE_LINKS: Record<string, SeoLinkSet> = {
       'shipping',
       'bacWater',
       'cagrilintide',
+      'blogComprarPeptidos',
     ),
     external: ext('pubmed', 'eurlex', 'pubchem'),
+  },
+  'blog:donde-comprar-retatrutide-espana': {
+    internal: pick(
+      'retatrutideComprar',
+      'cagrilintide',
+      'semaglutide',
+      'shopComprarEs',
+      'bacWater',
+      'coas',
+      'shipping',
+      'blogCompareGlp',
+      'calculator',
+    ),
+    external: ext('pubmed', 'pubchem', 'ema'),
+  },
+  'blog:como-comprar-peptidos-investigacion-espana': {
+    internal: pick(
+      'shopOnline',
+      'shopInyectables',
+      'shopComprarEs',
+      'coaCompare',
+      'guide',
+      'calculatorAlt',
+      'shipping',
+      'aboutEuropa',
+      'blogInyectables',
+    ),
+    external: ext('pubmed', 'eurlex', 'ema'),
+  },
+  'blog:donde-comprar-cagrilintide-laboratorio': {
+    internal: pick(
+      'cagrilintidePrecio',
+      'cagrilintideDonde',
+      'cagrilintideSolo',
+      'retatrutideComprar',
+      'semaglutide',
+      'coas',
+      'shop',
+      'blogCompareGlp',
+      'shipping',
+    ),
+    external: ext('pubmed', 'pubchem', 'peptideAtlas'),
+  },
+  'blog:por-que-agua-bacteriostatica-laboratorio': {
+    internal: pick(
+      'bacWater',
+      'bacWaterEn',
+      'bacWaterIny',
+      'calculatorAlt',
+      'guide',
+      'shop',
+      'blogCalculator',
+      'faq',
+      'coas',
+    ),
+    external: ext('pubmed', 'eurlex', 'pubchem'),
+  },
+  'blog:como-comprar-folistatina-investigacion': {
+    internal: pick(
+      'follistatin',
+      'follistatinVenta',
+      'igf1',
+      'pegMgf',
+      'shop',
+      'coas',
+      'calculator',
+      'guide',
+      'research',
+    ),
+    external: ext('uniprot', 'pubmed', 'pubchem'),
+  },
+  'blog:donde-comprar-igf-1-lr3-espana': {
+    internal: pick(
+      'igf1',
+      'follistatin',
+      'frag',
+      'shopOnline',
+      'bacWater',
+      'coas',
+      'calculator',
+      'shipping',
+      'guide',
+    ),
+    external: ext('uniprot', 'pubmed', 'peptideAtlas'),
+  },
+  'blog:como-comprar-peptidos-inyectables-lab': {
+    internal: pick(
+      'shopInyectables',
+      'shopComprarEs',
+      'bacWater',
+      'calculator',
+      'coas',
+      'terms',
+      'faq',
+      'blogComprarPeptidos',
+      'shipping',
+    ),
+    external: ext('pubmed', 'eurlex', 'ema'),
+  },
+  'blog:por-que-calculadora-peptidos-antes-reconstituir': {
+    internal: pick(
+      'calculatorAlt',
+      'guide',
+      'bacWater',
+      'shop',
+      'coas',
+      'blogBacWater',
+      'glossary',
+      'faq',
+      'blogComprarPeptidos',
+    ),
+    external: ext('pubchem', 'peptideAtlas', 'pubmed'),
+  },
+  'blog:como-elegir-retatrutide-cagrilintide-semaglutide': {
+    internal: pick(
+      'retatrutideComprar',
+      'cagrilintide',
+      'semaglutide',
+      'cagrilintideSolo',
+      'shopComprarEs',
+      'coas',
+      'blogRetatrutide',
+      'blogCagrilintide',
+      'guide',
+    ),
+    external: ext('pubmed', 'pubchem', 'ema'),
   },
 };
 
@@ -589,7 +770,11 @@ export function getSeoLinksForProduct(slug: string): SeoLinkSet {
   return SEO_PAGE_LINKS[`product:${slug}`] ?? SEO_PAGE_LINKS['product:default'];
 }
 
-export function getSeoLinksForBlogPost(): SeoLinkSet {
+export function getSeoLinksForBlogPost(postId?: string | null): SeoLinkSet {
+  if (postId) {
+    const keyed = SEO_PAGE_LINKS[`blog:${postId}`];
+    if (keyed) return keyed;
+  }
   return SEO_PAGE_LINKS['blog:post'];
 }
 
@@ -628,6 +813,7 @@ export const FOOTER_SEO_LINKS: SeoInternalLink[] = [
   SEO_HUB_LINKS.retatrutideComprar,
   SEO_HUB_LINKS.cagrilintide,
   SEO_HUB_LINKS.cagrilintidePrecio,
+  SEO_HUB_LINKS.cagrilintideSolo,
   SEO_HUB_LINKS.semaglutide,
   SEO_HUB_LINKS.follistatin,
   SEO_HUB_LINKS.igf1,
@@ -639,6 +825,15 @@ export const FOOTER_SEO_LINKS: SeoInternalLink[] = [
   SEO_HUB_LINKS.bacWaterEn,
   SEO_HUB_LINKS.shopComprar,
   SEO_HUB_LINKS.shopPeptidosEs,
+  SEO_HUB_LINKS.blogRetatrutide,
+  SEO_HUB_LINKS.blogComprarPeptidos,
+  SEO_HUB_LINKS.blogCagrilintide,
+  SEO_HUB_LINKS.blogBacWater,
+  SEO_HUB_LINKS.blogFollistatin,
+  SEO_HUB_LINKS.blogIgf1,
+  SEO_HUB_LINKS.blogInyectables,
+  SEO_HUB_LINKS.blogCalculator,
+  SEO_HUB_LINKS.blogCompareGlp,
 ];
 
 export const FOOTER_EXTERNAL_LINKS: SeoExternalLink[] = [E.pubmed, E.pubchem, E.ema];

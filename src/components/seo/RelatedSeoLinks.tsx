@@ -22,7 +22,7 @@ export function RelatedSeoLinks({
   className = '',
   contained = true,
 }: RelatedSeoLinksProps) {
-  const internal = links.internal.slice(0, 8);
+  const internal = links.internal.slice(0, 10);
   const external = links.external.slice(0, 4);
 
   if (internal.length === 0 && external.length === 0) return null;
