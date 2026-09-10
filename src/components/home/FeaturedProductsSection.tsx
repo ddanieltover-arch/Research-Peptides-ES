@@ -32,25 +32,21 @@ export function FeaturedProductsSection() {
   }, []);
 
   return (
-    <Section size="lg" tone="mist">
+    <Section size="lg" tone="mist" className="bg-slate-50/50">
       <Container>
-        <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8 mb-12 border-l-4 border-brand-500 pl-6 md:pl-8">
+        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-10 pb-5 border-b border-slate-200/80">
           <SectionHeading
             eyebrow={t('featured.eyebrow')}
-            title={
-              <>
-                <span className="text-brand-600 italic">{t('featured.title')}</span>
-              </>
-            }
+            title={<span>{t('featured.title')}</span>}
             description={t('featured.subtitle')}
             className="mb-0"
           />
           <LocaleLink
             to="/shop"
-            className={buttonClassName({ variant: 'outline', className: 'shrink-0 gap-2' })}
+            className={buttonClassName({ variant: 'outline', size: 'sm', className: 'shrink-0 gap-2 border-slate-200 hover:bg-white text-navy-950 font-medium' })}
           >
             {t('categories.viewAll')}
-            <ArrowRight className="h-4 w-4" />
+            <ArrowRight className="h-3.5 w-3.5 text-brand-600" />
           </LocaleLink>
         </div>
 
@@ -58,7 +54,7 @@ export function FeaturedProductsSection() {
           products={products}
           loading={loading}
           skeletonCount={8}
-          gridClassName="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6"
+          gridClassName="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4 md:gap-5"
           inWishlist={isInWishlist}
           onToggleWishlist={handleToggleWishlist}
           onAddToCart={handleAddToCart}

@@ -8,12 +8,12 @@ export type BadgeProps = HTMLAttributes<HTMLSpanElement> & {
 };
 
 const variantClasses: Record<BadgeVariant, string> = {
-  default: 'bg-slate-850/10 text-steel-600',
-  brand: 'bg-brand-100 text-brand-700',
-  success: 'bg-success/15 text-success',
-  warning: 'bg-warning/15 text-warning',
-  purity: 'bg-purity/15 text-purity border border-purity/30',
-  outline: 'bg-transparent border border-silver-400/50 text-steel-600',
+  default: 'bg-slate-100 text-slate-700 border border-slate-200/60',
+  brand: 'bg-brand-50 text-brand-700 border border-brand-200/60',
+  success: 'bg-emerald-50 text-emerald-700 border border-emerald-200/80',
+  warning: 'bg-amber-50 text-amber-800 border border-amber-200/80',
+  purity: 'bg-emerald-50 text-emerald-800 border border-emerald-300 font-mono font-medium',
+  outline: 'bg-transparent border border-slate-200 text-slate-700',
 };
 
 export function Badge({ variant = 'default', className, children, ...props }: BadgeProps) {

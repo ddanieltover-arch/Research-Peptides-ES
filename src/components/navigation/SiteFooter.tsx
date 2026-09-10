@@ -28,46 +28,46 @@ export default function SiteFooter({
   const { t: tCommon } = useTranslation('common');
 
   return (
-    <footer className="bg-navy-950 text-white relative overflow-hidden border-t-4 border-accent-500">
+    <footer className="bg-navy-950 text-white relative overflow-hidden border-t border-slate-800">
       <ScientificBackdrop variant="dark" glow />
 
       <Container className="relative z-10 section-md">
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-8">
           <div className="md:col-span-4">
-            <LocaleLink to="/" className="inline-flex items-center gap-3 mb-6 rounded-lg">
+            <LocaleLink to="/" className="inline-flex items-center gap-3 mb-5 rounded-lg">
               <img
                 src={footerLogo}
                 alt={BRAND_NAME}
-                className="h-11 sm:h-12 w-auto max-w-[240px]"
+                className="h-10 sm:h-11 w-auto max-w-[220px]"
                 width={180}
                 height={48}
               />
             </LocaleLink>
-            <p className="text-sm text-silver-400 leading-relaxed max-w-sm">
+            <p className="text-xs sm:text-sm text-slate-400 leading-relaxed max-w-sm">
               {tCommon('footer.tagline')}
             </p>
-            <p className="flex items-start gap-2 text-xs text-brand-300/90 mt-4 max-w-sm leading-relaxed">
-              <MapPin className="h-4 w-4 shrink-0 mt-0.5" aria-hidden />
+            <p className="flex items-start gap-2 text-xs text-slate-400 mt-3 max-w-sm leading-relaxed font-mono">
+              <MapPin className="h-3.5 w-3.5 shrink-0 mt-0.5 text-brand-400" aria-hidden />
               {HQ_LOCATION}
             </p>
-            <div className="flex flex-wrap gap-3 mt-6">
-              <span className="inline-flex items-center gap-1.5 rounded-full bg-white/5 border border-white/10 px-3 py-1 text-[10px] font-semibold uppercase tracking-wider text-brand-200">
-                <Truck className="h-3 w-3" aria-hidden />
+            <div className="flex flex-wrap gap-2 mt-5">
+              <span className="inline-flex items-center gap-1.5 rounded-md bg-white/5 border border-white/10 px-2.5 py-1 text-[10px] font-mono font-medium uppercase tracking-wider text-slate-300">
+                <Truck className="h-3 w-3 text-brand-400" aria-hidden />
                 {tCommon('footer.euShipping')}
               </span>
-              <span className="inline-flex items-center gap-1.5 rounded-full bg-white/5 border border-white/10 px-3 py-1 text-[10px] font-semibold uppercase tracking-wider text-brand-200">
-                <ShieldCheck className="h-3 w-3" aria-hidden />
+              <span className="inline-flex items-center gap-1.5 rounded-md bg-white/5 border border-white/10 px-2.5 py-1 text-[10px] font-mono font-medium uppercase tracking-wider text-slate-300">
+                <ShieldCheck className="h-3 w-3 text-emerald-400" aria-hidden />
                 {tCommon('footer.gdpr')}
               </span>
             </div>
-            <address className="not-italic text-silver-400 text-sm leading-relaxed mt-8 max-w-sm">
+            <address className="not-italic text-slate-400 text-xs sm:text-sm leading-relaxed mt-6 max-w-sm font-mono">
               <a href={`mailto:${SUPPORT_EMAIL}`} className="hover:text-white transition-colors">
                 {SUPPORT_EMAIL}
               </a>
             </address>
-            <div className="mt-6">
-              <h4 className="text-caption text-brand-400 mb-3">Fuentes externas</h4>
-              <ul className="space-y-2 text-sm text-silver-400">
+            <div className="mt-5">
+              <h4 className="text-caption text-slate-400 mb-2.5">Fuentes externas</h4>
+              <ul className="space-y-1.5 text-xs text-slate-400">
                 {FOOTER_EXTERNAL_LINKS.map((item) => (
                   <li key={item.href}>
                     <a
@@ -85,8 +85,8 @@ export default function SiteFooter({
           </div>
 
           <div className="md:col-span-2">
-            <h4 className="text-caption text-accent-500 mb-5 font-sans">{tNav('footer.inventory')}</h4>
-            <ul className="space-y-3 text-sm text-silver-400">
+            <h4 className="text-caption text-slate-300 mb-4">{tNav('footer.inventory')}</h4>
+            <ul className="space-y-2.5 text-xs sm:text-sm text-slate-400">
               {footerInventory.map((item) => (
                 <li key={item.href}>
                   <LocaleLink to={item.href} className="hover:text-white transition-colors">
@@ -98,8 +98,8 @@ export default function SiteFooter({
           </div>
 
           <div className="md:col-span-2">
-            <h4 className="text-caption text-brand-400 mb-5">{tNav('footer.support')}</h4>
-            <ul className="space-y-3 text-sm text-silver-400">
+            <h4 className="text-caption text-slate-300 mb-4">{tNav('footer.support')}</h4>
+            <ul className="space-y-2.5 text-xs sm:text-sm text-slate-400">
               {footerSupport.map((item) => (
                 <li key={item.href}>
                   <LocaleLink to={item.href} className="hover:text-white transition-colors">
@@ -111,8 +111,8 @@ export default function SiteFooter({
           </div>
 
           <div className="md:col-span-4">
-            <h4 className="text-caption text-brand-400 mb-5">Investigación y catálogo</h4>
-            <ul className="columns-1 sm:columns-2 gap-x-6 space-y-2 text-sm text-silver-400 mb-8">
+            <h4 className="text-caption text-slate-300 mb-4">Investigación y catálogo</h4>
+            <ul className="columns-1 sm:columns-2 gap-x-6 space-y-1.5 text-xs text-slate-400 mb-6">
               {FOOTER_SEO_LINKS.map((item) => (
                 <li key={`${item.to}:${item.anchor}`} className="break-inside-avoid">
                   <LocaleLink to={item.to} className="hover:text-white transition-colors">
@@ -121,12 +121,12 @@ export default function SiteFooter({
                 </li>
               ))}
             </ul>
-            <h4 className="text-caption text-brand-400 mb-5">{tCommon('footer.newsletterTitle')}</h4>
-            <p className="text-silver-400 text-sm mb-5 leading-relaxed">
+            <h4 className="text-caption text-slate-300 mb-3">{tCommon('footer.newsletterTitle')}</h4>
+            <p className="text-slate-400 text-xs sm:text-sm mb-4 leading-relaxed font-sans">
               {tCommon('footer.newsletterDescription')}
             </p>
             <form
-              className="flex flex-wrap gap-2 rounded-2xl p-1.5 bg-white/5 backdrop-blur-md border border-white/10 focus-within:ring-2 focus-within:ring-brand-400/40 transition-all"
+              className="flex flex-wrap gap-2 rounded-xl p-1 bg-white/5 backdrop-blur-md border border-white/10 focus-within:ring-2 focus-within:ring-brand-500/40 transition-all"
               onSubmit={onNewsletterSubmit}
             >
               <label htmlFor="footer-newsletter-email" className="sr-only">
@@ -141,23 +141,23 @@ export default function SiteFooter({
                 onChange={(e) => onNewsletterEmailChange(e.target.value)}
                 disabled={newsletterSubmitting}
                 required
-                className="min-w-0 flex-1 px-4 py-3 bg-transparent text-white placeholder:text-silver-400/80 focus:outline-none text-sm"
+                className="min-w-0 flex-1 px-3 py-2 bg-transparent text-white placeholder:text-slate-500 focus:outline-none text-xs sm:text-sm font-sans"
               />
               <button
                 type="submit"
                 disabled={newsletterSubmitting}
-                className="bg-gradient-cta px-6 py-3 rounded-xl hover:brightness-110 disabled:opacity-70 font-semibold text-sm whitespace-nowrap transition-all"
+                className="bg-brand-600 px-4 py-2 rounded-lg hover:bg-brand-700 disabled:opacity-70 font-semibold text-xs sm:text-sm whitespace-nowrap transition-all text-white cursor-pointer"
               >
                 {newsletterSubmitting ? tCommon('footer.newsletterSubscribing') : tCommon('footer.newsletterSubscribe')}
               </button>
             </form>
             {newsletterMessage ? (
-              <p className="mt-2 text-xs text-success font-medium" role="status" aria-live="polite">
+              <p className="mt-2 text-xs text-emerald-400 font-medium" role="status" aria-live="polite">
                 {newsletterMessage}
               </p>
             ) : null}
             {newsletterError ? (
-              <p className="mt-2 text-xs text-error font-medium" role="alert">
+              <p className="mt-2 text-xs text-rose-400 font-medium" role="alert">
                 {newsletterError}
               </p>
             ) : null}
@@ -166,19 +166,19 @@ export default function SiteFooter({
       </Container>
 
       <Container className="relative z-10 pb-10">
-        <div className="pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-4 text-[10px] font-semibold uppercase tracking-[0.15em] text-silver-400">
+        <div className="pt-6 border-t border-slate-850 flex flex-col md:flex-row justify-between items-center gap-4 text-[10px] font-mono font-medium uppercase tracking-[0.12em] text-slate-400">
           <span>
             © {new Date().getFullYear()} {BRAND_NAME}. {tCommon('footer.copyright')}
           </span>
           <div className="flex flex-wrap justify-center gap-4 md:gap-6">
             {footerLegal.map((item) => (
-              <LocaleLink key={item.href} to={item.href} className="hover:text-brand-300 transition-colors">
+              <LocaleLink key={item.href} to={item.href} className="hover:text-white transition-colors">
                 {tNav(item.labelKey)}
               </LocaleLink>
             ))}
           </div>
         </div>
-        <p className="text-center md:text-left text-[10px] text-silver-400/80 mt-4 max-w-3xl leading-relaxed normal-case tracking-normal font-normal">
+        <p className="text-center md:text-left text-[10px] text-slate-500 mt-3 max-w-3xl leading-relaxed normal-case tracking-normal font-normal">
           {tCommon('footer.disclaimer')}
         </p>
       </Container>

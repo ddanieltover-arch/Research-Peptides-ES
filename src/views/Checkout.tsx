@@ -74,7 +74,7 @@ export default function Checkout() {
   // Sync email if user logs in/out
   React.useEffect(() => {
     if (user?.email) {
-      setShipping(s => ({ ...s, email: user.email }));
+      setShipping(s => ({ ...s, email: user.email ?? '' }));
     }
   }, [user]);
 
@@ -305,7 +305,7 @@ export default function Checkout() {
   };
 
   return (
-    <PageShell tone="parchment">
+    <PageShell tone="mist">
       <CatalogPageHeader
         eyebrow={t('header.eyebrow')}
         title={t('header.title')}
@@ -318,45 +318,45 @@ export default function Checkout() {
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
         {/* Main Content */}
         <div className="lg:col-span-2 space-y-8">
-          <div className="bento-card border-t-4 border-t-accent-500 min-h-[500px]">
+          <div className="bento-card border-t-4 border-t-brand-500 min-h-[500px]">
             {step === 1 && (
               <div className="space-y-8">
                 <h2 className="text-2xl font-display font-semibold text-navy-950">{t('steps.shipping')}</h2>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div className="md:col-span-2">
-                    <label htmlFor="checkout-email" className="text-eyebrow-accent text-accent-600 before:bg-accent-500 block mb-2">{t('form.email')}</label>
-                    <input id="checkout-email" required type="email" value={shipping.email} onChange={e => setShipping({...shipping, email: e.target.value})} className="w-full p-4 bg-white border border-brand-100 rounded-xl focus:ring-2 focus:ring-brand-400/50 focus:border-brand-300 outline-none transition-all font-medium text-navy-950" placeholder={t('form.emailPlaceholder')} disabled={!!user} autoComplete="email" />
+                    <label htmlFor="checkout-email" className="text-eyebrow-accent text-brand-600 before:bg-brand-500 block mb-2">{t('form.email')}</label>
+                    <input id="checkout-email" required type="email" value={shipping.email} onChange={e => setShipping({...shipping, email: e.target.value})} className="w-full p-4 bg-white border border-slate-200 rounded-xl focus:ring-2 focus:ring-brand-400/50 focus:border-brand-300 outline-none transition-all font-medium text-navy-950" placeholder={t('form.emailPlaceholder')} disabled={!!user} autoComplete="email" />
                     {user && <p className="text-[10px] font-bold text-silver-400 mt-1 uppercase tracking-widest">{t('form.emailLocked')}</p>}
                     {shippingErrors.email && <p className="mt-1 text-xs font-semibold text-red-600">{shippingErrors.email}</p>}
                   </div>
                   <div className="md:col-span-2">
-                    <label htmlFor="checkout-full-name" className="text-eyebrow-accent text-accent-600 before:bg-accent-500 block mb-2">{t('form.fullName')}</label>
-                    <input id="checkout-full-name" required type="text" value={shipping.fullName} onChange={e => setShipping({...shipping, fullName: e.target.value})} className="w-full p-4 bg-white border border-brand-100 rounded-xl focus:ring-2 focus:ring-brand-400/50 focus:border-brand-300 outline-none transition-all font-medium text-navy-950" placeholder={t('form.fullNamePlaceholder')} autoComplete="name" />
+                    <label htmlFor="checkout-full-name" className="text-eyebrow-accent text-brand-600 before:bg-brand-500 block mb-2">{t('form.fullName')}</label>
+                    <input id="checkout-full-name" required type="text" value={shipping.fullName} onChange={e => setShipping({...shipping, fullName: e.target.value})} className="w-full p-4 bg-white border border-slate-200 rounded-xl focus:ring-2 focus:ring-brand-400/50 focus:border-brand-300 outline-none transition-all font-medium text-navy-950" placeholder={t('form.fullNamePlaceholder')} autoComplete="name" />
                     {shippingErrors.fullName && <p className="mt-1 text-xs font-semibold text-red-600">{shippingErrors.fullName}</p>}
                   </div>
                   <div className="md:col-span-2">
-                    <label htmlFor="checkout-phone" className="text-eyebrow-accent text-accent-600 before:bg-accent-500 block mb-2">{t('form.phone')}</label>
-                    <input id="checkout-phone" required type="tel" value={shipping.phone} onChange={e => setShipping({...shipping, phone: e.target.value})} className="w-full p-4 bg-white border border-brand-100 rounded-xl focus:ring-2 focus:ring-brand-400/50 focus:border-brand-300 outline-none transition-all font-medium text-navy-950" placeholder={t('form.phonePlaceholder')} autoComplete="tel" />
+                    <label htmlFor="checkout-phone" className="text-eyebrow-accent text-brand-600 before:bg-brand-500 block mb-2">{t('form.phone')}</label>
+                    <input id="checkout-phone" required type="tel" value={shipping.phone} onChange={e => setShipping({...shipping, phone: e.target.value})} className="w-full p-4 bg-white border border-slate-200 rounded-xl focus:ring-2 focus:ring-brand-400/50 focus:border-brand-300 outline-none transition-all font-medium text-navy-950" placeholder={t('form.phonePlaceholder')} autoComplete="tel" />
                     {shippingErrors.phone && <p className="mt-1 text-xs font-semibold text-red-600">{shippingErrors.phone}</p>}
                   </div>
                   <div className="md:col-span-2">
-                    <label htmlFor="checkout-address-line" className="text-eyebrow-accent text-accent-600 before:bg-accent-500 block mb-2">{t('form.address')}</label>
-                    <input id="checkout-address-line" required type="text" value={shipping.address} onChange={e => setShipping({...shipping, address: e.target.value})} className="w-full p-4 bg-white border border-brand-100 rounded-xl focus:ring-2 focus:ring-brand-400/50 focus:border-brand-300 outline-none transition-all font-medium text-navy-950" placeholder={t('form.addressPlaceholder')} autoComplete="street-address" />
+                    <label htmlFor="checkout-address-line" className="text-eyebrow-accent text-brand-600 before:bg-brand-500 block mb-2">{t('form.address')}</label>
+                    <input id="checkout-address-line" required type="text" value={shipping.address} onChange={e => setShipping({...shipping, address: e.target.value})} className="w-full p-4 bg-white border border-slate-200 rounded-xl focus:ring-2 focus:ring-brand-400/50 focus:border-brand-300 outline-none transition-all font-medium text-navy-950" placeholder={t('form.addressPlaceholder')} autoComplete="street-address" />
                     {shippingErrors.address && <p className="mt-1 text-xs font-semibold text-red-600">{shippingErrors.address}</p>}
                   </div>
                   <div>
-                    <label htmlFor="checkout-city" className="text-eyebrow-accent text-accent-600 before:bg-accent-500 block mb-2">{t('form.city')}</label>
-                    <input id="checkout-city" required type="text" value={shipping.city} onChange={e => setShipping({...shipping, city: e.target.value})} className="w-full p-4 bg-white border border-brand-100 rounded-xl focus:ring-2 focus:ring-brand-400/50 focus:border-brand-300 outline-none transition-all font-medium text-navy-950" placeholder={t('form.cityPlaceholder')} autoComplete="address-level2" />
+                    <label htmlFor="checkout-city" className="text-eyebrow-accent text-brand-600 before:bg-brand-500 block mb-2">{t('form.city')}</label>
+                    <input id="checkout-city" required type="text" value={shipping.city} onChange={e => setShipping({...shipping, city: e.target.value})} className="w-full p-4 bg-white border border-slate-200 rounded-xl focus:ring-2 focus:ring-brand-400/50 focus:border-brand-300 outline-none transition-all font-medium text-navy-950" placeholder={t('form.cityPlaceholder')} autoComplete="address-level2" />
                     {shippingErrors.city && <p className="mt-1 text-xs font-semibold text-red-600">{shippingErrors.city}</p>}
                   </div>
                   <div>
-                    <label htmlFor="checkout-postal" className="text-eyebrow-accent text-accent-600 before:bg-accent-500 block mb-2">{t('form.postalCode')}</label>
-                    <input id="checkout-postal" required type="text" value={shipping.postalCode} onChange={e => setShipping({...shipping, postalCode: e.target.value})} className="w-full p-4 bg-white border border-brand-100 rounded-xl focus:ring-2 focus:ring-brand-400/50 focus:border-brand-300 outline-none transition-all font-medium text-navy-950" placeholder={t('form.postalCodePlaceholder')} autoComplete="postal-code" />
+                    <label htmlFor="checkout-postal" className="text-eyebrow-accent text-brand-600 before:bg-brand-500 block mb-2">{t('form.postalCode')}</label>
+                    <input id="checkout-postal" required type="text" value={shipping.postalCode} onChange={e => setShipping({...shipping, postalCode: e.target.value})} className="w-full p-4 bg-white border border-slate-200 rounded-xl focus:ring-2 focus:ring-brand-400/50 focus:border-brand-300 outline-none transition-all font-medium text-navy-950" placeholder={t('form.postalCodePlaceholder')} autoComplete="postal-code" />
                     {shippingErrors.postalCode && <p className="mt-1 text-xs font-semibold text-red-600">{shippingErrors.postalCode}</p>}
                   </div>
                   <div className="md:col-span-2">
-                    <label htmlFor="checkout-country" className="text-eyebrow-accent text-accent-600 before:bg-accent-500 block mb-2">{t('form.country')}</label>
-                    <select id="checkout-country" value={shipping.country} onChange={e => setShipping({...shipping, country: e.target.value})} className="w-full p-4 bg-white border border-brand-100 rounded-xl focus:ring-2 focus:ring-brand-400/50 focus:border-brand-300 outline-none transition-all font-medium text-navy-950 appearance-none cursor-pointer" autoComplete="country-name">
+                    <label htmlFor="checkout-country" className="text-eyebrow-accent text-brand-600 before:bg-brand-500 block mb-2">{t('form.country')}</label>
+                    <select id="checkout-country" value={shipping.country} onChange={e => setShipping({...shipping, country: e.target.value})} className="w-full p-4 bg-white border border-slate-200 rounded-xl focus:ring-2 focus:ring-brand-400/50 focus:border-brand-300 outline-none transition-all font-medium text-navy-950 appearance-none cursor-pointer" autoComplete="country-name">
                       <optgroup label={t('form.countryGroups.eu')}>
                         <option value="Spain">Spain</option>
                         {EUROPEAN_COUNTRIES.filter(c => c !== 'Spain' && c !== 'United Kingdom').sort().map(c => <option key={c} value={c}>{c}</option>)}
@@ -372,15 +372,15 @@ export default function Checkout() {
                   </div>
                 </div>
 
-                <fieldset className="space-y-4 pt-4 border-0 border-t border-brand-100 min-w-0">
-                  <legend id="checkout-shipping-method-legend" className="text-eyebrow-accent text-accent-600 before:bg-accent-500 px-0 mb-4">
+                <fieldset className="space-y-4 pt-4 border-0 border-t border-slate-200 min-w-0">
+                  <legend id="checkout-shipping-method-legend" className="text-eyebrow-accent text-brand-600 before:bg-brand-500 px-0 mb-4">
                     {t('form.selectShipping')}
                   </legend>
                   <div className="grid grid-cols-1 gap-3" role="radiogroup" aria-labelledby="checkout-shipping-method-legend">
                     {availableMethods.map((m) => (
-                      <button key={m.id} type="button" role="radio" aria-checked={selectedShippingId === m.id} onClick={() => setSelectedShippingId(m.id)} className={`flex items-center justify-between p-4 rounded-xl border-2 transition-all ${selectedShippingId === m.id ? 'border-brand-500 bg-brand-50/60 shadow-card' : 'border-brand-100 bg-white hover:border-accent-500/30'}`}>
+                      <button key={m.id} type="button" role="radio" aria-checked={selectedShippingId === m.id} onClick={() => setSelectedShippingId(m.id)} className={`flex items-center justify-between p-4 rounded-xl border-2 transition-all ${selectedShippingId === m.id ? 'border-brand-500 bg-brand-50/60 shadow-card' : 'border-slate-200 bg-white hover:border-brand-500/30'}`}>
                         <div className="flex items-center gap-4 text-left">
-                          <div className={`w-5 h-5 rounded-full border-2 flex items-center justify-center ${selectedShippingId === m.id ? 'border-brand-500 bg-brand-500' : 'border-gray-300'}`}>
+                          <div className={`w-5 h-5 rounded-full border-2 flex items-center justify-center ${selectedShippingId === m.id ? 'border-brand-500 bg-brand-500' : 'border-slate-300'}`}>
                             {selectedShippingId === m.id && <div className="w-2 h-2 rounded-full bg-white" />}
                           </div>
                           <div>
@@ -409,7 +409,7 @@ export default function Checkout() {
                 </div>
 
                 <div className="grid grid-cols-1 gap-4" role="radiogroup" aria-labelledby="checkout-payment-heading">
-                  <div className="relative flex items-center gap-5 p-6 rounded-[1.25rem] border-2 border-brand-500 bg-brand-50/40 shadow-card">
+                  <div className="relative flex items-center gap-5 p-5 rounded-xl border-2 border-brand-500 bg-brand-50/40 shadow-card">
                     <div className="w-14 h-14 rounded-xl flex items-center justify-center bg-brand-600 text-white">
                       <Landmark className="w-8 h-8" aria-hidden />
                     </div>
@@ -437,7 +437,7 @@ export default function Checkout() {
                   <button type="button" onClick={() => setStep(2)} className="text-xs font-black text-brand-600 uppercase tracking-widest hover:underline">{t('confirm.changeMethod')}</button>
                 </div>
 
-                <div className="bg-mist-50 p-8 rounded-[2rem] text-center space-y-4">
+                <div className="bg-mist-50 p-8 rounded-xl text-center space-y-4 border border-slate-200/80">
                   <Landmark className="w-16 h-16 text-navy-950 mx-auto opacity-20" />
                   <div>
                     <h3 className="text-xl font-black text-navy-950">{t('confirm.bank.title')}</h3>
@@ -463,7 +463,7 @@ export default function Checkout() {
                   <CheckCircle className="w-12 h-12" />
                 </div>
                 <h2 className="text-3xl font-display font-semibold text-navy-950">{t('success.title')}</h2>
-                <div className="mt-4 p-4 bg-mist-50 rounded-2xl border border-brand-100 max-w-xs mx-auto">
+                <div className="mt-4 p-4 bg-mist-50 rounded-xl border border-slate-200 max-w-xs mx-auto">
                    <p className="text-[10px] font-black uppercase text-silver-400 mb-1">{t('success.orderIdLabel')}</p>
                    <p className="text-lg font-black text-brand-600 select-all tracking-wider">{placedOrderId || t('success.processing')}</p>
                 </div>
@@ -471,7 +471,7 @@ export default function Checkout() {
                   {t('success.bankFollowUp')}
                 </p>
                 {checkoutMessage && (
-                  <p className="text-amber-700 bg-amber-50 border border-amber-200 rounded-2xl px-4 py-3 mt-4 text-sm font-semibold max-w-lg mx-auto">
+                  <p className="text-amber-700 bg-amber-50 border border-amber-200 rounded-xl px-4 py-3 mt-4 text-sm font-semibold max-w-lg mx-auto">
                     {checkoutMessage}
                   </p>
                 )}
@@ -486,7 +486,7 @@ export default function Checkout() {
                       )}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center justify-center gap-2 rounded-full border border-brand-200 bg-mist-50 px-5 py-3 text-sm font-semibold text-brand-600 transition-colors hover:bg-mist-100 hover:text-brand-700"
+                      className="inline-flex items-center justify-center gap-2 rounded-xl border border-brand-200 bg-mist-50 px-5 py-3 text-sm font-semibold text-brand-600 transition-colors hover:bg-mist-100 hover:text-brand-700"
                     >
                       <WhatsAppIcon className="h-4 w-4 shrink-0" />
                       {t('success.whatsapp')}
@@ -499,7 +499,7 @@ export default function Checkout() {
                       {t('success.viewOrders')}
                     </Button>
                   ) : (
-                    <div className="p-4 bg-brand-50 rounded-2xl text-navy-900 text-[10px] font-bold max-w-xs mx-auto border border-brand-100">
+                    <div className="p-4 bg-brand-50 rounded-xl text-navy-900 text-[10px] font-bold max-w-xs mx-auto border border-brand-100">
                       {t('success.guestNote')}
                     </div>
                   )}
@@ -514,8 +514,8 @@ export default function Checkout() {
 
         {/* Sidebar / Summary */}
         <div className="lg:col-span-1 space-y-6">
-          <div className="bento-card border-t-4 border-t-accent-500 sticky top-24">
-            <h2 className="text-eyebrow-accent text-accent-600 before:bg-accent-500 mb-6">{t('summary.title')}</h2>
+          <div className="bento-card border-t-4 border-t-brand-500 sticky top-24">
+            <h2 className="text-eyebrow-accent text-brand-600 before:bg-brand-500 mb-6">{t('summary.title')}</h2>
             <div className="space-y-3">
               <div className="flex justify-between text-sm font-bold text-steel-600">
                 <span>{t('summary.subtotal')}</span>
@@ -531,21 +531,21 @@ export default function Checkout() {
                 <span>{t('summary.shipping')}</span>
                 <span>{formatCurrency(lockedTotals?.shippingCost ?? shippingCost)}</span>
               </div>
-              <div className="pt-4 border-t border-brand-100 flex justify-between items-end">
+              <div className="pt-4 border-t border-slate-200 flex justify-between items-end">
                 <span className="text-sm font-black text-navy-950 uppercase">{t('summary.total')}</span>
                 <span className="text-2xl font-black text-brand-600 leading-none">{formatCurrency(lockedTotals?.finalTotal ?? finalTotalValue)}</span>
               </div>
             </div>
 
             {step < 3 && (
-              <div className="mt-8 pt-8 border-t border-brand-100">
+              <div className="mt-8 pt-8 border-t border-slate-200">
                 {!showPromo ? (
                    <button type="button" onClick={() => setShowPromo(true)} className="text-[10px] font-black text-brand-600 uppercase tracking-widest hover:underline">{t('summary.applyPromo')}</button>
                 ) : (
                   <div className="space-y-2">
                     <div className="flex gap-2">
                       <label htmlFor="checkout-promo-code" className="sr-only">{t('summary.promoLabel')}</label>
-                      <input id="checkout-promo-code" type="text" placeholder={PRIMARY_PROMO_CODE} value={promoCode} onChange={e => setPromoCode(e.target.value)} className="flex-1 p-3 bg-mist-50 border-none rounded-xl outline-none text-xs font-black" />
+                      <input id="checkout-promo-code" type="text" placeholder={PRIMARY_PROMO_CODE} value={promoCode} onChange={e => setPromoCode(e.target.value)} className="flex-1 p-3 bg-mist-50 border border-slate-200 rounded-xl outline-none text-xs font-black" />
                       <button type="button" onClick={applyPromo} className="bg-brand-600 text-white px-4 py-2 rounded-xl text-[10px] font-bold uppercase tracking-widest hover:bg-brand-700 transition-colors">{t('summary.apply')}</button>
                     </div>
                     {promoError && <p className="text-[10px] text-red-500 font-bold">{promoError}</p>}
@@ -556,11 +556,11 @@ export default function Checkout() {
             )}
 
             <div className="mt-8 grid grid-cols-2 gap-3">
-               <div className="bg-mist-50 p-3 rounded-2xl flex flex-col items-center justify-center text-center">
+               <div className="bg-mist-50 p-3 rounded-xl flex flex-col items-center justify-center text-center border border-slate-200/80">
                   <Shield className="w-5 h-5 text-brand-600 mb-1" />
                   <p className="text-[8px] font-black uppercase text-navy-950">{t('summary.sslSecure')}</p>
                </div>
-               <div className="bg-mist-50 p-3 rounded-2xl flex flex-col items-center justify-center text-center">
+               <div className="bg-mist-50 p-3 rounded-xl flex flex-col items-center justify-center text-center border border-slate-200/80">
                   <CheckCircle className="w-5 h-5 text-emerald-500 mb-1" />
                   <p className="text-[8px] font-black uppercase text-navy-950">{t('summary.protected')}</p>
                </div>

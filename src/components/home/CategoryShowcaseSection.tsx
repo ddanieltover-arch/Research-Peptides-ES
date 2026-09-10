@@ -34,22 +34,30 @@ export function CategoryShowcaseSection() {
   }, []);
 
   return (
-    <Section size="lg" tone="dark" className="relative overflow-hidden">
-      <div className="absolute inset-0 bg-scientific-grid opacity-20 pointer-events-none" aria-hidden />
-      <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-accent-500/50 to-transparent" aria-hidden />
+    <Section size="lg" tone="dark" className="relative overflow-hidden bg-navy-950 border-y border-slate-800">
+      <div className="absolute inset-0 bg-scientific-grid-dark opacity-30 pointer-events-none" aria-hidden />
       <Container className="relative z-10">
-        <SectionHeading
-          eyebrow={t('categories.eyebrow')}
-          title={t('categories.title')}
-          description={t('featured.subtitle')}
-          light
-          className="mb-12"
-        />
+        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-10 pb-5 border-b border-slate-800">
+          <SectionHeading
+            eyebrow={t('categories.eyebrow')}
+            title={t('categories.title')}
+            description={t('featured.subtitle')}
+            light
+            className="mb-0"
+          />
+          <LocaleLink
+            to="/categories"
+            className="shrink-0 inline-flex items-center gap-2 text-xs font-mono font-semibold uppercase tracking-wider text-slate-300 hover:text-white transition-colors"
+          >
+            {t('categories.viewAll')}
+            <ArrowRight className="h-3.5 w-3.5 text-brand-400" />
+          </LocaleLink>
+        </div>
 
         {loading ? (
           <div className="flex gap-4 overflow-hidden">
             {[...Array(4)].map((_, i) => (
-              <div key={i} className="h-44 w-56 shrink-0 rounded-2xl bg-white/5 animate-pulse" />
+              <div key={i} className="h-40 w-56 shrink-0 rounded-xl bg-white/5 animate-pulse" />
             ))}
           </div>
         ) : (
@@ -59,42 +67,35 @@ export function CategoryShowcaseSection() {
               return (
                 <motion.div
                   key={cat.id}
-                  initial={{ opacity: 0, x: 24 }}
+                  initial={{ opacity: 0, x: 20 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
-                  transition={{ delay: i * 0.05 }}
+                  transition={{ delay: i * 0.04 }}
                   className="snap-start shrink-0 w-56 md:w-64"
                 >
                   <LocaleLink
                     to={`/search?category=${cat.slug}`}
-                    className="group block h-full rounded-2xl border border-white/10 bg-white/5 p-6 hover:border-accent-500/40 hover:bg-white/10 transition-all duration-300"
+                    className="group block h-full rounded-xl border border-white/10 bg-white/[0.03] p-5 hover:border-slate-500 hover:bg-white/[0.07] transition-all duration-200"
                   >
-                    <div className="w-10 h-10 rounded-xl bg-brand-500/30 flex items-center justify-center mb-4 group-hover:bg-accent-500/30 transition-colors">
-                      <Icon className="h-5 w-5 text-accent-400" aria-hidden />
+                    <div className="w-9 h-9 rounded-lg bg-white/10 flex items-center justify-center mb-3 text-brand-400 group-hover:text-white group-hover:bg-brand-600 transition-colors">
+                      <Icon className="h-4 w-4" aria-hidden />
                     </div>
-                    <h3 className="font-display text-lg font-semibold text-white mb-2 group-hover:text-accent-400 transition-colors">
+                    <h3 className="font-sans text-base font-bold text-white mb-1.5 group-hover:text-brand-300 transition-colors">
                       {cat.name}
                     </h3>
                     {cat.description ? (
-                      <p className="text-xs text-silver-400 line-clamp-2 font-sans">{cat.description}</p>
+                      <p className="text-xs text-slate-400 line-clamp-2 font-sans">{cat.description}</p>
                     ) : null}
-                    <ArrowRight className="h-4 w-4 text-accent-500 mt-4 opacity-0 group-hover:opacity-100 transition-opacity" />
+                    <div className="mt-3 flex items-center gap-1 text-[11px] font-mono text-slate-500 group-hover:text-slate-300 transition-colors">
+                      <span>Ver compuestos</span>
+                      <ArrowRight className="h-3 w-3" />
+                    </div>
                   </LocaleLink>
                 </motion.div>
               );
             })}
           </div>
         )}
-
-        <div className="mt-10 text-center">
-          <LocaleLink
-            to="/categories"
-            className="inline-flex items-center gap-2 text-sm font-bold uppercase tracking-widest text-accent-400 hover:text-accent-300 transition-colors font-sans"
-          >
-            {t('categories.viewAll')}
-            <ArrowRight className="h-4 w-4" />
-          </LocaleLink>
-        </div>
       </Container>
     </Section>
   );

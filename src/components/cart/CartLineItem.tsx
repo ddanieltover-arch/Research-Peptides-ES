@@ -32,7 +32,7 @@ export function CartLineItem({ item, compact = false, onUpdateQuantity, onRemove
   return (
     <div
       className={cn(
-        'flex gap-4 bento-card border-t-2 border-t-accent-500/30 transition-shadow hover:shadow-elevated',
+        'flex gap-4 bento-card border-t-2 border-t-brand-500/25 transition-shadow hover:shadow-elevated',
         compact ? 'p-3' : 'p-4 md:p-5',
       )}
     >
@@ -72,7 +72,7 @@ export function CartLineItem({ item, compact = false, onUpdateQuantity, onRemove
         <p className="text-brand-600 font-semibold text-sm mt-1 tabular-nums">{formatCurrency(unitPrice)}</p>
 
         <div className="flex items-center justify-between mt-auto pt-3 gap-2">
-          <div className="flex items-center border border-brand-100 rounded-full overflow-hidden bg-white">
+          <div className="flex items-center border border-slate-200 rounded-xl overflow-hidden bg-white">
             <button
               type="button"
               onClick={() => onUpdateQuantity(Math.max(1, item.quantity - 1))}

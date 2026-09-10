@@ -30,18 +30,18 @@ export function RelatedSeoLinks({
   const body = (
     <section
       aria-labelledby="related-seo-links-heading"
-      className={`border-t border-brand-100/80 bg-mist-50/40 py-10 ${className}`}
+      className={`border-t border-slate-200/80 bg-slate-50/60 py-10 ${className}`}
     >
       <h2
         id="related-seo-links-heading"
-        className="font-display text-lg font-semibold text-navy-950 mb-4"
+        className="font-sans text-base font-bold text-navy-950 mb-4"
       >
         {title}
       </h2>
       <div className="grid gap-8 sm:grid-cols-2">
         {internal.length > 0 ? (
           <div>
-            <h3 className="text-xs font-semibold uppercase tracking-wider text-brand-700 mb-3">
+            <h3 className="text-[11px] font-mono font-semibold uppercase tracking-wider text-slate-500 mb-3">
               En el sitio
             </h3>
             <ul className="space-y-2 text-sm text-steel-600">
@@ -49,7 +49,7 @@ export function RelatedSeoLinks({
                 <li key={`${link.to}:${link.anchor}`}>
                   <LocaleLink
                     to={link.to}
-                    className="text-brand-700 underline decoration-brand-200 underline-offset-2 hover:text-navy-950 hover:decoration-brand-500"
+                    className="text-slate-700 underline decoration-slate-300 underline-offset-2 hover:text-brand-600 hover:decoration-brand-500"
                   >
                     {link.anchor}
                   </LocaleLink>

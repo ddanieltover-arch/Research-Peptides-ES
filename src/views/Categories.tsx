@@ -39,7 +39,7 @@ export default function Categories() {
   }, []);
 
   return (
-    <PageShell tone="parchment">
+    <PageShell tone="mist">
       <CatalogPageHeader
         eyebrow={t('header.eyebrow')}
         title={

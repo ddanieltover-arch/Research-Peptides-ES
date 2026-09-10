@@ -103,7 +103,7 @@ export default function ProductDetails() {
       title: `${title} | ${BRAND_NAME}`,
       description: plainDescription || t('seoDescription', { title, lng: locale }),
       canonicalPath,
-      ogType: 'product' as const,
+      ogType: 'website' as const,
       ogImage: product.images?.[0] || undefined,
       jsonLd,
     };
@@ -115,7 +115,10 @@ export default function ProductDetails() {
     let cancelled = false;
 
     const fetchProductAndReviews = async () => {
-      if (!slug && !id) return;
+      if (!slug && !id) {
+        setLoading(false);
+        return;
+      }
       setLoading(true);
       try {
         const query = supabase.from('products').select('*');
@@ -244,27 +247,27 @@ export default function ProductDetails() {
   const images: string[] = product.images?.length ? product.images : [];
 
   return (
-    <PageShell tone="parchment">
-      <Container className="py-10 md:py-12">
-        <nav className="mb-8 text-sm" aria-label="Breadcrumb">
-          <ol className="flex flex-wrap items-center gap-2 text-steel-600">
+    <PageShell tone="white">
+      <Container className="py-8 md:py-10">
+        <nav className="mb-6 text-xs sm:text-sm" aria-label="Breadcrumb">
+          <ol className="flex flex-wrap items-center gap-2 text-slate-500 font-mono">
             <li>
               <LocaleLink to="/" className="hover:text-brand-600 transition-colors">
                 {t('breadcrumb.home')}
               </LocaleLink>
             </li>
-            <li className="text-silver-400" aria-hidden>/</li>
+            <li className="text-slate-300" aria-hidden>/</li>
             <li>
               <LocaleLink to="/shop" className="hover:text-brand-600 transition-colors">
                 {t('breadcrumb.shop')}
               </LocaleLink>
             </li>
-            <li className="text-silver-400" aria-hidden>/</li>
-            <li className="text-navy-950 font-medium truncate max-w-[12rem] sm:max-w-none">{displayTitle}</li>
+            <li className="text-slate-300" aria-hidden>/</li>
+            <li className="text-navy-950 font-semibold truncate max-w-[12rem] sm:max-w-none">{displayTitle}</li>
           </ol>
         </nav>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-14 mb-16">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 mb-14">
           <ProductGallery
             productId={String(product.id)}
             title={displayTitle}
@@ -298,15 +301,15 @@ export default function ProductDetails() {
 
         {seoCopy ? <ProductSeoContent copy={seoCopy} locale={locale} /> : null}
 
-        <Reveal as="section" className="bento-card border-t-4 border-t-accent-500 mb-16">
-          <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-10">
+        <Reveal as="section" className="rounded-xl border border-slate-200/90 bg-white p-6 md:p-8 shadow-card mb-14">
+          <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-8 pb-6 border-b border-slate-100">
             <div>
-              <p className="text-eyebrow-accent text-accent-600 before:bg-accent-500 mb-3">{t('reviews.eyebrow')}</p>
-              <h2 className="text-h2 font-display font-semibold text-navy-950">{t('reviews.title')}</h2>
+              <p className="text-eyebrow-accent text-brand-600 before:bg-brand-500 mb-2">{t('reviews.eyebrow')}</p>
+              <h2 className="text-h2 font-sans font-bold text-navy-950">{t('reviews.title')}</h2>
             </div>
-            <div className="flex items-center gap-3 p-4 rounded-xl bg-mist-50 border border-brand-100/80">
-              <span className="text-sm font-bold text-navy-950">{t('reviews.ratingLabel')}</span>
-              <div className="flex text-warning">
+            <div className="flex items-center gap-3 p-3.5 rounded-lg bg-slate-50 border border-slate-200/80">
+              <span className="text-xs font-semibold text-navy-950">{t('reviews.ratingLabel')}</span>
+              <div className="flex text-amber-400">
                 {[...Array(5)].map((_, i) => (
                   <Star key={i} className="h-4 w-4 fill-current" />
                 ))}
@@ -318,7 +321,7 @@ export default function ProductDetails() {
             {sampleReviews.map((review) => (
               <blockquote
                 key={review.name}
-                className="bento-card border-t-2 border-t-accent-500/25 text-steel-600 text-sm leading-relaxed"
+                className="bento-card border-t-2 border-t-brand-500/25 text-steel-600 text-sm leading-relaxed"
               >
                 <p className="italic mb-4">&ldquo;{review.content}&rdquo;</p>
                 <footer className="flex justify-between items-center not-italic pt-4 border-t border-brand-100">

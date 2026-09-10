@@ -46,6 +46,11 @@ function LayoutShell({ children }: { children: ReactNode }) {
 
   const handleLogin = () => navigate('/login');
 
+  const isCommerceFlow =
+    /\/(cart|checkout)(\/|$)/.test(pathname) ||
+    pathname.endsWith('/cart') ||
+    pathname.endsWith('/checkout');
+
   const handleLogout = async () => {
     try {
       await supabase.auth.signOut();
@@ -159,15 +164,17 @@ function LayoutShell({ children }: { children: ReactNode }) {
       />
 
       <div className="fixed bottom-24 md:bottom-8 right-4 md:right-8 z-50 flex items-center gap-3">
-        <a
-          href={whatsappHref}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="bg-brand-500 hover:bg-brand-600 text-white rounded-full p-3 shadow-glow focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-2"
-          aria-label="Contact us on WhatsApp"
-        >
-          <WhatsAppIcon className="h-5 w-5" />
-        </a>
+        {!isCommerceFlow && (
+          <a
+            href={whatsappHref}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="bg-brand-500 hover:bg-brand-600 text-white rounded-xl p-3 shadow-elevated focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-2"
+            aria-label="Contact us on WhatsApp"
+          >
+            <WhatsAppIcon className="h-5 w-5" />
+          </a>
+        )}
         <AnimatePresence>
           {showBackToTop && (
             <motion.button
@@ -177,7 +184,7 @@ function LayoutShell({ children }: { children: ReactNode }) {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: 10 }}
               transition={{ duration: 0.2 }}
-              className="bg-brand-500 hover:bg-brand-600 text-white rounded-full p-3 shadow-glow focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-2"
+              className="bg-brand-500 hover:bg-brand-600 text-white rounded-xl p-3 shadow-elevated focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-2"
               aria-label="Back to top"
             >
               <ArrowUp className="h-5 w-5" aria-hidden />
@@ -195,11 +202,11 @@ function LayoutShell({ children }: { children: ReactNode }) {
       <ToastContainer />
       <CookieConsent />
       <LiveChatVisitorSync />
-      <LiveChatChat />
+      {!isCommerceFlow && <LiveChatChat />}
     </div>
   );
 }
 
-export default function Layout({ children }: { children: ReactNode }) {
+export default function Layout({ children }: { children?: ReactNode }) {
   return <LayoutShell>{children}</LayoutShell>;
 }

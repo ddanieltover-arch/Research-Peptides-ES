@@ -38,7 +38,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return buildPageMetadata(loc, `/product/${slug}`, {
     title,
     description,
-    ogType: 'product',
+    ogType: 'website',
   });
 }
 

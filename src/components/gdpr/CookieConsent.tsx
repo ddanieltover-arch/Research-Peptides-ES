@@ -43,7 +43,7 @@ export function CookieConsent() {
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: 24 }}
-          className="fixed bottom-20 md:bottom-6 left-4 right-4 md:left-auto md:right-6 md:max-w-md z-[90] bg-white border border-brand-100 rounded-2xl shadow-elevated p-5 md:p-6"
+          className="fixed bottom-20 md:bottom-6 left-4 right-4 md:left-auto md:right-6 md:max-w-md z-[90] bg-white border border-slate-200 rounded-xl shadow-elevated p-5 md:p-6"
         >
           <div className="flex gap-3 mb-4">
             <div className="shrink-0 w-10 h-10 rounded-xl bg-brand-50 flex items-center justify-center">

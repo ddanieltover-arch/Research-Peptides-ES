@@ -57,28 +57,28 @@ export default function MegaMenu({ activeMenu, onClose }: MegaMenuProps) {
             id="mega-menu-panel"
             role="region"
             aria-label={activeMenu === 'shop' ? 'Shop categories' : 'Research resources'}
-            className="hidden md:block absolute left-0 right-0 top-full z-50 border-t border-brand-100/80 bg-white shadow-elevated"
+            className="hidden md:block absolute left-0 right-0 top-full z-50 border-t border-slate-200 bg-white shadow-elevated"
             initial={{ opacity: 0, y: -8 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -8 }}
-            transition={{ duration: 0.2, ease: 'easeOut' }}
+            transition={{ duration: 0.15, ease: 'easeOut' }}
           >
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
               {activeMenu === 'shop' ? (
                 <div className="grid grid-cols-12 gap-8">
-                  <div className="col-span-4 rounded-2xl bg-gradient-hero p-6 text-white relative overflow-hidden">
-                    <div className="absolute inset-0 bg-scientific-grid opacity-30" aria-hidden />
+                  <div className="col-span-4 rounded-xl bg-navy-950 p-6 text-white relative overflow-hidden shadow-card">
+                    <div className="absolute inset-0 bg-scientific-grid-dark opacity-30" aria-hidden />
                     <div className="relative z-10">
-                      <FlaskConical className="h-8 w-8 text-brand-300 mb-4" aria-hidden />
-                      <p className="text-caption text-brand-200 mb-2">{t('mega.shopEyebrow')}</p>
-                      <h3 className="font-display text-xl font-bold mb-2">{t('mega.shopTitle')}</h3>
-                      <p className="text-sm text-brand-100/90 leading-relaxed mb-4">
+                      <FlaskConical className="h-7 w-7 text-brand-400 mb-4" aria-hidden />
+                      <p className="text-caption text-slate-400 mb-2">{t('mega.shopEyebrow')}</p>
+                      <h3 className="font-display text-xl font-bold mb-2 text-white">{t('mega.shopTitle')}</h3>
+                      <p className="text-sm text-slate-300 leading-relaxed mb-5">
                         {t('mega.shopDescription')}
                       </p>
                       <LocaleLink
                         to="/shop"
                         onClick={onClose}
-                        className="inline-flex items-center gap-2 text-sm font-semibold text-white hover:text-brand-200 transition-colors"
+                        className="inline-flex items-center gap-2 text-sm font-semibold text-white hover:text-brand-300 transition-colors"
                       >
                         {t('mega.browseCatalog')}
                         <ArrowRight className="h-4 w-4" aria-hidden />
@@ -115,7 +115,7 @@ export default function MegaMenu({ activeMenu, onClose }: MegaMenuProps) {
                               onClick={onClose}
                               className={cn(
                                 'block rounded-xl border border-transparent px-4 py-3',
-                                'hover:border-brand-200 hover:bg-brand-50/50 transition-all group',
+                                'hover:border-slate-200 hover:bg-slate-50 transition-all group',
                               )}
                             >
                               <span className="font-semibold text-sm text-navy-950 group-hover:text-brand-600">
@@ -135,8 +135,8 @@ export default function MegaMenu({ activeMenu, onClose }: MegaMenuProps) {
                 </div>
               ) : (
                 <div className="grid grid-cols-12 gap-8">
-                  <div className="col-span-4 rounded-2xl bg-mist-50 border border-brand-100 p-6">
-                    <Microscope className="h-8 w-8 text-brand-500 mb-4" aria-hidden />
+                  <div className="col-span-4 rounded-xl bg-slate-50 border border-slate-200/80 p-6">
+                    <Microscope className="h-7 w-7 text-brand-600 mb-4" aria-hidden />
                     <p className="text-caption text-brand-600 mb-2">{t('primary.research')}</p>
                     <h3 className="font-display text-xl font-bold text-navy-950 mb-2">
                       {t('research.researchHub')}
@@ -151,7 +151,7 @@ export default function MegaMenu({ activeMenu, onClose }: MegaMenuProps) {
                         <LocaleLink
                           to={item.href}
                           onClick={onClose}
-                          className="flex flex-col h-full rounded-xl border border-silver-400/25 p-4 hover:border-brand-300 hover:shadow-card transition-all group"
+                          className="flex flex-col h-full rounded-xl border border-slate-200/80 p-4 hover:border-brand-500/30 hover:bg-slate-50/50 hover:shadow-card transition-all group"
                         >
                           <span className="font-semibold text-navy-950 group-hover:text-brand-600">
                             {t(item.labelKey)}

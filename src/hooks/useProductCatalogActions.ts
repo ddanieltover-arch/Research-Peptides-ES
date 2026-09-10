@@ -23,7 +23,7 @@ export function useProductCatalogActions() {
       title: product.title,
       price: product.price,
       unitPrice: product.price,
-      slug: product.slug,
+      slug: product.slug ?? undefined,
       quantity: 1,
       imageUrl: product.images?.[0] || '',
     });

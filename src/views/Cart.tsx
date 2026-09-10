@@ -54,7 +54,7 @@ export default function Cart() {
 
   if (items.length === 0) {
     return (
-      <PageShell tone="parchment">
+      <PageShell tone="mist">
         <CatalogPageHeader
           eyebrow={t('cart.title')}
           title={t('cart.title')}
@@ -75,13 +75,13 @@ export default function Cart() {
   }
 
   return (
-    <PageShell tone="parchment">
+    <PageShell tone="mist">
       <CatalogPageHeader
         eyebrow={t('cartPage.eyebrow')}
         title={
           <>
             {t('cartPage.title', { count: items.length })}{' '}
-            <span className="text-accent-600 italic">{t('cartPage.titleHighlight')}</span>
+            <span className="text-brand-600">{t('cartPage.titleHighlight')}</span>
           </>
         }
         description={t('cartPage.description')}

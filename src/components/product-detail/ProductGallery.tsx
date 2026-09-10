@@ -22,7 +22,7 @@ export function ProductGallery({
 }: ProductGalleryProps) {
   return (
     <div className="space-y-4">
-      <div className="relative rounded-[1.75rem] aspect-square overflow-hidden bg-white border border-brand-100/80 shadow-card border-t-4 border-t-accent-500/70">
+      <div className="relative rounded-xl aspect-square overflow-hidden bg-white border border-slate-200/90 shadow-card">
         {images.length > 0 ? (
           <motion.img
             key={activeIndex}
@@ -30,7 +30,7 @@ export function ProductGallery({
             alt={title}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ duration: 0.25 }}
+            transition={{ duration: 0.2 }}
             className="w-full h-full object-cover"
             loading={activeIndex === 0 ? 'eager' : 'lazy'}
             decoding="async"
@@ -39,24 +39,24 @@ export function ProductGallery({
         ) : (
           <ProductImagePlaceholder productId={productId} title={title} className="h-full w-full min-h-[16rem]" />
         )}
-        <div className="absolute top-4 left-4 flex flex-col gap-2">
-          <ProductBadge type="elite" size="md" />
-          {lowStock ? <ProductBadge type="low_stock" size="md" /> : null}
+        <div className="absolute top-3 left-3 flex flex-col gap-1.5">
+          <ProductBadge type="elite" size="sm" />
+          {lowStock ? <ProductBadge type="low_stock" size="sm" /> : null}
         </div>
       </div>
 
       {images.length > 1 && (
-        <div className="flex gap-3 overflow-x-auto pb-1">
+        <div className="flex gap-2.5 overflow-x-auto pb-1">
           {images.map((img, i) => (
             <button
               key={i}
               type="button"
               onClick={() => onSelectImage(i)}
               className={cn(
-                'w-20 h-20 shrink-0 rounded-xl overflow-hidden border-2 transition-all',
+                'w-18 h-18 shrink-0 rounded-lg overflow-hidden border transition-all cursor-pointer',
                 activeIndex === i
-                  ? 'border-accent-500 shadow-elevated ring-2 ring-accent-500/20'
-                  : 'border-brand-100 opacity-75 hover:opacity-100 hover:border-accent-500/40',
+                  ? 'border-brand-600 shadow-sm ring-2 ring-brand-500/20'
+                  : 'border-slate-200 opacity-80 hover:opacity-100 hover:border-slate-300',
               )}
               aria-label={`Show image ${i + 1} of ${images.length}`}
               aria-current={activeIndex === i}

@@ -11,20 +11,20 @@ export function WhyEuSection() {
   const pillars = t('whyEu.pillars', { returnObjects: true }) as Array<{ title: string; desc: string }>;
 
   return (
-    <Section size="lg" tone="parchment" className="relative overflow-hidden">
-      <div className="absolute top-0 right-0 w-1/3 h-full bg-gradient-glow opacity-50 pointer-events-none" aria-hidden />
+    <Section size="lg" tone="light" className="relative overflow-hidden bg-white border-b border-slate-200/80">
+      <div className="absolute inset-0 bg-scientific-grid opacity-40 pointer-events-none" aria-hidden />
       <Container className="relative z-10">
         <SectionHeading
           eyebrow={t('whyEu.eyebrow')}
           title={
             <>
               {t('whyEu.title')}{' '}
-              <span className="text-gradient-gold italic">{t('whyEu.titleHighlight')}</span>
+              <span className="text-brand-600">{t('whyEu.titleHighlight')}</span>
             </>
           }
           description={t('whyEu.description')}
           align="center"
-          className="mb-14"
+          className="mb-12"
         />
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-5">
@@ -34,19 +34,19 @@ export function WhyEuSection() {
             return (
               <motion.article
                 key={item.title}
-                initial={{ opacity: 0, y: 16 }}
+                initial={{ opacity: 0, y: 14 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: '-40px' }}
-                transition={{ delay: index * 0.07 }}
-                className="bento-card flex flex-col h-full min-h-[220px]"
+                viewport={{ once: true, margin: '-20px' }}
+                transition={{ delay: index * 0.05 }}
+                className="rounded-xl border border-slate-200/90 bg-slate-50/60 p-5 md:p-6 shadow-card hover:bg-white hover:border-slate-300 hover:shadow-elevated transition-all duration-200 flex flex-col h-full"
               >
-                <div className="w-12 h-12 rounded-2xl bg-brand-500 flex items-center justify-center mb-5 shadow-elevated shrink-0">
-                  <Icon className="h-6 w-6 text-accent-400" aria-hidden />
+                <div className="w-10 h-10 rounded-lg bg-white border border-slate-200/90 flex items-center justify-center mb-4 shadow-sm shrink-0 text-brand-600">
+                  <Icon className="h-5 w-5" aria-hidden />
                 </div>
-                <h3 className="font-display text-lg md:text-xl font-semibold text-navy-950 mb-3">
+                <h3 className="font-sans text-base font-bold text-navy-950 mb-2">
                   {item.title}
                 </h3>
-                <p className="text-sm text-steel-600 leading-relaxed font-sans">{item.desc}</p>
+                <p className="text-xs text-steel-600 leading-relaxed font-sans">{item.desc}</p>
               </motion.article>
             );
           })}

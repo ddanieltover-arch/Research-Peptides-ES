@@ -186,13 +186,13 @@ export default function Shop() {
   };
 
   return (
-    <PageShell tone="parchment">
+    <PageShell tone="mist">
       <CatalogPageHeader
         eyebrow={t('header.eyebrow')}
         title={
           <>
             {t('header.title')}{' '}
-            <span className="text-accent-600 italic">{t('header.titleHighlight')}</span>
+            <span className="text-brand-600">{t('header.titleHighlight')}</span>
           </>
         }
         description={t('header.description')}
@@ -200,7 +200,7 @@ export default function Shop() {
       <CatalogTrustBar />
 
       <Container className="py-10 md:py-12">
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8 p-4 rounded-[1.25rem] bg-white/60 border border-brand-100/60">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8 p-4 rounded-xl bg-white border border-slate-200/80 shadow-card">
           <p className="text-sm text-steel-600">
             {t('results', { from: resultsFrom, to: resultsTo, total: filteredProducts.length })}
           </p>

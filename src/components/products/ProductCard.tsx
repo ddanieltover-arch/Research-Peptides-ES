@@ -1,6 +1,6 @@
 import { LocaleLink } from '../../i18n/LocaleLink';
 import { useTranslation } from 'react-i18next';
-import { Heart, ShoppingCart } from 'lucide-react';
+import { CheckCircle2, Heart, ShoppingCart } from 'lucide-react';
 import { motion } from 'motion/react';
 import { Card } from '../../design-system';
 import { ProductBadge } from './ProductBadge';
@@ -61,8 +61,13 @@ export function ProductCard({
   const productHref = productPath(product);
   const displayTitle = localizedProductTitle(product, locale);
   const displayDescription = localizedProductDescription(product, locale);
-  const primaryBadge = getPrimaryProductBadge(product);
-  const lowStock = Number(product.inventory) < 10;
+  const primaryBadge = getPrimaryProductBadge({
+    price: product.price,
+    compare_at_price: product.compare_at_price ?? undefined,
+    rating: product.rating ?? undefined,
+    review_count: product.review_count ?? undefined,
+  });
+  const lowStock = product.inventory != null && Number(product.inventory) < 10;
   const categoryLabel = product.categories?.[0];
 
   const card = (
@@ -70,18 +75,24 @@ export function ProductCard({
       variant="product"
       interactive
       className={cn(
-        'relative h-full flex flex-col p-0 overflow-hidden group border-t-2 border-t-transparent hover:border-t-accent-500/50',
+        'relative h-full flex flex-col p-0 overflow-hidden group bg-white border border-slate-200/90 hover:border-slate-300 rounded-xl shadow-card hover:shadow-elevated transition-all duration-200',
         className,
       )}
     >
-      <div className="absolute top-3 left-3 z-20 flex flex-col gap-1">
+      {/* Top Badges */}
+      <div className="absolute top-2.5 left-2.5 z-20 flex flex-col gap-1 items-start pointer-events-none">
+        <span className="inline-flex items-center gap-1 px-1.5 py-0.5 rounded bg-emerald-50 text-emerald-800 border border-emerald-200 font-mono text-[9px] font-semibold uppercase tracking-tight">
+          <CheckCircle2 className="h-2.5 w-2.5" />
+          ≥99.4%
+        </span>
         {primaryBadge ? <ProductBadge type={primaryBadge} size="sm" /> : null}
         {lowStock ? <ProductBadge type="low_stock" size="sm" /> : null}
       </div>
 
+      {/* Product Image Area */}
       <LocaleLink
         to={productHref}
-        className="relative block aspect-[4/5] overflow-hidden bg-mist-50 m-3 mb-0 rounded-2xl"
+        className="relative block aspect-[4/5] overflow-hidden bg-slate-50 m-2 mb-0 rounded-lg"
       >
         {product.images?.[0] ? (
           <img
@@ -91,24 +102,26 @@ export function ProductCard({
             decoding="async"
             width={400}
             height={500}
-            className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+            className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
           />
         ) : (
           <ProductImagePlaceholder
             productId={String(product.id)}
             title={displayTitle}
-            className="h-full min-h-full rounded-2xl"
+            className="h-full min-h-full rounded-lg"
           />
         )}
-        <div className="absolute inset-0 bg-gradient-to-t from-brand-900/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+        <div className="absolute inset-0 bg-gradient-to-t from-navy-950/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+
+        {/* Wishlist button */}
         <button
           type="button"
           onClick={onToggleWishlist}
           className={cn(
-            'absolute top-3 right-3 z-20 p-2.5 rounded-full backdrop-blur-sm transition-all',
+            'absolute top-2 right-2 z-20 p-2 rounded-md backdrop-blur-sm transition-all cursor-pointer',
             inWishlist
-              ? 'bg-red-50/95 text-error shadow-inner'
-              : 'bg-white/90 text-silver-400 hover:text-error',
+              ? 'bg-rose-50 text-rose-600 border border-rose-200'
+              : 'bg-white/90 text-slate-400 hover:text-rose-600 border border-slate-200/60 shadow-sm',
           )}
           aria-label={
             inWishlist
@@ -116,57 +129,63 @@ export function ProductCard({
               : t('card.addToWishlist', { title: displayTitle })
           }
         >
-          <Heart className="h-4 w-4" fill={inWishlist ? 'currentColor' : 'none'} />
+          <Heart className="h-3.5 w-3.5" fill={inWishlist ? 'currentColor' : 'none'} />
         </button>
       </LocaleLink>
 
-      <div className="flex flex-col flex-1 p-4 md:p-5">
+      {/* Card Content */}
+      <div className="flex flex-col flex-1 p-3.5 sm:p-4">
         {categoryLabel ? (
-          <span className="text-[10px] font-semibold uppercase tracking-wider text-accent-600 mb-1.5">
+          <span className="text-[10px] font-mono uppercase tracking-wider text-slate-400 mb-1">
             {categoryLabel}
           </span>
         ) : null}
+
         <LocaleLink
           to={productHref}
-          className="font-display font-bold text-navy-950 group-hover:text-brand-600 transition-colors line-clamp-2 text-sm md:text-base"
+          className="font-sans font-semibold text-navy-950 group-hover:text-brand-600 transition-colors line-clamp-2 text-sm leading-snug mb-1"
         >
           {displayTitle}
         </LocaleLink>
+
         <ProductCardRating
-          rating={product.rating}
-          reviewCount={product.review_count}
-          className="mt-2 mb-2"
-          starClassName="h-3.5 w-3.5"
+          rating={product.rating ?? undefined}
+          reviewCount={product.review_count ?? undefined}
+          className="my-1"
+          starClassName="h-3 w-3"
         />
+
         {showDescription && displayDescription ? (
-          <p className="text-xs text-steel-600 line-clamp-2 leading-relaxed mb-3 flex-1">
+          <p className="text-xs text-slate-500 line-clamp-2 leading-relaxed mb-2 flex-1">
             {displayDescription}
           </p>
         ) : (
-          <div className="flex-1 min-h-[0.5rem]" />
+          <div className="flex-1 min-h-[0.25rem]" />
         )}
-        <div className="pt-3 mt-auto space-y-3">
-          <a
-            href={whatsappUrl(t('card.whatsappMessage', { title: displayTitle }))}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex w-full items-center justify-center gap-2 rounded-full border border-brand-200 bg-mist-50 px-3 py-2 text-sm font-semibold text-brand-600 transition-colors hover:bg-mist-100 hover:text-brand-700"
-            aria-label={t('card.whatsapp')}
-          >
-            <WhatsAppIcon className="h-4 w-4 shrink-0" />
-            {t('card.whatsapp')}
-          </a>
-          <div className="flex items-end justify-between gap-2 border-t border-brand-100/60 pt-3">
-          <ProductCardPriceBlock product={product} />
-          <button
-            type="button"
-            onClick={onAddToCart}
-            className="shrink-0 p-3 rounded-full bg-brand-600 text-white hover:bg-brand-700 shadow-card transition-all active:scale-95"
-            aria-label={t('card.addToCart', { title: displayTitle })}
-          >
-            <ShoppingCart className="h-4 w-4 md:h-5 md:w-5" />
-          </button>
-        </div>
+
+        <div className="pt-2.5 mt-auto space-y-2.5 border-t border-slate-100">
+          <div className="flex items-center justify-between gap-1 text-[11px] text-slate-500 font-mono">
+            <span className="flex items-center gap-1 text-emerald-600">
+              <span className="h-1.5 w-1.5 rounded-full bg-emerald-500" />
+              Stock Madrid
+            </span>
+            <LocaleLink to="/coas" className="hover:text-brand-600 hover:underline">
+              Ver COA
+            </LocaleLink>
+          </div>
+
+          <div className="flex items-end justify-between gap-2">
+            <ProductCardPriceBlock product={product} />
+            <button
+              type="button"
+              onClick={onAddToCart}
+              className="inline-flex items-center justify-center gap-1.5 h-8 sm:h-9 px-3 rounded-lg bg-brand-600 hover:bg-brand-700 text-white text-xs font-semibold shadow-sm transition-all active:scale-95 cursor-pointer"
+              aria-label={t('card.addToCart', { title: displayTitle })}
+            >
+              <ShoppingCart className="h-3.5 w-3.5" />
+              <span>Añadir</span>
+            </button>
+          </div>
         </div>
       </div>
     </Card>

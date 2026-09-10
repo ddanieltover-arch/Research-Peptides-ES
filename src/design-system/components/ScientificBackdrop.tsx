@@ -12,14 +12,14 @@ export type ScientificBackdropProps = HTMLAttributes<HTMLDivElement> & {
 export function ScientificBackdrop({
   variant = 'dark',
   grid = true,
-  molecule = true,
+  molecule = false,
   glow = false,
   className,
   ...props
 }: ScientificBackdropProps) {
-  const gridOpacity = variant === 'dark' ? 'opacity-20' : 'opacity-30';
-  const moleculeOpacity = variant === 'dark' ? 'opacity-[0.14]' : 'opacity-[0.08]';
-  const glowOpacity = variant === 'dark' ? 'opacity-60' : 'opacity-40';
+  const gridClass = variant === 'dark' ? 'bg-scientific-grid-dark opacity-35' : 'bg-scientific-grid opacity-60';
+  const moleculeOpacity = variant === 'dark' ? 'opacity-[0.08]' : 'opacity-[0.05]';
+  const glowOpacity = variant === 'dark' ? 'opacity-35' : 'opacity-20';
 
   return (
     <div
@@ -27,7 +27,7 @@ export function ScientificBackdrop({
       aria-hidden
       {...props}
     >
-      {grid ? <div className={cn('absolute inset-0 bg-scientific-grid', gridOpacity)} /> : null}
+      {grid ? <div className={cn('absolute inset-0', gridClass)} /> : null}
       {molecule ? (
         <div className={cn('absolute inset-0 bg-scientific-molecule', moleculeOpacity)} />
       ) : null}

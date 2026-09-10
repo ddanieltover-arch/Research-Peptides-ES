@@ -42,7 +42,7 @@ export function CheckoutProgress({ step }: CheckoutProgressProps) {
             <div className="flex-1 h-0.5 mx-3 bg-brand-100 self-center -mt-6 min-w-[2rem] overflow-hidden rounded-full">
               <div
                 className={cn(
-                  'h-full bg-gradient-to-r from-brand-600 to-accent-500 transition-all duration-500',
+                  'h-full bg-brand-600 transition-all duration-500',
                   step > s.id ? 'w-full' : 'w-0',
                 )}
               />

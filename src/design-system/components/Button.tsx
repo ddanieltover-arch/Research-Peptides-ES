@@ -12,26 +12,26 @@ export type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
 
 const variantClasses: Record<ButtonVariant, string> = {
   primary:
-    'bg-gradient-cta text-white shadow-elevated hover:shadow-glow hover:brightness-105 border border-accent-500/25',
+    'bg-brand-600 hover:bg-brand-700 text-white shadow-sm hover:shadow-elevated transition-all border border-brand-700/20 active:brightness-95',
   secondary:
-    'bg-brand-600 text-white hover:bg-brand-700 shadow-card border border-brand-700/20',
+    'bg-navy-950 text-white hover:bg-slate-800 shadow-sm border border-navy-900/30',
   gold:
-    'bg-accent-500 text-navy-950 hover:bg-accent-400 shadow-card border border-accent-600/30 font-bold',
+    'bg-accent-500 text-navy-950 hover:bg-accent-400 shadow-sm border border-accent-600/30 font-semibold',
   outline:
-    'bg-transparent border-2 border-brand-500 text-brand-600 hover:bg-brand-50',
+    'bg-white border border-slate-200 text-navy-950 hover:bg-slate-50 hover:border-slate-300 shadow-sm',
   ghost:
-    'bg-transparent text-accent-400 hover:bg-white/10 hover:text-accent-300',
-  danger: 'bg-error text-white hover:brightness-110 shadow-card',
+    'bg-transparent text-steel-600 hover:bg-slate-100 hover:text-navy-950',
+  danger: 'bg-error text-white hover:brightness-110 shadow-sm',
 };
 
 const sizeClasses: Record<ButtonSize, string> = {
-  sm: 'h-9 px-4 text-sm rounded-full',
-  md: 'h-11 px-6 text-sm font-bold rounded-full tracking-wide',
-  lg: 'h-12 px-8 text-base font-bold rounded-full tracking-wide',
+  sm: 'h-8 px-3 text-xs font-medium rounded-lg',
+  md: 'h-10 px-5 text-sm font-semibold rounded-lg tracking-normal',
+  lg: 'h-11 px-6 text-sm font-semibold rounded-xl tracking-normal',
 };
 
 const baseButtonClasses =
-  'inline-flex items-center justify-center gap-2 transition-all duration-200 font-sans focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-500 focus-visible:ring-offset-2 motion-safe:active:scale-[0.98]';
+  'inline-flex items-center justify-center gap-2 transition-all duration-150 font-sans focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500/40 focus-visible:ring-offset-2 motion-safe:active:scale-[0.99] cursor-pointer';
 
 export type ButtonStyleOptions = {
   variant?: ButtonVariant;

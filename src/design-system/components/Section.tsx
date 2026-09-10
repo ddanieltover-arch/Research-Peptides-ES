@@ -13,9 +13,9 @@ const sizeClasses = {
 };
 
 const toneClasses = {
-  light: 'bg-mist-50 text-navy-950',
+  light: 'bg-white text-navy-950',
   dark: 'bg-navy-950 text-white',
-  mist: 'bg-white text-navy-950 border-y border-brand-100/50',
+  mist: 'bg-mist-50 text-navy-950 border-y border-slate-200/60',
   parchment: 'bg-gradient-parchment text-navy-950',
 };
 

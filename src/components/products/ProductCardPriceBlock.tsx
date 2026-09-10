@@ -10,13 +10,13 @@ export function ProductCardPriceBlock({ product }: { product: any }) {
   if (compareAt != null) {
     return (
       <div className="flex flex-col gap-0.5">
-        <span className="text-lg md:text-xl font-display font-bold text-navy-950 tabular-nums">{primary}</span>
-        <span className="text-xs font-semibold tabular-nums text-silver-400 line-through">
+        <span className="text-base md:text-lg font-sans font-bold text-navy-950 tabular-nums">{primary}</span>
+        <span className="text-xs font-mono font-medium tabular-nums text-slate-400 line-through">
           {formatCurrency(compareAt)}
         </span>
       </div>
     );
   }
 
-  return <span className="text-lg md:text-xl font-display font-bold text-navy-950 tabular-nums">{primary}</span>;
+  return <span className="text-base md:text-lg font-sans font-bold text-navy-950 tabular-nums">{primary}</span>;
 }

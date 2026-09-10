@@ -7,11 +7,11 @@ export type CatalogSortKey =
   | 'price-asc'
   | 'price-desc';
 
-type SortableProduct = {
-  price?: number;
-  rating?: number;
-  review_count?: number;
-  created_at?: string;
+export type SortableProduct = {
+  price?: number | null;
+  rating?: number | null;
+  review_count?: number | null;
+  created_at?: string | null;
 };
 
 /** Featured = weighted by rating × √(reviews + 1) so high-rated, well-reviewed items surface first. */

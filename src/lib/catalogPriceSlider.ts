@@ -1,14 +1,16 @@
-/** Highest GBP price for a product row (base price vs variants). */
+/** Highest EUR price for a product row (base price vs variants). */
 export function productEffectiveMaxPrice(product: {
-  price?: number;
-  variants?: Array<{ display_price?: number }>;
+  price?: number | null;
+  variants?: Array<unknown> | null;
 }): number {
   let hi = Number(product.price);
   if (Number.isNaN(hi)) hi = 0;
-  if (product.variants?.length) {
-    for (const v of product.variants) {
-      const dp = Number(v.display_price);
-      if (!Number.isNaN(dp)) hi = Math.max(hi, dp);
+  if (Array.isArray(product.variants) && product.variants.length > 0) {
+    for (const raw of product.variants) {
+      if (raw && typeof raw === 'object' && 'display_price' in raw) {
+        const dp = Number((raw as { display_price?: number }).display_price);
+        if (!Number.isNaN(dp)) hi = Math.max(hi, dp);
+      }
     }
   }
   return hi;

@@ -78,28 +78,28 @@ export default function Omnisearch() {
 
           {/* Search Container */}
           <motion.div
-            initial={{ scale: 0.95, opacity: 0, y: -20 }}
+            initial={{ scale: 0.98, opacity: 0, y: -12 }}
             animate={{ scale: 1, opacity: 1, y: 0 }}
-            exit={{ scale: 0.95, opacity: 0, y: -20 }}
-            className="relative w-full max-w-2xl bg-white dark:bg-gray-900 rounded-3xl shadow-2xl overflow-hidden border border-white/20"
+            exit={{ scale: 0.98, opacity: 0, y: -12 }}
+            className="relative w-full max-w-2xl bg-white rounded-xl shadow-2xl overflow-hidden border border-slate-200"
           >
             {/* Input Wrapper */}
-            <div className="relative p-6 border-b dark:border-gray-800">
-              <Search className="absolute left-10 top-1/2 -translate-y-1/2 h-6 w-6 text-gray-400" />
+            <div className="relative p-4 sm:p-5 border-b border-slate-100">
+              <Search className="absolute left-8 top-1/2 -translate-y-1/2 h-5 w-5 text-slate-400" />
               <input
                 ref={inputRef}
                 type="text"
-                placeholder="Search compounds, peptides, or categories..."
-                className="w-full bg-gray-50 dark:bg-gray-800/50 rounded-2xl pl-14 pr-14 py-4 text-lg font-medium focus:outline-none focus:ring-2 focus:ring-brand-400 transition-all text-gray-900 dark:text-white"
+                placeholder="Buscar péptidos, compuestos, CAS..."
+                className="w-full bg-slate-50 rounded-lg pl-12 pr-12 py-3 text-sm font-normal focus:outline-none focus:ring-2 focus:ring-brand-500/40 border border-slate-200 transition-all text-navy-950"
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
               />
               <button 
                 onClick={closeSearch}
-                className="absolute right-10 top-1/2 -translate-y-1/2 p-1.5 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-400 transition-colors"
+                className="absolute right-7 top-1/2 -translate-y-1/2 p-1.5 rounded-md hover:bg-slate-100 text-slate-400 transition-colors cursor-pointer"
                 aria-label="Close search"
               >
-                <X className="h-5 w-5" />
+                <X className="h-4 w-4" />
               </button>
             </div>
 

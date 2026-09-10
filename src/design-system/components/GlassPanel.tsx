@@ -8,8 +8,8 @@ export type GlassPanelProps = HTMLAttributes<HTMLDivElement> & {
 
 const variantClasses = {
   dark: 'bg-navy-950/90 border-white/10 text-white',
-  light: 'bg-white/90 border-brand-100/80 text-navy-950 backdrop-blur-sm',
-  parchment: 'bg-white border-brand-100/80 text-navy-950 shadow-card',
+  light: 'bg-white border-slate-200/80 text-navy-950 shadow-card',
+  parchment: 'bg-white border-slate-200/80 text-navy-950 shadow-card',
 };
 
 const paddingClasses = {
@@ -29,7 +29,7 @@ export function GlassPanel({
   return (
     <div
       className={cn(
-        'rounded-[1.75rem] border',
+        'rounded-xl border',
         variantClasses[variant],
         paddingClasses[padding],
         className,

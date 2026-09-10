@@ -1,5 +1,5 @@
 import React from 'react';
-import { Award, Tag, Zap, Shield, Beaker } from 'lucide-react';
+import { Award, Tag, Zap, Shield, CheckCircle2 } from 'lucide-react';
 
 export type BadgeType = 'elite' | 'bestseller' | 'sale' | 'low_stock' | 'new' | 'verified';
 
@@ -11,50 +11,50 @@ interface ProductBadgeProps {
 
 const badgeConfigs = {
   elite: {
-    label: 'Elite Seller',
+    label: 'Grado Elite',
     icon: Award,
-    classes: 'bg-gradient-to-r from-brand-400 to-brand-900 text-white border-brand-300/30'
+    classes: 'bg-navy-950 text-white border-slate-700'
   },
   bestseller: {
-    label: 'Bestseller',
+    label: 'Top Ventas',
     icon: Zap,
-    classes: 'bg-amber-500 text-white border-amber-400/20 shadow-sm shadow-amber-100'
+    classes: 'bg-amber-50 text-amber-800 border-amber-200'
   },
   sale: {
-    label: 'Sale',
+    label: 'Oferta',
     icon: Tag,
-    classes: 'bg-rose-50 text-rose-700 border-rose-100'
+    classes: 'bg-rose-50 text-rose-700 border-rose-200'
   },
   low_stock: {
-    label: 'Low Stock',
+    label: 'Stock Limitado',
     icon: Zap,
-    classes: 'bg-red-50 text-red-600 border-red-100'
+    classes: 'bg-amber-50 text-amber-700 border-amber-200'
   },
   new: {
-    label: 'New Release',
+    label: 'Nuevo Lote',
     icon: Shield,
-    classes: 'bg-emerald-50 text-emerald-600 border-emerald-100'
+    classes: 'bg-sky-50 text-sky-700 border-sky-200'
   },
   verified: {
-    label: 'Purity Tested',
-    icon: Beaker,
-    classes: 'bg-brand-50 text-brand-700 border-brand-100'
+    label: 'HPLC ≥99.4%',
+    icon: CheckCircle2,
+    classes: 'bg-emerald-50 text-emerald-800 border-emerald-200'
   }
 };
 
 export function ProductBadge({ type, className = '', size = 'sm' }: ProductBadgeProps) {
-  const config = badgeConfigs[type];
+  const config = badgeConfigs[type] ?? badgeConfigs.verified;
   const Icon = config.icon;
   
   return (
     <div className={`
-      inline-flex items-center gap-1 px-2.5 py-1 rounded-full border shadow-sm
-      font-black uppercase tracking-widest leading-none
-      ${size === 'sm' ? 'text-[8px]' : 'text-[10px]'}
+      inline-flex items-center gap-1 px-2 py-0.5 rounded-md border shadow-none
+      font-mono font-semibold uppercase tracking-tight leading-none
+      ${size === 'sm' ? 'text-[9px]' : 'text-[10px]'}
       ${config.classes}
       ${className}
     `}>
-      <Icon className={size === 'sm' ? 'h-3 w-3' : 'h-3.5 w-3.5'} strokeWidth={3} />
+      <Icon className={size === 'sm' ? 'h-2.5 w-2.5' : 'h-3 w-3'} />
       <span>{config.label}</span>
     </div>
   );

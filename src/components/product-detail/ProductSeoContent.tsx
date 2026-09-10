@@ -18,15 +18,15 @@ export function ProductSeoContent({ copy, locale }: ProductSeoContentProps) {
     <section aria-labelledby="product-seo-heading" className="mb-16 space-y-10">
       <div
         id="answer"
-        className="rounded-xl border border-brand-100 bg-brand-50/60 px-4 py-3 text-sm text-steel-600"
+        className="rounded-xl border border-slate-200 bg-slate-50/80 px-4 py-3 text-sm text-slate-600"
       >
         <p>
-          <strong className="text-navy-950">{quickLabel} </strong>
+          <strong className="text-navy-950 font-semibold">{quickLabel} </strong>
           {copy.answerCapsule}
         </p>
       </div>
 
-      <div id="product-seo-heading" className="space-y-8">
+      <div id="product-seo-heading" className="space-y-6">
         {copy.sections.map((section, index) => {
           const Heading = index === 0 ? 'h2' : 'h3';
           return (
@@ -34,13 +34,13 @@ export function ProductSeoContent({ copy, locale }: ProductSeoContentProps) {
               <Heading
                 className={
                   index === 0
-                    ? 'font-display text-xl font-semibold text-navy-950 mb-2'
-                    : 'font-display text-lg font-semibold text-navy-950 mb-2'
+                    ? 'font-sans text-lg font-bold text-navy-950 mb-1.5'
+                    : 'font-sans text-base font-bold text-navy-950 mb-1.5'
                 }
               >
                 {section.heading}
               </Heading>
-              <p className="text-steel-600 text-sm leading-relaxed">{section.body}</p>
+              <p className="text-slate-600 text-sm leading-relaxed font-sans">{section.body}</p>
             </div>
           );
         })}
@@ -48,12 +48,12 @@ export function ProductSeoContent({ copy, locale }: ProductSeoContentProps) {
 
       {copy.faqs.length > 0 ? (
         <div>
-          <h2 className="font-display text-xl font-semibold text-navy-950 mb-4">{faqTitle}</h2>
-          <dl className="space-y-4">
+          <h2 className="font-sans text-lg font-bold text-navy-950 mb-3">{faqTitle}</h2>
+          <dl className="space-y-3">
             {copy.faqs.map((faq) => (
-              <div key={faq.question} className="rounded-xl border border-brand-100/80 bg-white px-4 py-3">
+              <div key={faq.question} className="rounded-xl border border-slate-200/80 bg-white px-4 py-3.5 shadow-sm">
                 <dt className="font-semibold text-navy-950 text-sm">{faq.question}</dt>
-                <dd className="mt-1 text-sm text-steel-600 leading-relaxed">{faq.answer}</dd>
+                <dd className="mt-1 text-sm text-slate-600 leading-relaxed font-sans">{faq.answer}</dd>
               </div>
             ))}
           </dl>

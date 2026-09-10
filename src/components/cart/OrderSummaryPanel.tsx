@@ -41,12 +41,12 @@ export function OrderSummaryPanel({
 
   return (
     <div
-      className={`bento-card border-t-4 border-t-accent-500 h-fit ${sticky ? 'lg:sticky lg:top-24' : ''}`}
+      className={`bento-card border-t-4 border-t-brand-500 h-fit ${sticky ? 'lg:sticky lg:top-24' : ''}`}
     >
       <h2 className="font-display font-semibold text-lg text-navy-950 mb-6">{t('cart.summary')}</h2>
 
       <div className="mb-6">
-        <label htmlFor="order-promo-code" className="text-eyebrow-accent text-accent-600 before:bg-accent-500 block mb-3">
+        <label htmlFor="order-promo-code" className="text-eyebrow-accent text-brand-600 before:bg-brand-500 block mb-3">
           {t('cart.promo')}
         </label>
         <div className="flex gap-2">
@@ -56,7 +56,7 @@ export function OrderSummaryPanel({
             value={promoInput}
             onChange={(e) => onPromoInputChange(e.target.value)}
             placeholder={PRIMARY_PROMO_CODE}
-            className="flex-1 min-w-0 px-4 py-2.5 rounded-xl border border-brand-100 bg-white text-sm focus:outline-none focus:ring-2 focus:ring-brand-400/50 focus:border-brand-300"
+            className="flex-1 min-w-0 px-4 py-2.5 rounded-xl border border-slate-200 bg-white text-sm focus:outline-none focus:ring-2 focus:ring-brand-400/50 focus:border-brand-300"
           />
           <Button type="button" variant="secondary" size="sm" onClick={onApplyPromo}>
             {t('cart.apply', { defaultValue: 'Apply' })}
@@ -64,7 +64,7 @@ export function OrderSummaryPanel({
         </div>
         {promoError ? <p className="text-xs text-error font-medium mt-2">{promoError}</p> : null}
         {promoCode ? (
-          <div className="flex items-center justify-between mt-3 bg-accent-500/10 px-3 py-2 rounded-xl border border-accent-500/25">
+          <div className="flex items-center justify-between mt-3 bg-brand-50 px-3 py-2 rounded-xl border border-brand-200">
             <span className="flex items-center gap-2 text-sm font-semibold text-brand-700">
               <Tag className="h-4 w-4" aria-hidden />
               {promoCode} {t('cart.applied', { defaultValue: 'applied' })}
@@ -96,9 +96,9 @@ export function OrderSummaryPanel({
         )}
         <div className="flex justify-between text-steel-600">
           <dt>{t('cart.shipping')}</dt>
-          <dd className="text-xs italic text-silver-400">{t('cart.shippingAtCheckout')}</dd>
+          <dd className="text-xs text-silver-400">{t('cart.shippingAtCheckout')}</dd>
         </div>
-        <div className="border-t border-brand-100 pt-4 flex justify-between items-center">
+        <div className="border-t border-slate-200 pt-4 flex justify-between items-center">
           <dt className="font-display font-semibold text-navy-950">{t('cart.total')}</dt>
           <dd className="text-2xl font-display font-semibold text-brand-600 tabular-nums">
             {formatCurrency(total)}
@@ -112,13 +112,13 @@ export function OrderSummaryPanel({
 
       <p className="mt-4 text-[11px] text-steel-600 leading-relaxed">{t('cart.vatNote')}</p>
 
-      <div className="mt-4 flex flex-wrap justify-center gap-4 pt-4 border-t border-brand-100 text-[10px] font-semibold uppercase tracking-wider text-silver-400">
+      <div className="mt-4 flex flex-wrap justify-center gap-4 pt-4 border-t border-slate-200 text-[10px] font-semibold uppercase tracking-wider text-silver-400">
         <span className="flex items-center gap-1">
-          <ShieldCheck className="h-3.5 w-3.5 text-accent-600" aria-hidden />
+          <ShieldCheck className="h-3.5 w-3.5 text-brand-600" aria-hidden />
           {t('cart.secureCheckout', { defaultValue: 'Secure checkout' })}
         </span>
         <span className="flex items-center gap-1">
-          <Truck className="h-3.5 w-3.5 text-accent-600" aria-hidden />
+          <Truck className="h-3.5 w-3.5 text-success" aria-hidden />
           {t('cart.euDispatch', { defaultValue: 'EU dispatch' })}
         </span>
       </div>

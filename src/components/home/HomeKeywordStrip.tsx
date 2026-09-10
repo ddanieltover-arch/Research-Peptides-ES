@@ -20,23 +20,26 @@ const TOP_GAP_LINKS = [
 /** Visible keyword anchors from espanapeptide.es gap (top commercial ES queries). */
 export function HomeKeywordStrip() {
   return (
-    <section aria-label="Búsquedas frecuentes" className="border-y border-brand-100/80 bg-white">
-      <Container className="py-5">
-        <p className="text-xs font-semibold uppercase tracking-wider text-brand-700 mb-3">
-          Búsquedas frecuentes
-        </p>
-        <ul className="flex flex-wrap gap-x-4 gap-y-2 text-sm text-steel-600">
-          {TOP_GAP_LINKS.map((link) => (
-            <li key={`${link.to}:${link.anchor}`}>
-              <LocaleLink
-                to={link.to}
-                className="underline decoration-brand-200 underline-offset-2 hover:text-navy-950 hover:decoration-brand-500"
-              >
-                {link.anchor}
-              </LocaleLink>
-            </li>
-          ))}
-        </ul>
+    <section aria-label="Búsquedas frecuentes" className="border-b border-slate-200/80 bg-slate-50/70">
+      <Container className="py-3.5">
+        <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4">
+          <span className="shrink-0 text-[11px] font-mono font-semibold uppercase tracking-wider text-slate-500">
+            Búsquedas frecuentes:
+          </span>
+          <ul className="flex flex-wrap items-center gap-x-2 gap-y-1.5 text-xs text-slate-600">
+            {TOP_GAP_LINKS.map((link) => (
+              <li key={`${link.to}:${link.anchor}`}>
+                <LocaleLink
+                  to={link.to}
+                  className="inline-flex items-center text-slate-600 hover:text-brand-600 hover:underline underline-offset-2 transition-colors font-medium"
+                >
+                  {link.anchor}
+                </LocaleLink>
+                <span className="ml-2 text-slate-300 select-none" aria-hidden>·</span>
+              </li>
+            ))}
+          </ul>
+        </div>
       </Container>
     </section>
   );
