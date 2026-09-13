@@ -6,6 +6,7 @@ import { useTranslation } from 'react-i18next';
 import { supportedLocales, type LocaleCode } from '../../i18n/locales';
 import { useLocale } from '../../i18n/LocaleProvider';
 import { pathWithLocale, persistLocaleCookie, stripLocaleFromPath } from '../../i18n/routing';
+import { navigateClient } from '../../lib/clientNavigation';
 import { cn } from '../../lib/utils';
 
 type LanguageSwitcherProps = {
@@ -45,7 +46,7 @@ export default function LanguageSwitcher({ variant = 'header' }: LanguageSwitche
     const path = stripLocaleFromPath(pathname);
     const search = searchParams?.toString();
     const href = `${pathWithLocale(code, path)}${search ? `?${search}` : ''}`;
-    router.push(href);
+    navigateClient(router, href, pathname);
     setLocale(code);
     persistLocaleCookie(code);
     setOpen(false);

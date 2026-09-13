@@ -1,14 +1,16 @@
 'use client';
 
 import { useCallback } from 'react';
-import { useRouter } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import { useLocale } from './LocaleProvider';
 import { pathWithLocale } from './routing';
+import { navigateClient } from '../lib/clientNavigation';
 
 type NavigateOptions = { replace?: boolean; scroll?: boolean };
 
 export function useLocaleNavigate() {
   const router = useRouter();
+  const pathname = usePathname() || '/';
   const { locale } = useLocale();
 
   return useCallback(
@@ -19,9 +21,8 @@ export function useLocaleNavigate() {
       }
       const path = to.startsWith('/') ? to : `/${to}`;
       const href = pathWithLocale(locale, path);
-      if (options?.replace) router.replace(href, { scroll: options.scroll });
-      else router.push(href, { scroll: options?.scroll });
+      navigateClient(router, href, pathname, { replace: options?.replace });
     },
-    [router, locale],
+    [router, locale, pathname],
   );
 }

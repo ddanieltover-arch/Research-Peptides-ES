@@ -14,6 +14,7 @@ import { useLocale } from './LocaleProvider';
 import { getLocaleFromPath, pathWithLocale, stripLocaleFromPath } from './routing';
 import type { LocaleCode } from './locales';
 import { prefetchRoute } from '../lib/routePrefetch';
+import { navigateClient } from '../lib/clientNavigation';
 
 function useAppRouterHref(to: string): string {
   const pathname = usePathname() || '/';
@@ -42,6 +43,7 @@ export function LocaleLink({
 }: LocaleLinkProps) {
   const href = useAppRouterHref(to);
   const router = useRouter();
+  const pathname = usePathname() || '/';
 
   return (
     <Link
@@ -63,10 +65,9 @@ export function LocaleLink({
       onClick={(e) => {
         onClick?.(e);
         if (e.defaultPrevented || isModifiedClick(e)) return;
-        // Explicit soft navigation — avoids stalled Link transitions when the
-        // address bar is on a pretty alias or hydration is racing overlays.
+        // Own the transition: immediate pending UI + hard fallback if soft nav stalls.
         e.preventDefault();
-        router.push(href);
+        navigateClient(router, href, pathname);
       }}
     />
   );
@@ -130,7 +131,7 @@ export function LocaleNavLink({
         onClick?.(e);
         if (e.defaultPrevented || isModifiedClick(e)) return;
         e.preventDefault();
-        router.push(href);
+        navigateClient(router, href, pathname);
       }}
     >
       {children}

@@ -24,6 +24,7 @@ import Omnisearch from './search/Omnisearch';
 import LiveChatChat from './chat/LiveChatChat';
 import LiveChatVisitorSync from './chat/LiveChatVisitorSync';
 import { CookieConsent } from './gdpr/CookieConsent';
+import { NavigationProgress } from './NavigationProgress';
 import { PageLoader } from './PageLoader';
 import { postNewsletterSubscribe } from '../lib/transactionalEmailApi';
 import { DevConfigBanner } from './DevConfigBanner';
@@ -122,6 +123,7 @@ function LayoutShell({ children }: { children: ReactNode }) {
 
   return (
     <div className="min-h-screen flex flex-col bg-mist-50 text-navy-950">
+      <NavigationProgress />
       <a
         href="#main-content"
         className="absolute left-4 -top-20 z-[100] rounded-xl bg-white px-4 py-2.5 text-sm font-semibold text-navy-950 shadow-elevated ring-2 ring-brand-500 transition-[top] focus:top-4 focus:outline-none"

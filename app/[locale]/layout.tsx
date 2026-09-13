@@ -12,8 +12,6 @@ export function generateStaticParams() {
   return supportedLocales.map((l) => ({ locale: l.code }));
 }
 
-export const dynamic = 'force-dynamic';
-
 export default async function LocaleLayout({
   children,
   params,

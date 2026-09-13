@@ -1,10 +1,9 @@
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import Link from 'next/link';
+import { LocaleLink } from '../../i18n/LocaleLink';
 import { Shield } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Button } from '../../design-system';
-import { useLocalizedPath } from '../../i18n/useLocalizedPath';
 
 const CONSENT_KEY = 'rp-eu-cookie-consent';
 
@@ -12,7 +11,6 @@ export type CookieConsentLevel = 'all' | 'essential';
 
 export function CookieConsent() {
   const { t } = useTranslation('legal');
-  const privacyPath = useLocalizedPath('/privacy');
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
@@ -67,12 +65,12 @@ export function CookieConsent() {
               {t('cookie.essentialOnly')}
             </Button>
           </div>
-          <Link
-            href={privacyPath}
+          <LocaleLink
+            to="/privacy"
             className="block text-center text-xs text-brand-600 font-semibold mt-2.5 hover:text-brand-700"
           >
             {t('cookie.privacyLink')}
-          </Link>
+          </LocaleLink>
         </motion.div>
       )}
     </AnimatePresence>

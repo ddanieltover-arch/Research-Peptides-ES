@@ -271,6 +271,35 @@
   }
 }
 
+@keyframes rp-nav-progress {
+  0% {
+    transform: scaleX(0.08);
+    opacity: 1;
+  }
+  40% {
+    transform: scaleX(0.55);
+  }
+  80% {
+    transform: scaleX(0.82);
+  }
+  100% {
+    transform: scaleX(0.92);
+    opacity: 1;
+  }
+}
+
+.rp-nav-progress {
+  transform-origin: left center;
+  animation: rp-nav-progress 0.9s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rp-nav-progress {
+    animation: none;
+    transform: scaleX(0.6);
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .skeleton-shimmer::after {
     animation: none;
