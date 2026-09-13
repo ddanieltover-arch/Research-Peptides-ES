@@ -1,7 +1,7 @@
 'use client';
 
 import dynamic from 'next/dynamic';
-import type { ComponentType } from 'react';
+import { Suspense, type ComponentType } from 'react';
 import { PageLoader } from '../components/PageLoader';
 import { RelatedSeoLinks } from '../components/seo/RelatedSeoLinks';
 import { getSeoLinksForStaticPage } from '../seo/seoLinkGraph';
@@ -61,7 +61,9 @@ export function StaticPageHost({ page, answer }: { page: StaticPageId; answer?: 
           </p>
         </section>
       ) : null}
-      <Comp key={page} />
+      <Suspense fallback={<PageLoader />}>
+        <Comp key={page} />
+      </Suspense>
       {seoLinks ? <RelatedSeoLinks key={`seo-${page}`} links={seoLinks} /> : null}
     </>
   );

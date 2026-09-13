@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import { usePathname, useRouter, useSearchParams } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import { ChevronDown, Globe } from 'lucide-react';
 import { AnimatePresence, motion } from 'motion/react';
 import { useTranslation } from 'react-i18next';
@@ -18,7 +18,6 @@ export default function LanguageSwitcher({ variant = 'header' }: LanguageSwitche
   const { t } = useTranslation('common');
   const router = useRouter();
   const pathname = usePathname() || '/';
-  const searchParams = useSearchParams();
   const [open, setOpen] = useState(false);
   const rootRef = useRef<HTMLDivElement>(null);
 
@@ -44,7 +43,10 @@ export default function LanguageSwitcher({ variant = 'header' }: LanguageSwitche
 
   const handleSelect = (code: LocaleCode) => {
     const path = stripLocaleFromPath(pathname);
-    const search = searchParams?.toString();
+    // Avoid useSearchParams() here — it requires a Suspense boundary and breaks
+    // static prerender for every page that mounts the header.
+    const search =
+      typeof window !== 'undefined' ? window.location.search.replace(/^\?/, '') : '';
     const href = `${pathWithLocale(code, path)}${search ? `?${search}` : ''}`;
     navigateClient(router, href, pathname);
     setLocale(code);

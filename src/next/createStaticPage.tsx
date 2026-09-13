@@ -1,7 +1,7 @@
 'use client';
 
 import dynamic from 'next/dynamic';
-import type { ComponentType } from 'react';
+import { Suspense, type ComponentType } from 'react';
 import { PageLoader } from '../components/PageLoader';
 
 type Loader = () => Promise<{ default: ComponentType<any> }>;
@@ -23,7 +23,9 @@ export function createStaticPage(loader: Loader, opts?: { answer?: string }) {
             </p>
           </section>
         ) : null}
-        <Comp />
+        <Suspense fallback={<PageLoader />}>
+          <Comp />
+        </Suspense>
       </>
     );
   };
