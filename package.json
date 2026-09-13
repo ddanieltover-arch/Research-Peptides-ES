@@ -34,8 +34,10 @@
     "products:localize": "tsx scripts/audit-product-descriptions.ts --apply",
     "qa:currency": "tsx scripts/qa-currency-check.ts",
     "qa:phase10": "node scripts/qa-phase10-browser.mjs",
+    "db:seed:blogs": "tsx scripts/seed-blogs.ts",
     "db:seed:seo-posts": "tsx scripts/seed-seo-blog-posts.ts",
-    "db:seed:question-posts": "tsx scripts/seed-question-blog-posts.ts"
+    "db:seed:question-posts": "tsx scripts/seed-question-blog-posts.ts",
+    "db:seed:categories-es": "tsx scripts/seed-spanish-categories.ts"
   },
   "dependencies": {
     "@google/genai": "^1.29.0",

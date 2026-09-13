@@ -1,6 +1,7 @@
 import { LocaleLink } from '../../i18n/LocaleLink';
 import { motion, AnimatePresence } from 'motion/react';
 import { ShoppingBag, X } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 import { useCartStore } from '../../store/useCartStore';
 import { formatCurrency } from '../../lib/utils';
 import { buttonClassName } from '../../design-system';
@@ -9,6 +10,7 @@ import { CartLineItem } from './CartLineItem';
 const FREE_SHIPPING_THRESHOLD = 500;
 
 export default function CartDrawer() {
+  const { t } = useTranslation('checkout');
   const { items, isOpen, closeCart, removeItem, updateQuantity, getTotal } = useCartStore();
 
   const cartLineCount = items.reduce((sum, i) => sum + i.quantity, 0);
@@ -37,12 +39,12 @@ export default function CartDrawer() {
             className="fixed inset-y-0 right-0 w-full max-w-md bg-white shadow-elevated z-50 flex flex-col border-l border-slate-200"
             role="dialog"
             aria-modal="true"
-            aria-label="Shopping cart"
+            aria-label={t('drawer.ariaLabel')}
           >
             <div className="flex items-center justify-between p-4 border-b border-slate-200">
               <div className="flex items-center gap-2">
                 <ShoppingBag className="w-5 h-5 text-brand-600" aria-hidden />
-                <h2 className="font-display font-semibold text-navy-950">Your cart</h2>
+                <h2 className="font-display font-semibold text-navy-950">{t('drawer.title')}</h2>
                 <span className="bg-brand-50 text-brand-700 text-xs font-bold px-2 py-0.5 rounded-lg tabular-nums border border-brand-100">
                   {cartLineCount}
                 </span>
@@ -51,7 +53,7 @@ export default function CartDrawer() {
                 type="button"
                 onClick={closeCart}
                 className="p-2 rounded-xl text-steel-600 hover:bg-slate-100 transition-colors"
-                aria-label="Close cart"
+                aria-label={t('drawer.close')}
               >
                 <X className="w-5 h-5" />
               </button>
@@ -59,11 +61,11 @@ export default function CartDrawer() {
 
             <div className="p-4 bg-mist-50 border-b border-slate-200">
               <div className="flex justify-between text-xs font-medium text-steel-600 mb-2">
-                <span>Free EU shipping</span>
+                <span>{t('drawer.freeShipping')}</span>
                 <span>
                   {amountToFreeShipping > 0
-                    ? `${formatCurrency(amountToFreeShipping)} away`
-                    : 'Unlocked'}
+                    ? t('drawer.amountAway', { amount: formatCurrency(amountToFreeShipping) })
+                    : t('drawer.unlocked')}
                 </span>
               </div>
               <div className="w-full bg-slate-200 rounded-full h-1.5 overflow-hidden">
@@ -75,7 +77,7 @@ export default function CartDrawer() {
                 />
               </div>
               <p className="text-[10px] text-center mt-2 text-silver-400 font-mono">
-                Complimentary EU delivery on orders over {formatCurrency(FREE_SHIPPING_THRESHOLD)}
+                {t('drawer.freeShippingNote', { amount: formatCurrency(FREE_SHIPPING_THRESHOLD) })}
               </p>
             </div>
 
@@ -83,16 +85,16 @@ export default function CartDrawer() {
               {items.length === 0 ? (
                 <div className="flex flex-col items-center justify-center py-12 text-center" role="status">
                   <ShoppingBag className="w-12 h-12 text-brand-200 mb-4" aria-hidden />
-                  <h3 className="font-display font-semibold text-navy-950 mb-2">Cart is empty</h3>
+                  <h3 className="font-display font-semibold text-navy-950 mb-2">{t('drawer.emptyTitle')}</h3>
                   <p className="text-steel-600 text-sm mb-6 max-w-[240px]">
-                    Research compounds you add will appear here.
+                    {t('drawer.emptyBody')}
                   </p>
                   <LocaleLink
                     to="/shop"
                     onClick={closeCart}
                     className={buttonClassName({})}
                   >
-                    Browse catalog
+                    {t('drawer.browseCatalog')}
                   </LocaleLink>
                 </div>
               ) : (
@@ -122,23 +124,23 @@ export default function CartDrawer() {
             {items.length > 0 && (
               <div className="p-4 border-t border-slate-200 bg-mist-50 shrink-0 space-y-3">
                 <div className="flex justify-between font-semibold text-navy-950">
-                  <span>Subtotal</span>
+                  <span>{t('cart.subtotal')}</span>
                   <span className="tabular-nums">{formatCurrency(getTotal())}</span>
                 </div>
-                <p className="text-xs text-steel-600">Shipping &amp; VAT calculated at checkout.</p>
+                <p className="text-xs text-steel-600">{t('drawer.shippingVatNote')}</p>
                 <LocaleLink
                   to="/checkout"
                   onClick={closeCart}
                   className={buttonClassName({ fullWidth: true, size: 'lg' })}
                 >
-                  Checkout securely
+                  {t('drawer.checkoutSecurely')}
                 </LocaleLink>
                 <LocaleLink
                   to="/cart"
                   onClick={closeCart}
                   className="block text-center text-sm font-semibold text-brand-600 hover:text-brand-700"
                 >
-                  View full cart
+                  {t('drawer.viewFullCart')}
                 </LocaleLink>
               </div>
             )}

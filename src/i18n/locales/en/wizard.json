@@ -1,0 +1,40 @@
+{
+  "title": "Compound Selector",
+  "subtitle": "Experimental guidance based on your research goals",
+  "stepOf": "Step {{current}} of {{total}}",
+  "goBack": "Go back",
+  "resultsTitle": "Research protocol ready",
+  "resultsBody": "Our algorithm suggests starting your study with these compounds:",
+  "filtering": "Filtering catalog…",
+  "recommended": "Recommended",
+  "restart": "Restart protocol",
+  "viewShop": "View full shop",
+  "steps": {
+    "goal": {
+      "title": "What is your primary research goal?",
+      "options": {
+        "fat-loss": "Fat loss & metabolism",
+        "muscle": "Muscle development",
+        "recovery": "Tissue repair & recovery",
+        "cognitive": "Cognitive enhancement"
+      }
+    },
+    "experience": {
+      "title": "What is your experience level?",
+      "options": {
+        "beginner": {
+          "label": "Entry level",
+          "description": "New to research peptides"
+        },
+        "intermediate": {
+          "label": "Intermediate",
+          "description": "Have conducted prior studies"
+        },
+        "advanced": {
+          "label": "Advanced explorer",
+          "description": "Experienced researcher"
+        }
+      }
+    }
+  }
+}

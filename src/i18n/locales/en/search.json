@@ -19,5 +19,16 @@
   "emptyMatchesCategory": "No products in “{{category}}” right now.",
   "emptyMatchesDefault": "Adjust your search or filters.",
   "clearFilters": "Clear search & filters",
-  "browseShop": "Browse full shop"
+  "browseShop": "Browse full shop",
+  "omni": {
+    "placeholder": "Search peptides, compounds, CAS…",
+    "close": "Close search",
+    "scanning": "Scanning research database…",
+    "exactMatches": "Exact matches",
+    "viewAll": "View all results",
+    "emptyTitle": "Empty catalog search",
+    "emptyBody": "No exact matches found for “{{query}}”",
+    "trending": "Trending compound groups",
+    "escHint": "to close search"
+  }
 }

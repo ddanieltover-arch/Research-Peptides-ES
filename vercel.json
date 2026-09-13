@@ -35,6 +35,9 @@
     },
     "api/product-feed.ts": {
       "maxDuration": 30
+    },
+    "api/internal/seed-es-content.ts": {
+      "maxDuration": 60
     }
   },
   "rewrites": [

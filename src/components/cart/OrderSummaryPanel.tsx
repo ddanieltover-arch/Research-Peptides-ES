@@ -59,7 +59,7 @@ export function OrderSummaryPanel({
             className="flex-1 min-w-0 px-4 py-2.5 rounded-xl border border-slate-200 bg-white text-sm focus:outline-none focus:ring-2 focus:ring-brand-400/50 focus:border-brand-300"
           />
           <Button type="button" variant="secondary" size="sm" onClick={onApplyPromo}>
-            {t('cart.apply', { defaultValue: 'Apply' })}
+            {t('cart.apply')}
           </Button>
         </div>
         {promoError ? <p className="text-xs text-error font-medium mt-2">{promoError}</p> : null}
@@ -67,13 +67,13 @@ export function OrderSummaryPanel({
           <div className="flex items-center justify-between mt-3 bg-brand-50 px-3 py-2 rounded-xl border border-brand-200">
             <span className="flex items-center gap-2 text-sm font-semibold text-brand-700">
               <Tag className="h-4 w-4" aria-hidden />
-              {promoCode} {t('cart.applied', { defaultValue: 'applied' })}
+              {promoCode} {t('cart.applied')}
             </span>
             <button
               type="button"
               onClick={onClearPromo}
               className="text-brand-400 hover:text-brand-600 p-1"
-              aria-label="Remove promotion code"
+              aria-label={t('cart.remove')}
             >
               <X className="h-4 w-4" />
             </button>
@@ -115,11 +115,11 @@ export function OrderSummaryPanel({
       <div className="mt-4 flex flex-wrap justify-center gap-4 pt-4 border-t border-slate-200 text-[10px] font-semibold uppercase tracking-wider text-silver-400">
         <span className="flex items-center gap-1">
           <ShieldCheck className="h-3.5 w-3.5 text-brand-600" aria-hidden />
-          {t('cart.secureCheckout', { defaultValue: 'Secure checkout' })}
+          {t('cart.secureCheckout')}
         </span>
         <span className="flex items-center gap-1">
           <Truck className="h-3.5 w-3.5 text-success" aria-hidden />
-          {t('cart.euDispatch', { defaultValue: 'EU dispatch' })}
+          {t('cart.euDispatch')}
         </span>
       </div>
     </div>

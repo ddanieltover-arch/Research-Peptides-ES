@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
-import { supabase } from '../supabase';
+import { supabase, isSupabaseConfigured } from '../supabase';
 import { LocaleLink } from '../i18n/LocaleLink';
 import { BookOpen, Sparkles, ArrowRight, Clock, User } from 'lucide-react';
 import { motion } from 'motion/react';
@@ -10,26 +10,40 @@ import { BlogPostCover } from '../components/blog/BlogPostCover';
 import { blogExcerpt } from '../lib/blogContent';
 import { usePageSeo } from '../seo/SeoProvider';
 import { Container, PageShell } from '../design-system';
+import type { BlogPostRecord } from '../components/blog/BlogArticleTemplate';
 
-export default function Blog() {
+type BlogProps = {
+  initialPosts?: BlogPostRecord[];
+};
+
+export default function Blog({ initialPosts = [] }: BlogProps) {
   usePageSeo({ canonicalPath: '/blog' });
   const { t } = useTranslation('blog');
-  const [posts, setPosts] = useState<any[]>([]);
-  const [loading, setLoading] = useState(true);
+  const [posts, setPosts] = useState<BlogPostRecord[]>(initialPosts);
+  const [loading, setLoading] = useState(initialPosts.length === 0);
 
   useEffect(() => {
+    if (initialPosts.length > 0) {
+      setPosts(initialPosts);
+      setLoading(false);
+      if (!isSupabaseConfigured) return;
+    }
+
     const fetchPosts = async () => {
       try {
-        const { data } = await supabase.from('blog_posts').select('*').order('created_at', { ascending: false });
-        if (data) setPosts(data);
+        const { data } = await supabase
+          .from('blog_posts')
+          .select('id, title, content, image_url, created_at')
+          .order('created_at', { ascending: false });
+        if (data?.length) setPosts(data as BlogPostRecord[]);
       } catch (error) {
         console.error('Error fetching blog posts:', error);
       } finally {
         setLoading(false);
       }
     };
-    fetchPosts();
-  }, []);
+    void fetchPosts();
+  }, [initialPosts]);
 
   return (
     <PageShell tone="mist">

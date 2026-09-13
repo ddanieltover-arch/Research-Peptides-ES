@@ -149,7 +149,27 @@
     "total": "Total",
     "proceed": "Proceed to checkout",
     "vatNote": "Prices in EUR. VAT applied where required at checkout based on your EU shipping country.",
-    "invalidPromo": "Invalid promotion code"
+    "invalidPromo": "Invalid promotion code",
+    "apply": "Apply",
+    "applied": "applied",
+    "secureCheckout": "Secure checkout",
+    "euDispatch": "EU dispatch",
+    "remove": "Remove"
+  },
+  "drawer": {
+    "ariaLabel": "Shopping cart",
+    "title": "Your cart",
+    "close": "Close cart",
+    "freeShipping": "Free EU shipping",
+    "amountAway": "{{amount}} away",
+    "unlocked": "Unlocked",
+    "freeShippingNote": "Complimentary EU delivery on orders over {{amount}}",
+    "emptyTitle": "Cart is empty",
+    "emptyBody": "Research compounds you add will appear here.",
+    "browseCatalog": "Browse catalog",
+    "shippingVatNote": "Shipping & VAT calculated at checkout.",
+    "checkoutSecurely": "Checkout securely",
+    "viewFullCart": "View full cart"
   },
   "cartPage": {
     "eyebrow": "Your cart",

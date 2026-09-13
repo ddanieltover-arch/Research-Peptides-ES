@@ -86,4 +86,5 @@ export const i18nNamespaces = [
   'search',
   'categories',
   'account',
+  'wizard',
 ];

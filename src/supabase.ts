@@ -16,9 +16,17 @@ if (!isSupabaseConfigured && process.env.NODE_ENV === 'development') {
   );
 }
 
-const url = supabaseUrl || 'http://127.0.0.1:54321';
+/**
+ * Prefer real credentials. Only use the local Supabase demo defaults in development
+ * so production builds never silently talk to 127.0.0.1 when env was missing at build.
+ */
+const url =
+  supabaseUrl ||
+  (process.env.NODE_ENV === 'development' ? 'http://127.0.0.1:54321' : 'https://invalid.supabase.co');
 const key =
   supabaseAnonKey ||
-  'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZS1kZW1vIiwicm9sZSI6ImFub24iLCJleHAiOjE5ODM4MTI5OTZ9.CRXP1A7WOeoJeXxjNni43kdQwgnWNReilDMblYTn_I0';
+  (process.env.NODE_ENV === 'development'
+    ? 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZS1kZW1vIiwicm9sZSI6ImFub24iLCJleHAiOjE5ODM4MTI5OTZ9.CRXP1A7WOeoJeXxjNni43kdQwgnWNReilDMblYTn_I0'
+    : 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZS1kZW1vIiwicm9sZSI6ImFub24iLCJleHAiOjAsImlhdCI6MH0.invalid');
 
 export const supabase: SupabaseClient = createClient(url, key);

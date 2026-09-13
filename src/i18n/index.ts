@@ -33,6 +33,7 @@ void i18n.use(initReactI18next).init({
     'search',
     'categories',
     'account',
+    'wizard',
   ],
   defaultNS: 'common',
   interpolation: { escapeValue: false },

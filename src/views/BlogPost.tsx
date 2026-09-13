@@ -1,10 +1,10 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { useParams } from 'next/navigation';
+import { useParams, usePathname } from 'next/navigation';
 import { useTranslation } from 'react-i18next';
 import { ArrowLeft, BookOpen } from 'lucide-react';
-import { supabase } from '../supabase';
+import { supabase, isSupabaseConfigured } from '../supabase';
 import { LocaleLink } from '../i18n/LocaleLink';
 import { BRAND_NAME } from '../config/brand';
 import { usePageSeo } from '../seo/SeoProvider';
@@ -17,13 +17,37 @@ import {
 } from '../components/blog/BlogArticleTemplate';
 import { PageShell } from '../design-system';
 
-export default function BlogPost() {
+function resolvePostId(
+  propId: string | undefined,
+  params: ReturnType<typeof useParams>,
+  pathname: string | null,
+): string | undefined {
+  if (propId) return propId;
+  const raw = params?.id;
+  if (typeof raw === 'string' && raw) return raw;
+  if (Array.isArray(raw) && raw[0]) return raw[0];
+  const fromPath = pathname?.split('/blog/')[1]?.split(/[/?#]/)[0];
+  return fromPath || undefined;
+}
+
+type BlogPostProps = {
+  id?: string;
+  initialPost?: BlogPostRecord | null;
+  initialRelated?: BlogPostRecord[];
+};
+
+export default function BlogPost({
+  id: idProp,
+  initialPost = null,
+  initialRelated = [],
+}: BlogPostProps) {
   const { t } = useTranslation('blog');
   const params = useParams();
-  const id = typeof params?.id === 'string' ? params.id : undefined;
-  const [post, setPost] = useState<BlogPostRecord | null>(null);
-  const [related, setRelated] = useState<BlogPostRecord[]>([]);
-  const [loading, setLoading] = useState(true);
+  const pathname = usePathname();
+  const id = resolvePostId(idProp, params, pathname);
+  const [post, setPost] = useState<BlogPostRecord | null>(initialPost);
+  const [related, setRelated] = useState<BlogPostRecord[]>(initialRelated);
+  const [loading, setLoading] = useState(!initialPost && Boolean(id));
 
   useEffect(() => {
     if (!id) {
@@ -31,10 +55,18 @@ export default function BlogPost() {
       return;
     }
 
+    // Prefer server-provided post when id matches (avoids broken client Supabase env).
+    if (initialPost && initialPost.id === id) {
+      setPost(initialPost);
+      setRelated(initialRelated);
+      setLoading(false);
+      if (!isSupabaseConfigured) return;
+    }
+
     void (async () => {
       try {
         const [postRes, relatedRes] = await Promise.all([
-          supabase.from('blog_posts').select('*').eq('id', id).single(),
+          supabase.from('blog_posts').select('*').eq('id', id).maybeSingle(),
           supabase
             .from('blog_posts')
             .select('id, title, content, image_url, created_at')
@@ -44,14 +76,16 @@ export default function BlogPost() {
         ]);
 
         if (postRes.data) setPost(postRes.data as BlogPostRecord);
-        if (relatedRes.data) setRelated(relatedRes.data as BlogPostRecord[]);
+        else if (!initialPost || initialPost.id !== id) setPost(null);
+
+        if (relatedRes.data?.length) setRelated(relatedRes.data as BlogPostRecord[]);
       } catch (error) {
         console.error('Error fetching blog post:', error);
       } finally {
         setLoading(false);
       }
     })();
-  }, [id]);
+  }, [id, initialPost, initialRelated]);
 
   usePageSeo(
     post
@@ -104,4 +138,3 @@ export default function BlogPost() {
 
   return <BlogArticleTemplate post={post} related={related} />;
 }
-

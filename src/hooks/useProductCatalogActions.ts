@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next';
 import { useCartStore } from '../store/useCartStore';
 import { useWishlistStore } from '../store/useWishlistStore';
 import { useAuthStore } from '../store/useAuthStore';
@@ -5,6 +6,7 @@ import { useToastStore } from '../store/useToastStore';
 import type { CatalogProduct } from '../components/products/ProductCard';
 
 export function useProductCatalogActions() {
+  const { t } = useTranslation('product');
   const addItem = useCartStore((s) => s.addItem);
   const { productIds, toggleWishlist } = useWishlistStore();
   const { user } = useAuthStore();
@@ -27,7 +29,7 @@ export function useProductCatalogActions() {
       quantity: 1,
       imageUrl: product.images?.[0] || '',
     });
-    addToast(`${product.title} added to cart`);
+    addToast(t('toast.added', { title: product.title }));
   };
 
   return { isInWishlist, handleToggleWishlist, handleAddToCart };

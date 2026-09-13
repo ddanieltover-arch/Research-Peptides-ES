@@ -149,7 +149,27 @@
     "total": "Total",
     "proceed": "Ir al pago",
     "vatNote": "Precios en EUR. IVA aplicado cuando corresponda en el pago según su país de envío en la UE.",
-    "invalidPromo": "Código promocional no válido"
+    "invalidPromo": "Código promocional no válido",
+    "apply": "Aplicar",
+    "applied": "aplicado",
+    "secureCheckout": "Pago seguro",
+    "euDispatch": "Envío UE",
+    "remove": "Eliminar"
+  },
+  "drawer": {
+    "ariaLabel": "Carrito de compra",
+    "title": "Su carrito",
+    "close": "Cerrar carrito",
+    "freeShipping": "Envío gratuito UE",
+    "amountAway": "Faltan {{amount}}",
+    "unlocked": "Desbloqueado",
+    "freeShippingNote": "Entrega gratuita en la UE en pedidos superiores a {{amount}}",
+    "emptyTitle": "El carrito está vacío",
+    "emptyBody": "Los compuestos de investigación que añada aparecerán aquí.",
+    "browseCatalog": "Explorar catálogo",
+    "shippingVatNote": "Envío e IVA se calculan en el pago.",
+    "checkoutSecurely": "Pagar de forma segura",
+    "viewFullCart": "Ver carrito completo"
   },
   "cartPage": {
     "eyebrow": "Su carrito",

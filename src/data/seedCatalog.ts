@@ -48,54 +48,54 @@ export function mapSeedProductToRow(p: SeedProduct) {
 
 export const referenceSeedCategories: SeedCategory[] = [
   {
-    name: 'Peptides',
+    name: 'Péptidos',
     slug: 'peptides',
-    description: 'High-purity research peptides for scientific and academic studies.',
+    description: 'Péptidos de investigación de alta pureza para estudios científicos y académicos.',
   },
   {
     name: 'SARMs',
     slug: 'sarms',
-    description: 'Selective Androgen Receptor Modulators for research applications.',
+    description: 'Moduladores selectivos del receptor de andrógenos para aplicaciones de investigación.',
   },
   {
-    name: 'Research Chemicals',
+    name: 'Productos químicos de investigación',
     slug: 'research-chemicals',
-    description: 'Premium grade research chemicals and laboratory reagents.',
+    description: 'Reactivos y productos químicos de laboratorio de grado premium.',
   },
   {
-    name: 'Peptide Blends',
+    name: 'Mezclas de péptidos',
     slug: 'peptide-blends',
-    description: 'Synergistic combinations of research peptides in single vials.',
+    description: 'Combinaciones sinérgicas de péptidos de investigación en un solo vial.',
   },
   {
-    name: 'Peptide Capsules',
+    name: 'Cápsulas de péptidos',
     slug: 'peptide-capsules',
-    description: 'Oral format research compounds for metabolic and signaling studies.',
+    description: 'Compuestos de investigación en formato oral para estudios metabólicos y de señalización.',
   },
   {
-    name: 'IGF-1 Proteins',
+    name: 'Proteínas IGF-1',
     slug: 'igf-1-proteins',
-    description: 'Insulin-like Growth Factor analogs and related proteins.',
+    description: 'Análogos del factor de crecimiento similar a la insulina y proteínas relacionadas.',
   },
   {
-    name: 'Melanotan Peptides',
+    name: 'Péptidos Melanotan',
     slug: 'melanotan-peptides',
-    description: 'Melanocortin receptor agonists for pigmentation research.',
+    description: 'Agonistas del receptor de melanocortina para investigación de pigmentación.',
   },
   {
-    name: 'Supplements',
+    name: 'Suplementos de laboratorio',
     slug: 'supplements',
-    description: 'General laboratory and research-grade nutritional compounds.',
+    description: 'Compuestos nutricionales de grado investigación para uso en laboratorio.',
   },
   {
-    name: 'Lab Supplies',
+    name: 'Material de laboratorio',
     slug: 'lab-supplies',
-    description: 'Bacteriostatic water and essential chemical reconstitution supplies.',
+    description: 'Agua bacteriostática y suministros esenciales para reconstitución química.',
   },
   {
-    name: 'Peptide Powder',
+    name: 'Polvo de péptidos',
     slug: 'peptide-powder',
-    description: 'Lyophilized peptide powders from wholesale price list (SKU-mapped variants).',
+    description: 'Polvos de péptidos liofilizados del listado mayorista (variantes mapeadas por SKU).',
   },
 ];
 

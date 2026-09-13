@@ -4,6 +4,8 @@ import { buildPageMetadata, JsonLdScript } from '../../../../src/seo/buildPageMe
 import { getServerSupabase } from '../../../../src/lib/supabaseServer';
 import { BRAND_NAME } from '../../../../src/config/brand';
 import { BlogPostPageClient } from '../../../../src/next/BlogPostPageClient';
+import type { BlogPostRecord } from '../../../../src/components/blog/BlogArticleTemplate';
+import { blogExcerpt } from '../../../../src/lib/blogContent';
 
 type Props = { params: Promise<{ locale: string; id: string }> };
 
@@ -13,9 +15,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   let title = 'Blog';
   let description: string | undefined;
   if (supabase) {
-    const { data } = await supabase.from('blog_posts').select('title, excerpt, content').eq('id', id).maybeSingle();
+    const { data } = await supabase
+      .from('blog_posts')
+      .select('title, content')
+      .eq('id', id)
+      .maybeSingle();
     if (data?.title) title = data.title;
-    description = data?.excerpt || (data?.content ? String(data.content).slice(0, 160) : undefined);
+    if (data?.content) description = blogExcerpt(String(data.content), 160);
   }
   return buildPageMetadata(locale as LocaleCode, `/blog/${id}`, {
     title: `${title} | ${BRAND_NAME}`,
@@ -27,28 +33,39 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 export default async function BlogPostPage({ params }: Props) {
   const { id } = await params;
   const supabase = getServerSupabase();
-  let post: Record<string, unknown> | null = null;
+  let initialPost: BlogPostRecord | null = null;
+  let initialRelated: BlogPostRecord[] = [];
+
   if (supabase) {
-    const { data } = await supabase.from('blog_posts').select('*').eq('id', id).maybeSingle();
-    post = data;
+    const [postRes, relatedRes] = await Promise.all([
+      supabase.from('blog_posts').select('*').eq('id', id).maybeSingle(),
+      supabase
+        .from('blog_posts')
+        .select('id, title, content, image_url, created_at')
+        .neq('id', id)
+        .order('created_at', { ascending: false })
+        .limit(3),
+    ]);
+    if (postRes.data) initialPost = postRes.data as BlogPostRecord;
+    if (relatedRes.data) initialRelated = relatedRes.data as BlogPostRecord[];
   }
 
-  const ld = post
+  const ld = initialPost
     ? {
         '@context': 'https://schema.org',
         '@type': 'BlogPosting',
-        headline: post.title,
-        description: post.excerpt || undefined,
-        datePublished: post.created_at,
-        dateModified: post.updated_at || post.created_at,
+        headline: initialPost.title,
+        description: blogExcerpt(initialPost.content, 160),
+        datePublished: initialPost.created_at,
+        dateModified: initialPost.created_at,
       }
     : null;
 
   return (
     <>
       {ld ? <JsonLdScript data={ld} /> : null}
-      {post ? <h1 className="sr-only">{String(post.title || id)}</h1> : null}
-      <BlogPostPageClient />
+      {initialPost ? <h1 className="sr-only">{initialPost.title}</h1> : null}
+      <BlogPostPageClient id={id} initialPost={initialPost} initialRelated={initialRelated} />
     </>
   );
 }

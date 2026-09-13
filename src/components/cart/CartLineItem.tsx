@@ -100,7 +100,7 @@ export function CartLineItem({ item, compact = false, onUpdateQuantity, onRemove
             aria-label={`Remove ${item.title}`}
           >
             <Trash2 className="h-3.5 w-3.5" />
-            {!compact && t('cart.remove', { defaultValue: 'Remove' })}
+            {!compact && t('cart.remove')}
           </button>
         </div>
       </div>

@@ -1,0 +1,40 @@
+{
+  "title": "Selector de compuestos",
+  "subtitle": "Orientación experimental según sus objetivos de investigación",
+  "stepOf": "Paso {{current}} de {{total}}",
+  "goBack": "Volver",
+  "resultsTitle": "Protocolo de investigación listo",
+  "resultsBody": "Nuestro algoritmo sugiere comenzar el estudio con estos compuestos:",
+  "filtering": "Filtrando el catálogo…",
+  "recommended": "Recomendado",
+  "restart": "Reiniciar protocolo",
+  "viewShop": "Ver toda la tienda",
+  "steps": {
+    "goal": {
+      "title": "¿Cuál es su objetivo principal de investigación?",
+      "options": {
+        "fat-loss": "Pérdida de grasa y metabolismo",
+        "muscle": "Desarrollo muscular",
+        "recovery": "Reparación y recuperación tisular",
+        "cognitive": "Mejora cognitiva"
+      }
+    },
+    "experience": {
+      "title": "¿Cuál es su nivel de experiencia?",
+      "options": {
+        "beginner": {
+          "label": "Nivel inicial",
+          "description": "Nuevo en péptidos de investigación"
+        },
+        "intermediate": {
+          "label": "Intermedio",
+          "description": "Ha realizado estudios previos"
+        },
+        "advanced": {
+          "label": "Explorador avanzado",
+          "description": "Investigador con experiencia"
+        }
+      }
+    }
+  }
+}

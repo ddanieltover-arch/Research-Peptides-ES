@@ -19,5 +19,16 @@
   "emptyMatchesCategory": "No hay productos en «{{category}}» en este momento.",
   "emptyMatchesDefault": "Ajuste su búsqueda o filtros.",
   "clearFilters": "Borrar búsqueda y filtros",
-  "browseShop": "Ver tienda completa"
+  "browseShop": "Ver tienda completa",
+  "omni": {
+    "placeholder": "Buscar péptidos, compuestos, CAS…",
+    "close": "Cerrar búsqueda",
+    "scanning": "Explorando la base de datos…",
+    "exactMatches": "Coincidencias exactas",
+    "viewAll": "Ver todos los resultados",
+    "emptyTitle": "Sin resultados en el catálogo",
+    "emptyBody": "No hay coincidencias exactas para «{{query}}»",
+    "trending": "Grupos de compuestos populares",
+    "escHint": "para cerrar la búsqueda"
+  }
 }

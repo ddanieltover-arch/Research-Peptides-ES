@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Search, X, ShoppingCart, ArrowRight, Loader2, Sparkles, TrendingUp } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 import { useSearchStore } from '../../store/useSearchStore';
 import { useCartStore } from '../../store/useCartStore';
 import { supabase } from '../../supabase';
@@ -12,6 +13,7 @@ import { productPath } from '../../lib/productUrl';
 const POPULAR_SEARCHES = ['BPC-157', 'TB-500', 'Semaglutide', 'CJC-1295', 'AOD-9604'];
 
 export default function Omnisearch() {
+  const { t } = useTranslation('search');
   const { isOpen, closeSearch } = useSearchStore();
   const { addItem } = useCartStore();
   const [query, setQuery] = useState('');
@@ -70,50 +72,47 @@ export default function Omnisearch() {
           exit={{ opacity: 0 }}
           className="fixed inset-0 z-[100] flex items-start justify-center pt-[10vh]"
         >
-          {/* Backdrop with extreme blur */}
-          <div 
-            className="absolute inset-0 bg-gray-900/60 backdrop-blur-xl" 
+          <div
+            className="absolute inset-0 bg-gray-900/60 backdrop-blur-xl"
             onClick={closeSearch}
           />
 
-          {/* Search Container */}
           <motion.div
             initial={{ scale: 0.98, opacity: 0, y: -12 }}
             animate={{ scale: 1, opacity: 1, y: 0 }}
             exit={{ scale: 0.98, opacity: 0, y: -12 }}
             className="relative w-full max-w-2xl bg-white rounded-xl shadow-2xl overflow-hidden border border-slate-200"
           >
-            {/* Input Wrapper */}
             <div className="relative p-4 sm:p-5 border-b border-slate-100">
               <Search className="absolute left-8 top-1/2 -translate-y-1/2 h-5 w-5 text-slate-400" />
               <input
                 ref={inputRef}
                 type="text"
-                placeholder="Buscar péptidos, compuestos, CAS..."
+                placeholder={t('omni.placeholder')}
                 className="w-full bg-slate-50 rounded-lg pl-12 pr-12 py-3 text-sm font-normal focus:outline-none focus:ring-2 focus:ring-brand-500/40 border border-slate-200 transition-all text-navy-950"
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
               />
-              <button 
+              <button
+                type="button"
                 onClick={closeSearch}
                 className="absolute right-7 top-1/2 -translate-y-1/2 p-1.5 rounded-md hover:bg-slate-100 text-slate-400 transition-colors cursor-pointer"
-                aria-label="Close search"
+                aria-label={t('omni.close')}
               >
                 <X className="h-4 w-4" />
               </button>
             </div>
 
-            {/* Results / Suggestions Area */}
             <div className="max-h-[60vh] overflow-y-auto p-4 custom-scrollbar">
               {loading ? (
                 <div className="flex flex-col items-center justify-center py-12 space-y-4">
                   <Loader2 className="h-10 w-10 text-brand-500 animate-spin" />
-                  <p className="text-gray-500 dark:text-gray-400 font-medium">Scanning research database...</p>
+                  <p className="text-gray-500 dark:text-gray-400 font-medium">{t('omni.scanning')}</p>
                 </div>
               ) : results.length > 0 ? (
                 <div className="space-y-2">
                   <p className="px-4 text-[10px] font-black uppercase tracking-widest text-gray-400 mb-2 flex items-center gap-2">
-                    <Sparkles className="h-3 w-3" /> Exact Matches
+                    <Sparkles className="h-3 w-3" /> {t('omni.exactMatches')}
                   </p>
                   {results.map((product) => (
                     <div
@@ -123,11 +122,11 @@ export default function Omnisearch() {
                     >
                       <div className="h-16 w-16 rounded-xl overflow-hidden bg-gray-100 dark:bg-gray-800 shrink-0">
                         {product.images?.[0] ? (
-                        <img 
-                          src={product.images[0]} 
-                          alt="" 
-                          className="h-full w-full object-cover"
-                        />
+                          <img
+                            src={product.images[0]}
+                            alt=""
+                            className="h-full w-full object-cover"
+                          />
                         ) : (
                           <ProductImagePlaceholder
                             productId={String(product.id)}
@@ -149,6 +148,7 @@ export default function Omnisearch() {
                         </p>
                       </div>
                       <button
+                        type="button"
                         onClick={(e) => {
                           e.stopPropagation();
                           addItem({
@@ -158,7 +158,7 @@ export default function Omnisearch() {
                             unitPrice: product.price,
                             slug: product.slug,
                             quantity: 1,
-                            imageUrl: product.images?.[0] || ''
+                            imageUrl: product.images?.[0] || '',
                           });
                         }}
                         className="p-3 rounded-xl bg-gray-50 dark:bg-gray-800 text-gray-400 hover:bg-brand-600 hover:text-white transition-all transform active:scale-90"
@@ -167,11 +167,15 @@ export default function Omnisearch() {
                       </button>
                     </div>
                   ))}
-                  <button 
-                    onClick={() => { navigate(`/search?q=${encodeURIComponent(query)}`); closeSearch(); }}
+                  <button
+                    type="button"
+                    onClick={() => {
+                      navigate(`/search?q=${encodeURIComponent(query)}`);
+                      closeSearch();
+                    }}
                     className="w-full mt-4 p-4 flex items-center justify-center gap-2 text-sm font-bold text-brand-600 hover:bg-brand-50 dark:hover:bg-brand-900/20 rounded-xl transition-all"
                   >
-                    View all results <ArrowRight className="h-4 w-4" />
+                    {t('omni.viewAll')} <ArrowRight className="h-4 w-4" />
                   </button>
                 </div>
               ) : query.length >= 2 ? (
@@ -179,18 +183,21 @@ export default function Omnisearch() {
                   <div className="w-16 h-16 bg-gray-50 dark:bg-gray-800 rounded-full flex items-center justify-center mx-auto mb-4">
                     <Search className="h-8 w-8 text-gray-300" />
                   </div>
-                  <h3 className="font-bold text-gray-900 dark:text-white">Empty Catalog Search</h3>
-                  <p className="text-gray-500 dark:text-gray-400 text-sm">No exact matches found for "{query}"</p>
+                  <h3 className="font-bold text-gray-900 dark:text-white">{t('omni.emptyTitle')}</h3>
+                  <p className="text-gray-500 dark:text-gray-400 text-sm">
+                    {t('omni.emptyBody', { query })}
+                  </p>
                 </div>
               ) : (
                 <div className="py-6 px-4">
                   <p className="text-[10px] font-black uppercase tracking-widest text-gray-400 mb-6 flex items-center gap-2">
-                    <TrendingUp className="h-3 w-3" /> Trending Compound Groups
+                    <TrendingUp className="h-3 w-3" /> {t('omni.trending')}
                   </p>
                   <div className="flex flex-wrap gap-2">
                     {POPULAR_SEARCHES.map((item) => (
                       <button
                         key={item}
+                        type="button"
                         onClick={() => setQuery(item)}
                         className="px-4 py-2 bg-gray-50 dark:bg-gray-800 text-gray-600 dark:text-gray-300 rounded-xl text-sm font-medium hover:bg-brand-50 hover:text-brand-600 dark:hover:bg-brand-900/30 dark:hover:text-brand-400 transition-all border border-transparent hover:border-brand-100"
                       >
@@ -202,12 +209,13 @@ export default function Omnisearch() {
               )}
             </div>
 
-            {/* Hint Footer */}
             <div className="p-4 bg-gray-50 dark:bg-gray-800/30 text-center border-t dark:border-gray-800">
-               <span className="text-[10px] font-bold text-gray-400 uppercase tracking-widest flex items-center justify-center gap-2">
-                 <span className="p-1 px-1.5 bg-white dark:bg-gray-800 rounded shadow-sm border dark:border-gray-700 font-mono">ESC</span>
-                 to close search portal
-               </span>
+              <span className="text-[10px] font-bold text-gray-400 uppercase tracking-widest flex items-center justify-center gap-2">
+                <span className="p-1 px-1.5 bg-white dark:bg-gray-800 rounded shadow-sm border dark:border-gray-700 font-mono">
+                  ESC
+                </span>
+                {t('omni.escHint')}
+              </span>
             </div>
           </motion.div>
         </motion.div>

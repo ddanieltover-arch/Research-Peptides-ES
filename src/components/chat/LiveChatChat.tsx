@@ -5,6 +5,7 @@ import { usePathname } from 'next/navigation';
 import { MessageCircle } from 'lucide-react';
 import { publicEnv } from '../../lib/publicEnv';
 import {
+  ensureLiveChatScript,
   installLiveChatReadyHook,
   openLiveChatPanel,
   setupLiveChatBranding,
@@ -33,8 +34,8 @@ function removeLegacyChatScripts() {
 }
 
 /**
- * LiveChat with clinical brand trigger (bottom-left, crimson).
- * Widget script loads from index.html; this component handles branding and open actions.
+ * LiveChat with clinical brand trigger (bottom-left).
+ * Widget script loads from the root layout; this component handles branding and open actions.
  */
 export default function LiveChatChat() {
   const pathname = usePathname() || '/';
@@ -44,6 +45,7 @@ export default function LiveChatChat() {
 
   useEffect(() => {
     removeLegacyChatScripts();
+    ensureLiveChatScript();
     installLiveChatReadyHook(mobileOffset);
     setupLiveChatBranding(mobileOffset);
   }, [mobileOffset]);
