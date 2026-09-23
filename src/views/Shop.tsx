@@ -20,12 +20,6 @@ import {
   type PurityMinFilter,
 } from '../components/catalog/CatalogFilters';
 import { CatalogSortSelect } from '../components/catalog/CatalogSortSelect';
-import {
-  CatalogProductsPerRow,
-  DEFAULT_SHOP_PRODUCTS_PER_ROW,
-  shopGridClassName,
-  type ShopProductsPerRow,
-} from '../components/catalog/CatalogProductsPerRow';
 import { CatalogEmptyState } from '../components/catalog/CatalogEmptyState';
 import { ProductGrid } from '../components/catalog/ProductGrid';
 import {
@@ -36,6 +30,8 @@ import { useProductCatalogActions } from '../hooks/useProductCatalogActions';
 import type { CategoryOption } from '../components/catalog/types';
 import type { CatalogProduct } from '../components/products/ProductCard';
 import { productMeetsPurityMin } from '../lib/productLabSpecs';
+
+const SHOP_PRODUCT_GRID = 'grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6';
 
 export default function Shop() {
   const { t, i18n } = useTranslation('shop');
@@ -49,22 +45,8 @@ export default function Shop() {
   const [purityMin, setPurityMin] = useState<PurityMinFilter>(null);
   const [sortBy, setSortBy] = useState<CatalogSortKey>('newest');
   const [showMobileFilters, setShowMobileFilters] = useState(false);
-  const [productsPerRow, setProductsPerRow] = useState<ShopProductsPerRow>(
-    DEFAULT_SHOP_PRODUCTS_PER_ROW,
-  );
 
   const { isInWishlist, handleToggleWishlist, handleAddToCart } = useProductCatalogActions();
-
-  useEffect(() => {
-    try {
-      const stored = localStorage.getItem('rp-es-shop-products-per-row');
-      if (stored === '2' || stored === '3' || stored === '4') {
-        setProductsPerRow(Number(stored) as ShopProductsPerRow);
-      }
-    } catch {
-      /* private browsing */
-    }
-  }, []);
 
   useEffect(() => {
     void (async () => {
@@ -238,17 +220,6 @@ export default function Shop() {
           </p>
           <div className="flex items-center gap-2.5">
             <CatalogFilters {...filterProps} mode="trigger" />
-            <CatalogProductsPerRow
-              value={productsPerRow}
-              onChange={(value) => {
-                setProductsPerRow(value);
-                try {
-                  localStorage.setItem('rp-es-shop-products-per-row', String(value));
-                } catch {
-                  /* private browsing */
-                }
-              }}
-            />
             <CatalogSortSelect
               value={sortBy}
               onChange={(v) => {
@@ -277,9 +248,9 @@ export default function Shop() {
                 <ProductGrid
                   products={paginatedProducts}
                   loading={loading}
-                  skeletonCount={productsPerRow * 3}
+                  skeletonCount={9}
                   showDescription
-                  gridClassName={shopGridClassName(productsPerRow)}
+                  gridClassName={SHOP_PRODUCT_GRID}
                   inWishlist={isInWishlist}
                   onToggleWishlist={handleToggleWishlist}
                   onAddToCart={handleAddToCart}

@@ -31,10 +31,6 @@
     "refine": "Refinar resultados",
     "showResults": "Mostrar resultados"
   },
-  "grid": {
-    "label": "Productos por fila",
-    "option": "{{count}} productos por fila"
-  },
   "sort": {
     "label": "Ordenar productos",
     "relevance": "Relevancia",
