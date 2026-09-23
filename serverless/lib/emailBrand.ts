@@ -31,7 +31,7 @@ export function emailSiteUrl(): string {
 }
 
 export function emailWhatsAppNumber(): string {
-  return (process.env.WHATSAPP_NUMBER || '34619862542').replace(/\D/g, '');
+  return (process.env.WHATSAPP_NUMBER || '34655680011').replace(/\D/g, '');
 }
 
 export function emailWhatsAppUrl(message: string): string {

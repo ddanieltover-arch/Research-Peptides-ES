@@ -21,8 +21,8 @@ import MobileBottomNav from './MobileBottomNav';
 import SalesNotification from './SalesNotification';
 import CartDrawer from './cart/CartDrawer';
 import Omnisearch from './search/Omnisearch';
-import LiveChatChat from './chat/LiveChatChat';
-import LiveChatVisitorSync from './chat/LiveChatVisitorSync';
+import TawkChat from './chat/TawkChat';
+import TawkVisitorSync from './chat/TawkVisitorSync';
 import { CookieConsent } from './gdpr/CookieConsent';
 import { NavigationProgress } from './NavigationProgress';
 import { PageLoader } from './PageLoader';
@@ -203,8 +203,8 @@ function LayoutShell({ children }: { children: ReactNode }) {
       <RecentlyViewedSidebar />
       <ToastContainer />
       <CookieConsent />
-      <LiveChatVisitorSync />
-      {!isCommerceFlow && <LiveChatChat />}
+      <TawkVisitorSync />
+      {!isCommerceFlow && <TawkChat />}
     </div>
   );
 }

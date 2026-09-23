@@ -18,7 +18,7 @@ import { CheckoutProgress } from '../components/checkout/CheckoutProgress';
 import { usePageSeo } from '../seo/SeoProvider';
 import { whatsappUrl } from '../lib/whatsapp';
 import { WhatsAppIcon } from '../components/icons/WhatsAppIcon';
-import { rememberCheckoutLiveChatContext, syncLiveChatVisitor } from '../lib/livechat';
+import { rememberCheckoutTawkContext, syncTawkVisitor } from '../lib/tawk';
 
 const SHIPPING_METHODS = {
   EUROPE: [
@@ -262,14 +262,14 @@ export default function Checkout() {
       createdOrderId = orderId;
       setPlacedOrderId(orderId);
 
-      const liveChatContext = {
+      const tawkContext = {
         name: shipping.fullName,
         email: shipping.email,
         orderId,
         page: '/checkout',
       };
-      rememberCheckoutLiveChatContext(liveChatContext);
-      void syncLiveChatVisitor(liveChatContext);
+      rememberCheckoutTawkContext(tawkContext);
+      void syncTawkVisitor(tawkContext);
 
       let emailDispatchFailed = false;
       try {

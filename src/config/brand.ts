@@ -9,7 +9,7 @@ export const SUPPORT_EMAIL =
   publicEnv('VITE_SUPPORT_EMAIL') || 'info@researchpeptides.es';
 
 /** WhatsApp sales / product enquiries (E.164 without +). */
-export const WHATSAPP_NUMBER = '34619862542';
+export const WHATSAPP_NUMBER = '34655680011';
 
 export const SITE_URL =
   publicEnv('VITE_SITE_URL') || 'https://researchpeptides.es';

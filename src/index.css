@@ -342,16 +342,4 @@
   .rp-live-chat-trigger:hover {
     filter: brightness(1.08);
   }
-
-  #tawk-bubble-container,
-  .tawk-min-container,
-  .tawk-button,
-  .tawk-branding,
-  .tawk-branding-small,
-  .chatway--trigger-container {
-    display: none !important;
-    visibility: hidden !important;
-    opacity: 0 !important;
-    pointer-events: none !important;
-  }
 }

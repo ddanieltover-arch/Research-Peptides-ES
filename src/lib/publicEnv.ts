@@ -24,12 +24,6 @@ const STATIC_PUBLIC: Record<string, string | undefined> = {
     process.env.NEXT_PUBLIC_ADMIN_EMAILS || process.env.VITE_ADMIN_EMAILS,
   VITE_ADMIN_EMAILS:
     process.env.NEXT_PUBLIC_ADMIN_EMAILS || process.env.VITE_ADMIN_EMAILS,
-  NEXT_PUBLIC_LIVECHAT_MOBILE_OFFSET_Y:
-    process.env.NEXT_PUBLIC_LIVECHAT_MOBILE_OFFSET_Y ||
-    process.env.VITE_LIVECHAT_MOBILE_OFFSET_Y,
-  VITE_LIVECHAT_MOBILE_OFFSET_Y:
-    process.env.NEXT_PUBLIC_LIVECHAT_MOBILE_OFFSET_Y ||
-    process.env.VITE_LIVECHAT_MOBILE_OFFSET_Y,
 };
 
 export function publicEnv(name: string, fallback = ''): string {
