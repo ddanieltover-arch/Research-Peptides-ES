@@ -5,7 +5,7 @@ import { getServerSupabase } from '../../../../src/lib/supabaseServer';
 import { BRAND_NAME } from '../../../../src/config/brand';
 import { BlogPostPageClient } from '../../../../src/next/BlogPostPageClient';
 import type { BlogPostRecord } from '../../../../src/components/blog/BlogArticleTemplate';
-import { blogExcerpt } from '../../../../src/lib/blogContent';
+import { blogExcerpt } from '../../../../src/lib/blogExcerpt';
 
 type Props = { params: Promise<{ locale: string; id: string }> };
 
