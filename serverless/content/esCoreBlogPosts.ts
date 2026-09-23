@@ -31,7 +31,7 @@ Cada referencia del catálogo se acompaña de especificaciones transparentes y, 
 Los péptidos liofilizados deben conservarse protegidos de la luz y la humedad, idealmente entre -20 °C y 2–8 °C según la ficha técnica. Tras la reconstitución, utilice agua bacteriostática y registre fecha y concentración en su cuaderno de laboratorio.
 
 ## Cómo empezar
-Explore las categorías del catálogo, consulte la biblioteca COA y utilice nuestra calculadora de péptidos para planificar concentraciones antes de iniciar el ensayo.
+Explore las categorías del [catálogo](/tienda), consulte la [biblioteca COA](/certificados-coas) y utilice nuestra [calculadora de péptidos](/calculadora-de-peptidos). Relacionados: [retatrutide](/producto/retatrutide), [PubMed](https://pubmed.ncbi.nlm.nih.gov/).
 
 Aviso: todos los productos son solo para investigación. No están destinados al consumo humano ni veterinario.`,
   },
@@ -49,7 +49,7 @@ Un informe completo incluye identificación del compuesto, número de lote, mét
 Desde la recepción en Madrid hasta el envío en cadena de frío en la UE, documentamos el lote asignado a cada línea de pedido. Esto permite auditorías internas y alineación con buenas prácticas de laboratorio (BPL).
 
 ## Cómo acceder a los COA en el sitio
-Visite la sección Biblioteca COA, busque por compuesto o lote y descargue el PDF correspondiente. Si necesita un documento adicional para un pedido histórico, contacte con info@researchpeptides.es.
+Visite la [biblioteca COA](/certificados-coas), compare [COA vs sin COA](/coa-vs-sin-coa) y lea [cómo leer un COA](/blog/como-leer-coa-peptidos). Si necesita un documento adicional para un pedido histórico, contacte con info@researchpeptides.es.
 
 ## Buenas prácticas al archivar
 Guarde el COA junto al registro de reconstitución, temperatura de almacenamiento y fecha de apertura del vial. La trazabilidad completa es la base de la ciencia reproducible.
@@ -73,7 +73,7 @@ El envío estándar suele entregarse en 3–7 días laborables; el express en 2�
 Al recibir el paquete, inspeccione el sellado, registre la temperatura de llegada si dispone de termómetro de laboratorio y almacene de inmediato según la ficha del producto (-20 °C o refrigeración 2–8 °C).
 
 ## Pedidos y seguimiento
-Tras completar el pedido recibirá confirmación por correo. Para consultas logísticas, escriba a info@researchpeptides.es con su número de pedido.
+Tras completar el pedido recibirá confirmación por correo. Detalles en [envío](/envio) y [cadena de frío](/blog/cadena-frio-peptidos-ue). Para consultas logísticas: info@researchpeptides.es.
 
 Compuestos exclusivamente para investigación científica.`,
   },
@@ -96,7 +96,7 @@ Limpie el tapón con alcohol isopropílico antes de cada punción. Emplee jering
 ## Señales de degradación
 Turbidez persistente, precipitado inusual o pérdida de solubilidad pueden indicar degradación. En ese caso, documente la incidencia y no utilice la muestra en ensayos críticos.
 
-Consulte nuestro artículo sobre reconstitución y la calculadora de péptidos para planificar volúmenes y concentraciones.
+Consulte [reconstitución de péptidos liofilizados](/blog/reconstitucion-peptidos-laboratorio) y la [calculadora de péptidos](/calculadora-de-peptidos). Diluyente: [agua bacteriostática](/producto/bacteriostatic-water).
 
 Solo investigación. No consumo humano.`,
   },
@@ -119,7 +119,7 @@ Cada COA enlaza un lote con sus gráficos y valores numéricos. Archívelo con s
 ## Limitaciones responsables
 Los resultados analíticos describen el material tal como se recibió en el laboratorio certificador. El investigador debe validar idoneidad para su modelo específico (células, tejido, animal).
 
-Visite la biblioteca COA de Research Peptides ES para descargar informes por compuesto.
+Visite la [biblioteca COA](/certificados-coas). Fuentes: [PubChem](https://pubchem.ncbi.nlm.nih.gov/) y [PubMed](https://pubmed.ncbi.nlm.nih.gov/).
 
 Uso exclusivo en investigación.`,
   },
@@ -140,7 +140,7 @@ Si reconstituye 10 mg con 2 ml de agua bacteriostática, la concentración es 5 
 Registre siempre lote, fecha de reconstitución y concentración final. No reutilice diluciones antiguas sin verificar estabilidad documentada.
 
 ## Enlace con el catálogo
-Tras calcular su volumen, explore el catálogo para pedir agua bacteriostática, tapones y el compuesto de estudio con COA incluido.
+Tras calcular su volumen en la [calculadora](/calculadora-de-peptidos), explore el [catálogo](/tienda) y [agua bacteriostática](/producto/bacteriostatic-water).
 
 Herramienta orientativa para investigación. No sustituye el juicio profesional del investigador principal.`,
   },
@@ -163,7 +163,7 @@ El BPC-157 puede upregular VEGFR2 y favorecer la migración de células endoteli
 ## Almacenamiento y reconstitución
 Conserve el liofilizado a -20 °C. Tras reconstituir con agua bacteriostática, mantenga a 2–8 °C y utilice dentro de la ventana de estabilidad documentada.
 
-Explore nuestro BPC-157 con pureza verificada y COA por lote en el catálogo de Research Peptides ES.
+Explore [BPC-157](/producto/bpc-157), [TB-500 vs BPC-157](/blog/tb-500-vs-bpc-157-synergistic-effects) y la [biblioteca COA](/certificados-coas). Literatura: [PubMed](https://pubmed.ncbi.nlm.nih.gov/).
 
 Solo investigación científica.`,
   },
@@ -191,7 +191,7 @@ Solo investigación científica.`,
 El BAC contiene 0,9 % de alcohol bencilico, inhibe bacterias y permite usos múltiples durante semanas. El agua estéril carece de conservante y es de un solo uso.
 
 ## Cálculo de concentración
-Si añade 2 ml de BAC a un vial de 10 mg, obtiene 5 mg/ml (5000 mcg/ml). Use nuestra calculadora de péptidos en el sitio para validar volúmenes antes del ensayo.
+Si añade 2 ml de BAC a un vial de 10 mg, obtiene 5 mg/ml (5000 mcg/ml). Use la [calculadora de péptidos](/calculadora-de-peptidos) y [reconstitución](/blog/reconstitucion-peptidos-laboratorio). BAC: [agua bacteriostatica comprar](/producto/bacteriostatic-water).
 
 Productos solo para investigación. No consumo humano.`,
   },
@@ -214,7 +214,7 @@ Al actuar por vías complementarias, ambos péptidos se administran en combinaci
 ## Reconstitución conjunta
 En laboratorio puede reconstituir por separado o emplear mezclas comerciales de investigación para mantener estabilidad y dosificación precisa.
 
-Consulte las referencias BPC-157 y TB-500 en nuestro catálogo con documentación por lote.
+Consulte [BPC-157](/producto/bpc-157), la [guía BPC-157](/blog/bpc-157-comprehensive-guide) y [PubMed](https://pubmed.ncbi.nlm.nih.gov/).
 
 Exclusivamente para investigación. No uso clínico.`,
   },

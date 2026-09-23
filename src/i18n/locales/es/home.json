@@ -48,6 +48,21 @@
     "title": "Compuestos de investigación destacados",
     "subtitle": "Péptidos y productos químicos de investigación verificados por lote, listos para envío a laboratorios de la UE."
   },
+  "newArrivals": {
+    "eyebrow": "Recién incorporados",
+    "title": "Novedades del catálogo",
+    "subtitle": "Últimos péptidos de investigación añadidos, con documentación de lote y envío a laboratorios de la UE."
+  },
+  "blends": {
+    "eyebrow": "Protocolos combinados",
+    "title": "Mezclas de péptidos",
+    "subtitle": "Combinaciones sinérgicas en un solo vial para estudios de señalización y recuperación tisular."
+  },
+  "metabolic": {
+    "eyebrow": "Investigación metabólica",
+    "title": "Análogos GLP-1 y compuestos afines",
+    "subtitle": "Tirzepatida, semaglutida, retatrutida y péptidos relacionados para protocolos metabólicos in vitro."
+  },
   "whyEu": {
     "eyebrow": "Por qué nos eligen los investigadores",
     "title": "Diseñado para la",

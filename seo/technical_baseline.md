@@ -41,6 +41,7 @@ Indexable HTML for public routes is now server-rendered. Keep private surfaces `
 | PDP on-page | ES/EN SEO copy + meta + FAQ for gap PDPs (5 UK + 6 ES) | `src/seo/productSeoCopy.ts`, `ProductSeoContent`, product `generateMetadata` | Done |
 | Soft nav | App Router hrefs (`/es/shop`) + middleware rewrite of pretty aliases | `src/i18n/routing.ts`, `middleware.ts` | Done |
 | Content ops | SEO blog seed script | `scripts/seed-seo-blog-posts.ts` | Done |
+| Blog SEO/GEO | Per-post meta, answer capsule, keywords, FAQ, ≥5 in / ≥2 out | `src/seo/blogSeoCopy.ts`, `BlogSeoContent`, blog `generateMetadata` | Done |
 | Analytics | GA4/GSC setup + KPIs | `seo/analytics_setup.md`, `seo/kpis_dashboard.md` | Done |
 | Links | Gap list + CRM + email templates | `seo/link_gap_opportunities.csv`, `seo/link_building_crm.csv`, `seo/email_templates.md` | Done |
 | GEO | AI citation protocol | `seo/ai_citation_protocol.md` | Done |

@@ -5,33 +5,33 @@ import { getServerSupabase } from '../../../../src/lib/supabaseServer';
 import { BRAND_NAME } from '../../../../src/config/brand';
 import { BlogPostPageClient } from '../../../../src/next/BlogPostPageClient';
 import type { BlogPostRecord } from '../../../../src/components/blog/BlogArticleTemplate';
-import { blogExcerpt } from '../../../../src/lib/blogExcerpt';
+import {
+  getBlogSeoDocumentTitle,
+  getBlogSeoMetaDescription,
+} from '../../../../src/seo/blogSeoCopy';
+import { blogArticleJsonLd, blogFaqJsonLd, breadcrumbJsonLd } from '../../../../src/seo/structuredData';
 
 type Props = { params: Promise<{ locale: string; id: string }> };
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale, id } = await params;
+  const loc = locale as LocaleCode;
   const supabase = getServerSupabase();
-  let title = 'Blog';
-  let description: string | undefined;
+  let fallbackTitle = id;
   if (supabase) {
-    const { data } = await supabase
-      .from('blog_posts')
-      .select('title, content')
-      .eq('id', id)
-      .maybeSingle();
-    if (data?.title) title = data.title;
-    if (data?.content) description = blogExcerpt(String(data.content), 160);
+    const { data } = await supabase.from('blog_posts').select('title').eq('id', id).maybeSingle();
+    if (data?.title) fallbackTitle = data.title;
   }
-  return buildPageMetadata(locale as LocaleCode, `/blog/${id}`, {
-    title: `${title} | ${BRAND_NAME}`,
-    description,
+  return buildPageMetadata(loc, `/blog/${id}`, {
+    title: `${getBlogSeoDocumentTitle(id, loc, fallbackTitle)} | ${BRAND_NAME}`,
+    description: getBlogSeoMetaDescription(id, loc, fallbackTitle),
     ogType: 'article',
   });
 }
 
 export default async function BlogPostPage({ params }: Props) {
-  const { id } = await params;
+  const { locale, id } = await params;
+  const loc = locale as LocaleCode;
   const supabase = getServerSupabase();
   let initialPost: BlogPostRecord | null = null;
   let initialRelated: BlogPostRecord[] = [];
@@ -50,21 +50,32 @@ export default async function BlogPostPage({ params }: Props) {
     if (relatedRes.data) initialRelated = relatedRes.data as BlogPostRecord[];
   }
 
-  const ld = initialPost
-    ? {
-        '@context': 'https://schema.org',
-        '@type': 'BlogPosting',
-        headline: initialPost.title,
-        description: blogExcerpt(initialPost.content, 160),
-        datePublished: initialPost.created_at,
-        dateModified: initialPost.created_at,
-      }
-    : null;
+  const ld: Record<string, unknown>[] = [];
+  if (initialPost) {
+    ld.push(blogArticleJsonLd(initialPost, loc));
+    const faq = blogFaqJsonLd(initialPost.id, loc, initialPost.title);
+    if (faq) ld.push(faq);
+    ld.push(
+      breadcrumbJsonLd(
+        [
+          { name: 'Home', path: '/' },
+          { name: 'Blog', path: '/blog' },
+          { name: initialPost.title, path: `/blog/${id}` },
+        ],
+        loc,
+      ),
+    );
+  }
 
   return (
     <>
-      {ld ? <JsonLdScript data={ld} /> : null}
-      {initialPost ? <h1 className="sr-only">{initialPost.title}</h1> : null}
+      {ld.length ? <JsonLdScript data={ld} /> : null}
+      {initialPost ? (
+        <article className="sr-only">
+          <h1>{initialPost.title}</h1>
+          <p>{getBlogSeoMetaDescription(id, loc, initialPost.title)}</p>
+        </article>
+      ) : null}
       <BlogPostPageClient id={id} initialPost={initialPost} initialRelated={initialRelated} />
     </>
   );

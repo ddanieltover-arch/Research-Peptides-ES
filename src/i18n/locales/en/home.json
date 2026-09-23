@@ -48,6 +48,21 @@
     "title": "Featured research compounds",
     "subtitle": "Batch-verified peptides and research chemicals ready for EU laboratory dispatch."
   },
+  "newArrivals": {
+    "eyebrow": "Just added",
+    "title": "New catalog arrivals",
+    "subtitle": "The latest research peptides with batch documentation, ready for EU laboratory dispatch."
+  },
+  "blends": {
+    "eyebrow": "Combined protocols",
+    "title": "Peptide blends",
+    "subtitle": "Synergistic combinations in a single vial for signaling and tissue-research studies."
+  },
+  "metabolic": {
+    "eyebrow": "Metabolic research",
+    "title": "GLP-1 analogues and related compounds",
+    "subtitle": "Tirzepatide, semaglutide, retatrutide, and related peptides for in-vitro metabolic protocols."
+  },
   "whyEu": {
     "eyebrow": "Why researchers choose us",
     "title": "Built for institutional",

@@ -37,3 +37,5 @@ server/output/
 out/
 tsconfig.tsbuildinfo
 next-env.d.ts
+.lighthouse/
+.vercel.bak-prod/

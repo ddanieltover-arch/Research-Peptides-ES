@@ -8,8 +8,10 @@ import { supabase, isSupabaseConfigured } from '../supabase';
 import { LocaleLink } from '../i18n/LocaleLink';
 import { BRAND_NAME } from '../config/brand';
 import { usePageSeo } from '../seo/SeoProvider';
-import { blogExcerpt } from '../lib/blogContent';
 import { resolveBlogImageUrl } from '../lib/blogImages';
+import { getBlogSeoCopy } from '../seo/blogSeoCopy';
+import { blogArticleJsonLd, blogFaqJsonLd } from '../seo/structuredData';
+import type { LocaleCode } from '../i18n/locales';
 import {
   BlogArticleSkeleton,
   BlogArticleTemplate,
@@ -41,7 +43,8 @@ export default function BlogPost({
   initialPost = null,
   initialRelated = [],
 }: BlogPostProps) {
-  const { t } = useTranslation('blog');
+  const { t, i18n } = useTranslation('blog');
+  const locale = i18n.language as LocaleCode;
   const params = useParams();
   const pathname = usePathname();
   const id = resolvePostId(idProp, params, pathname);
@@ -87,29 +90,21 @@ export default function BlogPost({
     })();
   }, [id, initialPost, initialRelated]);
 
+  const seoCopy = post ? getBlogSeoCopy(post.id, locale, post.title) : null;
+
   usePageSeo(
-    post
+    post && seoCopy
       ? {
-          title: `${post.title} | ${BRAND_NAME} ${t('titleSuffix')}`,
-          description: blogExcerpt(post.content, 155),
+          title: `${seoCopy.documentTitle} | ${BRAND_NAME}`,
+          description: seoCopy.metaDescription,
           canonicalPath: `/blog/${post.id}`,
           ogType: 'article',
           ogImage: resolveBlogImageUrl(post.image_url) ?? undefined,
           jsonLd: [
-            {
-              '@context': 'https://schema.org',
-              '@type': 'Article',
-              headline: post.title,
-              image: resolveBlogImageUrl(post.image_url)
-                ? [resolveBlogImageUrl(post.image_url)!]
-                : [],
-              datePublished: post.created_at,
-              dateModified: post.created_at,
-              author: {
-                '@type': 'Organization',
-                name: t('editorialBoard'),
-              },
-            },
+            blogArticleJsonLd(post, locale),
+            ...(blogFaqJsonLd(post.id, locale, post.title)
+              ? [blogFaqJsonLd(post.id, locale, post.title)!]
+              : []),
           ],
         }
       : null,

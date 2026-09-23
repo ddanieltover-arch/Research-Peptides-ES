@@ -5,6 +5,7 @@ import { STATIC_ROUTE_PATHS } from '../i18n/routeSlugs';
 import type { LocaleCode } from '../i18n/locales';
 import { localizedProductDescription, localizedProductTitle } from '../lib/localizedProduct';
 import { getProductSeoCopy } from './productSeoCopy';
+import { getBlogSeoCopy } from './blogSeoCopy';
 import { productPath } from '../lib/productUrl';
 
 export function siteOrigin(): string {
@@ -179,6 +180,41 @@ export function productFaqJsonLd(slug: string, locale: LocaleCode) {
         '@type': 'Answer',
         text: faq.answer,
       },
+    })),
+  };
+}
+
+export function blogArticleJsonLd(
+  post: { id: string; title: string; created_at: string; image_url?: string | null },
+  locale: LocaleCode,
+) {
+  const seo = getBlogSeoCopy(post.id, locale, post.title);
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'BlogPosting',
+    headline: seo.documentTitle,
+    description: seo.metaDescription,
+    datePublished: post.created_at,
+    dateModified: post.created_at,
+    inLanguage: locale,
+    author: { '@type': 'Organization', name: BRAND_NAME },
+    publisher: { '@type': 'Organization', name: BRAND_NAME },
+    mainEntityOfPage: `${siteOrigin()}${pathWithLocale(locale, `/blog/${post.id}`)}`,
+    keywords: [seo.primaryKeyword, ...seo.secondaryKeywords].join(', '),
+    image: post.image_url ? [post.image_url] : undefined,
+  };
+}
+
+export function blogFaqJsonLd(postId: string, locale: LocaleCode, fallbackTitle?: string) {
+  const seo = getBlogSeoCopy(postId, locale, fallbackTitle);
+  if (!seo.faqs.length) return null;
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: seo.faqs.map((faq) => ({
+      '@type': 'Question',
+      name: faq.question,
+      acceptedAnswer: { '@type': 'Answer', text: faq.answer },
     })),
   };
 }

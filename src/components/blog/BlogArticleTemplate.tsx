@@ -23,6 +23,9 @@ import { BlogPostCover } from './BlogPostCover';
 import { cn } from '../../lib/utils';
 import { RelatedSeoLinks } from '../seo/RelatedSeoLinks';
 import { getSeoLinksForBlogPost } from '../../seo/seoLinkGraph';
+import { BlogSeoContent } from './BlogSeoContent';
+import { getBlogSeoCopy } from '../../seo/blogSeoCopy';
+import type { LocaleCode } from '../../i18n/locales';
 
 export type BlogPostRecord = {
   id: string;
@@ -45,6 +48,8 @@ const RESOURCE_LINKS = [
 
 export function BlogArticleTemplate({ post, related = [] }: BlogArticleTemplateProps) {
   const { t, i18n } = useTranslation('blog');
+  const locale = i18n.language as LocaleCode;
+  const seoCopy = getBlogSeoCopy(post.id, locale, post.title);
   const [copied, setCopied] = useState(false);
   const readMinutes = estimateReadMinutes(post.content);
   const published = formatLocaleDate(post.created_at, i18n.language, {
@@ -111,7 +116,7 @@ export function BlogArticleTemplate({ post, related = [] }: BlogArticleTemplateP
             </h1>
 
             <p className="mt-4 text-steel-600 text-base md:text-lg leading-relaxed max-w-2xl font-sans">
-              {blogExcerpt(post.content, 200)}
+              {seoCopy.metaDescription}
             </p>
           </motion.div>
         </Container>
@@ -146,6 +151,7 @@ export function BlogArticleTemplate({ post, related = [] }: BlogArticleTemplateP
             className="lg:col-span-8"
           >
             <GlassPanel variant="light" padding="lg" className="shadow-card">
+              <BlogSeoContent copy={seoCopy} locale={locale} />
               <BlogContent content={post.content} />
             </GlassPanel>
 

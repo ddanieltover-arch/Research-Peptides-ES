@@ -16,6 +16,12 @@ Research Peptides ES es un proveedor con sede en España que ayuda a investigado
 - /peptide-research: Recursos e investigación sobre péptidos
 - /coas: Biblioteca de certificados de análisis (COA) de terceros
 - /blog: Diario de investigación
+- /blog/reconstitucion-peptidos-laboratorio: Reconstitución de péptidos liofilizados
+- /blog/como-leer-coa-peptidos: Cómo leer un COA
+- /blog/almacenamiento-peptidos-liofilizados: Almacenamiento de liofilizados
+- /blog/bpc-157-comprehensive-guide: BPC-157 investigación
+- /blog/donde-comprar-retatrutide-espana: Dónde comprar retatrutide en España
+- /blog/como-comprar-peptidos-investigacion-espana: Cómo comprar péptidos en España
 - /faq: Preguntas frecuentes
 - /shipping: Envío y logística en frío (España / UE)
 - /about-us: Sobre Research Peptides ES (Madrid)

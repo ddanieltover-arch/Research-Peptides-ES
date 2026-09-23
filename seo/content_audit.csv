@@ -4,7 +4,7 @@ https://researchpeptides.es/tienda,Catalog,es,Y,Y,Strong,Low-Medium,Y in banners
 https://researchpeptides.es/categorias,Hub,es,Y,Y,OK,Low,Y,Category links,ItemList,Add unique blurbs per category,Expand
 https://researchpeptides.es/producto/{slug},PDP,es,Y,Y,Product name,Medium,Must be explicit,Related+COA,Product,Verify uniqueness per SKU,Audit top 20 SKUs
 https://researchpeptides.es/blog,Blog index,es,Y,Y,OK,Low,Y,Posts,Blog,Index OK; grow ES posts,Seed SEO posts
-https://researchpeptides.es/blog/{id},Article,es,Y,Y,Varies,Varies,Required,Hub links,Article,Quality varies by post,Standardize briefs
+https://researchpeptides.es/blog/{id},Article,es,Y,Y,Strong,Varies,Required,≥5 in / ≥2 out + GEO capsule,BlogPosting+FAQPage,22 mapped posts + fallback,Maintain; reseed core posts for body links
 https://researchpeptides.es/preguntas-frecuentes,FAQ,es,Y,Y,Strong,Medium,Y,Support pages,FAQPage,Strong GEO candidate,Add answer capsules
 https://researchpeptides.es/envio,Support,es,Y,Y,OK,Medium,Y,Checkout trust,None/WebPage,Add cold-chain depth,Expand
 https://researchpeptides.es/contacto,Contact,es,Y,Y,OK,Low,Y,NAP,LocalBusiness,Confirm NAP match,Align GBP

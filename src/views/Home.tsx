@@ -1,6 +1,7 @@
 'use client';
 
 import { lazy, Suspense, type ReactNode } from 'react';
+import { useTranslation } from 'react-i18next';
 import { HeroSection } from '../components/home/HeroSection';
 import { HomeKeywordStrip } from '../components/home/HomeKeywordStrip';
 import { HomeSectionFallback } from '../components/home/HomeSectionFallback';
@@ -8,9 +9,23 @@ import { LazyWhenVisible } from '../components/LazyWhenVisible';
 import { usePageSeo } from '../seo/SeoProvider';
 import { DEFAULT_DESCRIPTION } from '../seo/pageTitles';
 
+const METABOLIC_SLUGS = [
+  'semaglutide',
+  'tirzepatide',
+  'retatrutide',
+  'cagrilintide',
+  'liraglutide',
+  'survodutide',
+];
+
 const FeaturedProductsSection = lazy(() =>
   import('../components/home/FeaturedProductsSection').then((m) => ({
     default: m.FeaturedProductsSection,
+  })),
+);
+const HomeProductSection = lazy(() =>
+  import('../components/home/HomeProductSection').then((m) => ({
+    default: m.HomeProductSection,
   })),
 );
 const WhyEuSection = lazy(() =>
@@ -56,6 +71,7 @@ function DeferredSection({
 }
 
 export default function Home() {
+  const { t } = useTranslation('home');
   usePageSeo({
     title: 'Research Peptides ES | Péptidos España | comprar péptidos de investigación',
     description: DEFAULT_DESCRIPTION,
@@ -72,11 +88,43 @@ export default function Home() {
       <DeferredSection minHeight="min-h-[360px]">
         <WhyEuSection />
       </DeferredSection>
+      <DeferredSection minHeight="min-h-[420px]">
+        <HomeProductSection
+          eyebrow={t('newArrivals.eyebrow')}
+          title={t('newArrivals.title')}
+          subtitle={t('newArrivals.subtitle')}
+          href="/shop"
+          queryKind="newest"
+          tone="mist"
+        />
+      </DeferredSection>
       <DeferredSection minHeight="min-h-[320px]">
         <CategoryShowcaseSection />
       </DeferredSection>
+      <DeferredSection minHeight="min-h-[420px]">
+        <HomeProductSection
+          eyebrow={t('blends.eyebrow')}
+          title={t('blends.title')}
+          subtitle={t('blends.subtitle')}
+          href="/search?category=peptide-blends"
+          queryKind="category"
+          categorySlug="peptide-blends"
+          tone="light"
+        />
+      </DeferredSection>
       <DeferredSection minHeight="min-h-[300px]">
         <TrustQualitySection />
+      </DeferredSection>
+      <DeferredSection minHeight="min-h-[420px]">
+        <HomeProductSection
+          eyebrow={t('metabolic.eyebrow')}
+          title={t('metabolic.title')}
+          subtitle={t('metabolic.subtitle')}
+          href="/shop"
+          queryKind="slugs"
+          slugNeedles={METABOLIC_SLUGS}
+          tone="mist"
+        />
       </DeferredSection>
       <DeferredSection minHeight="min-h-[280px]" className="bg-white">
         <CustomerExperienceSection />
