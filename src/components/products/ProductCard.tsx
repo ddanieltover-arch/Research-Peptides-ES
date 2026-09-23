@@ -9,12 +9,13 @@ import { ProductImagePlaceholder } from './ProductImagePlaceholder';
 import { ProductCardPriceBlock } from './ProductCardPriceBlock';
 import { getPrimaryProductBadge } from '../../lib/productBadges';
 import { productPath } from '../../lib/productUrl';
-import { whatsappUrl } from '../../lib/whatsapp';
-import { WhatsAppIcon } from '../icons/WhatsAppIcon';
 import { cardHoverState, fadeUpVariants } from '../../design-system/motion';
 import { cn } from '../../lib/utils';
 import type { LocaleCode } from '../../i18n/locales';
 import { localizedProductDescription, localizedProductTitle } from '../../lib/localizedProduct';
+import { liveProductImage } from '../../lib/liveProductImages';
+import { whatsappUrl } from '../../lib/whatsapp';
+import { WhatsAppIcon } from '../icons/WhatsAppIcon';
 
 export type CatalogProduct = {
   id: string;
@@ -69,6 +70,7 @@ export function ProductCard({
   });
   const lowStock = product.inventory != null && Number(product.inventory) < 10;
   const categoryLabel = product.categories?.[0];
+  const cardImage = liveProductImage(product.slug, product.images?.[0]);
 
   const card = (
     <Card
@@ -94,9 +96,9 @@ export function ProductCard({
         to={productHref}
         className="relative block aspect-[4/5] overflow-hidden bg-slate-50 m-2 mb-0 rounded-lg"
       >
-        {product.images?.[0] ? (
+        {cardImage ? (
           <img
-            src={product.images[0]}
+            src={cardImage}
             alt={displayTitle}
             loading="lazy"
             decoding="async"
@@ -173,6 +175,17 @@ export function ProductCard({
               Ver COA
             </LocaleLink>
           </div>
+
+          <a
+            href={whatsappUrl(t('card.whatsappMessage', { title: displayTitle }))}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex w-full items-center justify-center gap-1.5 rounded-lg border border-emerald-200 bg-emerald-50 px-3 py-2 text-xs font-semibold text-emerald-800 transition-colors hover:bg-emerald-100 hover:text-emerald-900"
+            aria-label={t('card.whatsapp')}
+          >
+            <WhatsAppIcon className="h-3.5 w-3.5 shrink-0 text-[#25D366]" />
+            {t('card.whatsapp')}
+          </a>
 
           <div className="flex items-end justify-between gap-2">
             <ProductCardPriceBlock product={product} />

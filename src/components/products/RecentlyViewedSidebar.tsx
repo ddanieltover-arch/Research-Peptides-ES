@@ -6,6 +6,7 @@ import { LocaleLink } from '../../i18n/LocaleLink';
 import { supabase } from '../../supabase';
 import { ProductImagePlaceholder } from './ProductImagePlaceholder';
 import { productPath } from '../../lib/productUrl';
+import { liveProductImage } from '../../lib/liveProductImages';
 
 export default function RecentlyViewedSidebar() {
   const [products, setProducts] = useState<any[]>([]);
@@ -65,8 +66,8 @@ export default function RecentlyViewedSidebar() {
                 className="relative group"
               >
                 <div className="h-12 w-12 rounded-full overflow-hidden border-2 border-transparent group-hover:border-brand-500 transition-all shadow-md">
-                  {product.images?.[0] ? (
-                  <img src={product.images[0]} alt="" className="h-full w-full object-cover group-hover:scale-110 transition-transform" />
+                  {liveProductImage(product.slug, product.images?.[0]) ? (
+                  <img src={liveProductImage(product.slug, product.images?.[0])} alt="" className="h-full w-full object-cover group-hover:scale-110 transition-transform" />
                   ) : (
                     <ProductImagePlaceholder
                       productId={String(product.id)}

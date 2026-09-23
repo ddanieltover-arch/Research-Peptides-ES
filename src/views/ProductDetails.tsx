@@ -13,6 +13,7 @@ import { useWishlistStore } from '../store/useWishlistStore';
 import { useToastStore } from '../store/useToastStore';
 import { DetailedProductSkeleton } from '../components/Skeleton';
 import { productPath } from '../lib/productUrl';
+import { liveProductImage } from '../lib/liveProductImages';
 import { BRAND_NAME } from '../config/brand';
 import { Container, Reveal, PageShell } from '../design-system';
 import { ProductGallery } from '../components/product-detail/ProductGallery';
@@ -24,7 +25,7 @@ import { usePageSeo } from '../seo/SeoProvider';
 import { breadcrumbJsonLd, productFaqJsonLd, productJsonLd } from '../seo/structuredData';
 import type { LocaleCode } from '../i18n/locales';
 import { localizedProductDescription, localizedProductTitle } from '../lib/localizedProduct';
-import { stripLocaleFromPath } from '../i18n/routing';
+import { productSlugFromPath, stripLocaleFromPath } from '../i18n/routing';
 import { toCanonicalPath } from '../i18n/routeSlugs';
 import { RelatedSeoLinks } from '../components/seo/RelatedSeoLinks';
 import { getSeoLinksForProduct } from '../seo/seoLinkGraph';
@@ -43,7 +44,8 @@ export default function ProductDetails() {
   const { t, i18n } = useTranslation('product');
   const locale = i18n.language as LocaleCode;
   const params = useParams<{ slug?: string; id?: string }>();
-  const slug = params?.slug;
+  const pathname = usePathname() || '/';
+  const slug = params?.slug || productSlugFromPath(pathname);
   const id = params?.id;
   const [product, setProduct] = useState<any>(null);
   const [reviews, setReviews] = useState<any[]>([]);
@@ -60,7 +62,6 @@ export default function ProductDetails() {
   const { productIds, toggleWishlist } = useWishlistStore();
   const addToast = useToastStore((state) => state.addToast);
   const navigate = useLocaleNavigate();
-  const pathname = usePathname() || '/';
   const location = { pathname };
   const { isInWishlist, handleToggleWishlist, handleAddToCart: addRelatedToCart } =
     useProductCatalogActions();
@@ -105,7 +106,7 @@ export default function ProductDetails() {
       description: plainDescription || t('seoDescription', { title, lng: locale }),
       canonicalPath,
       ogType: 'website' as const,
-      ogImage: product.images?.[0] || undefined,
+          ogImage: liveProductImage(product.slug, product.images?.[0]) || undefined,
       jsonLd,
     };
   }, [product, locale, t, seoCopy]);
@@ -245,7 +246,12 @@ export default function ProductDetails() {
         ? variantCompare
         : null;
 
-  const images: string[] = product.images?.length ? product.images : [];
+  const liveImage = liveProductImage(product.slug, product.images?.[0]);
+  const images: string[] = liveImage
+    ? [liveImage, ...(product.images || []).filter((u) => u && u !== liveImage)]
+    : product.images?.length
+      ? product.images
+      : [];
   const labSpecs = resolveProductLabSpecs(product.slug, product.specifications);
 
   return (

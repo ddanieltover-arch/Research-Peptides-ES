@@ -4,6 +4,7 @@ import React, { Suspense, useEffect, useState, type ReactNode } from 'react';
 import { usePathname } from 'next/navigation';
 import { useTranslation } from 'react-i18next';
 import { useLocaleNavigate } from '../i18n/useLocaleNavigate';
+import { isCommercePath } from '../i18n/routing';
 import { ArrowUp } from 'lucide-react';
 import { WhatsAppIcon } from './icons/WhatsAppIcon';
 import { motion, AnimatePresence } from 'motion/react';
@@ -30,6 +31,7 @@ import { postNewsletterSubscribe } from '../lib/transactionalEmailApi';
 import { DevConfigBanner } from './DevConfigBanner';
 import { prefetchCriticalRoutes } from '../lib/routePrefetch';
 import { whatsappUrl } from '../lib/whatsapp';
+import { WHATSAPP_DISPLAY } from '../config/brand';
 
 function LayoutShell({ children }: { children: ReactNode }) {
   const { t } = useTranslation('common');
@@ -47,10 +49,7 @@ function LayoutShell({ children }: { children: ReactNode }) {
 
   const handleLogin = () => navigate('/login');
 
-  const isCommerceFlow =
-    /\/(cart|checkout)(\/|$)/.test(pathname) ||
-    pathname.endsWith('/cart') ||
-    pathname.endsWith('/checkout');
+  const isCommerceFlow = isCommercePath(pathname);
 
   const handleLogout = async () => {
     try {
@@ -165,14 +164,15 @@ function LayoutShell({ children }: { children: ReactNode }) {
         onNewsletterSubmit={handleNewsletterSubmit}
       />
 
-      <div className="fixed bottom-24 md:bottom-8 right-4 md:right-8 z-50 flex items-center gap-3">
+      <div className="fixed bottom-24 md:bottom-8 left-4 md:left-8 z-50 flex items-center gap-3">
         {!isCommerceFlow && (
           <a
             href={whatsappHref}
             target="_blank"
             rel="noopener noreferrer"
-            className="bg-brand-500 hover:bg-brand-600 text-white rounded-xl p-3 shadow-elevated focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-2"
-            aria-label="Contact us on WhatsApp"
+            className="inline-flex items-center justify-center bg-[#25D366] hover:bg-[#1DA851] text-white rounded-xl p-3 shadow-elevated focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-300 focus-visible:ring-offset-2"
+            aria-label={`WhatsApp ${WHATSAPP_DISPLAY}`}
+            title={`WhatsApp ${WHATSAPP_DISPLAY}`}
           >
             <WhatsAppIcon className="h-5 w-5" />
           </a>

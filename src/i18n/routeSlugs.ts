@@ -130,7 +130,7 @@ defineRoute(STATIC_ROUTE_PATHS.checkout, {
 
 defineRoute(STATIC_ROUTE_PATHS.blog, {
   en: 'blog',
-  es: 'blog',
+  es: 'diario',
   nl: 'blog',
   de: 'blog',
   fr: 'blog',
@@ -612,8 +612,9 @@ export function toCanonicalPath(path: string): string {
   }
 
   const canonical = CANONICAL_BY_SLUG.get(first);
-  if (canonical && segments.length === 1) {
-    return canonical;
+  if (canonical) {
+    const rest = segments.slice(1).join('/');
+    return rest ? `${canonical}/${rest}` : canonical;
   }
 
   return normalized;
@@ -630,9 +631,17 @@ export function toLocalizedPath(path: string, locale: LocaleCode): string {
     return `/${prefix}/${productMatch[1]}`;
   }
 
-  const slugMap = SLUG_BY_CANONICAL.get(canonical);
-  if (slugMap) {
-    return `/${slugMap.get(locale) ?? slugMap.get('en') ?? canonical.slice(1)}`;
+  const exactMap = SLUG_BY_CANONICAL.get(canonical);
+  if (exactMap) {
+    return `/${exactMap.get(locale) ?? exactMap.get('en') ?? canonical.slice(1)}`;
+  }
+
+  const segments = canonical.slice(1).split('/');
+  const parentMap = SLUG_BY_CANONICAL.get(`/${segments[0]}`);
+  if (parentMap) {
+    const slug = parentMap.get(locale) ?? parentMap.get('en') ?? segments[0];
+    const rest = segments.slice(1).join('/');
+    return rest ? `/${slug}/${rest}` : `/${slug}`;
   }
 
   return canonical;

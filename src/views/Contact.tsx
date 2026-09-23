@@ -6,7 +6,9 @@ import { Mail, MessageSquare, Clock, ArrowRight, ShieldCheck, MapPin } from 'luc
 import { motion } from 'motion/react';
 import { Container, GlassPanel, GlowPanel, PageShell, Reveal } from '../design-system';
 import { pageEnterTransition } from '../design-system/motion';
-import { HQ_LOCATION, SUPPORT_EMAIL } from '../config/brand';
+import { HQ_LOCATION, SUPPORT_EMAIL, WHATSAPP_DISPLAY } from '../config/brand';
+import { whatsappUrl } from '../lib/whatsapp';
+import { WhatsAppIcon } from '../components/icons/WhatsAppIcon';
 import { useToastStore } from '../store/useToastStore';
 import { postContactEmail } from '../lib/transactionalEmailApi';
 import { usePageSeo } from '../seo/SeoProvider';
@@ -70,6 +72,23 @@ export default function Contact() {
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
               <Reveal>
+                <GlassPanel variant="light" padding="sm" className="p-6 shadow-card h-full">
+                  <WhatsAppIcon className="h-6 w-6 text-[#25D366] mb-3" />
+                  <h4 className="text-xs font-semibold uppercase tracking-wider text-silver-400 mb-2">
+                    {t('contact.whatsappLabel')}
+                  </h4>
+                  <a
+                    href={whatsappUrl()}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="font-semibold text-navy-950 break-words hover:text-brand-600"
+                  >
+                    {WHATSAPP_DISPLAY}
+                  </a>
+                  <p className="text-sm text-steel-600 mt-1">{t('contact.whatsappCta')}</p>
+                </GlassPanel>
+              </Reveal>
+              <Reveal delay={0.04}>
                 <GlassPanel variant="light" padding="sm" className="p-6 shadow-card h-full">
                   <Mail className="h-6 w-6 text-brand-600 mb-3" aria-hidden />
                   <h4 className="text-xs font-semibold uppercase tracking-wider text-silver-400 mb-2">

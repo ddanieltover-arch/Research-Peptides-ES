@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import { usePathname } from 'next/navigation';
+import { isAdminPath } from '../../i18n/routing';
 import { MessageCircle } from 'lucide-react';
 import {
   ensureTawkScript,
@@ -16,7 +17,7 @@ import {
  */
 export default function TawkChat() {
   const pathname = usePathname() || '/';
-  const isAdmin = pathname.includes('/admin');
+  const isAdmin = isAdminPath(pathname);
   const [isOpening, setIsOpening] = useState(false);
 
   useEffect(() => {
@@ -49,7 +50,7 @@ export default function TawkChat() {
       type="button"
       onClick={() => void openChat()}
       disabled={isOpening}
-      className="rp-live-chat-trigger fixed bottom-24 md:bottom-8 left-4 md:left-8 z-[200] bg-brand-600 hover:bg-brand-500 text-white rounded-full p-4 transition-all duration-300 hover:scale-110 active:scale-95 flex items-center justify-center group ring-4 ring-brand-500/20 disabled:opacity-80 shadow-elevated"
+      className="rp-live-chat-trigger fixed bottom-24 md:bottom-8 right-4 md:right-8 z-[200] bg-brand-600 hover:bg-brand-500 text-white rounded-full p-4 transition-all duration-300 hover:scale-110 active:scale-95 flex items-center justify-center group ring-4 ring-brand-500/20 disabled:opacity-80 shadow-elevated"
       aria-label="Open live chat"
       title="Open live chat"
     >

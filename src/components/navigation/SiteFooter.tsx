@@ -4,7 +4,9 @@ import { MapPin, ShieldCheck, Truck } from 'lucide-react';
 import footerLogo from '../../assets/footerLogo';
 import { Container, ScientificBackdrop } from '../../design-system';
 import { footerInventory, footerLegal, footerSupport } from '../../navigation/config';
-import { BRAND_NAME, HQ_LOCATION, SUPPORT_EMAIL } from '../../config/brand';
+import { BRAND_NAME, HQ_LOCATION, SUPPORT_EMAIL, WHATSAPP_DISPLAY } from '../../config/brand';
+import { whatsappUrl } from '../../lib/whatsapp';
+import { WhatsAppIcon } from '../icons/WhatsAppIcon';
 import { FOOTER_EXTERNAL_LINKS, FOOTER_SEO_LINKS } from '../../seo/seoLinkGraph';
 
 type SiteFooterProps = {
@@ -60,8 +62,19 @@ export default function SiteFooter({
                 {tCommon('footer.gdpr')}
               </span>
             </div>
-            <address className="not-italic text-slate-400 text-xs sm:text-sm leading-relaxed mt-6 max-w-sm font-mono">
-              <a href={`mailto:${SUPPORT_EMAIL}`} className="hover:text-white transition-colors">
+            <address className="not-italic text-slate-400 text-xs sm:text-sm leading-relaxed mt-6 max-w-sm font-mono space-y-2">
+              <a
+                href={whatsappUrl()}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 hover:text-white transition-colors"
+              >
+                <WhatsAppIcon className="h-4 w-4 shrink-0 text-[#25D366]" />
+                <span>
+                  {tCommon('footer.whatsapp')} {WHATSAPP_DISPLAY}
+                </span>
+              </a>
+              <a href={`mailto:${SUPPORT_EMAIL}`} className="block hover:text-white transition-colors">
                 {SUPPORT_EMAIL}
               </a>
             </address>

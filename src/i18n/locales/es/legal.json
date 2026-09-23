@@ -142,6 +142,8 @@
     "subtitle": "Pedidos, documentación y consultas institucionales.",
     "emailLabel": "Correo electrónico",
     "phoneLabel": "Teléfono",
+    "whatsappLabel": "WhatsApp",
+    "whatsappCta": "Escribir por WhatsApp",
     "locationLabel": "Sede",
     "locationValue": "España · Unión Europea",
     "supportHoursLabel": "Horario de soporte (CET)",

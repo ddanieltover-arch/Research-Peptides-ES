@@ -2,6 +2,7 @@ import { LocaleLink } from '../../i18n/LocaleLink';
 import { useTranslation } from 'react-i18next';
 import { formatCurrency } from '../../lib/utils';
 import { productPath } from '../../lib/productUrl';
+import { liveProductImage } from '../../lib/liveProductImages';
 import { ProductImagePlaceholder } from '../products/ProductImagePlaceholder';
 import { Container } from '../../design-system';
 import { ProductCard } from '../products/ProductCard';
@@ -61,9 +62,9 @@ export function ProductRecommendations({
                 className="shrink-0 w-44 group"
               >
                 <div className="h-44 rounded-xl overflow-hidden bg-mist-50 border border-slate-200 group-hover:shadow-elevated transition-shadow">
-                  {rv.images?.[0] ? (
+                  {liveProductImage(rv.slug, rv.images?.[0]) ? (
                     <img
-                      src={rv.images[0]}
+                      src={liveProductImage(rv.slug, rv.images?.[0])}
                       alt={rv.title}
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                       loading="lazy"

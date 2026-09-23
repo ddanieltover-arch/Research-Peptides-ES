@@ -142,6 +142,8 @@
     "subtitle": "Orders, documentation, and institutional inquiries.",
     "emailLabel": "Email",
     "phoneLabel": "Phone",
+    "whatsappLabel": "WhatsApp",
+    "whatsappCta": "Message us on WhatsApp",
     "locationLabel": "Headquarters",
     "locationValue": "Spain · European Union",
     "supportHoursLabel": "Support hours (CET)",

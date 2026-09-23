@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { usePathname } from 'next/navigation';
+import { isAdminPath, isCommercePath } from '../../i18n/routing';
 import { useAuthStore } from '../../store/useAuthStore';
 import {
   hideTawkLauncher,
@@ -27,7 +28,7 @@ export default function TawkVisitorSync() {
   useEffect(() => {
     removeLegacyLiveChat();
     const hideWidget =
-      pathname.includes('/admin') || /\/(cart|checkout)(\/|$)/.test(pathname);
+      isAdminPath(pathname) || isCommercePath(pathname);
     if (hideWidget) hideTawkLauncher();
     else installTawkReadyHook(true);
 

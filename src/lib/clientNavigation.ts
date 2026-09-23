@@ -8,7 +8,8 @@ type NavState = {
   fromPath: string | null;
 };
 
-let state: NavState = { pending: false, href: null, fromPath: null };
+const IDLE_STATE: NavState = { pending: false, href: null, fromPath: null };
+let state: NavState = IDLE_STATE;
 let watchdogTimer = 0;
 const listeners = new Set<() => void>();
 
@@ -58,7 +59,7 @@ export function beginClientNavigation(href: string, fromPath: string) {
       window.location.assign(href);
       return;
     }
-    setState({ pending: false, href: null, fromPath: null });
+    setState(IDLE_STATE);
   }, HARD_FALLBACK_MS);
 }
 
@@ -72,7 +73,7 @@ export function clearClientNavigation(currentPath: string) {
     window.clearTimeout(watchdogTimer);
     watchdogTimer = 0;
   }
-  setState({ pending: false, href: null, fromPath: null });
+  setState(IDLE_STATE);
 }
 
 export function cancelClientNavigation() {
@@ -80,7 +81,7 @@ export function cancelClientNavigation() {
     window.clearTimeout(watchdogTimer);
     watchdogTimer = 0;
   }
-  setState({ pending: false, href: null, fromPath: null });
+  setState(IDLE_STATE);
 }
 
 function subscribe(listener: () => void) {
@@ -93,7 +94,7 @@ function getSnapshot(): NavState {
 }
 
 function getServerSnapshot(): NavState {
-  return { pending: false, href: null, fromPath: null };
+  return IDLE_STATE;
 }
 
 export function useClientNavigationState(): NavState {

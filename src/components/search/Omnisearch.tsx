@@ -9,6 +9,7 @@ import { formatCurrency } from '../../lib/utils';
 import { useLocaleNavigate } from '../../i18n/useLocaleNavigate';
 import { ProductImagePlaceholder } from '../products/ProductImagePlaceholder';
 import { productPath } from '../../lib/productUrl';
+import { liveProductImage } from '../../lib/liveProductImages';
 
 const POPULAR_SEARCHES = ['BPC-157', 'TB-500', 'Semaglutide', 'CJC-1295', 'AOD-9604'];
 
@@ -121,9 +122,9 @@ export default function Omnisearch() {
                       onClick={() => handleProductClick(product)}
                     >
                       <div className="h-16 w-16 rounded-xl overflow-hidden bg-gray-100 dark:bg-gray-800 shrink-0">
-                        {product.images?.[0] ? (
+                        {liveProductImage(product.slug, product.images?.[0]) ? (
                           <img
-                            src={product.images[0]}
+                            src={liveProductImage(product.slug, product.images?.[0])}
                             alt=""
                             className="h-full w-full object-cover"
                           />

@@ -7,6 +7,7 @@ import { supabase } from '../../supabase';
 import { useLocaleNavigate } from '../../i18n/useLocaleNavigate';
 import { ProductImagePlaceholder } from '../products/ProductImagePlaceholder';
 import { productPath } from '../../lib/productUrl';
+import { liveProductImage } from '../../lib/liveProductImages';
 
 interface WizardOption {
   id: string;
@@ -256,9 +257,9 @@ export default function SelectorWizard() {
                           className="flex items-center gap-4 p-4 rounded-xl border border-gray-100 dark:border-gray-800 hover:shadow-elevated transition-all cursor-pointer group"
                         >
                           <div className="h-20 w-20 rounded-xl overflow-hidden bg-gray-50 shrink-0">
-                            {product.images?.[0] ? (
+                            {liveProductImage(product.slug, product.images?.[0]) ? (
                               <img
-                                src={product.images[0]}
+                                src={liveProductImage(product.slug, product.images?.[0])}
                                 alt=""
                                 className="h-full w-full object-cover group-hover:scale-110 transition-transform"
                               />

@@ -16,6 +16,7 @@ import {
   type BlogPostRecord,
 } from '../components/blog/BlogArticleTemplate';
 import { PageShell } from '../design-system';
+import { blogPostIdFromPath } from '../i18n/routing';
 
 function resolvePostId(
   propId: string | undefined,
@@ -26,8 +27,7 @@ function resolvePostId(
   const raw = params?.id;
   if (typeof raw === 'string' && raw) return raw;
   if (Array.isArray(raw) && raw[0]) return raw[0];
-  const fromPath = pathname?.split('/blog/')[1]?.split(/[/?#]/)[0];
-  return fromPath || undefined;
+  return blogPostIdFromPath(pathname || '');
 }
 
 type BlogPostProps = {

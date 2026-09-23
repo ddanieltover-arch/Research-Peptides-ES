@@ -35,11 +35,8 @@ export function stripLocaleFromPath(pathname: string): string {
   return toCanonicalPath(rest);
 }
 
-/** Build an App Router path: `/{locale}/{english-canonical...}`.
- * Soft client navigation must hit real `app/[locale]/…` segments.
- * Pretty localized URLs (`/tienda`, `/producto/…`, `/`) 308 → these paths in middleware.
- */
-export function pathWithLocale(locale: LocaleCode, path = '/'): string {
+/** Internal App Router path: `/{locale}/{english-canonical…}` (`/es/shop`). */
+export function internalAppPath(locale: LocaleCode, path = '/'): string {
   const [pathnamePart, query = ''] = path.split('?');
   const raw = pathnamePart && pathnamePart.length > 0 ? pathnamePart : '/';
   const canonical = toCanonicalPath(raw.startsWith('/') ? raw : `/${raw}`);
@@ -48,13 +45,44 @@ export function pathWithLocale(locale: LocaleCode, path = '/'): string {
   return query ? `${base}?${query}` : base;
 }
 
-/** Public SEO alias path (translated slugs; Spanish unprefixed). Used for rewrites/docs only. */
+/** Public URL with translated slugs. Spanish is unprefixed (`/tienda`, `/producto/…`). */
 export function publicAliasPath(locale: LocaleCode, path = '/'): string {
-  const localized = toLocalizedPath(path, locale);
+  const [pathnamePart, query = ''] = path.split('?');
+  const raw = pathnamePart && pathnamePart.length > 0 ? pathnamePart : '/';
+  const localized = toLocalizedPath(raw.startsWith('/') ? raw : `/${raw}`, locale);
   const normalized = localized.startsWith('/') ? localized : `/${localized}`;
   const bare = normalized === '/' ? '' : normalized;
-  if (locale === DEFAULT_LOCALE) return bare || '/';
-  return bare ? `/${locale}${bare}` : `/${locale}`;
+  const base = locale === DEFAULT_LOCALE ? bare || '/' : bare ? `/${locale}${bare}` : `/${locale}`;
+  return query ? `${base}?${query}` : base;
+}
+
+/** User-facing localized path — same as publicAliasPath (Spanish page names, not English slugs). */
+export function pathWithLocale(locale: LocaleCode, path = '/'): string {
+  return publicAliasPath(locale, path);
+}
+
+export function matchesCanonicalPath(pathname: string, canonical: string): boolean {
+  const current = stripLocaleFromPath(pathname);
+  const target = toCanonicalPath(canonical);
+  return current === target || (target !== '/' && current.startsWith(`${target}/`));
+}
+
+export function isCommercePath(pathname: string): boolean {
+  return matchesCanonicalPath(pathname, '/cart') || matchesCanonicalPath(pathname, '/checkout');
+}
+
+export function isAdminPath(pathname: string): boolean {
+  return matchesCanonicalPath(pathname, '/admin') || pathname.includes('/admin');
+}
+
+export function productSlugFromPath(pathname: string): string | undefined {
+  const match = /^\/product\/([^/?#]+)/.exec(stripLocaleFromPath(pathname));
+  return match?.[1];
+}
+
+export function blogPostIdFromPath(pathname: string): string | undefined {
+  const match = /^\/blog\/([^/?#]+)/.exec(stripLocaleFromPath(pathname));
+  return match?.[1];
 }
 
 export function persistLocaleCookie(locale: LocaleCode): void {

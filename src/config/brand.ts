@@ -11,6 +11,9 @@ export const SUPPORT_EMAIL =
 /** WhatsApp sales / product enquiries (E.164 without +). */
 export const WHATSAPP_NUMBER = '34655680011';
 
+/** Visible storefront / contact label. */
+export const WHATSAPP_DISPLAY = '+34 655 68 00 11';
+
 export const SITE_URL =
   publicEnv('VITE_SITE_URL') || 'https://researchpeptides.es';
 

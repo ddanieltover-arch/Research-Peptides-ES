@@ -4,6 +4,7 @@ import { useWishlistStore } from '../store/useWishlistStore';
 import { useAuthStore } from '../store/useAuthStore';
 import { useToastStore } from '../store/useToastStore';
 import type { CatalogProduct } from '../components/products/ProductCard';
+import { liveProductImage } from '../lib/liveProductImages';
 
 export function useProductCatalogActions() {
   const { t } = useTranslation('product');
@@ -27,7 +28,7 @@ export function useProductCatalogActions() {
       unitPrice: product.price,
       slug: product.slug ?? undefined,
       quantity: 1,
-      imageUrl: product.images?.[0] || '',
+      imageUrl: liveProductImage(product.slug, product.images?.[0]) || '',
     });
     addToast(t('toast.added', { title: product.title }));
   };

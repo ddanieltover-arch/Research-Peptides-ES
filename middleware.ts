@@ -2,15 +2,21 @@ import { NextResponse, type NextRequest } from 'next/server';
 import {
   DEFAULT_LOCALE,
   getLocaleFromPath,
+  internalAppPath,
+  publicAliasPath,
   stripLocaleFromPath,
 } from './src/i18n/routing';
 import { isLocaleCode } from './src/i18n/locales';
 
+function normalizePath(path: string): string {
+  if (!path || path === '/') return '/';
+  return path.replace(/\/+$/, '') || '/';
+}
+
 /**
- * Soft client navigation only works when the browser URL matches `app/[locale]/…`.
- * Pretty aliases (`/tienda`, `/`, `/producto/x`) must 308 → `/es/shop`, `/es`, etc.
- * Rewrites alone leave the address bar on a non-routable path and Link clicks stall
- * until a hard refresh.
+ * Keep translated slugs in the address bar (`/tienda`, `/producto/…`, `/fr/boutique`).
+ * Rewrite those pretty URLs onto real App Router segments (`/es/shop`, `/es/product/…`).
+ * Old English paths (`/es/shop`, `/shop`) 308 to the localized page name.
  */
 export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
@@ -30,15 +36,23 @@ export function middleware(request: NextRequest) {
   const urlLocale = getLocaleFromPath(pathname);
   const locale = urlLocale && isLocaleCode(urlLocale) ? urlLocale : DEFAULT_LOCALE;
   const canonical = stripLocaleFromPath(pathname);
-  const internalPath = `/${locale}${canonical === '/' ? '' : canonical}`;
+  const prettyPath = normalizePath(publicAliasPath(locale, canonical));
+  const internalPath = normalizePath(internalAppPath(locale, canonical));
+  const current = normalizePath(pathname);
 
-  if (pathname === internalPath || pathname === `${internalPath}/`) {
+  if (current !== prettyPath) {
+    const url = request.nextUrl.clone();
+    url.pathname = prettyPath;
+    return NextResponse.redirect(url, 308);
+  }
+
+  if (prettyPath === internalPath) {
     return NextResponse.next();
   }
 
   const url = request.nextUrl.clone();
   url.pathname = internalPath;
-  return NextResponse.redirect(url, 308);
+  return NextResponse.rewrite(url);
 }
 
 export const config = {
