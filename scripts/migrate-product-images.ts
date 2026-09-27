@@ -48,7 +48,8 @@ function storagePathFromUrl(url: string): string | null {
   const marker = `/storage/v1/object/public/${BUCKET}/`;
   const idx = url.indexOf(marker);
   if (idx === -1) return null;
-  return decodeURIComponent(url.slice(idx + marker.length));
+  const raw = url.slice(idx + marker.length).split(/[?#]/)[0];
+  return decodeURIComponent(raw);
 }
 
 function rewriteImageUrl(url: string, destHost: string): string {
